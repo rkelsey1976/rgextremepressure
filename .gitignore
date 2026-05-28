@@ -16,6 +16,11 @@ dist/
 .DS_Store
 Thumbs.db
 
+# Dev scripts
+fix_*.py
+patch_*.py
+.claude/
+
 # Editor
 .vscode/
 .idea/
