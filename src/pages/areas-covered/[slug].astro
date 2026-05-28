@@ -15,10 +15,10 @@ export async function getStaticPaths() {
 const { location } = Astro.props;
 ---
 
-<Base title={location.metaTitle} preloadImage="/images/hero-bath.jpg">
+<Base title={location.metaTitle} preloadImage="/images/hero-bath.webp">
   {/* ── Hero ── */}
   <Hero
-    image="/images/hero-bath.jpg"
+    image="/images/hero-bath.webp"
     overlay="left"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Locations', href: '/locations' }, { label: location.townName }]}
     eyebrow={location.heroEyebrow}
@@ -92,7 +92,7 @@ const { location } = Astro.props;
     heading={location.ctaHeading}
     body="Arrange an on-site evaluation with our build management team. Clear advice, strict structural assessment, and itemized transparent cost breakdowns."
     cta={{ label: 'Arrange a Consultation', href: '/contact' }}
-    image="/images/hero-bath.jpg"
+    image="/images/hero-bath.webp"
     imagePosition="center 60%"
   />
 </Base>

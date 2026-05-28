@@ -24,7 +24,7 @@ export const servicesData: ServicePillar[] = [
       'Loft & Basement Conversions',
       'Structural Steel & RSJ Installations',
     ],
-    image: '/images/services/structural-builds.jpg',
+    image: '/images/services/structural-builds.webp',
     href: '/services/structural-builds',
   },
   {
@@ -38,7 +38,7 @@ export const servicesData: ServicePillar[] = [
       'Bath Stone Restoration & Masonry',
       'Sympathetic Internal Fabric Repairs',
     ],
-    image: '/images/services/heritage-restoration.jpg',
+    image: '/images/services/heritage-restoration.webp',
     href: '/services/heritage-restoration',
   },
   {
@@ -52,7 +52,7 @@ export const servicesData: ServicePillar[] = [
       'Luxury Bathrooms & Wetrooms',
       'Internal Wall Reconfigurations',
     ],
-    image: '/images/services/turnkey-interiors.jpg',
+    image: '/images/services/turnkey-interiors.webp',
     href: '/services/interiors-refurbishments',
   },
   {
@@ -66,7 +66,7 @@ export const servicesData: ServicePillar[] = [
       'Comprehensive Property Maintenance',
       'Responsive Home Repairs & Roofing',
     ],
-    image: '/images/services/property-care.jpg',
+    image: '/images/services/property-care.webp',
     href: '/services/property-care',
   },
 ];
