@@ -80,21 +80,36 @@ import { servicesData } from '../data/services';
   */}
   <section class="why-strip">
     <div class="container">
+      <SectionHeader
+        eyebrow="Why Choose Aspect Builds"
+        heading="What Sets Us Apart"
+        dark={true}
+      />
       <div class="why-grid">
         <div class="why-item">
           <span class="why-item__number" aria-hidden="true">01</span>
-          <h3 class="why-item__title">Fixed Quotes, No Surprises</h3>
-          <p class="why-item__body">Every project starts with a detailed, itemised quote. The number we give you is the number you pay — not a penny more.</p>
+          <h3 class="why-item__title">Fully Insured Service</h3>
+          <p class="why-item__body">Complete public and employer's liability cover on every project. Your property and our workforce are fully protected — no exceptions.</p>
         </div>
         <div class="why-item">
           <span class="why-item__number" aria-hidden="true">02</span>
-          <h3 class="why-item__title">Site-First Logistics</h3>
-          <p class="why-item__body">We plan materials, skips, and access before day one. Your neighbours won't even know we're there until they see the result.</p>
+          <h3 class="why-item__title">Skilled & Dependable</h3>
+          <p class="why-item__body">Friendly, experienced tradespeople who turn up on time, work to a high standard, and treat your home with respect from start to finish.</p>
         </div>
         <div class="why-item">
           <span class="why-item__number" aria-hidden="true">03</span>
-          <h3 class="why-item__title">Direct Line to Your Builder</h3>
-          <p class="why-item__body">No project managers passing messages. You speak to the person running your site — every question answered, every update direct.</p>
+          <h3 class="why-item__title">Honest, Transparent Pricing</h3>
+          <p class="why-item__body">No hidden costs, no surprise extras. We provide clear, itemised quotes upfront — what we quote is what you pay.</p>
+        </div>
+        <div class="why-item">
+          <span class="why-item__number" aria-hidden="true">04</span>
+          <h3 class="why-item__title">Clean, Respectful Sites</h3>
+          <p class="why-item__body">Dust sheets, daily tidy-ups, and protected access routes. Your home gets treated like our own — we leave it spotless.</p>
+        </div>
+        <div class="why-item">
+          <span class="why-item__number" aria-hidden="true">05</span>
+          <h3 class="why-item__title">Reputation Earned</h3>
+          <p class="why-item__body">Our business is built on repeat work and personal recommendations. That only happens when you deliver — and we do, every time.</p>
         </div>
       </div>
     </div>
@@ -335,8 +350,8 @@ import { servicesData } from '../data/services';
 
   .why-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-2xl);
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-xl);
   }
 
   .why-item {

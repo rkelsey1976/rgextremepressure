@@ -23,10 +23,10 @@ import ImageCTA from '../../components/ImageCTA.astro';
 
   {/* ── Trust bar ── */}
   <TrustMetrics metrics={[
-    { value: '4.9', label: 'Local Homeowners' },
-    { value: 'TrustATrader', label: 'Certified & Verified' },
-    { value: '£5M+ Cover', label: 'Fully Insured' },
-    { value: 'Turnkey', label: 'Professional Maintenance' },
+    { value: 'Insured', label: 'Fully Insured' },
+    { value: 'Skilled', label: 'Dependable Workforce' },
+    { value: 'Fixed', label: 'Transparent Pricing' },
+    { value: 'Clean', label: 'Respect for Your Home' },
   ]} />
 
   {/* ── Services showcase (tabbed) ── */}
@@ -41,10 +41,10 @@ import ImageCTA from '../../components/ImageCTA.astro';
         <div class="guarantee-header__left">
           <span class="rule--accent"></span>
           <span class="t-label guarantee-eyebrow">The Aspect Builds Guarantee</span>
-          <h2 class="guarantee-heading">Fixed Quotes.<br/>Clean Sites.<br/>Direct Lines.</h2>
+          <h2 class="guarantee-heading">Honest Advice.<br/>Transparent Pricing.<br/>Clean Sites.</h2>
         </div>
         <div class="guarantee-header__right">
-          <p class="guarantee-intro">We don't do hidden costs, chaotic worksites, or unanswered calls. Every project runs on transparent, itemised quotes, tidy sites, and a single point of contact who picks up the phone.</p>
+          <p class="guarantee-intro">Fully insured and professional service. Skilled, friendly, and dependable workforce. Honest advice with transparent pricing — what we quote is what you pay.</p>
           <a href="/contact" class="btn btn--outline-light guarantee-cta">
             Arrange a Consultation
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -61,36 +61,45 @@ import ImageCTA from '../../components/ImageCTA.astro';
         <div class="guarantee-item">
           <span class="guarantee-num" aria-hidden="true">01</span>
           <div class="guarantee-item__body">
-            <h3 class="guarantee-title">Fixed, Transparent Quotes</h3>
-            <p class="guarantee-desc">Itemised cost breakdowns agreed before any tools touch your property. What we quote is what you pay — no variation orders, no late surprises.</p>
-            <span class="guarantee-proof">Zero hidden extras on every project</span>
+            <h3 class="guarantee-title">Fully Insured</h3>
+            <p class="guarantee-desc">Complete public and employer's liability cover on every project. Your property and our workforce are fully protected — no exceptions.</p>
+            <span class="guarantee-proof">Full insurance on every project</span>
           </div>
         </div>
 
         <div class="guarantee-item">
           <span class="guarantee-num" aria-hidden="true">02</span>
           <div class="guarantee-item__body">
-            <h3 class="guarantee-title">Logistical Precision</h3>
-            <p class="guarantee-desc">Conservation area permits, city-centre parking restrictions, crane lifts on tight lanes — we manage all site logistics end-to-end from day one.</p>
-            <span class="guarantee-proof">Full site logistics managed within scope</span>
+            <h3 class="guarantee-title">Skilled & Dependable</h3>
+            <p class="guarantee-desc">Friendly, experienced tradespeople who turn up on time and work to a high standard. We treat your home with respect from start to finish.</p>
+            <span class="guarantee-proof">Vetted, reliable workforce</span>
           </div>
         </div>
 
         <div class="guarantee-item">
           <span class="guarantee-num" aria-hidden="true">03</span>
           <div class="guarantee-item__body">
-            <h3 class="guarantee-title">Clean, Respectful Sites</h3>
-            <p class="guarantee-desc">Your home is not a building site to us. Dust sheets, hoarding, daily tidy-ups, and protected access routes are standard — not extras.</p>
-            <span class="guarantee-proof">Site clean protocols on every job from day one</span>
+            <h3 class="guarantee-title">Honest, Transparent Pricing</h3>
+            <p class="guarantee-desc">Itemised quotes agreed before work starts. No hidden costs, no surprise extras. What we quote is what you pay.</p>
+            <span class="guarantee-proof">Zero hidden extras on every project</span>
           </div>
         </div>
 
         <div class="guarantee-item">
           <span class="guarantee-num" aria-hidden="true">04</span>
           <div class="guarantee-item__body">
-            <h3 class="guarantee-title">Direct Communication</h3>
-            <p class="guarantee-desc">One named contact throughout the entire project. Weekly written progress updates. We pick up the phone — and if we miss it, we call back the same day.</p>
-            <span class="guarantee-proof">Weekly written updates as standard</span>
+            <h3 class="guarantee-title">Clean, Respectful Sites</h3>
+            <p class="guarantee-desc">Dust sheets, daily tidy-ups, and protected access routes. Your home gets treated like our own — we leave it spotless.</p>
+            <span class="guarantee-proof">Clean site protocols as standard</span>
+          </div>
+        </div>
+
+        <div class="guarantee-item">
+          <span class="guarantee-num" aria-hidden="true">05</span>
+          <div class="guarantee-item__body">
+            <h3 class="guarantee-title">Reputation Earned</h3>
+            <p class="guarantee-desc">Our business is built on repeat work and personal recommendations. That only happens when you deliver — and we do, every time.</p>
+            <span class="guarantee-proof">Repeat business and referrals</span>
           </div>
         </div>
 
@@ -201,7 +210,7 @@ import ImageCTA from '../../components/ImageCTA.astro';
   /* ── Items grid ── */
   .guarantee-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 0;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
   }
