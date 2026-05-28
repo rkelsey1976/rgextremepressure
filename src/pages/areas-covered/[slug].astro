@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { location } = Astro.props;
 ---
 
-<Base title={location.metaTitle}>
+<Base title={location.metaTitle} preloadImage="/images/hero-bath.jpg">
   {/* ── Hero ── */}
   <Hero
     image="/images/hero-bath.jpg"
