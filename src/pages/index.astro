@@ -1,0 +1,560 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import TestimonialBlock from '../components/TestimonialBlock.astro';
+import ImageCTA from '../components/ImageCTA.astro';
+import { servicesData } from '../data/services';
+---
+
+<Base title="Aspect Builds — Built for Bath">
+  {/*
+    ═══════════════════════════════════════
+    A. DARK LUXURY HERO FOLD
+    ═══════════════════════════════════════
+  */}
+  <Hero
+    image="/images/hero-home.jpg"
+    overlay="left"
+    eyebrow="Bath · BANES · Wiltshire"
+    heading="We Build Bath's<br>Best Projects<span class='gold-period'>.</span>"
+    body="From Georgian stone restorations to contemporary extensions — fixed quotes, clean sites, zero surprises."
+    cta={{ label: 'Start a Project', href: '/contact' }}
+    ctaSecondary={{ label: 'View Projects', href: '/projects' }}
+  />
+
+  {/*
+    ═══════════════════════════════════════
+    B. EDITORIAL SERVICE PILLARS
+    Alternating split rows — image left, then image right
+    ═══════════════════════════════════════
+  */}
+  <section style="padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="What We Deliver"
+        heading="Four Pillars. One Standard."
+        body="Every project — whether a heritage restoration in Bathwick or a modern extension in Keynsham — is governed by the same rigorous process."
+      />
+
+      <div class="pillars">
+        {servicesData.map((pillar, i) => {
+          const isReversed = i % 2 === 1;
+          return (
+            <div class:list={['pillar-row', isReversed && 'pillar-row--reversed']}>
+              <div class="pillar-row__image">
+                <img src={pillar.image} alt={pillar.subtitle} loading="lazy" />
+              </div>
+              <div class="pillar-row__text">
+                <span class="t-label" style="color:var(--accent)">{pillar.subtitle}</span>
+                <h3 class="pillar-row__title">{pillar.title}</h3>
+                <p class="pillar-row__desc">{pillar.description}</p>
+                <ul class="pillar-row__features">
+                  {pillar.features.map((feat) => (
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="pillar-row__check">
+                        <path d="M2 7l3.5 3.5L12 3" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
+                <a href={pillar.href} class="pillar-row__link">
+                  Explore this service
+                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  {/*
+    ═══════════════════════════════════════
+    C. WHY ASPECT — Differentiator strip
+    ═══════════════════════════════════════
+  */}
+  <section class="why-strip">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-item">
+          <span class="why-item__number">01</span>
+          <h3 class="why-item__title">Fixed Quotes, No Surprises</h3>
+          <p class="why-item__body">Every project starts with a detailed, itemised quote. The number we give you is the number you pay — not a penny more.</p>
+        </div>
+        <div class="why-item">
+          <span class="why-item__number">02</span>
+          <h3 class="why-item__title">Site-First Logistics</h3>
+          <p class="why-item__body">We plan materials, skips, and access before day one. Your neighbours won't even know we're there until they see the result.</p>
+        </div>
+        <div class="why-item">
+          <span class="why-item__number">03</span>
+          <h3 class="why-item__title">Direct Line to Your Builder</h3>
+          <p class="why-item__body">No project managers passing messages. You speak to the person running your site — every question answered, every update direct.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {/*
+    ═══════════════════════════════════════
+    E. TESTIMONIALS
+    ═══════════════════════════════════════
+  */}
+  <section style="background:var(--stone);padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Client Testimonials"
+        heading="What Our Clients Say"
+      />
+
+      <div class="testimonials-grid">
+        <TestimonialBlock
+          quote="They delivered our extension on budget, on time, and with a level of site cleanliness we have never experienced with builders before. Absolutely first class."
+          name="Sarah M."
+          location="Central Bath"
+        />
+        <TestimonialBlock
+          quote="The lime repointing on our Grade II property was handled with genuine knowledge and care. No shortcuts, no modern cement patches — exactly what a period home needs."
+          name="James & Rachel T."
+          location="Bradford on Avon"
+        />
+        <TestimonialBlock
+          quote="From the first site visit to the final walkthrough, communication was clear and consistent. No surprises, no hidden costs. Just honest, professional building work."
+          name="David P."
+          location="Keynsham"
+        />
+      </div>
+    </div>
+  </section>
+
+  {/*
+    ═══════════════════════════════════════
+    F. SELECTED PROJECTS
+    ═══════════════════════════════════════
+  */}
+  <section style="padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Recent Work"
+        heading="Selected Projects"
+        body="From heritage restorations in Central Bath to modern extensions in Keynsham — see how we deliver."
+      />
+
+      <div class="projects-showcase">
+        {/* ── Featured hero project (large, left) ── */}
+        <a href="/projects/georgian-townhouse-bath" class="project-card project-card--featured">
+          <div class="project-card__image">
+            <img src="/images/georgian-town-houses-in-lansdown-road-bath-taken-in-bath-somerset-uk-on-29-december-2016-PR68NG.jpg" alt="Georgian Townhouse — full period restoration" loading="lazy" />
+          </div>
+          <div class="project-card__overlay">
+            <span class="t-label" style="color:var(--accent)">Heritage</span>
+            <h3 class="project-card__title">Georgian Townhouse</h3>
+            <p class="project-card__body">Full period restoration of a Grade II listed Bath townhouse — stone repointing, sash windows, internal fabric repair.</p>
+            <span class="project-card__cta">View project</span>
+          </div>
+        </a>
+
+        {/* ── Two stacked side projects (right) ── */}
+        <div class="project-card__side">
+          <a href="/projects/contemporary-extension-keynsham" class="project-card project-card--small">
+            <div class="project-card__image">
+              <img src="/images/josh-olalde-X1P1_EDNnok-unsplash.jpg" alt="Contemporary Extension" loading="lazy" />
+            </div>
+            <div class="project-card__content">
+              <span class="t-label" style="color:var(--accent);font-size:0.65rem">Extensions</span>
+              <h3 class="project-card__title-sm">Contemporary Extension</h3>
+              <p class="project-card__body-sm">Open-plan rear extension and kitchen remodel for a growing family.</p>
+            </div>
+          </a>
+          <a href="/projects/open-plan-kitchen-saltford" class="project-card project-card--small">
+            <div class="project-card__image">
+              <img src="/images/daniel-mccullough-HtBlQdxfG9k-unsplash.jpg" alt="Open-Plan Kitchen" loading="lazy" />
+            </div>
+            <div class="project-card__content">
+              <span class="t-label" style="color:var(--accent);font-size:0.65rem">Interiors</span>
+              <h3 class="project-card__title-sm">Open-Plan Kitchen</h3>
+              <p class="project-card__body-sm">Full kitchen and living space transformation with structural knock-through.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:var(--space-xl)">
+        <a href="/projects" class="btn btn--primary">
+          View All Projects
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-left:0.4rem">
+            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── CTA ── */}
+  <ImageCTA
+    heading="Ready to Start Your Project?"
+    body="Get a fixed, transparent quote from a local team that treats your home like their own."
+    cta={{ label: 'Arrange a Consultation', href: '/contact' }}
+    image="/images/hero-home.jpg"
+  />
+</Base>
+
+<style>
+  /* ── Gold period on hero heading ── */
+  :global(.gold-period) {
+    color: var(--accent);
+  }
+
+  /* ── Editorial Pillar Split Rows ── */
+  .pillars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xl, 6rem);
+    margin-top: var(--space-2xl);
+  }
+
+  .pillar-row {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+
+  .pillar-row--reversed {
+    grid-template-columns: 5fr 7fr;
+  }
+
+  .pillar-row--reversed .pillar-row__image {
+    order: 2;
+  }
+
+  .pillar-row--reversed .pillar-row__text {
+    order: 1;
+  }
+
+  .pillar-row__image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--stone);
+  }
+
+  .pillar-row__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out-expo);
+  }
+
+  .pillar-row:hover .pillar-row__image img {
+    transform: scale(1.03);
+  }
+
+  .pillar-row__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .pillar-row__text .t-label {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .pillar-row__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .pillar-row__desc {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--concrete);
+    margin: 0;
+    max-width: 42ch;
+  }
+
+  .pillar-row__features {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pillar-row__features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--chalk);
+  }
+
+  .pillar-row__check {
+    flex-shrink: 0;
+  }
+
+  .pillar-row__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    margin-top: var(--space-m);
+    transition: gap 0.2s;
+  }
+
+  .pillar-row__link:hover {
+    gap: 0.7rem;
+  }
+
+  /* ── Why Aspect Strip ── */
+  .why-strip {
+    background: var(--navy);
+    padding: var(--section-pad) 0;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2xl);
+  }
+
+  .why-item {
+    padding-left: var(--space-l);
+    border-left: 2px solid var(--accent);
+  }
+
+  .why-item__number {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.35;
+    display: block;
+    margin-bottom: var(--space-s);
+  }
+
+  .why-item__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #fff;
+    margin: 0 0 0.5rem;
+  }
+
+  .why-item__body {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.62);
+    margin: 0;
+  }
+
+  /* ── Testimonials ── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2xl);
+    margin-top: var(--space-2xl);
+  }
+
+  /* ── Project Showcase ── */
+  .projects-showcase {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-l);
+    margin-top: var(--space-2xl);
+  }
+
+  /* Featured hero card — full bleed overlay */
+  .project-card {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-card--featured {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+
+  .project-card__image {
+    position: relative;
+    overflow: hidden;
+    background: var(--stone);
+  }
+
+  .project-card--featured .project-card__image {
+    aspect-ratio: 3 / 4;
+  }
+
+  .project-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out-expo);
+  }
+
+  .project-card:hover .project-card__image img {
+    transform: scale(1.04);
+  }
+
+  /* Overlay on featured card */
+  .project-card--featured .project-card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-xl) var(--space-l);
+    background: linear-gradient(to top, rgba(13,21,32,0.92) 0%, rgba(13,21,32,0.6) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .project-card--featured .project-card__overlay .t-label {
+    margin-bottom: 0.2rem;
+  }
+
+  .project-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #fff;
+    margin: 0;
+  }
+
+  .project-card__body {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.72);
+    margin: 0;
+    max-width: 36ch;
+  }
+
+  .project-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: var(--space-s);
+    transition: gap 0.2s;
+  }
+
+  .project-card--featured:hover .project-card__cta {
+    gap: 0.7rem;
+  }
+
+  /* Side cards — horizontal layout */
+  .project-card__side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+  }
+
+  .project-card--small {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-m);
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .project-card--small .project-card__image {
+    aspect-ratio: 1 / 1;
+  }
+
+  .project-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .project-card__title-sm {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--chalk);
+    margin: 0;
+    transition: color 0.2s;
+  }
+
+  .project-card--small:hover .project-card__title-sm {
+    color: var(--accent);
+  }
+
+  .project-card__body-sm {
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--concrete);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .pillar-row,
+    .pillar-row--reversed {
+      grid-template-columns: 1fr;
+    }
+
+    .pillar-row--reversed .pillar-row__image {
+      order: 0;
+    }
+
+    .pillar-row--reversed .pillar-row__text {
+      order: 0;
+    }
+
+    .why-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .projects-showcase {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+</style>

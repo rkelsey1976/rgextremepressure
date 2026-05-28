@@ -1,0 +1,208 @@
+---
+import Base from '../layouts/Base.astro';
+const updated = 'May 2025';
+---
+
+<Base
+  title="Terms of Use — Aspect Builds & Maintenance Ltd"
+  description="Terms governing use of the Aspect Builds & Maintenance Ltd website."
+>
+  <section class="doc-hero">
+    <div class="container">
+      <span class="rule--accent"></span>
+      <span class="t-label" style="color:var(--accent)">Legal</span>
+      <h1 class="doc-hero__heading">Terms of Use</h1>
+      <p class="doc-hero__meta">Aspect Builds & Maintenance Ltd &mdash; Last updated {updated}</p>
+    </div>
+  </section>
+
+  <section class="doc-body">
+    <div class="container">
+      <div class="doc-content">
+
+        <div class="doc-intro">
+          <p>These terms govern your use of the Aspect Builds & Maintenance Ltd website at <strong>aspectbuilds.co.uk</strong>. By accessing this website, you agree to be bound by these terms. If you do not agree, please do not use this site.</p>
+          <p>Aspect Builds & Maintenance Ltd is a company registered in England and Wales. Our registered business address is in Bath, Somerset. For any queries, contact us at <a href="mailto:hello@aspectbuilds.co.uk">hello@aspectbuilds.co.uk</a>.</p>
+        </div>
+
+        <div class="doc-section">
+          <h2 class="doc-section__heading">1. Use of This Website</h2>
+          <p>You may use this website for lawful purposes only. You must not:</p>
+          <ul>
+            <li>Use the site in any way that violates applicable local, national, or international law or regulation</li>
+            <li>Transmit any unsolicited or unauthorised advertising or promotional material</li>
+            <li>Attempt to gain unauthorised access to any part of the site or its related systems</li>
+            <li>Engage in any conduct that restricts or inhibits anyone's use or enjoyment of the site</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h2 class="doc-section__heading">2. Intellectual Property</h2>
+          <p>All content on this website — including text, images, graphics, logos, and design — is owned by or licensed to Aspect Builds & Maintenance Ltd and is protected by copyright and other intellectual property laws.</p>
+          <p>You may view, print, or download content from this site for your own personal, non-commercial use. You must not reproduce, redistribute, republish, or commercially exploit any content without our prior written permission.</p>
+        </div>
+
+        <div class="doc-section">
+          <h2 class="doc-section__heading">3. Information Accuracy</h2>
+          <p>We make reasonable efforts to ensure that information on this website is accurate and up to date. However, we make no warranties or representations as to the accuracy, completeness, or suitability of any information for any particular purpose.</p>
+          <p>Content on this website is provided for general information only. It does not constitute professional advice. You should seek appropriate professional advice before taking any action based on information found here.</p>
+          <p>Project images, case studies, and testimonials on this site are representative examples. Individual results will vary depending on project scope, location, and other factors.</p>
+        </div>
+
+        <div class="doc-section">
+          <h2 class="doc-section__heading">4. Limitation of Liability</h2>
+          <p>To the fullest extent permitted by law, Aspect Builds & Maintenance Ltd excludes all liability for any loss or damage — whether direct, indirect, or consequential — arising from your use of, or inability to use, this website or its content.</p>
+          <p>This does not exclude or limit our liability for death or personal injury caused by negligence, fraud or fraudulent misrepresentation, or any other liability that cannot be excluded under English law.</p>
+        </div>
+
+        <div class="doc-section">
+          <h2 class="doc-section__heading">5. Links to Third-Party Sites</h2>
+          <p>This website may contain links to third-party websites. These links are provided for your convenience only. We have no control over the content of those sites and accept no responsibility for them or for any loss or damage that may arise from your use of them.</p>
+        </div>
+
+        <div class="doc-section">
+          <h2 class="doc-section__heading">6. Website Availability</h2>
+          <p>We aim to keep this website available at all times, but we do not guarantee uninterrupted access. We reserve the right to suspend, withdraw, or restrict access to all or part of this site for business or operational reasons without notice.</p>
+        </div>
+
+        <div class="doc-section">
+          <h2 class="doc-section__heading">7. Governing Law</h2>
+          <p>These terms are governed by the laws of England and Wales. Any dispute arising in connection with these terms or your use of this website shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+        </div>
+
+        <div class="doc-section">
+          <h2 class="doc-section__heading">8. Changes to These Terms</h2>
+          <p>We may revise these terms at any time by updating this page. The date at the top of this page reflects the most recent revision. You are expected to check this page periodically. Continued use of the website after any change constitutes your acceptance of the updated terms.</p>
+        </div>
+
+        <div class="doc-section">
+          <h2 class="doc-section__heading">9. Contact</h2>
+          <p>If you have any questions about these terms, please contact us at <a href="mailto:hello@aspectbuilds.co.uk">hello@aspectbuilds.co.uk</a>.</p>
+          <p>For our full data privacy information, please see our <a href="/privacy">Privacy Policy</a>.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .doc-hero {
+    background: var(--navy);
+    padding: calc(var(--section-pad) * 0.8) 0 var(--space-2xl);
+  }
+
+  .doc-hero__heading {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: #fff;
+    margin: var(--space-s) 0 var(--space-m);
+  }
+
+  .doc-hero__meta {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0;
+  }
+
+  .doc-body {
+    padding: var(--space-3xl) 0;
+    background: #fff;
+  }
+
+  .doc-content {
+    max-width: 72ch;
+  }
+
+  .doc-intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    padding-bottom: var(--space-2xl);
+    border-bottom: 1px solid var(--stone);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .doc-intro p {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .doc-section {
+    padding-bottom: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--stone);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .doc-section:last-child {
+    border-bottom: none;
+  }
+
+  .doc-section__heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .doc-section p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .doc-section ul {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .doc-section ul li {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--concrete);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .doc-section ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .doc-section a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .doc-section a:hover {
+    color: var(--accent-dim);
+  }
+
+  .doc-intro a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

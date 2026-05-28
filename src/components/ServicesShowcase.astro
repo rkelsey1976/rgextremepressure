@@ -1,0 +1,301 @@
+---
+// ServicesShowcase.astro — Tabbed pillar showcase
+// 4 service pillars with tab navigation, design-system styled
+// Vanilla CSS + JS, no Tailwind
+
+import { servicesData } from '../data/services';
+
+interface Props {
+  id?: string;
+}
+
+const { id = 'services-showcase' } = Astro.props;
+---
+
+<section id={id} class="svc">
+  <div class="container">
+    {/* ── Tab Navigation ── */}
+    <div class="svc__tabs" role="tablist">
+      {servicesData.map((service, index) => (
+        <button
+          id={`tab-${service.id}`}
+          role="tab"
+          aria-selected={index === 0 ? 'true' : 'false'}
+          aria-controls={`panel-${service.id}`}
+          class:list={['svc__tab', index === 0 && 'svc__tab--active']}
+          data-service={service.id}
+        >
+          {service.title}
+        </button>
+      ))}
+    </div>
+
+    {/* ── Panels ── */}
+    <div class="svc__panels">
+      {servicesData.map((service, index) => (
+        <div
+          id={`panel-${service.id}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${service.id}`}
+          class:list={['svc__panel', index === 0 && 'svc__panel--active']}
+          data-panel={service.id}
+        >
+          {/* Left: Copy */}
+          <div class="svc__copy">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">{service.subtitle}</span>
+            <h3 class="svc__subheading">{service.title}</h3>
+            <p class="svc__desc">{service.description}</p>
+            <div class="svc__rule"></div>
+            <ul class="svc__features">
+              {service.features.map((feat) => (
+                <li class="svc__feat-item">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="svc__feat-icon">
+                    <path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="svc__actions">
+              <a href={service.href} class="svc__link">
+                Full service detail
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Right: Image */}
+          <div class="svc__image">
+            <div class="svc__image-inner">
+              <img
+                src={service.image}
+                alt={service.subtitle}
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .svc {
+    padding: var(--section-pad) 0;
+    background: #fff;
+  }
+
+  /* ── Tab bar ── */
+  .svc__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+    border-bottom: 1px solid var(--stone);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .svc__tab {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: var(--space-m) var(--space-l);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--concrete);
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .svc__tab:hover {
+    color: var(--chalk);
+  }
+
+  .svc__tab--active {
+    color: var(--chalk);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── Panel grid ── */
+  .svc__panels {
+    position: relative;
+  }
+
+  .svc__panel {
+    display: none;
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-3xl, 5rem);
+    align-items: start;
+  }
+
+  .svc__panel--active {
+    display: grid;
+  }
+
+  /* ── Copy column ── */
+  .svc__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: var(--space-xs);
+  }
+
+  .svc__subheading {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .svc__desc {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .svc__rule {
+    width: 25%;
+    height: 1px;
+    background: var(--stone);
+    margin: var(--space-s) 0;
+  }
+
+  /* ── Features list ── */
+  .svc__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+
+  .svc__feat-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--chalk);
+  }
+
+  .svc__feat-icon {
+    flex-shrink: 0;
+  }
+
+  /* ── Actions row ── */
+  .svc__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-l);
+    flex-wrap: wrap;
+    margin-top: var(--space-s);
+  }
+
+  .svc__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--chalk);
+    text-decoration: none;
+    border: 1px solid var(--stone);
+    padding: 0.9rem 2rem;
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .svc__link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .svc__link svg {
+    flex-shrink: 0;
+    transition: transform 0.3s var(--ease-out-expo, ease);
+  }
+
+  .svc__link:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* ── Image column ── */
+  .svc__image {
+    position: relative;
+  }
+
+  .svc__image-inner {
+    position: relative;
+    overflow: hidden;
+    background: var(--stone);
+    aspect-ratio: 16 / 10;
+    border: 1px solid var(--stone);
+  }
+
+  .svc__image-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+
+  .svc__image-inner:hover img {
+    transform: scale(1.03);
+  }
+
+  @media (max-width: 960px) {
+    .svc__panel {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .svc__tab {
+      padding: var(--space-s) var(--space-m);
+      font-size: 0.72rem;
+    }
+  }
+</style>
+
+<script>
+  // Tab controller – vanilla JS, no framework
+  const tabs = document.querySelectorAll('.svc__tab');
+  const panels = document.querySelectorAll('.svc__panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetId = (tab as HTMLElement).dataset.service;
+
+      // Update tabs
+      tabs.forEach(t => {
+        t.classList.remove('svc__tab--active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('svc__tab--active');
+      tab.setAttribute('aria-selected', 'true');
+
+      // Update panels
+      panels.forEach(panel => {
+        const panelId = (panel as HTMLElement).dataset.panel;
+        if (panelId === targetId) {
+          panel.classList.add('svc__panel--active');
+        } else {
+          panel.classList.remove('svc__panel--active');
+        }
+      });
+    });
+  });
+</script>

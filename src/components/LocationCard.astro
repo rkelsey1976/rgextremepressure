@@ -1,0 +1,90 @@
+---
+// LocationCard.astro — Individual area card within the location hub grid
+// Compact editorial card: area name + descriptor, linked
+// No images — pure text-driven, uses design tokens
+
+interface Props {
+  name: string;
+  descriptor: string;
+  href: string;
+  group: string; // category label: city | town | market
+}
+
+const { name, descriptor, href, group } = Astro.props;
+---
+
+<a href={href} class="loc-card">
+  <span class="loc-card__group">{group}</span>
+  <h3 class="loc-card__name">{name}</h3>
+  <p class="loc-card__desc">{descriptor}</p>
+  <span class="loc-card__link">
+    Explore area
+    <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+      <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+</a>
+
+<style>
+  .loc-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: var(--space-l) var(--space-m);
+    border: 1px solid var(--stone);
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.3s var(--ease-out-expo), transform 0.3s var(--ease-out-expo);
+  }
+
+  .loc-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .loc-card__group {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .loc-card__name {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .loc-card__desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--concrete);
+    margin: 0;
+    flex: 1;
+  }
+
+  .loc-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: var(--space-s);
+    transition: gap 0.2s var(--ease-out-expo);
+  }
+
+  .loc-card:hover .loc-card__link {
+    gap: 0.6rem;
+  }
+</style>

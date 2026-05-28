@@ -1,0 +1,214 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import SplitFeature from '../../components/SplitFeature.astro';
+import TrustMetrics from '../../components/TrustMetrics.astro';
+import ImageCTA from '../../components/ImageCTA.astro';
+---
+
+<Base
+  title="Property Maintenance & Garden Landscaping Bath | Aspect Builds"
+  description="Professional property maintenance, garden landscaping, structural retaining walls and responsive repairs across Bath & BANES. Reliable, organised, insured."
+>
+  <Hero
+    image="/images/hero-home.jpg"
+    overlay="left"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: 'Property Care & Landscaping' }]}
+    eyebrow="Landscaping · Maintenance · Repairs"
+    heading="Property Care<br>&amp; Landscaping"
+    body="Your property doesn't stop needing care once the build is done. We provide premium garden landscaping and a reliable, organised domestic maintenance service across Bath &amp; BANES — backed by the same fixed-price approach and direct communication as our larger projects."
+    cta={{ label: 'Arrange a Consultation', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  <TrustMetrics metrics={[
+    { value: '£5M+', label: "Public & Employer's Liability Cover" },
+    { value: 'Fixed', label: 'Transparent Quotes — No Hidden Extras' },
+    { value: 'Reliable', label: 'Organised, Punctual, Clean Sites' },
+    { value: 'Local', label: 'Bath & BANES Based Team' },
+  ]} />
+
+  <SplitFeature
+    image="/images/services/property-care.jpg"
+    imageAlt="Garden landscaping and property maintenance in Bath"
+    eyebrow="Property Care & Landscaping"
+    heading="The Same Standard of Care. Inside and Out."
+    body="Most building companies treat maintenance and landscaping as an afterthought. We treat them as a discipline in their own right. Bath's garden terrain — steeply sloped plots, narrow rear access, Bath stone boundary walls that need structural understanding as well as aesthetic sensitivity — demands builders who know what they're doing. Our landscaping team combines structural engineering knowledge with design sensibility. Our maintenance service is organised, accountable, and reliable — the things that most tradespeople are not."
+    dark={false}
+    list={[
+      'Structural and aesthetic landscaping across Bath\'s varied terrain',
+      'Sloped garden and retaining wall solutions on hillside plots',
+      'Planned maintenance programmes and responsive repair callouts',
+      'Fully insured, vetted tradespeople on every job',
+    ]}
+    cta={{ label: 'Discuss Your Requirements', href: '/contact' }}
+  />
+
+  <section class="sub-services">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Property Care Specialisms"
+        heading="Four Ways We Care for<br>Your Property"
+        body="Whether you need a garden transformed, a wall built, or a reliable maintenance team on call — the Aspect approach applies at every scale."
+      />
+      <div class="sub-grid">
+
+        <div class="sub-card">
+          <div class="sub-card__num">01</div>
+          <h3 class="sub-card__title">Garden Landscaping &amp; Paving</h3>
+          <p class="sub-card__body">Bath's garden culture is exacting — premium paving, considered planting, and structures that complement the architecture rather than clash with it. We design and build outdoor spaces that are both beautiful and built to last, using premium materials specified to the setting: natural stone, reclaimed Bath cobbles, porcelain large-format paving, and traditional gravel paths that work with period properties rather than undermining them.</p>
+          <ul class="sub-card__list">
+            <li>Natural stone and premium porcelain paving installation</li>
+            <li>Raised planting beds and garden structure construction</li>
+            <li>Pergolas, garden walls, and outdoor living structures</li>
+            <li>Gravel paths, resin bound driveways, and soft landscaping</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">02</div>
+          <h3 class="sub-card__title">Structural Retaining Walls</h3>
+          <p class="sub-card__body">Bath's hillside plots are defined by their slopes — and a sloped garden without a properly engineered retaining wall is both a safety risk and a wasted opportunity. We design and build structural stone, block, and timber retaining walls that hold the slope, create usable terraced garden levels, and — where the setting demands it — use Bath stone to maintain the visual coherence of the property's wider character.</p>
+          <ul class="sub-card__list">
+            <li>Structural engineering assessment for all retaining walls</li>
+            <li>Bath stone, block, and timber retaining wall construction</li>
+            <li>Terraced garden level creation on sloped plots</li>
+            <li>Drainage design behind retaining structures</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">03</div>
+          <h3 class="sub-card__title">Property Maintenance Programmes</h3>
+          <p class="sub-card__body">A well-maintained property retains its value and avoids the expensive emergency repairs that result from deferred upkeep. We provide planned maintenance programmes for residential properties across Bath and BANES — covering all the trades that a home needs on a regular cycle: gutters and drainage, external decoration, roof tile checks, carpentry repairs, and seasonal garden maintenance. One number, every trade.</p>
+          <ul class="sub-card__list">
+            <li>Annual and biannual planned maintenance schedules</li>
+            <li>Gutter cleaning and drainage maintenance</li>
+            <li>External painting and decoration programmes</li>
+            <li>Carpentry repairs — fences, gates, fascias, soffits</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">04</div>
+          <h3 class="sub-card__title">Responsive Repairs &amp; Roofing</h3>
+          <p class="sub-card__body">When something goes wrong — a cracked render, a leaking flat roof, a damp patch that's appeared on the chimney breast — you need a builder who responds promptly, diagnoses correctly, and fixes it properly rather than masking the symptoms. We offer responsive repair callouts for homeowners across Bath and BANES, covering roofing, render, pointing, damp investigation, and structural crack assessment, all by the same vetted and insured team.</p>
+          <ul class="sub-card__list">
+            <li>Roof tile replacement and flat roof repairs</li>
+            <li>Render repair and external wall crack assessment</li>
+            <li>Damp investigation and remediation</li>
+            <li>Chimney stack repointing and flaunching repairs</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <SplitFeature
+    image="/images/bath-somerset-england-uk-BY1GJE.jpg"
+    imageAlt="Bath property exterior — maintenance and care"
+    eyebrow="Why Maintenance Matters in Bath"
+    heading="Bath Stone Weathers. Lime Mortars Need Attention. Don't Leave It."
+    body="Bath's building stock is spectacular — and it's also exceptionally unforgiving of neglect. Traditional Bath stone is soft and porous; left unpointed, rainwater tracks into the masonry and causes progressive structural degradation that is expensive to reverse. Heritage timber windows deteriorate rapidly without a regular painting cycle. Valley gutters on Georgian roofs become blocked and cause internal water ingress that appears as ceiling damp rather than roof leakage — often misdiagnosed for years. A planned maintenance programme costs a fraction of the emergency repairs that neglect eventually produces."
+    dark={true}
+    reverse={true}
+    list={[
+      'Annual pointing inspection and minor repair programme',
+      'External joinery painting cycle — typically every 5 years',
+      'Gutter and valley gutter clearance — recommended biannually',
+      'Roof inspection after significant weather events',
+    ]}
+    cta={{ label: 'Set Up a Maintenance Programme', href: '/contact' }}
+  />
+
+  <ImageCTA
+    heading="Keep Your Property in Peak Condition."
+    body="Whether you need a one-off repair or a planned annual maintenance programme, we provide fixed-price, reliable, fully insured property care across Bath &amp; BANES."
+    cta={{ label: 'Arrange a Consultation', href: '/contact' }}
+    image="/images/services/property-care.jpg"
+  />
+</Base>
+
+<style>
+  .sub-services {
+    padding: var(--section-pad) 0;
+    background: var(--stone);
+  }
+
+  .sub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .sub-card {
+    background: #fff;
+    padding: var(--space-xl);
+    border: 1px solid rgba(26, 35, 50, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .sub-card__num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.4;
+  }
+
+  .sub-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .sub-card__body {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .sub-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-top: 1px solid var(--stone);
+    padding-top: var(--space-m);
+  }
+
+  .sub-card__list li {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--chalk);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sub-card__list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .sub-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+    }
+  }
+</style>

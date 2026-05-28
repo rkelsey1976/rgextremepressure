@@ -1,0 +1,214 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import SplitFeature from '../../components/SplitFeature.astro';
+import TrustMetrics from '../../components/TrustMetrics.astro';
+import ImageCTA from '../../components/ImageCTA.astro';
+---
+
+<Base
+  title="Full Property Refurbishments, Kitchens & Bathrooms Bath | Aspect Builds"
+  description="Complete internal refurbishments, bespoke kitchens, luxury bathrooms and open-plan reconfigurations across Bath & BANES. One contract, every trade, fixed price."
+>
+  <Hero
+    image="/images/hero-kitchens.jpg"
+    overlay="left"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: 'Turnkey Interiors & Refurbishments' }]}
+    eyebrow="Kitchens · Bathrooms · Full Refurbishment"
+    heading="Turnkey Interiors<br>&amp; Refurbishments"
+    body="From a kitchen that actually works to a complete open-plan transformation — we manage every trade, every detail, from first fix to final snag. One contract, one point of contact, zero chaos."
+    cta={{ label: 'Arrange a Consultation', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  <TrustMetrics metrics={[
+    { value: '£5M+', label: "Public & Employer's Liability Cover" },
+    { value: 'Fixed', label: 'Transparent Quotes — No Hidden Extras' },
+    { value: 'Turnkey', label: 'Every Trade Coordinated & Managed' },
+    { value: '1 Contact', label: 'Single Point of Accountability' },
+  ]} />
+
+  <SplitFeature
+    image="/images/services/turnkey-interiors.jpg"
+    imageAlt="Premium kitchen installation in a Bath property"
+    eyebrow="Turnkey Interiors"
+    heading="Internal Transformations Managed from First Fix to Final Snag"
+    body="The internal refurbishment market in Bath is full of contractors who manage their own trade and leave you to coordinate the rest. We do the opposite. Under a single Aspect contract, we coordinate every discipline — structural, electrical, plumbing, plastering, tiling, joinery, decorating — to a planned programme, with weekly progress updates and a defined handover process. The result is a finished space delivered on time and to the specification you agreed, not the one that emerged from a succession of independent trades."
+    dark={false}
+    list={[
+      'Full multi-trade coordination under one fixed-price contract',
+      'Itemised specification agreed before any work begins',
+      'Planned programme with weekly progress reporting',
+      'Comprehensive snag list and formal handover at completion',
+    ]}
+    cta={{ label: 'Get a Fixed-Price Quote', href: '/contact' }}
+  />
+
+  <section class="sub-services">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Interior Specialisms"
+        heading="Four Internal Transformation<br>Specialisms"
+        body="Whether you need a single room transformed or an entire property refurbished, we apply the same project management rigour at every scale."
+      />
+      <div class="sub-grid">
+
+        <div class="sub-card">
+          <div class="sub-card__num">01</div>
+          <h3 class="sub-card__title">Full Property Refurbishments</h3>
+          <p class="sub-card__body">A whole-home refurbishment is the most complex internal project a homeowner can undertake — and the one most likely to go wrong when managed piecemeal. We take on the full scope: stripping, structural alterations, rewiring and replumbing, insulation upgrades, new internal finishes from floor to ceiling, and final decoration. Managed under one contract, to one programme, with one person answering the phone.</p>
+          <ul class="sub-card__list">
+            <li>Full-scope whole-home refurbishment programmes</li>
+            <li>Rewire and replumb coordination within the refurb programme</li>
+            <li>Insulation upgrades and damp remediation</li>
+            <li>Internal finishes — plastering, flooring, joinery, decoration</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">02</div>
+          <h3 class="sub-card__title">Bespoke Kitchen Design &amp; Installation</h3>
+          <p class="sub-card__body">A kitchen is the most used room in the house and the one that adds the most value when done properly. We design, supply, and install bespoke kitchens — coordinating the cabinetry, worktops, tiling, appliances, lighting, and plumbing as a single integrated project rather than a sequence of separate trades arguing over whose responsibility the leaking pipe is.</p>
+          <ul class="sub-card__list">
+            <li>Kitchen design, supply, and full installation</li>
+            <li>Premium cabinetry and bespoke worktop fabrication</li>
+            <li>Appliance integration and specialist lighting</li>
+            <li>Tiling, flooring, and plastering within the kitchen programme</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">03</div>
+          <h3 class="sub-card__title">Luxury Bathrooms &amp; Wetrooms</h3>
+          <p class="sub-card__body">A poorly waterproofed bathroom is one of the most expensive problems a homeowner faces — damp ingress behind tiles rarely becomes visible until significant structural damage has already occurred. We specify the waterproofing system first, then design the bathroom around it, coordinating the tanking, tiling, plumbing, heated towel rails, sanitaryware, and decorative finishes to a single quality standard.</p>
+          <ul class="sub-card__list">
+            <li>Wetroom and walk-in shower installations</li>
+            <li>Full bathroom design, supply, and installation</li>
+            <li>Premium large-format tiling and specialist grout specification</li>
+            <li>Underfloor heating and heated towel rail installation</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">04</div>
+          <h3 class="sub-card__title">Open-Plan Reconfigurations</h3>
+          <p class="sub-card__body">Removing a load-bearing wall or internal partition to create open-plan living requires structural engineering input, temporary propping, and precise RSJ or structural steel installation — not just a saw and confidence. We coordinate the structural engineer's design, manage the temporary works, install the steel, and make good the ceiling, walls, and floor to a seamless finish. The result looks effortless. The process behind it isn't.</p>
+          <ul class="sub-card__list">
+            <li>Load-bearing wall removal and RSJ beam installation</li>
+            <li>Structural engineer design coordination</li>
+            <li>Temporary propping and structural steel fabrication</li>
+            <li>Making good — ceiling, walls, floor — to seamless standard</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <SplitFeature
+    image="/images/hulkiokantabak-bath-5083699_1920.jpg"
+    imageAlt="Bath period property interior refurbishment"
+    eyebrow="Period Interiors"
+    heading="Refurbishing Period Homes Requires a Different Approach"
+    body="Bath's Georgian and Victorian properties present specific internal challenges that newer buildings don't — lime plaster walls that cannot accept standard plasterboard fixings, hidden chimney breasts that affect structural calculations, original floorboard systems that need careful treatment, and heritage joinery that deserves restoration rather than replacement. Our team understands how these buildings were built and how to work with them, not against them. The result is a refurbished interior that feels authentically of the building rather than imposed upon it."
+    dark={true}
+    reverse={true}
+    list={[
+      'Lime plaster repair and matching lime skim finishing',
+      'Original timber floor restoration and gap filling',
+      'Heritage joinery restoration — doors, shutters, cornicing',
+      'Chimney breast removal or retention with structural assessment',
+    ]}
+    cta={{ label: 'Discuss Your Refurbishment', href: '/contact' }}
+  />
+
+  <ImageCTA
+    heading="Ready to Transform Your Interior?"
+    body="Get a fully itemised fixed-price quote covering every trade. No surprises, no subcontractor chaos — just a defined specification, a planned programme, and a proper handover."
+    cta={{ label: 'Arrange a Consultation', href: '/contact' }}
+    image="/images/hero-kitchens.jpg"
+  />
+</Base>
+
+<style>
+  .sub-services {
+    padding: var(--section-pad) 0;
+    background: var(--stone);
+  }
+
+  .sub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .sub-card {
+    background: #fff;
+    padding: var(--space-xl);
+    border: 1px solid rgba(26, 35, 50, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .sub-card__num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.4;
+  }
+
+  .sub-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .sub-card__body {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .sub-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-top: 1px solid var(--stone);
+    padding-top: var(--space-m);
+  }
+
+  .sub-card__list li {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--chalk);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sub-card__list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .sub-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+    }
+  }
+</style>

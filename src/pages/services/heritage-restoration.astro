@@ -1,0 +1,261 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import SplitFeature from '../../components/SplitFeature.astro';
+import TrustMetrics from '../../components/TrustMetrics.astro';
+import ImageCTA from '../../components/ImageCTA.astro';
+---
+
+<Base
+  title="Heritage Builders & Period Renovation Specialists Bath | Aspect Builds"
+  description="Specialist heritage renovation, traditional lime mortar repointing, Bath stone restoration and listed building work across Bath & BANES. Conservation area experts."
+>
+  <Hero
+    image="/images/hero-batheaston-renovation.jpg"
+    overlay="left"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: 'Heritage & Restoration' }]}
+    eyebrow="Listed Buildings · Bath Stone · Conservation Areas"
+    heading="Heritage &amp;<br>Restoration"
+    body="Grade II listed buildings, traditional Bath stone, conservation zone constraints — delivered with the authentic materials, traditional techniques, and regulatory expertise that period properties demand."
+    cta={{ label: 'Arrange a Heritage Consultation', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  <TrustMetrics metrics={[
+    { value: '£5M+', label: "Public & Employer's Liability Cover" },
+    { value: 'UNESCO', label: 'World Heritage City Expertise' },
+    { value: 'Fixed', label: 'Transparent Quotes — No Hidden Extras' },
+    { value: 'BANES', label: 'Conservation Officer Liaison' },
+  ]} />
+
+  <SplitFeature
+    image="/images/services/heritage-restoration.jpg"
+    imageAlt="Bath stone masonry restoration work"
+    eyebrow="Heritage & Restoration"
+    heading="Bath's Heritage Demands More Than a General Builder"
+    body="Bath is a UNESCO World Heritage city. Every stone matters. Working on a period property here — whether it's a Grade II listed Georgian townhouse in the city centre or a stone cottage in Bradford on Avon — requires specialist knowledge of traditional building materials, conservation planning law, and the techniques that were used when these buildings were first constructed. Using modern cement mortars, inappropriate render systems, or incorrect pointing profiles on Bath stone can cause irreversible structural and aesthetic damage. We use only the right materials for the right substrate, every time."
+    dark={false}
+    list={[
+      'Traditional NHL lime mortars — colour-matched to original substrate',
+      'Bath Ashlar stone sourced from local quarries using traditional bedding',
+      'Full Listed Building Consent and conservation area planning management',
+      'Conservation officer liaison and pre-application advice as standard',
+    ]}
+    cta={{ label: 'Discuss Your Heritage Project', href: '/contact' }}
+  />
+
+  <section class="sub-services">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Heritage Specialisms"
+        heading="Four Areas of Specialist<br>Period Expertise"
+        body="Each specialism below requires different materials, different techniques, and different regulatory knowledge. We bring all four under one fixed-price contract."
+      />
+      <div class="sub-grid">
+
+        <div class="sub-card">
+          <div class="sub-card__num">01</div>
+          <h3 class="sub-card__title">Listed Building Renovations</h3>
+          <p class="sub-card__body">Grade I and Grade II listed buildings carry strict obligations — any alteration, from a new window to an internal partition, requires Listed Building Consent from BANES. We manage the full consent process alongside the build, coordinating with the conservation officer to ensure approval first time and works that are fully compliant with heritage guidelines.</p>
+          <ul class="sub-card__list">
+            <li>Listed Building Consent application management</li>
+            <li>Conservation officer pre-application engagement</li>
+            <li>Sympathetic structural alterations and additions</li>
+            <li>Heritage impact assessment coordination</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">02</div>
+          <h3 class="sub-card__title">Traditional Lime Mortar Repointing</h3>
+          <p class="sub-card__body">Bath's stone buildings breathe. Traditional lime mortars allow moisture to move through the masonry and evaporate safely — a critical property that cement pointing destroys, trapping damp and accelerating stone decay. We mix NHL lime mortars to match the colour, texture, and strength profile of surviving original pointing, restoring both the structural integrity and the visual character of the building.</p>
+          <ul class="sub-card__list">
+            <li>Natural Hydraulic Lime (NHL) mortar specification</li>
+            <li>Original pointing sample matching and colour analysis</li>
+            <li>Raking out of failed cement repointing</li>
+            <li>Structural repointing of rubble and Ashlar stonework</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">03</div>
+          <h3 class="sub-card__title">Bath Stone Restoration &amp; Masonry</h3>
+          <p class="sub-card__body">Bath Oolitic limestone is quarried locally and has been used to build the city for three centuries. Matching new stone to weathered originals requires sourcing from the right quarry beds and understanding how the stone was originally dressed and laid. We undertake full Ashlar stone replacement, architectural stonework repairs, string course reinstatement, and stonemasonry to conservation standards.</p>
+          <ul class="sub-card__list">
+            <li>Hand-cut Bath Ashlar stone replacement quoins and architraves</li>
+            <li>String course, coping, and cornice repairs</li>
+            <li>Consolidant treatment for friable or spalled stone faces</li>
+            <li>Stone cleaning and biological growth removal</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">04</div>
+          <h3 class="sub-card__title">Period Joinery &amp; Sash Windows</h3>
+          <p class="sub-card__body">Original sash windows and period timber joinery are defining features of Bath's streetscape. Conservation officers will rarely permit uPVC replacements on listed or locally listed buildings — and rightly so. We restore existing sashes, replace damaged frames to original profiles, install draught-proofing to dramatically improve thermal performance, and fabricate bespoke timber joinery to match historic details.</p>
+          <ul class="sub-card__list">
+            <li>Sash window restoration and draught-proofing</li>
+            <li>Like-for-like timber frame replacement to original profiles</li>
+            <li>Secondary glazing installation (heritage-appropriate)</li>
+            <li>Bespoke period joinery — doors, shutters, architraves</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="conservation-callout">
+    <div class="container">
+      <div class="callout-inner">
+        <span class="rule--accent"></span>
+        <span class="t-label" style="color:var(--accent)">Bath UNESCO World Heritage City</span>
+        <h2 class="callout-heading">Why Bath's Heritage Context Changes Everything</h2>
+        <p class="callout-body">Bath is one of only a handful of UK cities inscribed on the UNESCO World Heritage List — a status that imposes specific obligations on property owners and their builders. The Outstanding Universal Value of Bath's Georgian urban fabric is protected through a layered planning system: conservation area designations, Article 4 Directions removing permitted development rights, and listed building protections covering thousands of individual properties. Building in this context without specialist knowledge risks enforcement action, planning refusal, and — worse — irreversible damage to buildings that have survived for 250 years. We work within this framework every day.</p>
+      </div>
+    </div>
+  </section>
+
+  <SplitFeature
+    image="/images/averynichols-bath-england-4597566_1920.jpg"
+    imageAlt="Georgian Bath streetscape — conservation area"
+    eyebrow="Our Approach"
+    heading="Correct Materials. Correct Techniques. No Shortcuts."
+    body="Heritage work is unforgiving. A cement mortar applied to Bath stone in 2010 can cause visible cracking and spalling within five years, and the damage is often permanent. Our specification process begins with a material assessment — identifying the original build method, the mortar type, the stone profile — before a single tool touches the building. We then work to the relevant conservation standards, whether that's BS 8221 for stone cleaning, the SPAB guidelines for repair, or the specific conditions attached to a Listed Building Consent."
+    dark={true}
+    reverse={true}
+    list={[
+      'Material assessment and substrate analysis before every project',
+      'Work specified to BS 8221, SPAB, and Historic England guidelines',
+      'Photographic record of all works for planning authority records',
+      'Handover pack including material specifications and maintenance schedule',
+    ]}
+    cta={{ label: 'Arrange a Heritage Site Visit', href: '/contact' }}
+  />
+
+  <ImageCTA
+    heading="Preserving Bath's Heritage. One Building at a Time."
+    body="Whether you need lime repointing on a Grade II listed terrace or a full period renovation in Bradford on Avon, arrange a no-obligation site visit with our heritage specialists."
+    cta={{ label: 'Arrange a Consultation', href: '/contact' }}
+    image="/images/hero-batheaston-renovation.jpg"
+  />
+</Base>
+
+<style>
+  .sub-services {
+    padding: var(--section-pad) 0;
+    background: var(--stone);
+  }
+
+  .sub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .sub-card {
+    background: #fff;
+    padding: var(--space-xl);
+    border: 1px solid rgba(26, 35, 50, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .sub-card__num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.4;
+  }
+
+  .sub-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .sub-card__body {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .sub-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-top: 1px solid var(--stone);
+    padding-top: var(--space-m);
+  }
+
+  .sub-card__list li {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--chalk);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sub-card__list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .conservation-callout {
+    padding: var(--section-pad) 0;
+    background: #fff;
+  }
+
+  .callout-inner {
+    max-width: var(--text-max);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    padding: var(--space-2xl);
+    border-left: 3px solid var(--accent);
+    background: var(--stone);
+  }
+
+  .callout-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+    text-transform: uppercase;
+    color: var(--chalk);
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  .callout-body {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .sub-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+    }
+
+    .callout-inner {
+      padding: var(--space-l);
+    }
+  }
+</style>

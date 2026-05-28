@@ -1,0 +1,157 @@
+---
+// ContactSidebar.astro — Left-column editorial sidebar for contact page
+// Direct lines, operational hours, trust credentials
+// No Tailwind — vanilla CSS using design tokens
+---
+
+<aside class="contact-sidebar">
+  {/* ── Direct Lines ── */}
+  <div class="cs-block">
+    <span class="cs-rule"></span>
+    <span class="t-label cs-label">Direct Line</span>
+    <a href="tel:+441225000000" class="cs-value">01225 000 000</a>
+    <p class="cs-note">Available Mon–Fri, 08:00–18:00. Weekend site visits by arrangement.</p>
+  </div>
+
+  {/* ── Email ── */}
+  <div class="cs-block">
+    <span class="cs-rule"></span>
+    <span class="t-label cs-label">Email</span>
+    <a href="mailto:enquiries@aspectbuilds.co.uk" class="cs-value cs-value--small">enquiries@aspectbuilds.co.uk</a>
+  </div>
+
+  {/* ── Office ── */}
+  <div class="cs-block">
+    <span class="cs-rule"></span>
+    <span class="t-label cs-label">Registered Office</span>
+    <p class="cs-value cs-value--small cs-value--muted">
+      Aspect Builds &amp; Maintenance Ltd<br/>
+      Bath, Somerset<br/>
+      United Kingdom
+    </p>
+  </div>
+
+  {/* ── Operational Hours ── */}
+  <div class="cs-block">
+    <span class="cs-rule"></span>
+    <span class="t-label cs-label">Operational Hours</span>
+    <div class="cs-hours">
+      <div class="cs-hours-row"><span>Monday – Friday</span><span>08:00 – 18:00</span></div>
+      <div class="cs-hours-row"><span>Saturday</span><span>By appointment</span></div>
+      <div class="cs-hours-row"><span>Sunday</span><span>Closed</span></div>
+    </div>
+  </div>
+
+  {/* ── Credentials ── */}
+  <div class="cs-block">
+    <span class="cs-rule"></span>
+    <span class="t-label cs-label">Credentials</span>
+    <ul class="cs-creds">
+      <li>&#10003;&ensp;£5M+ Public &amp; Employer's Liability</li>
+      <li>&#10003;&ensp;FMB Member</li>
+      <li>&#10003;&ensp;Gas Safe Registered</li>
+      <li>&#10003;&ensp;NICEIC Approved</li>
+    </ul>
+  </div>
+</aside>
+
+<style>
+  .contact-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    padding-block: var(--space-xs);
+  }
+
+  .cs-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .cs-rule {
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .cs-label {
+    color: var(--accent);
+  }
+
+  .cs-value {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    transition: color 0.3s var(--ease-out-expo);
+  }
+
+  .cs-value:hover {
+    color: var(--accent);
+  }
+
+  .cs-value--small {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.6;
+  }
+
+  .cs-value--muted {
+    color: var(--concrete);
+  }
+
+  .cs-note {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .cs-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .cs-hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    color: var(--chalk);
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid rgba(26, 35, 50, 0.08);
+  }
+
+  .cs-hours-row span:last-child {
+    color: var(--concrete);
+  }
+
+  .cs-creds {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+    color: var(--chalk);
+    line-height: 1.5;
+  }
+
+  .cs-creds li {
+    position: relative;
+    padding-left: 0;
+  }
+
+  @media (max-width: 768px) {
+    .contact-sidebar {
+      gap: var(--space-l);
+    }
+  }
+</style>

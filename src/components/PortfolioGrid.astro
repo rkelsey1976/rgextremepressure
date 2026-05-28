@@ -1,0 +1,328 @@
+---
+// PortfolioGrid.astro — Filterable project grid for the portfolio hub page
+// Uses vanilla CSS with design tokens, no Tailwind
+// Client-side filter logic at the bottom
+
+interface Project {
+  title: string;
+  slug: string;
+  location: string;
+  category: string;
+  categoryLabel: string;
+  image: string;
+}
+
+interface Props {
+  projects: Project[];
+  style?: 'light' | 'dark';
+}
+
+const { projects, style = 'light' } = Astro.props;
+
+const filterCategories = [
+  { id: 'all', label: 'All Projects' },
+  { id: 'structural', label: 'Extensions & Conversions' },
+  { id: 'heritage', label: 'Heritage & Stonework' },
+  { id: 'interiors', label: 'Premium Interiors' },
+];
+---
+
+<section class:list={['portfolio-grid-section', style === 'dark' && 'portfolio-grid-section--dark']}>
+  <div class="container">
+    <!-- Filter bar -->
+    <div class="pg-filters" id="portfolio-filters">
+      {filterCategories.map((cat) => (
+        <button
+          class:list={['pg-filter-btn', cat.id === 'all' && 'pg-filter-btn--active']}
+          data-filter={cat.id}
+        >
+          {cat.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Project grid -->
+    <div class="pg-grid" id="portfolio-grid">
+      {projects.map((project) => (
+        <a
+          href={`/projects/${project.slug}`}
+          class="pg-card"
+          data-category={project.category}
+        >
+          <div class="pg-card__image-wrap">
+            <img
+              src={project.image}
+              alt={project.title}
+              class="pg-card__image"
+              loading="lazy"
+            />
+          </div>
+          <div class="pg-card__content">
+            <div class="pg-card__meta">
+              <span class="pg-card__category">{project.categoryLabel}</span>
+              <span class="pg-card__location">{project.location}</span>
+            </div>
+            <h3 class="pg-card__title">{project.title}</h3>
+            <span class="pg-card__link">
+              View Case Study
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Lightweight vanilla client-side filtering
+  const filterButtons = document.querySelectorAll('#portfolio-filters button');
+  const projectCards = document.querySelectorAll('.pg-card');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filterValue = button.getAttribute('data-filter');
+
+      // Update active state
+      filterButtons.forEach(btn => btn.classList.remove('pg-filter-btn--active'));
+      button.classList.add('pg-filter-btn--active');
+
+      // Filter cards
+      projectCards.forEach(card => {
+        const el = card as HTMLElement;
+        const category = el.getAttribute('data-category');
+
+        if (filterValue === 'all' || category === filterValue) {
+          el.style.display = '';
+          requestAnimationFrame(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          });
+        } else {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(8px)';
+          setTimeout(() => { el.style.display = 'none'; }, 300);
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .portfolio-grid-section {
+    padding-block: var(--section-pad);
+  }
+
+  .portfolio-grid-section--dark {
+    background: var(--navy);
+    color: #fff;
+  }
+
+  /* ── Filter bar ── */
+  .pg-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-s);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .pg-filter-btn {
+    font-family: var(--font-body);
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    padding: .55rem 1.4rem;
+    border: 1px solid var(--stone);
+    background: transparent;
+    color: var(--concrete);
+    cursor: pointer;
+    transition: all .3s var(--ease-out-expo);
+  }
+
+  .pg-filter-btn:hover {
+    border-color: var(--chalk);
+    color: var(--chalk);
+  }
+
+  .pg-filter-btn--active {
+    background: var(--chalk);
+    border-color: var(--chalk);
+    color: #fff;
+  }
+
+  .portfolio-grid-section--dark .pg-filter-btn {
+    border-color: rgba(255,255,255,.2);
+    color: rgba(255,255,255,.55);
+  }
+
+  .portfolio-grid-section--dark .pg-filter-btn:hover {
+    border-color: #fff;
+    color: #fff;
+  }
+
+  .portfolio-grid-section--dark .pg-filter-btn--active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* ── Grid ── */
+  .pg-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-l);
+  }
+
+  /* ── Card ── */
+  .pg-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border: 1px solid var(--stone);
+    overflow: hidden;
+    transition: transform .4s var(--ease-out-expo),
+                box-shadow .4s var(--ease-out-expo),
+                opacity .3s ease,
+                display .3s ease;
+  }
+
+  .pg-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(13,21,32,.12);
+  }
+
+  .portfolio-grid-section--dark .pg-card {
+    background: rgba(255,255,255,.04);
+    border-color: rgba(255,255,255,.08);
+  }
+
+  .portfolio-grid-section--dark .pg-card:hover {
+    background: rgba(255,255,255,.08);
+    box-shadow: 0 12px 40px rgba(0,0,0,.4);
+  }
+
+  /* ── Card image ── */
+  .pg-card__image-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--stone);
+  }
+
+  .pg-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s var(--ease-out-expo);
+  }
+
+  .pg-card:hover .pg-card__image {
+    transform: scale(1.04);
+  }
+
+  /* ── Card content ── */
+  .pg-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    padding: var(--space-m) var(--space-m) var(--space-l);
+    flex: 1;
+  }
+
+  .pg-card__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: .25rem;
+  }
+
+  .pg-card__location {
+    color: var(--accent);
+  }
+
+  .portfolio-grid-section--dark .pg-card__meta {
+    color: rgba(255,255,255,.4);
+  }
+
+  .portfolio-grid-section--dark .pg-card__location {
+    color: var(--accent);
+  }
+
+  .pg-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+    transition: color .3s;
+  }
+
+  .pg-card:hover .pg-card__title {
+    color: var(--accent);
+  }
+
+  .portfolio-grid-section--dark .pg-card__title {
+    color: #fff;
+  }
+
+  .portfolio-grid-section--dark .pg-card:hover .pg-card__title {
+    color: var(--accent);
+  }
+
+  .pg-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    font-family: var(--font-body);
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: auto;
+    padding-top: var(--space-s);
+    transition: gap .2s var(--ease-out-expo);
+  }
+
+  .pg-card:hover .pg-card__link {
+    gap: .6rem;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .pg-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pg-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pg-card:hover {
+      transform: none;
+    }
+
+    .pg-filters {
+      gap: var(--space-2xs);
+    }
+
+    .pg-filter-btn {
+      font-size: .62rem;
+      padding: .45rem 1rem;
+    }
+  }
+</style>

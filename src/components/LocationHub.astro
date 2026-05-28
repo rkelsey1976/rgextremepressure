@@ -1,0 +1,138 @@
+---
+// LocationHub.astro — Grouped location grid with 3 category columns
+// City / Town / Market group headings, LocationCard for each area
+// Vanilla CSS, design tokens only
+
+import LocationCard from './LocationCard.astro';
+
+interface Area {
+  name: string;
+  descriptor: string;
+  href: string;
+}
+
+interface Props {
+  cityAreas: Area[];
+  townAreas: Area[];
+  marketAreas: Area[];
+}
+
+const { cityAreas, townAreas, marketAreas } = Astro.props;
+---
+
+<div class="loc-hub">
+  {/* ── City & Historic Neighbours ── */}
+  <div class="loc-hub__group">
+    <div class="loc-hub__group-header">
+      <span class="loc-hub__rule"></span>
+      <span class="t-label" style="color:var(--accent)">City & Historic Neighbours</span>
+      <h3 class="loc-hub__group-heading">Bath City & Districts</h3>
+    </div>
+    <div class="loc-hub__grid">
+      {cityAreas.map(area => (
+        <LocationCard
+          name={area.name}
+          descriptor={area.descriptor}
+          href={area.href}
+          group="City"
+        />
+      ))}
+    </div>
+  </div>
+
+  {/* ── Charming Small Towns ── */}
+  <div class="loc-hub__group">
+    <div class="loc-hub__group-header">
+      <span class="loc-hub__rule"></span>
+      <span class="t-label" style="color:var(--accent)">Charming Small Towns</span>
+      <h3 class="loc-hub__group-heading">Village & Valley</h3>
+    </div>
+    <div class="loc-hub__grid loc-hub__grid--2">
+      {townAreas.map(area => (
+        <LocationCard
+          name={area.name}
+          descriptor={area.descriptor}
+          href={area.href}
+          group="Town"
+        />
+      ))}
+    </div>
+  </div>
+
+  {/* ── Vibrant Market Towns ── */}
+  <div class="loc-hub__group">
+    <div class="loc-hub__group-header">
+      <span class="loc-hub__rule"></span>
+      <span class="t-label" style="color:var(--accent)">Vibrant Market Towns & Suburbs</span>
+      <h3 class="loc-hub__group-heading">Market Town Builds</h3>
+    </div>
+    <div class="loc-hub__grid loc-hub__grid--3">
+      {marketAreas.map(area => (
+        <LocationCard
+          name={area.name}
+          descriptor={area.descriptor}
+          href={area.href}
+          group="Market"
+        />
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .loc-hub {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xl, 5rem);
+  }
+
+  .loc-hub__group-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: var(--space-l);
+  }
+
+  .loc-hub__rule {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .loc-hub__group-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .loc-hub__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-m);
+  }
+
+  /* Override for specific group sizes */
+  .loc-hub__grid--2 {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .loc-hub__grid--3 {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  @media (max-width: 640px) {
+    .loc-hub {
+      gap: var(--space-2xl, 3rem);
+    }
+
+    .loc-hub__grid,
+    .loc-hub__grid--2,
+    .loc-hub__grid--3 {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

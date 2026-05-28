@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+---
+
+<Base title="Georgian Villa Renovation — Batheaston">
+  <Hero
+    image="/images/hero-batheaston-renovation.jpg"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Projects', href: '/projects' }, { label: 'Georgian Villa Renovation' }]}
+    tags={['Heritage', 'Listed Building', 'Georgian', 'Batheaston', 'Bath Stone']}
+    heading="Georgian Villa Renovation"
+    body="A Grade II listed Georgian villa in Batheaston, stripped back to the original Bath stone and rebuilt with period-accurate joinery, lime plaster, and a rear extension that respects the street's 18th-century rhythm."
+    minHeight="compact"
+    meta={[
+      { label: 'Location', value: 'Batheaston, Bath' },
+      { label: 'Type', value: 'Heritage Renovation' },
+      { label: 'Duration', value: '14 months' },
+    ]}
+  />
+</Base>

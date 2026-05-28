@@ -1,0 +1,293 @@
+---
+// Hero.astro — Unified dark-overlay hero component for Aspect Builds
+// All pages use this one component. Props drive every variation.
+// Desktop default: left vignette (overlay='left')
+// Mobile: automatically switches to bottom-up gradient for readability
+
+interface Props {
+  // Background image URL
+  image: string;
+  // Overlay style: 'left' (left-to-right, default), 'gradient' (bottom-up)
+  overlay?: 'gradient' | 'left';
+  // Breadcrumb trail: array of { label: string, href?: string }
+  breadcrumb?: { label: string; href?: string }[];
+  // Eyebrow label text (appears above h1)
+  eyebrow?: string;
+  // h1 heading — supports <br> via HTML
+  heading: string;
+  // Body text
+  body: string;
+  // Body max-width in ch (default 52)
+  bodyMaxWidth?: number;
+  // Primary CTA
+  cta?: { label: string; href: string };
+  // Secondary CTA
+  ctaSecondary?: { label: string; href: string };
+  // Tags (project detail pages)
+  tags?: string[];
+  // Meta row for project detail (key-value pairs)
+  meta?: { label: string; value: string }[];
+  // Min height: 'full' (100svh) or 'compact' (70svh)
+  minHeight?: 'full' | 'compact';
+}
+
+const {
+  image,
+  overlay = 'left',
+  breadcrumb,
+  eyebrow,
+  heading,
+  body,
+  bodyMaxWidth = 52,
+  cta,
+  ctaSecondary,
+  tags,
+  meta,
+  minHeight = 'full',
+} = Astro.props;
+
+const overlayStyles: Record<string, string> = {
+  gradient: 'linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.6) 40%, rgba(0,0,0,.15) 100%)',
+  left: 'linear-gradient(to right, rgba(0,0,0,.85) 0%, rgba(0,0,0,.82) 35%, rgba(0,0,0,.3) 100%)',
+};
+---
+
+<section
+  class:list={[
+    'hero',
+    'noise',
+    minHeight === 'compact' ? 'hero--compact' : '',
+  ]}
+  id="hero"
+>
+  <div class="hero__bg">
+    <div
+      class="hero__img"
+      style={`background:url(${image}) center/cover no-repeat`}
+    ></div>
+    <div
+      class="hero__overlay"
+      data-overlay={overlay}
+    ></div>
+  </div>
+
+  <div class="container hero__content">
+    {breadcrumb && (
+      <nav class="hero__breadcrumb" aria-label="Breadcrumb">
+        {breadcrumb.map((crumb, i) => (
+          <>
+            {i > 0 && <span>/</span>}
+            {crumb.href ? (
+              <a href={crumb.href}>{crumb.label}</a>
+            ) : (
+              <span>{crumb.label}</span>
+            )}
+          </>
+        ))}
+      </nav>
+    )}
+
+    {eyebrow && (
+      <div class="hero__eyebrow">
+        <span class="rule--accent"></span>
+        <span class="t-label" style="color:var(--accent)">{eyebrow}</span>
+      </div>
+    )}
+
+    {tags && tags.length > 0 && (
+      <div class="hero__tags">
+        {tags.map((tag) => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+    )}
+
+    <h1 class="hero__headline" set:html={heading} />
+
+    <p class="t-body-lg hero__sub" style={`max-width:${bodyMaxWidth}ch;color:rgba(255,255,255,.72)`}>
+      {body}
+    </p>
+
+    {(cta || ctaSecondary) && (
+      <div class="hero__actions">
+        {cta && (
+          <a href={cta.href} class="btn btn--primary">
+            {cta.label}
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        )}
+        {ctaSecondary && (
+          <a href={ctaSecondary.href} class="btn btn--outline">{ctaSecondary.label}</a>
+        )}
+      </div>
+    )}
+
+    {meta && meta.length > 0 && (
+      <div class="hero__meta">
+        {meta.map((item) => (
+          <div class="hero__meta-item">
+            <span class="t-label" style="color:rgba(255,255,255,.5)">{item.label}</span>
+            <span style="color:#fff">{item.value}</span>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  /* ── Hero shared styles ── */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: var(--navy);
+  }
+
+  .hero--compact {
+    min-height: 70svh;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero__img {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Desktop overlay: set via data-overlay attribute */
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .hero__overlay[data-overlay="left"] {
+    background: linear-gradient(to right, rgba(0,0,0,.92) 0%, rgba(0,0,0,.88) 40%, rgba(0,0,0,.45) 100%);
+  }
+
+  .hero__overlay[data-overlay="gradient"] {
+    background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.75) 40%, rgba(0,0,0,.25) 100%);
+  }
+
+  /* Mobile: top-down gradient — darkest at nav/headline, fades toward bottom */
+  @media (max-width: 768px) {
+    .hero__overlay {
+      background: linear-gradient(to bottom, rgba(0,0,0,.95) 0%, rgba(0,0,0,.75) 50%, rgba(0,0,0,.3) 100%) !important;
+    }
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    padding-block: clamp(6rem, 10vw, 8rem);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .hero__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.85rem;
+    margin-bottom: var(--space-s);
+  }
+
+  .hero__breadcrumb a {
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .hero__breadcrumb a:hover {
+    color: #fff;
+  }
+
+  .hero__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .rule--accent {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .hero__headline {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    line-height: 0.94;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .hero__sub {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .hero__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: var(--space-s);
+  }
+
+  .tag {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 0.25rem 0.75rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: var(--space-s);
+    flex-wrap: wrap;
+    margin-top: var(--space-s);
+  }
+
+  .hero__meta {
+    display: flex;
+    gap: var(--space-l);
+    flex-wrap: wrap;
+    margin-top: var(--space-m);
+    padding-top: var(--space-m);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .hero__meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      align-items: center;
+    }
+    .hero__content {
+      padding-top: clamp(6rem, 14vw, 8rem);
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+    }
+    .hero__actions {
+      flex-direction: column;
+    }
+  }
+</style>

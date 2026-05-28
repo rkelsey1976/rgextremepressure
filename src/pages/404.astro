@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page Not Found — Aspect Builds & Maintenance">
+  <section class="not-found">
+    <div class="not-found__bg" aria-hidden="true"></div>
+    <div class="container not-found__inner">
+      <span class="not-found__num" aria-hidden="true">404</span>
+      <div class="not-found__content">
+        <span class="rule--accent"></span>
+        <span class="t-label" style="color:var(--accent)">Page Not Found</span>
+        <h1 class="not-found__heading">This Page<br>Doesn't Exist.</h1>
+        <p class="not-found__body">The page you're looking for may have moved or been removed. Start from one of the links below.</p>
+        <nav class="not-found__links">
+          <a href="/" class="btn btn--primary">
+            Return to Homepage
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/services" class="not-found__link">Our Services</a>
+          <a href="/projects" class="not-found__link">Projects</a>
+          <a href="/contact" class="not-found__link">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .not-found {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--navy);
+  }
+
+  .not-found__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/hero-larkhall-extension.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    opacity: 0.15;
+  }
+
+  .not-found__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space-2xl);
+    padding-block: var(--section-pad);
+  }
+
+  .not-found__num {
+    font-family: var(--font-display);
+    font-size: clamp(10rem, 22vw, 22rem);
+    line-height: 0.85;
+    color: #fff;
+    opacity: 0.06;
+    user-select: none;
+    display: block;
+    text-align: right;
+    letter-spacing: -0.02em;
+  }
+
+  .not-found__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .not-found__heading {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 6rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+  }
+
+  .not-found__body {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    max-width: 44ch;
+  }
+
+  .not-found__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-l);
+    flex-wrap: wrap;
+    margin-top: var(--space-s);
+  }
+
+  .not-found__link {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+
+  .not-found__link:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .not-found__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .not-found__num {
+      text-align: left;
+      font-size: clamp(8rem, 30vw, 14rem);
+      opacity: 0.08;
+    }
+  }
+</style>

@@ -1,0 +1,187 @@
+---
+// SplitFeature.astro — Asymmetric editorial image + copy block
+// Reversible, dark-bg variant, optional list and CTA
+
+interface Props {
+  image: string;
+  imageAlt?: string;
+  heading: string;
+  body: string;
+  list?: string[];
+  cta?: { label: string; href: string };
+  reverse?: boolean;     // Image right (default) or left
+  dark?: boolean;        // Dark background variant
+  eyebrow?: string;      // Optional gold eyebrow above heading
+}
+
+const {
+  image,
+  imageAlt = '',
+  heading,
+  body,
+  list,
+  cta,
+  reverse = false,
+  dark = false,
+  eyebrow,
+} = Astro.props;
+---
+
+<section class:list={['split', reverse && 'split--reverse', dark && 'split--dark']}>
+  <div class="container">
+    <div class="split__grid">
+      <div class="split__image-wrap">
+        <img
+          src={image}
+          alt={imageAlt}
+          class="split__image"
+          loading="lazy"
+        />
+      </div>
+      <div class="split__copy">
+        {eyebrow && <span class="t-label" style={dark ? 'color:var(--accent)' : ''}>{eyebrow}</span>}
+        <h2 class:list={['split__heading', dark && 'split__heading--dark']} set:html={heading} />
+        <p class:list={['split__body', dark && 'split__body--dark']}>{body}</p>
+        {list && list.length > 0 && (
+          <ul class:list={['split__list', dark && 'split__list--dark']}>
+            {list.map(item => <li>{item}</li>)}
+          </ul>
+        )}
+        {cta && (
+          <a href={cta.href} class:list={['btn', dark ? 'btn--primary' : 'btn--primary']}>
+            {cta.label}
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .split {
+    padding-block: var(--section-pad);
+  }
+
+  .split--dark {
+    background: var(--charcoal);
+  }
+
+  .split__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+
+  .split--reverse .split__grid {
+    direction: rtl;
+  }
+
+  .split--reverse .split__grid > * {
+    direction: ltr;
+  }
+
+  /* Image side */
+  .split__image-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .split__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  /* Copy side */
+  .split__copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    max-width: 56ch;
+  }
+
+  .split__heading {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .split__heading--dark {
+    color: #fff;
+  }
+
+  .split__body {
+    font-size: clamp(1.05rem, 1.2vw, 1.2rem);
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .split__body--dark {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  /* List */
+  .split__list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-xs) 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .split__list li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--concrete);
+  }
+
+  .split__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 8px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .split__list--dark li {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  /* CTA spacing */
+  .split__copy .btn {
+    margin-top: var(--space-m);
+    align-self: flex-start;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .split__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+    }
+
+    .split--reverse .split__grid {
+      direction: ltr;
+    }
+
+    .split__image {
+      aspect-ratio: 16 / 9;
+    }
+  }
+</style>

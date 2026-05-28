@@ -1,0 +1,112 @@
+---
+// ServiceDirectory.astro — SEO keyword matrix grid
+const columns = [
+  {
+    title: 'Structural Builds',
+    items: ['House Extensions', 'New Builds', 'Loft Conversions', 'Basement Conversions', 'Structural Knock-Throughs', 'RSJ Steel Installations'],
+  },
+  {
+    title: 'Heritage and Restoration',
+    items: ['Period Property Renovation', 'Traditional Lime Repointing', 'Bath Stone Restoration', 'Boundary Wall Repairs', 'Breathable Plasterwork', 'Sash Window Refurbishment'],
+  },
+  {
+    title: 'Turnkey Refurbishments',
+    items: ['Full House Refurbishments', 'Bespoke Kitchen Fits', 'Luxury Bathroom Installs', 'Internal Reconfigurations', 'Plastering and Skimming', 'Painting and Decorating'],
+  },
+  {
+    title: 'Property Care and Gardens',
+    items: ['Outdoor and Landscaping', 'Porcelain Paving and Patios', 'Timber and Composite Decking', 'Structural Retaining Walls', 'Responsive Property Maintenance', 'Roofing and Gutter Repairs'],
+  },
+];
+---
+
+<section class="sdir">
+  <div class="container">
+    <div class="sdir__grid">
+      {columns.map((col) => (
+        <div class="sdir__col">
+          <span class="rule--accent"></span>
+          <h4 class="sdir__title">{col.title}</h4>
+          <ul class="sdir__list">
+            {col.items.map((item) => (
+              <li class="sdir__item">
+                <span class="sdir__bullet">&#10003;</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sdir {
+    background: var(--stone);
+    padding: var(--space-2xl) 0;
+  }
+
+  .sdir__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .sdir__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sdir__title {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-bottom: var(--space-s);
+    border-bottom: 1px solid rgba(255 255 255 / 0.15);
+    margin: 0;
+  }
+
+  .sdir__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .sdir__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--chalk);
+    line-height: 1.5;
+  }
+
+  .sdir__bullet {
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 960px) {
+    .sdir__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .sdir__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+    }
+  }
+</style>

@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SplitFeature from '../components/SplitFeature.astro';
+import ValueCards from '../components/ValueCards.astro';
+import TrustMetrics from '../components/TrustMetrics.astro';
+import TestimonialBlock from '../components/TestimonialBlock.astro';
+import ImageCTA from '../components/ImageCTA.astro';
+---
+
+<Base title="About — Aspect Builds & Maintenance">
+  <Hero
+    image="/images/about-hero.jpg"
+    eyebrow="About Aspect Builds"
+    heading="Built on Precision.<br>Delivered with Trust."
+    body="We are a Bath-based construction and maintenance firm built on one principle: the work should speak for itself. No surprises, no shortcuts, no compromises on craft."
+    cta={{ label: 'Start a Project', href: '/contact' }}
+    ctaSecondary={{ label: 'View Our Work', href: '/projects' }}
+  />
+
+  <!-- The Story -->
+  <SplitFeature
+    image="/images/hero-home.jpg"
+    imageAlt="Aspect construction site"
+    heading="Merging Traditional Standards with Modern Engineering"
+    body="Aspect Builds & Maintenance Ltd was founded to close the gap between the craftsmanship Bath's heritage architecture demands and the project management rigour that premium clients expect. We operate across Bath, Bradford on Avon, Keynsham, and the wider West Wiltshire region — managing extensions, loft conversions, period renovations, and new builds with the same exacting standard."
+    dark={false}
+    cta={{ label: 'Our Approach', href: '#approach' }}
+  />
+
+  <!-- The Problem We Solve -->
+  <section id="approach" style="background:var(--charcoal);padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="The Problem We Solve"
+        heading="Moving Beyond the Cowboy Builder Stereotype"
+        body="Unreliable communication, spiralling costs, messy sites, and corner-cutting. These are the fears that keep homeowners awake before a build. Aspect Builds was created to eliminate every one of them."
+        align="left"
+        dark={true}
+      />
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <ValueCards
+    eyebrow="The Aspect Standard"
+    heading="How We Redefine Local Construction Management"
+    values={[
+      {
+        title: 'Structural Transparency',
+        description: 'We provide itemised, transparent cost breakdowns before breaking ground. Fixed-quote pricing means no surprise variations, hidden fees, or shifting goalposts.'
+      },
+      {
+        title: 'Logistical Precision',
+        description: 'Navigating conservation zones, handling strict city-centre parking limits, or arranging heavy crane operations on tight lanes requires expert coordination. We manage all site logistics end-to-end.'
+      },
+      {
+        title: 'Respect for Materiality',
+        description: "Whether it's matching a hand-mixed lime mortar profile on a historic cottage or ensuring pixel-perfect alignment on a modern porcelain patio, we use materials that endure."
+      }
+    ]}
+  />
+
+  <!-- Craftsmanship Philosophy -->
+  <SplitFeature
+    image="/images/hero-bath.jpg"
+    imageAlt="Bath Georgian architecture"
+    heading="Respecting Bath Stone. Embracing Contemporary Design."
+    body="Bath is a UNESCO World Heritage city. Every build here exists in conversation with centuries of architectural precedent. Our approach respects that context — traditional lime mortars, Bath stone repairs, and heritage joinery sit alongside structural steel, bifold doors, and smart spatial planning."
+    dark={true}
+    reverse={true}
+    cta={{ label: 'View Projects', href: '/projects' }}
+  />
+
+  <!-- Trust Metrics -->
+  <TrustMetrics
+    metrics={[
+      { value: '£5M+', label: "Public & Employer's Liability Cover" },
+      { value: '100%', label: 'Vetted & Accredited Tradespeople' },
+      { value: '4.9', label: 'Average Rating Across All Projects' },
+      { value: 'Turnkey', label: 'Full Project Management & Site Protocols' }
+    ]}
+  />
+
+  <!-- Testimonial -->
+  <section style="padding:var(--section-pad) 0;background:var(--stone)">
+    <div class="container" style="max-width:48rem">
+      <TestimonialBlock
+        quote="From the first site visit to the final walk-through, Aspect communicated clearly, kept to the schedule, and delivered a finish that exceeded our expectations. The attention to Bath stone detail was remarkable."
+        name="Catherine M."
+        role="Homeowner"
+        location="Bear Flat, Bath"
+        dark={false}
+      />
+    </div>
+  </section>
+
+  <!-- Process Standard -->
+  <SplitFeature
+    image="/images/hulkiokantabak-bath-5083699_1920.jpg"
+    imageAlt="Bath historic streetscape"
+    heading="Professional Oversight. Every Stage."
+    body="Every Aspect project follows a structured process: initial site appraisal, detailed specification and fixed quote, scheduled build phases with weekly progress updates, and a proper handover with a comprehensive snag list. Clean site, clear timeline, zero ambiguity."
+    dark={false}
+    list={['Fixed-quote pricing with itemised breakdowns', 'Weekly progress reports and site photographs', 'Strict safety protocols and comprehensive insurance', 'Professional snag list and final handover']}
+    cta={{ label: 'Contact Us', href: '/contact' }}
+  />
+
+  <ImageCTA
+    heading="Work With a Team That Respects Your Property"
+    body="From the initial site appraisal to handing over an immaculate completed build, discover the difference of professional construction management."
+    cta={{ label: 'Arrange a Consultation', href: '/contact' }}
+    image="/images/hero-batheaston-renovation.jpg"
+  />
+</Base>

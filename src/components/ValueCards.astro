@@ -1,0 +1,118 @@
+---
+// ValueCards.astro — 3-column value cards with gold accent dots + left border
+// Used on About page for "The Aspect Standard" section
+
+interface Value {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  values: Value[];
+  eyebrow?: string;
+  heading?: string;
+  dark?: boolean;
+}
+
+const { values, eyebrow, heading, dark = false } = Astro.props;
+---
+
+<section class:list={['value-cards', dark && 'value-cards--dark']}>
+  <div class="container">
+    {(eyebrow || heading) && (
+      <div class="value-cards__intro">
+        {eyebrow && <span class="t-label" style="color:var(--accent)">{eyebrow}</span>}
+        {heading && <h2 class="t-heading" set:html={heading} />}
+      </div>
+    )}
+
+    <div class="value-cards__grid">
+      {values.map((v) => (
+        <div class="value-card">
+          <span class="value-card__dot" aria-hidden="true"></span>
+          <h3 class="value-card__title">{v.title}</h3>
+          <p class="value-card__body">{v.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .value-cards {
+    padding: var(--section-pad) 0;
+    background: var(--stone);
+    border-top: 1px solid var(--chalk-12, rgba(26,35,50,0.08));
+    border-bottom: 1px solid var(--chalk-12, rgba(26,35,50,0.08));
+  }
+
+  .value-cards--dark {
+    background: var(--charcoal);
+    border-color: rgba(255,255,255,0.08);
+  }
+
+  .value-cards__intro {
+    max-width: 36rem;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .value-cards__intro .t-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .value-cards__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2xl);
+  }
+
+  .value-card {
+    position: relative;
+    padding-left: var(--space-l);
+    border-left: 1px solid var(--chalk-20, rgba(26,35,50,0.2));
+  }
+
+  .value-cards--dark .value-card {
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  .value-card__dot {
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .value-card__title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    margin-bottom: var(--space-s);
+  }
+
+  .value-cards--dark .value-card__title {
+    color: #fff;
+  }
+
+  .value-card__body {
+    color: var(--concrete);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .value-cards--dark .value-card__body {
+    color: rgba(255,255,255,0.6);
+  }
+
+  @media (max-width: 768px) {
+    .value-cards__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+</style>

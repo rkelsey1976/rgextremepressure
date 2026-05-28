@@ -1,0 +1,104 @@
+---
+// TestimonialBlock.astro — Single client testimonial quote
+// Gold accent bar, quote text, name + location in label style
+// Stack 2-3 on the homepage
+
+interface Props {
+  quote: string;
+  name: string;
+  role?: string;
+  location?: string;
+  dark?: boolean;
+}
+
+const {
+  quote,
+  name,
+  role,
+  location,
+  dark = false,
+} = Astro.props;
+---
+
+<blockquote class:list={['testimonial', dark && 'testimonial--dark']}>
+  <span class="testimonial__rule"></span>
+  <p class:list={['testimonial__quote', dark && 'testimonial__quote--dark']}>&ldquo;{quote}&rdquo;</p>
+  <footer class="testimonial__footer">
+    <cite class="testimonial__name">{name}</cite>
+    {(role || location) && (
+      <span class="testimonial__detail">
+        {role && <>{role}</>}
+        {role && location && <>, </>}
+        {location && <>{location}</>}
+      </span>
+    )}
+  </footer>
+</blockquote>
+
+<style>
+  .testimonial {
+    position: relative;
+    padding-left: var(--space-l);
+    margin: 0;
+  }
+
+  .testimonial--dark {
+    color: #fff;
+  }
+
+  /* Gold accent bar */
+  .testimonial__rule {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+  }
+
+  /* Quote */
+  .testimonial__quote {
+    font-size: clamp(1.1rem, 1.3vw, 1.3rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.75;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .testimonial__quote--dark {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Attribution */
+  .testimonial__footer {
+    margin-top: var(--space-m);
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .testimonial__name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-style: normal;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--chalk);
+    not:display: block;
+  }
+
+  .testimonial--dark .testimonial__name {
+    color: var(--accent);
+  }
+
+  .testimonial__detail {
+    font-size: 0.8rem;
+    color: var(--concrete);
+    font-weight: 400;
+  }
+
+  .testimonial--dark .testimonial__detail {
+    color: rgba(255, 255, 255, 0.5);
+  }
+</style>

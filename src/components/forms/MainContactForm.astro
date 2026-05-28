@@ -1,0 +1,340 @@
+---
+// MainContactForm.astro — High-end structured project intake form
+// No Tailwind — vanilla CSS using design tokens
+// Serves as both lead vetting and digital consultation
+
+const targetLocations = [
+  "Central Bath & Districts",
+  "Batheaston",
+  "Bathford",
+  "Bathampton",
+  "Box",
+  "Bradford on Avon",
+  "Corsham",
+  "Saltford & Keynsham",
+  "Chippenham",
+  "Frome, Radstock & Midsomer Norton",
+];
+
+const servicePillars = [
+  "House Extensions & Conversions",
+  "Period Renovation & Stonework",
+  "Full Refurbishment & Interiors",
+  "Outdoor, Landscaping & Maintenance",
+];
+---
+
+<div class="mcf">
+  <div class="mcf__header">
+    <span class="rule--accent"></span>
+    <span class="t-label" style="color:var(--accent)">Project Consultation</span>
+  </div>
+  <h3 class="mcf__title">Tell Us About Your Build</h3>
+  <p class="mcf__subtitle">Structured intake ensures we understand your project from day one. All qualified enquiries receive a response within 24 operational hours.</p>
+
+  <form
+    id="project-intake"
+    class="mcf__form"
+    name="contact"
+    method="POST"
+    action="/contact/success"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+  >
+    <input type="hidden" name="form-name" value="contact" />
+    <p class="mcf__honeypot" aria-hidden="true">
+      <label>Don't fill this in: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+    </p>
+    {/* ── Row 1: Name & Phone ── */}
+    <div class="mcf__grid">
+      <div class="mcf__field">
+        <label class="mcf__label" for="cf-name">Full Name *</label>
+        <input type="text" id="cf-name" name="name" required placeholder="e.g. Alexander Wright" class="mcf__input" />
+      </div>
+      <div class="mcf__field">
+        <label class="mcf__label" for="cf-phone">Phone Number *</label>
+        <input type="tel" id="cf-phone" name="phone" required placeholder="e.g. 07700 900077" class="mcf__input" />
+      </div>
+    </div>
+
+    {/* ── Row 2: Email & Location ── */}
+    <div class="mcf__grid">
+      <div class="mcf__field">
+        <label class="mcf__label" for="cf-email">Email Address *</label>
+        <input type="email" id="cf-email" name="email" required placeholder="alex@example.com" class="mcf__input" />
+      </div>
+      <div class="mcf__field">
+        <label class="mcf__label" for="cf-location">Project Location *</label>
+        <select id="cf-location" name="location" required class="mcf__input mcf__select">
+          <option value="" disabled selected>Select your area&hellip;</option>
+          {targetLocations.map((loc) => <option value={loc}>{loc}</option>)}
+          <option value="other">Other (West Wiltshire / Somerset)</option>
+        </select>
+      </div>
+    </div>
+
+    {/* ── Row 3: Service & Budget ── */}
+    <div class="mcf__grid">
+      <div class="mcf__field">
+        <label class="mcf__label" for="cf-service">Primary Service Required *</label>
+        <select id="cf-service" name="service" required class="mcf__input mcf__select">
+          <option value="" disabled selected>Select service&hellip;</option>
+          {servicePillars.map((s) => <option value={s}>{s}</option>)}
+        </select>
+      </div>
+      <div class="mcf__field">
+        <label class="mcf__label" for="cf-budget">Estimated Investment Tier *</label>
+        <select id="cf-budget" name="budget" required class="mcf__input mcf__select">
+          <option value="" disabled selected>Select budget scale&hellip;</option>
+          <option value="maintenance">Under &pound;10,000 — Maintenance / Minor Works</option>
+          <option value="mid">&pound;10,000 – &pound;50,000</option>
+          <option value="scale">&pound;50,000 – &pound;150,000</option>
+          <option value="premium">&pound;150,000+ — Major Scale Build / Full Restoration</option>
+        </select>
+      </div>
+    </div>
+
+    {/* ── Row 4: Planning Status (radio pills) ── */}
+    <div class="mcf__field">
+      <label class="mcf__label">Architectural Drawings / Planning Status</label>
+      <div class="mcf__radios">
+        <label class="mcf__radio-pill">
+          <input type="radio" name="planning" value="yes" class="mcf__radio-input" />
+          <span class="mcf__radio-label">Drawings Completed</span>
+        </label>
+        <label class="mcf__radio-pill">
+          <input type="radio" name="planning" value="submitted" class="mcf__radio-input" />
+          <span class="mcf__radio-label">Submitted for Approval</span>
+        </label>
+        <label class="mcf__radio-pill">
+          <input type="radio" name="planning" value="no" class="mcf__radio-input" />
+          <span class="mcf__radio-label">No Drawings / Early Stages</span>
+        </label>
+      </div>
+    </div>
+
+    {/* ── Row 5: Project Brief ── */}
+    <div class="mcf__field">
+      <label class="mcf__label" for="cf-brief">Project Brief &amp; Details *</label>
+      <textarea id="cf-brief" name="brief" required rows="5" placeholder="Outline the scope of works, period specifics, and timeline goals&hellip;" class="mcf__input mcf__textarea"></textarea>
+    </div>
+
+    {/* ── Submit ── */}
+    <div class="mcf__actions">
+      <button type="submit" class="mcf__submit">
+        Request Formal Site Appraisal
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="mcf__disclaimer">Your submission is fully secure. We respond to all qualified architectural enquiries within 24 operational hours.</p>
+    </div>
+  </form>
+</div>
+
+<style>
+  .mcf__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .mcf__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0 0 var(--space-xs);
+    padding-bottom: var(--space-m);
+    border-bottom: 1px solid var(--stone);
+  }
+
+  .mcf__subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--concrete);
+    margin: 0 0 var(--space-xl);
+  }
+
+  .mcf__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+  }
+
+  /* ── Two-column grid for paired fields ── */
+  .mcf__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-m);
+  }
+
+  @media (max-width: 640px) {
+    .mcf__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .mcf__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  .mcf__label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--concrete);
+  }
+
+  /* ── Shared input / select / textarea ── */
+  .mcf__input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--chalk);
+    background: #fff;
+    border: 1px solid var(--stone);
+    transition: border-color 0.3s var(--ease-out-expo);
+    outline: none;
+  }
+
+  .mcf__input::placeholder {
+    color: var(--concrete);
+    opacity: 0.5;
+  }
+
+  .mcf__input:focus {
+    border-color: var(--accent);
+  }
+
+  .mcf__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23546178' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+
+  .mcf__textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  /* ── Radio pill group ── */
+  .mcf__radios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-3xs);
+  }
+
+  .mcf__radio-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--stone);
+    cursor: pointer;
+    transition: all 0.25s var(--ease-out-expo);
+    user-select: none;
+  }
+
+  .mcf__radio-pill:hover {
+    border-color: var(--accent);
+  }
+
+  .mcf__radio-input {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--stone);
+    border-radius: 50%;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .mcf__radio-input:checked {
+    border-color: var(--accent);
+  }
+
+  .mcf__radio-input:checked::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .mcf__radio-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--chalk);
+    letter-spacing: 0.02em;
+  }
+
+  .mcf__radio-pill:has(.mcf__radio-input:checked) {
+    border-color: var(--accent);
+    background: rgba(174, 132, 85, 0.06);
+  }
+
+  /* ── Submit ── */
+  .mcf__actions {
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--stone);
+  }
+
+  .mcf__submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--charcoal);
+    border: 1px solid var(--charcoal);
+    padding: 1rem 2.5rem;
+    cursor: pointer;
+    transition: all 0.35s var(--ease-out-expo);
+  }
+
+  .mcf__submit:hover {
+    background: transparent;
+    color: var(--charcoal);
+  }
+
+  .mcf__submit svg {
+    transition: transform 0.3s var(--ease-out-expo);
+  }
+
+  .mcf__submit:hover svg {
+    transform: translateX(4px);
+  }
+
+  .mcf__disclaimer {
+    margin: var(--space-m) 0 0;
+    font-size: 0.75rem;
+    color: var(--concrete);
+    opacity: 0.7;
+    text-align: center;
+  }
+
+  .mcf__honeypot {
+    display: none;
+  }
+</style>

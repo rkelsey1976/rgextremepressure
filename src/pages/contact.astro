@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ContactSidebar from '../components/forms/ContactSidebar.astro';
+import MainContactForm from '../components/forms/MainContactForm.astro';
+---
+
+<Base title="Arrange a Consultation | Aspect Builds & Maintenance">
+  <Hero
+    image="/images/about-hero.jpg"
+    overlay="left"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
+    eyebrow="Get in touch"
+    heading="Arrange a Consultation"
+    body="Whether you're planning an extension, a loft conversion, or a full new build — we'd rather hear from you early. The sooner we're involved, the smoother the process."
+    minHeight="compact"
+  />
+
+  {/* ── Contact Section: Sidebar + Form ── */}
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+
+        {/* Left: Sidebar */}
+        <div class="contact-grid__sidebar">
+          <ContactSidebar />
+        </div>
+
+        {/* Right: Form */}
+        <div class="contact-grid__form">
+          <MainContactForm />
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact-section {
+    padding-block: var(--section-pad);
+    background: var(--stone);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--space-3xl, 5rem);
+    align-items: start;
+  }
+
+  .contact-grid__form {
+    background: #fff;
+    border: 1px solid var(--stone);
+    padding: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  @media (max-width: 960px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+</style>

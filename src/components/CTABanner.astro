@@ -1,0 +1,80 @@
+---
+// CTABanner.astro — Full-width call-to-action section
+// Appears at the bottom of every page before the footer
+
+interface Props {
+  heading: string;
+  body?: string;
+  cta: { label: string; href: string };
+  dark?: boolean;
+}
+
+const {
+  heading,
+  body,
+  cta,
+  dark = true,
+} = Astro.props;
+---
+
+<section class:list={['cta-banner', dark && 'cta-banner--dark']}>
+  <div class="container">
+    <div class="cta-banner__inner">
+      <h2 class:list={['cta-banner__heading', dark && 'cta-banner__heading--dark']} set:html={heading} />
+      {body && <p class:list={['cta-banner__body', dark && 'cta-banner__body--dark']}>{body}</p>}
+      <a href={cta.href} class:list={['btn', dark ? 'btn--primary' : 'btn--primary']}>
+        {cta.label}
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-banner {
+    padding-block: var(--section-pad);
+  }
+
+  .cta-banner--dark {
+    background: var(--charcoal);
+  }
+
+  .cta-banner__inner {
+    max-width: 56ch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-m);
+  }
+
+  .cta-banner__heading {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .cta-banner__heading--dark {
+    color: #fff;
+  }
+
+  .cta-banner__body {
+    font-size: clamp(1.05rem, 1.2vw, 1.2rem);
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .cta-banner__body--dark {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .cta-banner__inner .btn {
+    margin-top: var(--space-xs);
+  }
+</style>

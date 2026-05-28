@@ -1,0 +1,1163 @@
+---
+// style-guide.astro — Live design system reference for Aspect Builds
+// Showcases every token, typography scale, colour, spacing unit, and component pattern
+// used across the site. This page is dev-only; exclude from sitemap/nav.
+import Base from '../layouts/Base.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SplitFeature from '../components/SplitFeature.astro';
+import CardGrid from '../components/CardGrid.astro';
+import TestimonialBlock from '../components/TestimonialBlock.astro';
+import CTABanner from '../components/CTABanner.astro';
+import TrustMetrics from '../components/TrustMetrics.astro';
+import PortfolioGrid from '../components/PortfolioGrid.astro';
+import ProjectGallery from '../components/ProjectGallery.astro';
+---
+
+<!-- Block indexing -->
+<meta name="robots" content="noindex, nofollow">
+<Base title="Style Guide">
+
+  <div class="sg-page">
+    <!-- ═══════════ HEADER ═══════════ -->
+    <header class="sg-header">
+      <div class="container">
+        <span class="t-label" style="color:var(--accent)">Internal Reference</span>
+        <h1 class="sg-title">Aspect Builds<br>Design System</h1>
+        <p class="t-body-lg">Every token, type scale, colour, spacing unit, and component pattern — in one place.</p>
+      </div>
+    </header>
+
+    <!-- ═══════════ 01 — COLOUR PALETTE ═══════════ -->
+    <section class="sg-section">
+      <div class="container">
+        <span class="t-label" style="color:var(--accent)">01</span>
+        <h2 class="t-heading sg-section__heading">Colour Palette</h2>
+
+        <div class="sg-swatch-grid">
+          <!-- Core darks -->
+          <div class="sg-swatch">
+            <div class="sg-swatch__chip" style="background:#0d1520"></div>
+            <p class="sg-swatch__name">Navy</p>
+            <p class="sg-swatch__hex">#0d1520 — <code>--navy</code></p>
+            <p class="sg-swatch__note">Hero bg, footer, TrustMetrics</p>
+          </div>
+          <div class="sg-swatch">
+            <div class="sg-swatch__chip" style="background:#2f3538"></div>
+            <p class="sg-swatch__name">Charcoal</p>
+            <p class="sg-swatch__hex">#2f3538 — <code>--charcoal</code></p>
+            <p class="sg-swatch__note">Dark sections, split feature, CTA banner</p>
+          </div>
+          <div class="sg-swatch">
+            <div class="sg-swatch__chip" style="background:#1A2332"></div>
+            <p class="sg-swatch__name">Chalk</p>
+            <p class="sg-swatch__hex">#1A2332 — <code>--chalk</code></p>
+            <p class="sg-swatch__note">Primary text, nav bg (scrolled)</p>
+          </div>
+
+          <!-- Mid tones -->
+          <div class="sg-swatch">
+            <div class="sg-swatch__chip" style="background:#546178"></div>
+            <p class="sg-swatch__name">Concrete</p>
+            <p class="sg-swatch__hex">#546178 — <code>--concrete</code></p>
+            <p class="sg-swatch__note">Secondary/body text, subdued labels</p>
+          </div>
+          <div class="sg-swatch">
+            <div class="sg-swatch__chip" style="background:#636E7E"></div>
+            <p class="sg-swatch__name">Steel</p>
+            <p class="sg-swatch__hex">#636E7E — <code>--steel</code></p>
+            <p class="sg-swatch__note">Tertiary text, dividers</p>
+          </div>
+          <div class="sg-swatch">
+            <div class="sg-swatch__chip" style="background:#E8EBF0"></div>
+            <p class="sg-swatch__name">Stone</p>
+            <p class="sg-swatch__hex">#E8EBF0 — <code>--stone</code></p>
+            <p class="sg-swatch__note">Light section background</p>
+          </div>
+
+          <!-- Accent -->
+          <div class="sg-swatch">
+            <div class="sg-swatch__chip" style="background:#AE8455"></div>
+            <p class="sg-swatch__name">Gold Accent</p>
+            <p class="sg-swatch__hex">#AE8455 — <code>--accent</code></p>
+            <p class="sg-swatch__note">CTAs, eyebrows, hover states, icons</p>
+          </div>
+          <div class="sg-swatch">
+            <div class="sg-swatch__chip" style="background:#8A6840"></div>
+            <p class="sg-swatch__name">Gold Dim</p>
+            <p class="sg-swatch__hex">#8A6840 — <code>--accent-dim</code></p>
+            <p class="sg-swatch__note">Hover state for accents</p>
+          </div>
+          <div class="sg-swatch">
+            <div class="sg-swatch__chip" style="background:#FFFFFF; border:1px solid var(--stone)"></div>
+            <p class="sg-swatch__name">White</p>
+            <p class="sg-swatch__hex">#FFFFFF — <code>--white</code></p>
+            <p class="sg-swatch__note">Page background, hero text</p>
+          </div>
+        </div>
+
+        <!-- Overlay swatches -->
+        <h3 class="t-label sg-sublabel">Overlay Gradients (hero component)</h3>
+        <div class="sg-swatch-grid sg-swatch-grid--sm">
+          <div class="sg-swatch">
+            <div class="sg-swatch__chip sg-swatch__chip--tall" style="background:linear-gradient(to right, rgba(0,0,0,.92) 0%, rgba(0,0,0,.88) 40%, rgba(0,0,0,.45) 100%)"></div>
+            <p class="sg-swatch__name">left vignette (desktop default)</p>
+            <p class="sg-swatch__note">Deep L-to-R shadow — all pages</p>
+          </div>
+          <div>
+            <div class="sg-swatch__chip sg-swatch__chip--tall" style="background:linear-gradient(to bottom, rgba(0,0,0,.95) 0%, rgba(0,0,0,.75) 50%, rgba(0,0,0,.3) 100%)"></div>
+            <p class="sg-swatch__name">top-down (mobile)</p>
+            <p class="sg-swatch__note">Dark at nav, fading toward bottom</p>
+          </div>
+        </div>
+
+        <!-- Semantic opacity tokens -->
+        <h3 class="t-label sg-sublabel">Semantic Opacity Tokens</h3>
+        <div class="sg-opacity-grid">
+          <div class="sg-opacity-item"><span class="sg-opacity-dot" style="background:rgba(255,255,255,.72)"></span> white/72 — hero body text</div>
+          <div class="sg-opacity-item"><span class="sg-opacity-dot" style="background:rgba(255,255,255,.65)"></span> white/65 — nav links over hero</div>
+          <div class="sg-opacity-item"><span class="sg-opacity-dot" style="background:rgba(255,255,255,.55)"></span> white/55 — breadcrumbs, dimmer text</div>
+          <div class="sg-opacity-item"><span class="sg-opacity-dot" style="background:rgba(255,255,255,.50)"></span> white/50 — labels, meta keys</div>
+          <div class="sg-opacity-item"><span class="sg-opacity-dot" style="background:rgba(255,255,255,.40)"></span> white/40 — tag borders, outline buttons</div>
+          <div class="sg-opacity-item"><span class="sg-opacity-dot" style="background:rgba(26,35,50,.12)"></span> chalk/12 — section dividers</div>
+          <div class="sg-opacity-item"><span class="sg-opacity-dot" style="background:rgba(255,255,255,.08)"></span> white/08 — footer dividers</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 02 — TYPOGRAPHY ═══════════ -->
+    <section class="sg-section sg-section--stone">
+      <div class="container">
+        <span class="t-label" style="color:var(--accent)">02</span>
+        <h2 class="t-heading sg-section__heading">Typography</h2>
+
+        <div class="sg-type-grid">
+          <!-- Display -->
+          <div class="sg-type-row">
+            <div class="sg-type-meta">
+              <span class="t-label">Display</span>
+              <code>.t-display</code>
+              <p>Bebas Neue · clamp(4.5rem, 12vw, 14rem) · lh .92 · trackedtight · uppercase</p>
+            </div>
+            <div class="sg-type-sample t-display">Aspect Builds</div>
+          </div>
+
+          <!-- Display SM -->
+          <div class="sg-type-row">
+            <div class="sg-type-meta">
+              <span class="t-label">Display SM</span>
+              <code>.t-display-sm</code>
+              <p>Bebas Neue · clamp(3rem, 6vw, 7rem) · lh .94 · uppercase</p>
+            </div>
+            <div class="sg-type-sample t-display-sm">Bath</div>
+          </div>
+
+          <!-- Hero Headline (component-scoped) -->
+          <div class="sg-type-row">
+            <div class="sg-type-meta">
+              <span class="t-label">Hero Headline</span>
+              <code>.hero__headline</code>
+              <p>Bebas Neue · clamp(3.5rem, 8vw, 8rem) · lh .94 · uppercase · white</p>
+            </div>
+            <div class="sg-type-sample sg-type-sample--dark">
+              <span class="hero__headline">Built for Bath.</span>
+            </div>
+          </div>
+
+          <!-- Heading -->
+          <div class="sg-type-row">
+            <div class="sg-type-meta">
+              <span class="t-label">Heading</span>
+              <code>.t-heading</code>
+              <p>Bebas Neue · clamp(2rem, 3.5vw, 4rem) · lh 1 · uppercase</p>
+            </div>
+            <div class="sg-type-sample t-heading">Our Services</div>
+          </div>
+
+          <!-- Label -->
+          <div class="sg-type-row">
+            <div class="sg-type-meta">
+              <span class="t-label">Label / Eyebrow</span>
+              <code>.t-label</code>
+              <p>DM Sans · .7rem · weight 500 (semibold) · tracked .22em · uppercase · concrete</p>
+            </div>
+            <div class="sg-type-sample t-label">The Aspect Standard</div>
+          </div>
+
+          <!-- Body Large -->
+          <div class="sg-type-row">
+            <div class="sg-type-meta">
+              <span class="t-label">Body Large</span>
+              <code>.t-body-lg</code>
+              <p>DM Sans · clamp(1.1rem, 1.4vw, 1.35rem) · weight 300 · lh 1.75 · concrete</p>
+            </div>
+            <div class="sg-type-sample t-body-lg">Premium construction across Bath & BANES. Extensions, loft conversions, Georgian renovation and new build — delivered with precision, without surprises.</div>
+          </div>
+
+          <!-- Body (default) -->
+          <div class="sg-type-row">
+            <div class="sg-type-meta">
+              <span class="t-label">Body (default)</span>
+              <code>body</code>
+              <p>DM Sans · clamp(1rem, 1.1vw, 1.125rem) · weight 300 · lh 1.7 · chalk</p>
+            </div>
+            <div class="sg-type-sample">The price we quote is the price you pay — and the work we leave behind is something we put our name on permanently.</div>
+          </div>
+
+          <!-- Footer Heading -->
+          <div class="sg-type-row">
+            <div class="sg-type-meta">
+              <span class="t-label">Footer Heading</span>
+              <code>.footer-heading</code>
+              <p>Bebas Neue · 1.1rem · tracked .08em · uppercase · white</p>
+            </div>
+            <div class="sg-type-sample sg-type-sample--dark">
+              <span class="footer-heading">Services</span>
+            </div>
+          </div>
+
+          <!-- Nav link -->
+          <div class="sg-type-row">
+            <div class="sg-type-meta">
+              <span class="t-label">Nav Link</span>
+              <code>.nav-link</code>
+              <p>DM Sans · .8rem · weight 500 (semibold) · tracked .1em · uppercase · concrete</p>
+            </div>
+            <div class="sg-type-sample"><a href="#" class="nav-link">About</a></div>
+          </div>
+        </div>
+
+        <!-- Font pairing reference -->
+        <div class="sg-font-pair">
+          <h3 class="t-label sg-sublabel">Font Pairing</h3>
+          <div class="sg-pair-grid">
+            <div class="sg-pair-card">
+              <p class="sg-pair-card__role">Display / Headlines</p>
+              <p class="sg-pair-card__name">Bebas Neue</p>
+              <p class="sg-pair-card__meta">Condensed sans · Caps only · <code>--font-display</code></p>
+              <p class="sg-pair-card__sample" style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;line-height:.95">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</p>
+            </div>
+            <div class="sg-pair-card">
+              <p class="sg-pair-card__role">Body / UI</p>
+              <p class="sg-pair-card__name">DM Sans</p>
+              <p class="sg-pair-card__meta">Wght 300/400/500 · <code>--font-body</code></p>
+              <p class="sg-pair-card__sample" style="font-family:'DM Sans',sans-serif;font-size:1.125rem;font-weight:300;line-height:1.7">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</p>
+              <p class="sg-pair-card__sample" style="font-family:'DM Sans',sans-serif;font-size:1.125rem;font-weight:500;line-height:1.7">SemiBold 500 — labels, nav, buttons</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 03 — SPACING ═══════════ -->
+    <section class="sg-section">
+      <div class="container">
+        <span class="t-label" style="color:var(--accent)">03</span>
+        <h2 class="t-heading sg-section__heading">Spacing Scale</h2>
+
+        <div class="sg-space-list">
+          <div class="sg-space-item">
+            <div class="sg-space-bar" style="width:calc(var(--space-3xs) * 10)"></div>
+            <code>--space-3xs</code>
+            <span>.25rem (4px)</span>
+          </div>
+          <div class="sg-space-item">
+            <div class="sg-space-bar" style="width:calc(var(--space-2xs) * 10)"></div>
+            <code>--space-2xs</code>
+            <span>.5rem (8px)</span>
+          </div>
+          <div class="sg-space-item">
+            <div class="sg-space-bar" style="width:calc(var(--space-xs) * 10)"></div>
+            <code>--space-xs</code>
+            <span>.75rem (12px)</span>
+          </div>
+          <div class="sg-space-item">
+            <div class="sg-space-bar" style="width:calc(var(--space-s) * 10)"></div>
+            <code>--space-s</code>
+            <span>1rem (16px)</span>
+          </div>
+          <div class="sg-space-item">
+            <div class="sg-space-bar" style="width:calc(var(--space-m) * 10)"></div>
+            <code>--space-m</code>
+            <span>1.5rem (24px)</span>
+          </div>
+          <div class="sg-space-item">
+            <div class="sg-space-bar" style="width:calc(var(--space-l) * 10)"></div>
+            <code>--space-l</code>
+            <span>2rem (32px) — nav gap, hero content gap</span>
+          </div>
+          <div class="sg-space-item">
+            <div class="sg-space-bar" style="width:calc(var(--space-xl) * 10)"></div>
+            <code>--space-xl</code>
+            <span>3rem (48px) — footer grid gap</span>
+          </div>
+          <div class="sg-space-item">
+            <div class="sg-space-bar sg-space-bar--accent" style="width:calc(var(--space-2xl) * 10)"></div>
+            <code>--space-2xl</code>
+            <span>5rem (80px)</span>
+          </div>
+          <div class="sg-space-item">
+            <div class="sg-space-bar sg-space-bar--accent" style="width:min(calc(var(--space-3xl) * 5), 200px)"></div>
+            <code>--space-3xl</code>
+            <span>8rem (128px)</span>
+          </div>
+        </div>
+
+        <h3 class="t-label sg-sublabel">Structural Tokens</h3>
+        <div class="sg-token-table">
+          <div class="sg-token-row"><code>--section-pad</code><span>clamp(6rem, 14vw, 16rem)</span><span>Vertical section padding</span></div>
+          <div class="sg-token-row"><code>--gutter</code><span>clamp(1.5rem, 5vw, 5rem)</span><span>Horizontal page gutter</span></div>
+          <div class="sg-token-row"><code>--max-w</code><span>1440px</span><span>Container max-width</span></div>
+          <div class="sg-token-row"><code>--text-max</code><span>72ch</span><span>Max line-length for body text</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 04 — BUTTONS & CTAs ═══════════ -->
+    <section class="sg-section sg-section--stone">
+      <div class="container">
+        <span class="t-label" style="color:var(--accent)">04</span>
+        <h2 class="t-heading sg-section__heading">Buttons & CTAs</h2>
+
+        <div class="sg-component-group">
+          <div class="sg-component">
+            <span class="t-label">Primary Button</span>
+            <div class="sg-component__preview">
+              <a href="#" class="btn btn--primary">Start a Project <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+            <code>.btn .btn--primary</code>
+          </div>
+
+          <div class="sg-component">
+            <span class="t-label">Outline Button (dark hero context)</span>
+            <div class="sg-component__preview sg-component__preview--dark">
+              <a href="#" class="btn btn--outline">View Projects</a>
+            </div>
+            <code>.btn .btn--outline</code>
+          </div>
+
+          <div class="sg-component">
+            <span class="t-label">Nav CTA Button</span>
+            <div class="sg-component__preview">
+              <a href="#" class="nav-link nav-cta">Get a Quote</a>
+            </div>
+            <code>.nav-link .nav-cta</code>
+          </div>
+        </div>
+
+        <div class="sg-spec-grid">
+          <div class="sg-spec-item"><span class="sg-spec-label">Font</span> DM Sans · .85rem · weight 500 · tracked .15em · uppercase</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Padding</span> .9rem 2rem</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Border</span> 1px solid · radius 0 (sharp)</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Transition</span> all .3s ease-out-expo</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Primary BG</span> --accent (#AE8455) · hover: --accent-dim (#8A6840)</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Outline border</span> white/40 · hover: --accent border + black/50 bg</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 05 — LOGO & NAV ═══════════ -->
+    <section class="sg-section">
+      <div class="container">
+        <span class="t-label" style="color:var(--accent)">05</span>
+        <h2 class="t-heading sg-section__heading">Logo & Navigation</h2>
+
+        <div class="sg-component-group">
+          <!-- Logo on white -->
+          <div class="sg-component">
+            <span class="t-label">Logo — light background</span>
+            <div class="sg-component__preview" style="padding:2rem">
+              <a href="/" class="ab-logo nav-logo nav-logo--lg" style="text-decoration:none">
+                <svg class="ab-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
+                <span class="ab-logo__text">
+                  <span class="ab-logo__name">Aspect</span>
+                  <span class="ab-logo__sub">Builds &amp; Maintenance LTD</span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Logo on dark -->
+          <div class="sg-component">
+            <span class="t-label">Logo — dark background (hero)</span>
+            <div class="sg-component__preview sg-component__preview--dark" style="padding:2rem">
+              <a href="/" class="ab-logo nav-logo nav-logo--lg" style="text-decoration:none">
+                <svg class="ab-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
+                <span class="ab-logo__text">
+                  <span class="ab-logo__name" style="color:#fff">Aspect</span>
+                  <span class="ab-logo__sub" style="color:rgba(255,255,255,.5)">Builds &amp; Maintenance LTD</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sg-spec-grid">
+          <div class="sg-spec-item"><span class="sg-spec-label">Mark</span> SVG polyline chevron · 28×18 · stroke 3.5</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Name</span> Bebas Neue · 1.7rem · tracked .04em · chalk (#1A2332)</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Subtitle</span> DM Sans · .55rem · weight 500 · tracked .22em · uppercase · concrete</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Mark colour</span> --accent (gold) · name colour: chalk (light) / white (dark hero)</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Gap</span> .65rem between mark and text, 2px between name rows</div>
+        </div>
+
+        <!-- Nav full -->
+        <h3 class="t-label sg-sublabel">Full Navigation Bar</h3>
+        <div class="sg-component">
+          <div class="sg-component__preview sg-component__preview--dark" style="padding:1rem 2rem">
+            <div style="display:flex;align-items:center;justify-content:space-between;max-width:1440px;margin:0 auto">
+              <a href="/" class="ab-logo nav-logo nav-logo--lg" style="text-decoration:none">
+                <svg class="ab-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
+                <span class="ab-logo__text">
+                  <span class="ab-logo__name" style="color:#fff">Aspect</span>
+                  <span class="ab-logo__sub" style="color:rgba(255,255,255,.5)">Builds &amp; Maintenance LTD</span>
+                </span>
+              </a>
+              <div class="nav-links">
+                <a href="#" class="nav-link" style="color:rgba(255,255,255,.65)">About</a>
+                <a href="#" class="nav-link" style="color:rgba(255,255,255,.65)">Services</a>
+                <a href="#" class="nav-link" style="color:rgba(255,255,255,.65)">Projects</a>
+                <a href="#" class="nav-link" style="color:rgba(255,255,255,.65)">Locations</a>
+                <a href="#" class="nav-link nav-cta">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="t-label sg-sublabel">Nav scroll state (scrolled = solid bg)</h3>
+        <div class="sg-component">
+          <div class="sg-component__preview" style="padding:1rem 2rem;background:rgba(26,35,50,.97);backdrop-filter:blur(8px)">
+            <div style="display:flex;align-items:center;justify-content:space-between;max-width:1440px;margin:0 auto">
+              <a href="/" class="ab-logo nav-logo nav-logo--lg" style="text-decoration:none">
+                <svg class="ab-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
+                <span class="ab-logo__text">
+                  <span class="ab-logo__name">Aspect</span>
+                  <span class="ab-logo__sub">Builds &amp; Maintenance LTD</span>
+                </span>
+              </a>
+              <div class="nav-links">
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Services</a>
+                <a href="#" class="nav-link">Projects</a>
+                <a href="#" class="nav-link">Locations</a>
+                <a href="#" class="nav-link nav-cta">Get a Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 06 — SECTION PATTERNS ═══════════ -->
+    <section class="sg-section sg-section--stone">
+      <div class="container">
+        <span class="t-label" style="color:var(--accent)">06</span>
+        <h2 class="t-heading sg-section__heading">Section Patterns</h2>
+
+        <div class="sg-component-group">
+          <div class="sg-component">
+            <span class="t-label">Light Section</span>
+            <div class="sg-component__preview sg-component__preview--stone" style="padding:var(--space-xl) var(--gutter)">
+              <p>Background: <code>--stone</code> (#E8EBF0) · Text: <code>--chalk</code> (#1A2332)</p>
+              <p class="t-body-lg" style="margin-top:.5rem">Secondary body text in concrete over stone</p>
+            </div>
+            <code>.section .section--light</code>
+          </div>
+        </div>
+
+        <div class="sg-spec-grid">
+          <div class="sg-spec-item"><span class="sg-spec-label">Section padding</span> <code>--section-pad</code> = clamp(6rem, 14vw, 16rem)</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Container</span> max-width 1440px · padding-inline <code>--gutter</code> = clamp(1.5rem, 5vw, 5rem)</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Noise overlay</span> <code>.noise::after</code> · SVG fractalNoise · opacity .45 · pointer-events none</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Border rule</span> <code>--border</code> = 1px solid chalk/12</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Border radius</span> <code>--radius</code> = 0px (sharp corners throughout)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 07 — ANIMATION ═══════════ -->
+    <section class="sg-section">
+      <div class="container">
+        <span class="t-label" style="color:var(--accent)">07</span>
+        <h2 class="t-heading sg-section__heading">Animation & Motion</h2>
+
+        <div class="sg-token-table">
+          <div class="sg-token-row"><code>--dur-fast</code><span>.25s</span><span>Buttons, hover, quick feedback</span></div>
+          <div class="sg-token-row"><code>--dur-mid</code><span>.55s</span><span>Medium transitions</span></div>
+          <div class="sg-token-row"><code>--dur-slow</code><span>.9s</span><span>Scroll reveals, page-level motion</span></div>
+          <div class="sg-token-row"><code>--ease-out-expo</code><span>cubic-bezier(.16, 1, .3, 1)</span><span>Primary easing — decelerate out</span></div>
+          <div class="sg-token-row"><code>--ease-in-out</code><span>cubic-bezier(.76, 0, .24, 1)</span><span>Symmetric easing</span></div>
+        </div>
+
+        <h3 class="t-label sg-sublabel">Reveal Classes</h3>
+        <div class="sg-reveal-demo">
+          <div class="sg-reveal-item reveal is-visible">
+            <code>.reveal</code> — translateY(48px) · fade in · .9s ease-out-expo
+          </div>
+          <div class="sg-reveal-item reveal-left is-visible">
+            <code>.reveal-left</code> — translate(-60px) · fade in · .9s ease-out-expo
+          </div>
+          <div class="sg-reveal-item clip-reveal is-visible" style="width:100%">
+            <code>.clip-reveal</code> — clip inset(0 100% 0 0) → inset(0 0 0 0) · .9s
+          </div>
+        </div>
+
+        <h3 class="t-label sg-sublabel">Stagger Children</h3>
+        <p class="sg-note"><code>.stagger.is-visible > *</code> — each child gets +.1s delay (up to 6)</p>
+
+        <h3 class="t-label sg-sublabel">Scroll Progress Bar</h3>
+        <p class="sg-note">Fixed top · 2px height · <code>--accent</code> gold · transitions width on scroll · z-index 1000</p>
+      </div>
+    </section>
+
+    <!-- ═══════════ 08 — FOOTER ═══════════ -->
+    <section class="sg-section sg-section--stone">
+      <div class="container">
+        <span class="t-label" style="color:var(--accent)">08</span>
+        <h2 class="t-heading sg-section__heading">Footer Tokens</h2>
+
+        <div class="sg-spec-grid">
+          <div class="sg-spec-item"><span class="sg-spec-label">Background</span> <code>--navy</code> (#0d1520)</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Text primary</span> white/50 (rgba(255,255,255,0.5))</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Links default</span> white/55 · hover: --accent</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Contact icons</span> --accent (gold)</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Social icons</span> white/60 bg circle · hover: --accent bg + white icon</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Headings</span> Bebas Neue · 1.1rem · tracked .08em · uppercase · white</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Dividers</span> white/08 · mobile: accordion with collapse</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Bottom bar</span> #8892A4 · .8rem · links hover: --accent</div>
+          <div class="sg-spec-item"><span class="sg-spec-label">Grid</span> 3-column: 1.5fr 1fr 1.2fr · mobile: 1fr stacked with accordion</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 09 — CSS VARIABLE REFERENCE ═══════════ -->
+    <section class="sg-section">
+      <div class="container">
+        <span class="t-label" style="color:var(--accent)">09</span>
+        <h2 class="t-heading sg-section__heading">CSS Variable Quick Ref</h2>
+
+        <div class="sg-var-grid">
+          <div class="sg-var-group">
+            <h3 class="t-label">Colours</h3>
+            <div class="sg-var-row"><code>--navy</code> #0d1520</div>
+            <div class="sg-var-row"><code>--charcoal</code> #2f3538</div>
+            <div class="sg-var-row"><code>--chalk</code> #1A2332</div>
+            <div class="sg-var-row"><code>--concrete</code> #546178</div>
+            <div class="sg-var-row"><code>--steel</code> #636E7E</div>
+            <div class="sg-var-row"><code>--stone</code> #E8EBF0</div>
+            <div class="sg-var-row"><code>--accent</code> #AE8455</div>
+            <div class="sg-var-row"><code>--accent-dim</code> #8A6840</div>
+            <div class="sg-var-row"><code>--white</code> #FFFFFF</div>
+          </div>
+          <div class="sg-var-group">
+            <h3 class="t-label">Typography</h3>
+            <div class="sg-var-row"><code>--font-display</code> "Bebas Neue"</div>
+            <div class="sg-var-row"><code>--font-body</code> "DM Sans"</div>
+          </div>
+          <div class="sg-var-group">
+            <h3 class="t-label">Spacing</h3>
+            <div class="sg-var-row"><code>--space-3xs</code> .25rem</div>
+            <div class="sg-var-row"><code>--space-2xs</code> .5rem</div>
+            <div class="sg-var-row"><code>--space-xs</code> .75rem</div>
+            <div class="sg-var-row"><code>--space-s</code> 1rem</div>
+            <div class="sg-var-row"><code>--space-m</code> 1.5rem</div>
+            <div class="sg-var-row"><code>--space-l</code> 2rem</div>
+            <div class="sg-var-row"><code>--space-xl</code> 3rem</div>
+            <div class="sg-var-row"><code>--space-2xl</code> 5rem</div>
+            <div class="sg-var-row"><code>--space-3xl</code> 8rem</div>
+          </div>
+          <div class="sg-var-group">
+            <h3 class="t-label">Motion</h3>
+            <div class="sg-var-row"><code>--dur-fast</code> .25s</div>
+            <div class="sg-var-row"><code>--dur-mid</code> .55s</div>
+            <div class="sg-var-row"><code>--dur-slow</code> .9s</div>
+            <div class="sg-var-row"><code>--ease-out-expo</code> (.16,1,.3,1)</div>
+            <div class="sg-var-row"><code>--ease-in-out</code> (.76,0,.24,1)</div>
+          </div>
+          <div class="sg-var-group">
+            <h3 class="t-label">Layout</h3>
+            <div class="sg-var-row"><code>--section-pad</code> clamp(5rem,12vw,10rem)</div>
+            <div class="sg-var-row"><code>--gutter</code> clamp(1.5rem,5vw,5rem)</div>
+            <div class="sg-var-row"><code>--max-w</code> 1440px</div>
+            <div class="sg-var-row"><code>--text-max</code> 72ch</div>
+            <div class="sg-var-row"><code>--border</code> 1px solid chalk/12</div>
+            <div class="sg-var-row"><code>--radius</code> 0px</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</Base>
+
+<style>
+  /* ═══════════════════════════════════════════
+     Style Guide Page — isolated, no global bleed
+     ═══════════════════════════════════════════ */
+
+  .sg-page {
+    padding-top: 100px; /* clear fixed nav */
+  }
+
+  /* Header */
+  .sg-header {
+    padding-block: var(--space-3xl);
+    border-bottom: var(--border);
+  }
+  .sg-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: .94;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: var(--space-s) 0;
+  }
+
+  /* Sections */
+  .sg-section {
+    padding-block: var(--section-pad);
+  }
+  .sg-section--stone {
+    background: var(--stone);
+  }
+  .sg-section__heading {
+    margin-bottom: var(--space-xl);
+  }
+  .sg-sublabel {
+    display: block;
+    margin: var(--space-xl) 0 var(--space-m);
+    padding-top: var(--space-m);
+    border-top: var(--border);
+  }
+
+  /* Swatch grid */
+  .sg-swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-m);
+  }
+  .sg-swatch-grid--sm {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .sg-swatch {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+  }
+  .sg-swatch__chip {
+    height: 80px;
+    border-radius: 2px;
+  }
+  .sg-swatch__chip--tall {
+    height: 120px;
+  }
+  .sg-swatch__name {
+    font-weight: 600;
+    font-size: .85rem;
+    color: var(--chalk);
+  }
+  .sg-swatch__hex {
+    font-size: .78rem;
+    color: var(--concrete);
+  }
+  .sg-swatch__note {
+    font-size: .72rem;
+    color: var(--steel);
+  }
+
+  /* Opacity tokens */
+  .sg-opacity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-s);
+    margin-top: var(--space-s);
+  }
+  .sg-opacity-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    font-size: .85rem;
+    color: var(--concrete);
+  }
+  .sg-opacity-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,.1);
+  }
+
+  /* Typography grid */
+  .sg-type-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+  .sg-type-row {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-l);
+    align-items: baseline;
+    padding-bottom: var(--space-l);
+    border-bottom: var(--border);
+  }
+  .sg-type-meta {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+  }
+  .sg-type-meta code {
+    font-size: .78rem;
+    color: var(--accent);
+  }
+  .sg-type-meta p {
+    font-size: .8rem;
+    color: var(--steel);
+    line-height: 1.5;
+  }
+  .sg-type-sample {
+    color: var(--chalk);
+  }
+  .sg-type-sample--dark {
+    background: var(--navy);
+    padding: var(--space-m);
+    border-radius: 2px;
+  }
+
+  /* Font pairing cards */
+  .sg-pair-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-l);
+    margin-top: var(--space-s);
+  }
+  .sg-pair-card {
+    padding: var(--space-l);
+    background: #fff;
+    border: var(--border);
+  }
+  .sg-pair-card__role {
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .5rem;
+  }
+  .sg-pair-card__name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--chalk);
+  }
+  .sg-pair-card__meta {
+    font-size: .8rem;
+    color: var(--steel);
+    margin-bottom: var(--space-m);
+  }
+  .sg-pair-card__sample {
+    color: var(--chalk);
+    opacity: .9;
+  }
+
+  /* Spacing bars */
+  .sg-space-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+  .sg-space-item {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: var(--space-s);
+    align-items: center;
+    font-size: .85rem;
+    color: var(--concrete);
+  }
+  .sg-space-bar {
+    height: 12px;
+    background: var(--stone);
+    border-radius: 1px;
+  }
+  .sg-space-bar--accent {
+    background: var(--accent);
+    opacity: .5;
+  }
+
+  /* Token table */
+  .sg-token-table {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-top: var(--space-s);
+  }
+  .sg-token-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    gap: var(--space-s);
+    font-size: .85rem;
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--stone);
+  }
+  .sg-token-row code {
+    color: var(--accent);
+  }
+
+  /* Component group */
+  .sg-component-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+    margin-bottom: var(--space-xl);
+  }
+  .sg-component {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .sg-component code {
+    font-size: .78rem;
+    color: var(--accent);
+  }
+  .sg-component__preview {
+    padding: var(--space-l);
+    border: var(--border);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-m);
+    flex-wrap: wrap;
+  }
+  .sg-component__preview--dark {
+    background: var(--navy);
+    border-color: rgba(255,255,255,.1);
+  }
+  .sg-component__preview--stone {
+    background: var(--stone);
+  }
+
+  /* Spec grid */
+  .sg-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-s);
+  }
+  .sg-spec-item {
+    font-size: .85rem;
+    color: var(--concrete);
+    line-height: 1.6;
+  }
+  .sg-spec-label {
+    font-weight: 600;
+    color: var(--chalk);
+    margin-right: .5rem;
+  }
+
+  /* Reveal demo */
+  .sg-reveal-demo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    margin: var(--space-m) 0;
+  }
+  .sg-reveal-item {
+    padding: var(--space-m);
+    background: var(--stone);
+    font-size: .85rem;
+    color: var(--chalk);
+  }
+
+  /* Variable reference */
+  .sg-var-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--space-l);
+  }
+  .sg-var-group {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+  }
+  .sg-var-row {
+    font-size: .82rem;
+    color: var(--concrete);
+  }
+  .sg-var-row code {
+    color: var(--accent);
+    margin-right: .5rem;
+  }
+
+  .sg-note {
+    font-size: .85rem;
+    color: var(--concrete);
+    margin: var(--space-s) 0;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .sg-type-row {
+      grid-template-columns: 1fr;
+    }
+    .sg-swatch-grid--sm {
+      grid-template-columns: 1fr;
+    }
+    .sg-space-item {
+      grid-template-columns: 1fr;
+    }
+    .sg-token-row {
+      grid-template-columns: 1fr;
+    }
+    .sg-pair-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+    <!-- ═══════════ 10 — LIVE COMPONENT DEMOS ═══════════ -->
+    <section class="sg-section">
+      <div class="container">
+        <span class="t-label" style="color:var(--accent)">10</span>
+        <h2 class="t-heading sg-section__heading">Live Components</h2>
+
+        <!-- SectionHeader -->
+        <div class="sg-live-demo">
+          <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">SectionHeader</h3>
+          <SectionHeader
+            eyebrow="Our Expertise"
+            heading="Construction Without Compromise"
+            body="Every project we take on is built on a fixed-price contract, managed by a dedicated project lead, and finished to a standard we put our name on."
+          />
+        </div>
+
+        <!-- SectionHeader dark -->
+        <div class="sg-live-demo sg-live-demo--dark">
+          <h3 class="t-label" style="color:var(--accent);margin-top:0;padding-top:0;border:none">SectionHeader (dark bg)</h3>
+          <SectionHeader
+            eyebrow="The Aspect Standard"
+            heading="Built on Trust."
+            body="Twelve years of fixed-price contracts. Zero planning refusals. Every project delivered on budget."
+            dark={true}
+          />
+        </div>
+
+        <!-- SectionHeader centered -->
+        <div class="sg-live-demo">
+          <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">SectionHeader (centered)</h3>
+          <SectionHeader
+            eyebrow="Client Testimonials"
+            heading="What They Say"
+            align="center"
+          />
+        </div>
+
+        <!-- TestimonialBlock -->
+        <div class="sg-live-demo">
+          <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">TestimonialBlock</h3>
+          <TestimonialBlock
+            quote="Aspect delivered exactly what they promised. No hidden costs, no delays — just a beautifully finished extension that feels like it was always part of the house."
+            name="Sarah & James Whitfield"
+            role="Rear Extension"
+            location="Larkhall, Bath"
+          />
+        </div>
+
+        <!-- TestimonialBlock dark -->
+        <div class="sg-live-demo sg-live-demo--dark">
+          <h3 class="t-label" style="color:var(--accent);margin-top:0;padding-top:0;border:none">TestimonialBlock (dark bg)</h3>
+          <TestimonialBlock
+            quote="From the first architect drawings to the final snag list, every step was transparent. We never once worried about the budget."
+            name="Dr. Priya Anand"
+            role="Loft Conversion"
+            location="Bear Flat, Bath"
+            dark={true}
+          />
+        </div>
+
+        <!-- TrustMetrics -->
+        <div class="sg-live-demo" style="padding-left:0;padding-right:0">
+          <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">TrustMetrics</h3>
+          <TrustMetrics
+            metrics={[
+              { value: '£5M', label: 'Liability Insurance' },
+              { value: '12yr', label: 'Building in Bath' },
+              { value: '0', label: 'Planning Refusals' },
+              { value: '100%', label: 'Fixed-Price Contracts' },
+            ]}
+          />
+        </div>
+
+        <!-- SplitFeature -->
+        <div class="sg-live-demo">
+          <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">SplitFeature (default)</h3>
+          <SplitFeature
+            image="/images/hero-home.jpg"
+            imageAlt="Aspect construction site"
+            eyebrow="Our Approach"
+            heading="Precision From Day One."
+            body="We don't estimate. We cost. Every material, every trade, every day on site is accounted for before we break ground. The result is a fixed-price contract that means exactly what it says."
+            list={['Fixed-price contracts — no variation orders', 'Dedicated project lead on every build', 'Bath stone specialists with 12 years local knowledge']}
+            cta={{ label: 'Start a Project', href: '/contact' }}
+          />
+        </div>
+
+        <!-- SplitFeature dark reversed -->
+        <div class="sg-live-demo sg-live-demo--dark" style="padding-left:0;padding-right:0">
+          <h3 class="t-label" style="color:var(--accent);margin-top:0;padding-top:0;border:none">SplitFeature (dark + reversed)</h3>
+          <SplitFeature
+            image="/images/hero-bath.jpg"
+            imageAlt="Bath skyline"
+            eyebrow="Heritage Expertise"
+            heading="Conservation Area Specialists."
+            body="Bath has more listed buildings per square mile than almost anywhere in England. We know the conservation officers, the planning precedents, and the Bath stone suppliers by name."
+            reverse={true}
+            dark={true}
+            cta={{ label: 'View Projects', href: '/projects' }}
+          />
+        </div>
+
+        <!-- CardGrid -->
+        <div class="sg-live-demo">
+          <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">CardGrid (3-col)</h3>
+          <CardGrid
+            columns={3}
+            cards={[
+              { title: 'House Extensions', image: '/images/hero-home.jpg', href: '/services/extensions', tag: 'Most Popular', body: 'Single and double-storey extensions designed to feel original to the property.' },
+              { title: 'Loft Conversions', image: '/images/hero-bath.jpg', href: '/services/loft-conversions', tag: 'Bath Specialist', body: 'Dormer and hip-to-gable conversions that add bedrooms without losing garden.' },
+              { title: 'Period Renovation', image: '/images/about-hero.jpg', href: '/services/period-renovation', body: 'Sympathetic restoration of Georgian and Victorian properties across BANES.' },
+            ]}
+          />
+        </div>
+
+        <!-- PortfolioGrid -->
+        <div class="sg-live-demo sg-live-demo--wide" style="padding-left:0;padding-right:0">
+          <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">PortfolioGrid</h3>
+          <PortfolioGrid
+            projects={[
+              { title: 'Contemporary Rear Extension & Knock-Through', slug: 'contemporary-extension-keynsham', location: 'Keynsham', category: 'structural', categoryLabel: 'Extensions & Conversions', image: '/images/hero-larkhall-extension.jpg' },
+              { title: 'Grade II Listed Georgian Masonry Restoration', slug: 'georgian-townhouse-bath', location: 'Central Bath', category: 'heritage', categoryLabel: 'Heritage & Stonework', image: '/images/hero-batheaston-renovation.jpg' },
+              { title: 'Open-Plan Turnkey Kitchen & Living Space', slug: 'open-plan-kitchen-saltford', location: 'Saltford', category: 'interiors', categoryLabel: 'Premium Interiors', image: '/images/hero-kitchens.jpg' },
+            ]}
+          />
+        </div>
+
+        <!-- ProjectGallery -->
+        <div class="sg-live-demo sg-live-demo--wide" style="padding-left:0;padding-right:0">
+          <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">ProjectGallery</h3>
+          <ProjectGallery
+            brief="Transform a cramped 1930s kitchen into a bright, open-plan indoor-outdoor living space in Keynsham. The clients wanted a kitchen-diner that felt connected to the garden, with clean sightlines and enough room for a growing family."
+            challenge="The original rear elevation was a patchwork of single-skin extensions and poorly supported knock-throughs from previous owners. Structural Engineer calculations revealed the party wall connection needed a bespoke steel frame rather than a standard RSJ."
+            execution="Installation of a 6-meter RSJ steel beam with Moment Frame connections, bespoke flush-threshold aluminium bi-fold doors by Origin, insulated flat roof with warm-deck construction achieving 0.13 U-value, and polished concrete flooring with underfloor heating."
+            gallery={['/images/hero-larkhall-extension.jpg', '/images/hero-home.jpg', '/images/hero-bath.jpg']}
+          />
+        </div>
+
+        <!-- CTABanner -->
+          <CTABanner
+            heading="Ready to Start Your Project?"
+            body="Get a fixed-price quote from a team that delivers on budget, on time — every time."
+            cta={{ label: 'Get a Quote', href: '/contact' }}
+          />
+        </div>
+
+        <!-- CTABanner light -->
+        <div class="sg-live-demo" style="padding-left:0;padding-right:0">
+          <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">CTABanner (light bg)</h3>
+          <CTABanner
+            heading="Discuss Your Build."
+            body="Whether it's a kitchen or a full new build, we'd rather hear from you early."
+            cta={{ label: 'Call Us', href: 'tel:01225123456' }}
+            dark={false}
+          />
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .sg-live-demo {
+        margin-bottom: var(--space-2xl);
+        padding: var(--space-l);
+        border: 1px solid var(--stone);
+        border-radius: 2px;
+      }
+      .sg-live-demo--dark {
+        background: var(--navy);
+        border-color: rgba(255,255,255,.1);
+      }
+      .sg-live-demo--wide {
+        margin-left: calc(-1 * var(--space-l));
+        margin-right: calc(-1 * var(--space-l));
+      }
+    </style>
+  </div>
+</Base>
+
+<!-- ═══════════ 11 — IMAGE BACKGROUND CTA ═══════════ -->
+<section class="sg-section sg-section--stone" style="padding-block:var(--space-2xl)">
+  <div class="container">
+    <span class="t-label" style="color:var(--accent)">11</span>
+    <h2 class="t-heading sg-section__heading" style="margin-bottom:var(--space-m)">Image Background CTA</h2>
+    <p class="sg-note" style="margin-bottom:var(--space-xl)">Full-bleed section with background image and dark overlay. Sits above the footer. Swap <code>--img-cta-image</code> per page.</p>
+  </div>
+</section>
+
+<div class="img-cta">
+  <div class="img-cta__inner">
+    <span class="rule--accent"></span>
+    <span class="t-label" style="color:var(--accent)">Work With Us</span>
+    <h2 class="img-cta__heading">Ready to Start<br>Your Project?</h2>
+    <p class="img-cta__body">Whether it's a Georgian restoration in Bath city centre or a modern extension in Keynsham — get a free, transparent site consultation with no obligation.</p>
+    <a href="/contact" class="btn btn--primary">
+      Arrange a Consultation
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</div>
+
+<style>
+  /* ── Image Background CTA ── */
+  .img-cta {
+    position: relative;
+    padding: var(--section-pad) var(--gutter);
+    background-image: url('/images/hero-larkhall-extension.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 55vh;
+  }
+
+  .img-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 21, 32, 0.72);
+  }
+
+  .img-cta__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-m);
+    max-width: 700px;
+  }
+
+  .img-cta__heading {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 6rem);
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 0.95;
+    margin: 0;
+  }
+
+  .img-cta__body {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.75;
+    max-width: 52ch;
+    margin: 0;
+  }
+</style>

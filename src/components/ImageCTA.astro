@@ -1,0 +1,78 @@
+---
+interface Props {
+  heading: string;
+  body?: string;
+  cta: { label: string; href: string };
+  image?: string;
+  imagePosition?: string;
+}
+
+const {
+  heading,
+  body,
+  cta,
+  image = '/images/hero-larkhall-extension.jpg',
+  imagePosition = 'center 40%',
+} = Astro.props;
+---
+
+<section class="img-cta" style={`background-image:url('${image}');background-position:${imagePosition}`}>
+  <div class="img-cta__inner">
+    <span class="rule--accent"></span>
+    <span class="t-label" style="color:var(--accent)">Work With Us</span>
+    <h2 class="img-cta__heading" set:html={heading}></h2>
+    {body && <p class="img-cta__body">{body}</p>}
+    <a href={cta.href} class="btn btn--primary">
+      {cta.label}
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .img-cta {
+    position: relative;
+    padding: var(--section-pad) var(--gutter);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 55vh;
+  }
+
+  .img-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 21, 32, 0.72);
+  }
+
+  .img-cta__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-m);
+    max-width: 700px;
+  }
+
+  .img-cta__heading {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 6rem);
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 0.95;
+    margin: 0;
+  }
+
+  .img-cta__body {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.75;
+    max-width: 52ch;
+    margin: 0;
+  }
+</style>

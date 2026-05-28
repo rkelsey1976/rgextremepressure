@@ -1,0 +1,150 @@
+---
+// ProjectGallery.astro — High-end image gallery for case study pages
+// Displays project images in a responsive masonry-style grid
+// Supports a "Brief / Challenge / Execution" narrative section
+
+interface Props {
+  brief: string;
+  challenge: string;
+  execution: string;
+  gallery?: string[];
+}
+---
+
+<div class="project-gallery">
+  <!-- Narrative blocks -->
+  <div class="pg-narrative">
+    <div class="pg-narrative__block">
+      <span class="rule--accent"></span>
+      <span class="t-label pg-narrative__label">The Brief</span>
+      <p class="pg-narrative__text">{Astro.props.brief}</p>
+    </div>
+    <div class="pg-narrative__block">
+      <span class="rule--accent"></span>
+      <span class="t-label pg-narrative__label">The Challenge</span>
+      <p class="pg-narrative__text">{Astro.props.challenge}</p>
+    </div>
+    <div class="pg-narrative__block">
+      <span class="rule--accent"></span>
+      <span class="t-label pg-narrative__label">The Execution</span>
+      <p class="pg-narrative__text">{Astro.props.execution}</p>
+    </div>
+  </div>
+
+  <!-- Image grid -->
+  {Astro.props.gallery && Astro.props.gallery.length > 0 && (
+    <div class="pg-images">
+      {Astro.props.gallery.map((img, i) => (
+        <div class:list={['pg-images__item', i === 0 && 'pg-images__item--featured']}>
+          <img src={img} alt="" class="pg-images__img" loading="lazy" />
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
+<style>
+  .project-gallery {
+    max-width: var(--max-w);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* ── Narrative blocks ── */
+  .pg-narrative {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    padding-block: var(--section-pad);
+  }
+
+  .pg-narrative__block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+
+  .pg-narrative__label {
+    color: var(--accent);
+  }
+
+  .pg-narrative__text {
+    font-size: clamp(1rem, 1.1vw, 1.125rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  /* ── Accent rule (reuse for consistency) ── */
+  .rule--accent {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    display: block;
+  }
+
+  /* ── Image grid ── */
+  .pg-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-s);
+    padding-bottom: var(--section-pad);
+  }
+
+  .pg-images__item {
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--stone);
+  }
+
+  .pg-images__item--featured {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+
+  .pg-images__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s var(--ease-out-expo);
+  }
+
+  .pg-images__item:hover .pg-images__img {
+    transform: scale(1.03);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .pg-narrative {
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+    }
+
+    .pg-images {
+      grid-template-columns: 1fr;
+    }
+
+    .pg-images__item--featured {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .pg-narrative {
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+    }
+
+    .pg-images {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pg-images__item--featured {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+  }
+</style>

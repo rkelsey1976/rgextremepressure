@@ -1,0 +1,388 @@
+---
+// Footer.astro — Dark footer for Aspect Builds
+// Desktop: 3-column grid. Mobile: accordion for Services & Contact.
+
+const currentYear = new Date().getFullYear();
+
+const serviceLinks = [
+  { label: 'Structural & Scale Builds', href: '/services/structural-builds' },
+  { label: 'Heritage & Restoration', href: '/services/heritage-restoration' },
+  { label: 'Turnkey Interiors & Refurbishments', href: '/services/interiors-refurbishments' },
+  { label: 'Property Care & Landscaping', href: '/services/property-care' },
+];
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Column 1: Logo — always visible, no accordion -->
+      <div class="footer-col footer-col--brand">
+        <a href="/" class="ab-logo nav-logo nav-logo--lg" aria-label="Aspect Builds home">
+          <svg class="ab-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
+          <span class="ab-logo__text">
+            <span class="ab-logo__name">ASPECT</span>
+            <span class="ab-logo__sub">BUILDS &amp; MAINTENANCE LTD</span>
+          </span>
+        </a>
+        <p class="footer-about">Premium construction across Bath &amp; BANES. Extensions, loft conversions, Georgian renovation and new build &mdash; delivered with precision, without surprises.</p>
+        <div class="footer-social">
+          <a href="https://facebook.com/aspectbuilds" aria-label="Facebook" class="footer-social__link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://x.com/aspectbuilds" aria-label="X (Twitter)" class="footer-social__link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L2.25 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://instagram.com/aspectbuilds" aria-label="Instagram" class="footer-social__link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Services — accordion on mobile -->
+      <div class="footer-col">
+        <button class="footer-accordion" aria-expanded="false">
+          <h3 class="footer-heading">Services</h3>
+          <svg class="footer-accordion__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="footer-accordion__panel">
+          <ul class="footer-links">
+            {serviceLinks.map(link => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Column 3: Contact — accordion on mobile -->
+      <div class="footer-col">
+        <button class="footer-accordion" aria-expanded="false">
+          <h3 class="footer-heading">Get in touch</h3>
+          <svg class="footer-accordion__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="footer-accordion__panel">
+          <ul class="footer-links footer-contact">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Bath, Somerset
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:hello@aspectbuilds.co.uk">hello@aspectbuilds.co.uk</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:01225123456">01225 123 456</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Mon&ndash;Fri 8:00&ndash;18:00
+            </li>
+          </ul>
+
+          <a href="/locations" class="footer-areas-link">
+            View all areas we cover
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <div class="footer-bottom__inner">
+        <p>&copy; {currentYear} Aspect Builds &amp; Maintenance LTD. All rights reserved.</p>
+        <div class="footer-bottom__links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const accordions = document.querySelectorAll('.footer-accordion');
+  const mql = window.matchMedia('(min-width: 769px)');
+
+  function updateAccordionState() {
+    accordions.forEach(btn => {
+      const panel = btn.nextElementSibling;
+      if (mql.matches) {
+        // Desktop: force open, hide toggle icon
+        btn.setAttribute('aria-expanded', 'true');
+        panel.style.maxHeight = 'none';
+        btn.classList.remove('is-collapsed');
+      } else {
+        // Mobile: respect current state
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0';
+      }
+    });
+  }
+
+  accordions.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      const panel = btn.nextElementSibling;
+      if (!expanded) {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        btn.classList.remove('is-collapsed');
+      } else {
+        panel.style.maxHeight = '0';
+        btn.classList.add('is-collapsed');
+      }
+    });
+  });
+
+  // On mobile, mark arrows as collapsed on load
+  if (!mql.matches) {
+    accordions.forEach(btn => btn.classList.add('is-collapsed'));
+  }
+
+  mql.addEventListener('change', updateAccordionState);
+</script>
+
+<style>
+  .site-footer {
+    background: var(--navy);
+    color: rgba(255, 255, 255, 0.5);
+    padding: clamp(4rem, 8vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.2fr;
+    gap: var(--space-xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-col--brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .site-footer .ab-logo__name { color: #fff; }
+  .site-footer .ab-logo__sub { color: rgba(255, 255, 255, 0.65); }
+  .site-footer .ab-logo__mark { color: var(--accent); }
+
+  .footer-about {
+    max-width: 50ch;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.7;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: var(--space-s);
+  }
+
+  .footer-social__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.6);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .footer-social__link:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* Accordion: looks like a normal heading on desktop, toggle on mobile */
+  .footer-accordion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: default;
+    margin-bottom: var(--space-m);
+  }
+
+  .footer-accordion__icon {
+    display: none;
+    color: rgba(255, 255, 255, 0.5);
+    transition: transform 0.25s ease;
+  }
+
+  .footer-accordion__panel {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .footer-heading {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+  }
+
+  .footer-heading--inner {
+    margin-top: var(--space-l);
+    margin-bottom: var(--space-m);
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 500;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+
+  .footer-contact {
+    gap: 0.6rem;
+  }
+
+  .footer-contact li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .footer-contact svg {
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+
+  .footer-contact a {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .footer-contact a:hover {
+    color: var(--accent);
+  }
+
+  .footer-areas-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: var(--space-m);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+
+  .footer-areas-link:hover {
+    gap: 0.7rem;
+  }
+
+  .footer-bottom {
+    padding-top: var(--space-m);
+    margin-top: 0;
+  }
+
+  .footer-bottom__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+  }
+
+  .footer-bottom p {
+    color: #8892A4;
+    font-size: 0.8rem;
+  }
+
+  .footer-bottom__links {
+    display: flex;
+    gap: var(--space-m);
+  }
+
+  .footer-bottom__links a {
+    color: #8892A4;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-bottom__links a:hover {
+    color: var(--accent);
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding-bottom: 0;
+    }
+
+    .footer-col--brand {
+      padding-bottom: var(--space-l);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-col:not(.footer-col--brand) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Panels closed by default — JS overrides inline when toggled */
+    .footer-accordion__panel {
+      max-height: 0;
+    }
+
+    /* Show accordion toggle */
+    .footer-accordion {
+      cursor: pointer;
+      padding: var(--space-m) 0;
+      margin-bottom: 0;
+    }
+
+    .footer-accordion__icon {
+      display: block;
+    }
+
+    .footer-accordion.is-collapsed .footer-accordion__icon {
+      transform: rotate(-90deg);
+    }
+
+    .footer-heading {
+      font-size: 1rem;
+    }
+
+    .footer-heading--inner {
+      margin-top: var(--space-m);
+    }
+
+    .footer-bottom__inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
