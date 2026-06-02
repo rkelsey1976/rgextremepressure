@@ -51,7 +51,9 @@ import { servicesData } from '../data/services';
                     controls
                     playsinline
                     preload="metadata"
-                  ></video>
+                  >
+                    <track kind="captions" srclang="en" label="English" default />
+                  </video>
                 ) : (
                   <img src={pillar.image} alt={pillar.subtitle} loading="lazy" />
                 )}
@@ -70,7 +72,7 @@ import { servicesData } from '../data/services';
                     </li>
                   ))}
                 </ul>
-                <a href={pillar.href} class="pillar-row__link">
+                <a href={pillar.href} class="pillar-row__link" aria-label={`Explore ${pillar.title} service`}>
                   Explore this service
                   <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
                     <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -520,7 +522,7 @@ import { servicesData } from '../data/services';
   }
 
   .trustatrader-badge--dark .trustatrader-badge__text span {
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.65);
   }
 
   /* ── Project Showcase ── */
