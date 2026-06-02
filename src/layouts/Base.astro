@@ -58,6 +58,15 @@ const ogImageURL   = new URL(ogImage, Astro.site);
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image"       content={ogImageURL} />
   {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
+
+  <!-- Google Analytics 4 — loaded only after cookie consent -->
+  <script id="ga4-init" is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JJ0BMPKJ9F');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=optional" onload="this.onload=null;this.rel='stylesheet'" />
@@ -183,7 +192,60 @@ const ogImageURL   = new URL(ogImage, Astro.site);
   </div>
 
   <Footer />
+
+  <!-- Cookie consent banner -->
+  <div id="cookie-banner" class="cookie-banner" style="display:none;">
+    <div class="cookie-banner__inner">
+      <p class="cookie-banner__text">We use cookies to analyse site traffic and improve your experience. <a href="/privacy-policy">Privacy policy</a></p>
+      <div class="cookie-banner__actions">
+        <button id="cookie-reject" class="cookie-banner__btn cookie-banner__btn--reject">Reject</button>
+        <button id="cookie-accept" class="cookie-banner__btn cookie-banner__btn--accept">Accept</button>
+      </div>
+    </div>
+  </div>
 </body>
+
+<!-- Cookie consent + GA4 loader -->
+<script id="cookie-consent" is:inline>
+  (function() {
+    var CONSENT_KEY = 'aspect_cookie_consent';
+    var banner = document.getElementById('cookie-banner');
+    var acceptBtn = document.getElementById('cookie-accept');
+    var rejectBtn = document.getElementById('cookie-reject');
+    var consent = localStorage.getItem(CONSENT_KEY);
+
+    function loadGA4() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JJ0BMPKJ9F';
+      s.onload = function() { gtag('config', 'G-JJ0BMPKJ9F'); };
+      document.head.appendChild(s);
+    }
+
+    function dismiss() {
+      banner.style.display = 'none';
+    }
+
+    if (consent === 'accepted') {
+      loadGA4();
+    } else if (consent === 'rejected') {
+      // no GA4
+    } else {
+      banner.style.display = 'block';
+    }
+
+    acceptBtn.addEventListener('click', function() {
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      loadGA4();
+      dismiss();
+    });
+
+    rejectBtn.addEventListener('click', function() {
+      localStorage.setItem(CONSENT_KEY, 'rejected');
+      dismiss();
+    });
+  })();
+</script>
 
 <script>
   // Scroll detection — adds .is-scrolled to nav
@@ -415,6 +477,81 @@ const ogImageURL   = new URL(ogImage, Astro.site);
 
     .nav-hamburger {
       display: flex;
+    }
+  }
+
+  /* ── Cookie consent banner ── */
+  .cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--navy);
+    border-top: 1px solid rgba(174, 132, 85, 0.3);
+    padding: 1rem 1.5rem;
+    z-index: 9999;
+  }
+
+  .cookie-banner__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .cookie-banner__text {
+    color: var(--concrete);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .cookie-banner__text a {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .cookie-banner__actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .cookie-banner__btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .cookie-banner__btn--reject {
+    background: transparent;
+    color: var(--concrete);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .cookie-banner__btn--reject:hover {
+    border-color: var(--concrete);
+  }
+
+  .cookie-banner__btn--accept {
+    background: var(--accent);
+    color: var(--navy);
+  }
+
+  .cookie-banner__btn--accept:hover {
+    opacity: 0.9;
+  }
+
+  @media (max-width: 600px) {
+    .cookie-banner__inner {
+      flex-direction: column;
+      text-align: center;
     }
   }
 </style>
