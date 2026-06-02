@@ -1,0 +1,21 @@
+{
+  "name": "Aspect Builds & Maintenance Ltd",
+  "short_name": "Aspect Builds",
+  "description": "Quality building and property maintenance across Bath and the surrounding areas.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0d1520",
+  "theme_color": "#0d1520",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
