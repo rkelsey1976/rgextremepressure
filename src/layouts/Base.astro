@@ -67,15 +67,22 @@ const ogImageURL   = new URL(ogImage, Astro.site);
     "@type": "HomeAndConstructionBusiness",
     "name": "Aspect Builds & Maintenance Ltd",
     "legalName": "Aspect Builds & Maintenance Ltd",
-  "description": "Quality building and property maintenance across Bath and the surrounding areas. Refurbishments, extensions, painting, plastering and more — delivered with precision, without surprises.",
-    "url": "https://www.aspectbuilds.co.uk",
-"telephone": "+447498158747",
+    "description": "Quality building and property maintenance across Bath and the surrounding areas. Refurbishments, extensions, painting, plastering and more — delivered with precision, without surprises.",
+    "url": "https://aspectbuilds.co.uk",
+    "telephone": "+447498158747",
     "email": "james.aspectbuilds@gmail.com",
+    "image": "https://aspectbuilds.co.uk/favicon.svg",
+    "logo": "https://aspectbuilds.co.uk/favicon.svg",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Bath",
       "addressRegion": "Somerset",
       "addressCountry": "GB"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "51.3811",
+      "longitude": "-2.3590"
     },
     "areaServed": [
       { "@type": "City", "name": "Bath" },
@@ -85,6 +92,20 @@ const ogImageURL   = new URL(ogImage, Astro.site);
       { "@type": "City", "name": "Corsham" },
       { "@type": "City", "name": "Frome" }
     ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday"],
+        "opens": "09:00",
+        "closes": "14:00"
+      }
+    ],
     "priceRange": "££-££££",
     "memberOf": {
       "@type": "Organization",
@@ -92,8 +113,9 @@ const ogImageURL   = new URL(ogImage, Astro.site);
       "url": "https://www.trustatrader.com"
     },
     "sameAs": [
-      "https://www.trustatrader.com/traders/aspect-builds-maintenance-ltd-interior-refurbishment-bath-south",
+      "https://www.facebook.com/profile.php?id=61590355720472",
       "https://www.instagram.com/aspectbuilds1",
+      "https://www.trustatrader.com/traders/aspect-builds-maintenance-ltd-interior-refurbishment-bath-south",
       "https://maps.google.com/?cid=2379370614847270366"
     ],
     "aggregateRating": {
