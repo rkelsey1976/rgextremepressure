@@ -5,6 +5,7 @@ import SectionHeader from '../components/SectionHeader.astro';
 import TestimonialBlock from '../components/TestimonialBlock.astro';
 import ImageCTA from '../components/ImageCTA.astro';
 import { servicesData } from '../data/services';
+import { srcset } from '../utils/srcset';
 ---
 
 <Base title="Aspect Builds — Built for Bath" preloadImage="/images/hero-james-bath-property-1.webp">
@@ -55,7 +56,7 @@ import { servicesData } from '../data/services';
                     <track kind="captions" srclang="en" label="English" default />
                   </video>
                 ) : (
-                  <img src={pillar.image} alt={pillar.subtitle} loading="lazy" />
+                  <img src={pillar.image} alt={pillar.subtitle} loading="lazy" decoding="async" srcset={srcset(pillar.image)} sizes="(max-width: 768px) 100vw, 40vw" />
                 )}
               </div>
               <div class="pillar-row__text">

@@ -1,4 +1,6 @@
 ---
+import { srcset } from '../utils/srcset';
+
 // SplitFeature.astro — Asymmetric editorial image + copy block
 // Reversible, dark-bg variant, optional list and CTA
 
@@ -25,6 +27,8 @@ const {
   dark = false,
   eyebrow,
 } = Astro.props;
+
+const splitSrcset = srcset(image);
 ---
 
 <section class:list={['split', reverse && 'split--reverse', dark && 'split--dark']}>
@@ -33,9 +37,12 @@ const {
       <div class="split__image-wrap">
         <img
           src={image}
+          srcset={splitSrcset}
+          sizes="(max-width: 768px) 100vw, 50vw"
           alt={imageAlt}
           class="split__image"
           loading="lazy"
+          decoding="async"
         />
       </div>
       <div class="split__copy">

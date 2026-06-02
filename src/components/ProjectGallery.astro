@@ -1,4 +1,6 @@
 ---
+import { srcset } from '../utils/srcset';
+
 // ProjectGallery.astro — High-end image gallery for case study pages
 // Displays project images in a responsive masonry-style grid
 // Supports a "Brief / Challenge / Execution" narrative section
@@ -54,7 +56,7 @@ interface Props {
     <div class="pg-images">
       {Astro.props.gallery.map((img, i) => (
         <div class:list={['pg-images__item', i === 0 && 'pg-images__item--featured']}>
-          <img src={img} alt="" class="pg-images__img" loading="lazy" />
+          <img src={img} alt="" class="pg-images__img" loading="lazy" decoding="async" srcset={srcset(img)} sizes="(max-width: 768px) 100vw, 33vw" />
         </div>
       ))}
     </div>

@@ -1,4 +1,6 @@
 ---
+import { srcset } from '../utils/srcset';
+
 // CardGrid.astro — Responsive card grid for services, projects, locations
 // Clean, minimal cards: image top, optional tag, title, short body, linked
 
@@ -29,7 +31,7 @@ const isLight = style === 'light';
   {cards.map(card => (
     <a href={card.href} class="card">
       <div class="card__image-wrap">
-        <img src={card.image} alt={card.title} class="card__image" loading="lazy" />
+        <img src={card.image} alt={card.title} class="card__image" loading="lazy" decoding="async" srcset={srcset(card.image)} sizes="(max-width: 768px) 50vw, 33vw" />
         {card.tag && <span class="card__tag">{card.tag}</span>}
       </div>
       <div class="card__content">
