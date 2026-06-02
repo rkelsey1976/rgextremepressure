@@ -5,15 +5,30 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import SplitFeature from '../../components/SplitFeature.astro';
 import TrustMetrics from '../../components/TrustMetrics.astro';
 import ImageCTA from '../../components/ImageCTA.astro';
+import TestimonialBlock from '../../components/TestimonialBlock.astro';
 ---
 
 <Base
   title="Full Property Refurbishments, Kitchens & Bathrooms Bath | Aspect Builds"
   description="Complete internal refurbishments, bespoke kitchens, luxury bathrooms and open-plan reconfigurations across Bath & BANES. One contract, every trade, fixed price."
-  preloadImage="/images/hero-kitchens.webp"
+  preloadImage="/images/hero-bath-loft-extension.webp"
+  serviceSchema={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Interior Refurbishment",
+    "name": "Interiors & Refurbishments Bath",
+    "description": "Full property refurbishments, bespoke kitchen design and installation, luxury bathrooms, and internal layout reconfigurations across Bath and BANES.",
+    "provider": {
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Aspect Builds & Maintenance Ltd",
+      "url": "https://www.aspectbuilds.co.uk"
+    },
+    "areaServed": ["Bath", "Keynsham", "Bradford on Avon", "Chippenham", "Corsham", "Frome", "Box", "Batheaston", "Bathampton", "Bathford"],
+    "url": "https://www.aspectbuilds.co.uk/services/interiors-refurbishments/"
+  }}
 >
   <Hero
-    image="/images/hero-kitchens.webp"
+    image="/images/hero-bath-loft-extension.webp"
     overlay="left"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: 'Turnkey Interiors & Refurbishments' }]}
     eyebrow="Kitchens · Bathrooms · Full Refurbishment"
@@ -31,8 +46,8 @@ import ImageCTA from '../../components/ImageCTA.astro';
   ]} />
 
   <SplitFeature
-    image="/images/services/turnkey-interiors.webp"
-    imageAlt="Premium kitchen installation in a Bath property"
+    image="/images/medford-garden-extension-14.webp"
+    imageAlt="Medford garden extension interior"
     eyebrow="Turnkey Interiors"
     heading="Internal Transformations Managed from First Fix to Final Snag"
     body="The internal refurbishment market in Bath is full of contractors who manage their own trade and leave you to coordinate the rest. We do the opposite. Under a single Aspect contract, we coordinate every discipline — structural, electrical, plumbing, plastering, tiling, joinery, decorating — to a planned programme, with weekly progress updates and a defined handover process. The result is a finished space delivered on time and to the specification you agreed, not the one that emerged from a succession of independent trades."
@@ -108,7 +123,7 @@ import ImageCTA from '../../components/ImageCTA.astro';
   </section>
 
   <SplitFeature
-    image="/images/hulkiokantabak-bath-5083699_1920.webp"
+image="/images/bath-loft-extension-3.webp"
     imageAlt="Bath period property interior refurbishment"
     eyebrow="Period Interiors"
     heading="Refurbishing Period Homes Requires a Different Approach"
@@ -124,11 +139,44 @@ import ImageCTA from '../../components/ImageCTA.astro';
     cta={{ label: 'Discuss Your Refurbishment', href: '/contact' }}
   />
 
+  <section style="background:var(--stone);padding:var(--section-pad) 0">
+    <div class="container" style="max-width:48rem">
+      <TestimonialBlock
+        quote="Very happy with work. James Martin decorated 2 rooms for us. Very reliable and clean and tidy. Arrived on time every day and work was very satisfactory. Would highly recommend."
+        name="Amy"
+        role="Interior Decoration · TrustATrader"
+      />
+    </div>
+  </section>
+
+  {/* ── Areas We Cover ── */}
+  <section style="padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Coverage"
+        heading="Interiors &amp; Refurbishments Across Bath &amp; BANES"
+        body="We deliver full internal refurbishments throughout Bath, BANES, and West Wiltshire — from Georgian terrace remodels to modern new-build fit-outs."
+      />
+      <div class="area-links">
+        <a href="/areas-covered/central-bath-districts">Central Bath & Districts</a>
+        <a href="/areas-covered/batheaston">Batheaston</a>
+        <a href="/areas-covered/bathampton">Bathampton</a>
+        <a href="/areas-covered/bathford">Bathford</a>
+        <a href="/areas-covered/bradford-on-avon">Bradford on Avon</a>
+        <a href="/areas-covered/corsham">Corsham</a>
+        <a href="/areas-covered/saltford-keynsham">Keynsham & Saltford</a>
+        <a href="/areas-covered/box">Box</a>
+        <a href="/areas-covered/chippenham">Chippenham</a>
+        <a href="/areas-covered/frome-radstock-midsomer-norton">Frome & Radstock</a>
+      </div>
+    </div>
+  </section>
+
   <ImageCTA
     heading="Ready to Transform Your Interior?"
     body="Get a fully itemised fixed-price quote covering every trade. No surprises, no subcontractor chaos — just a defined specification, a planned programme, and a proper handover."
     cta={{ label: 'Arrange a Consultation', href: '/contact' }}
-    image="/images/hero-kitchens.webp"
+    image="/images/hero-bath-loft-extension.webp"
   />
 </Base>
 
@@ -204,6 +252,30 @@ import ImageCTA from '../../components/ImageCTA.astro';
     left: 0;
     color: var(--accent);
     font-weight: 700;
+  }
+
+  .area-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-xl);
+  }
+
+  .area-links a {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--chalk);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(26, 35, 50, 0.12);
+    background: #fff;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .area-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   @media (max-width: 768px) {

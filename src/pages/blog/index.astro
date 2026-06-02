@@ -1,0 +1,184 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<Base
+  title="Building Advice & Guides"
+  description="Practical guides for Bath homeowners — loft conversions, extensions, planning permission, heritage restoration and property maintenance across Bath & BANES."
+  preloadImage="/images/hero-medford-garden-extension.webp"
+>
+
+  <Hero
+    image="/images/hero-medford-garden-extension.webp"
+    overlay="left"
+    minHeight="compact"
+    eyebrow="Advice & Guides"
+    heading="Building Advice<br/>for Bath Homeowners"
+    body="Practical, honest guidance on extensions, loft conversions, heritage restoration and property maintenance across Bath & BANES."
+  />
+
+  {/* ── Posts Grid ── */}
+  <section class="blog-grid-section">
+    <div class="container">
+      <div class="blog-grid">
+        {posts.map(post => (
+          <article class="blog-card">
+            {post.data.image && (
+              <a href={`/blog/${post.id}`} class="blog-card__img-wrap" tabindex="-1" aria-hidden="true">
+                <img
+                  src={post.data.image}
+                  alt=""
+                  width="800"
+                  height="450"
+                  loading="lazy"
+                  class="blog-card__img"
+                />
+              </a>
+            )}
+            <div class="blog-card__body">
+              <span class="blog-card__cat t-label">{post.data.category}</span>
+              <h2 class="blog-card__title">
+                <a href={`/blog/${post.id}`}>{post.data.title}</a>
+              </h2>
+              <p class="blog-card__desc">{post.data.description}</p>
+              <div class="blog-card__footer">
+                <time class="blog-card__date" datetime={post.data.pubDate.toISOString()}>
+                  {formatDate(post.data.pubDate)}
+                </time>
+                <a href={`/blog/${post.id}`} class="blog-card__read">
+                  Read guide
+                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  /* ── Grid ── */
+  .blog-grid-section {
+    padding: var(--section-pad) 0;
+    background: var(--stone);
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  /* ── Card ── */
+  .blog-card {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blog-card__img-wrap {
+    display: block;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+
+  .blog-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .blog-card:hover .blog-card__img { transform: scale(1.03); }
+
+  .blog-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: var(--space-l);
+    flex: 1;
+  }
+
+  .blog-card__cat {
+    color: var(--accent);
+  }
+
+  .blog-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+    line-height: 1.15;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .blog-card__title a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+  }
+
+  .blog-card__title a:hover { color: var(--accent); }
+
+  .blog-card__desc {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--concrete);
+    margin: 0;
+    flex: 1;
+  }
+
+  .blog-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--stone);
+    margin-top: auto;
+  }
+
+  .blog-card__date {
+    font-size: 0.75rem;
+    color: var(--concrete);
+    letter-spacing: 0.04em;
+  }
+
+  .blog-card__read {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+
+  .blog-card__read:hover { gap: 0.7rem; }
+
+  @media (max-width: 900px) {
+    .blog-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .blog-grid { grid-template-columns: 1fr; }
+  }
+</style>

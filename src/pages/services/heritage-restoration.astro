@@ -5,19 +5,34 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import SplitFeature from '../../components/SplitFeature.astro';
 import TrustMetrics from '../../components/TrustMetrics.astro';
 import ImageCTA from '../../components/ImageCTA.astro';
+import TestimonialBlock from '../../components/TestimonialBlock.astro';
 ---
 
 <Base
-  title="Heritage Builders & Period Renovation Specialists Bath | Aspect Builds"
-  description="Specialist heritage renovation, traditional lime mortar repointing, Bath stone restoration and listed building work across Bath & BANES. Conservation area experts."
-  preloadImage="/images/hero-batheaston-renovation.webp"
+  title="Listed Building Builder Bath | Heritage Restoration & Bath Stone Specialists | Aspect Builds"
+  description="Listed building specialists in Bath. Grade II renovations, Bath stone restoration, lime mortar repointing, sash window repairs, and conservation area compliance. Fixed quotes."
+  preloadImage="/images/hero-chilcompton-rendering.webp"
+  serviceSchema={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Heritage Restoration",
+    "name": "Listed Building & Heritage Restoration Bath",
+    "description": "Specialist listed building work, Bath stone restoration, lime mortar repointing, and conservation area repairs across Bath and BANES. Grade II renovation expertise.",
+    "provider": {
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Aspect Builds & Maintenance Ltd",
+      "url": "https://www.aspectbuilds.co.uk"
+    },
+    "areaServed": ["Bath", "Keynsham", "Bradford on Avon", "Chippenham", "Corsham", "Frome", "Box", "Batheaston", "Bathampton", "Bathford"],
+    "url": "https://www.aspectbuilds.co.uk/services/heritage-restoration/"
+  }}
 >
   <Hero
-    image="/images/hero-batheaston-renovation.webp"
+    image="/images/hero-chilcompton-rendering.webp"
     overlay="left"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: 'Heritage & Restoration' }]}
-    eyebrow="Listed Buildings · Bath Stone · Conservation Areas"
-    heading="Heritage &amp;<br>Restoration"
+    eyebrow="Listed Building Specialist · Bath Stone · Conservation Areas"
+    heading="Listed Building &amp;<br>Heritage Restoration"
     body="Grade II listed buildings, traditional Bath stone, conservation zone constraints — delivered with the authentic materials, traditional techniques, and regulatory expertise that period properties demand."
     cta={{ label: 'Arrange a Heritage Consultation', href: '/contact' }}
     minHeight="compact"
@@ -34,7 +49,7 @@ import ImageCTA from '../../components/ImageCTA.astro';
     image="/images/services/heritage-restoration.webp"
     imageAlt="Bath stone masonry restoration work"
     eyebrow="Heritage & Restoration"
-    heading="Bath's Heritage Demands More Than a General Builder"
+    heading="Listed Buildings in Bath Need a Specialist Builder"
     body="Bath is a UNESCO World Heritage city. Every stone matters. Working on a period property here — whether it's a Grade II listed Georgian townhouse in the city centre or a stone cottage in Bradford on Avon — requires specialist knowledge of traditional building materials, conservation planning law, and the techniques that were used when these buildings were first constructed. Using modern cement mortars, inappropriate render systems, or incorrect pointing profiles on Bath stone can cause irreversible structural and aesthetic damage. We use only the right materials for the right substrate, every time."
     dark={false}
     list={[
@@ -119,7 +134,7 @@ import ImageCTA from '../../components/ImageCTA.astro';
   </section>
 
   <SplitFeature
-    image="/images/averynichols-bath-england-4597566_1920.webp"
+    image="/images/chilcompton-rendering-1.webp"
     imageAlt="Georgian Bath streetscape — conservation area"
     eyebrow="Our Approach"
     heading="Correct Materials. Correct Techniques. No Shortcuts."
@@ -135,11 +150,44 @@ import ImageCTA from '../../components/ImageCTA.astro';
     cta={{ label: 'Arrange a Heritage Site Visit', href: '/contact' }}
   />
 
+  <section style="background:var(--stone);padding:var(--section-pad) 0">
+    <div class="container" style="max-width:48rem">
+      <TestimonialBlock
+        quote="Aspect did an amazing job painting my house. They were efficient, friendly, tidy and I would definitely use them again. Can't fault them."
+        name="Barbara"
+        role="Exterior Works · TrustATrader Verified"
+      />
+    </div>
+  </section>
+
+  {/* ── Areas We Cover ── */}
+  <section style="padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Coverage"
+        heading="Heritage &amp; Restoration Across Bath &amp; BANES"
+        body="We work on listed buildings and period properties throughout Bath, BANES, and West Wiltshire. Local knowledge of conservation area boundaries, listed building constraints, and Bath stone sourcing."
+      />
+      <div class="area-links">
+        <a href="/areas-covered/central-bath-districts">Central Bath & Districts</a>
+        <a href="/areas-covered/batheaston">Batheaston</a>
+        <a href="/areas-covered/bathampton">Bathampton</a>
+        <a href="/areas-covered/bathford">Bathford</a>
+        <a href="/areas-covered/bradford-on-avon">Bradford on Avon</a>
+        <a href="/areas-covered/corsham">Corsham</a>
+        <a href="/areas-covered/saltford-keynsham">Keynsham & Saltford</a>
+        <a href="/areas-covered/box">Box</a>
+        <a href="/areas-covered/chippenham">Chippenham</a>
+        <a href="/areas-covered/frome-radstock-midsomer-norton">Frome & Radstock</a>
+      </div>
+    </div>
+  </section>
+
   <ImageCTA
     heading="Preserving Bath's Heritage. One Building at a Time."
     body="Whether you need lime repointing on a Grade II listed terrace or a full period renovation in Bradford on Avon, arrange a no-obligation site visit with our heritage specialists."
     cta={{ label: 'Arrange a Consultation', href: '/contact' }}
-    image="/images/hero-batheaston-renovation.webp"
+    image="/images/hero-chilcompton-rendering.webp"
   />
 </Base>
 
@@ -247,6 +295,30 @@ import ImageCTA from '../../components/ImageCTA.astro';
     line-height: 1.8;
     color: var(--concrete);
     margin: 0;
+  }
+
+  .area-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-xl);
+  }
+
+  .area-links a {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--chalk);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(26, 35, 50, 0.12);
+    background: #fff;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .area-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   @media (max-width: 768px) {

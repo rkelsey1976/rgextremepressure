@@ -5,15 +5,30 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import SplitFeature from '../../components/SplitFeature.astro';
 import TrustMetrics from '../../components/TrustMetrics.astro';
 import ImageCTA from '../../components/ImageCTA.astro';
+import TestimonialBlock from '../../components/TestimonialBlock.astro';
 ---
 
 <Base
   title="Property Maintenance & Garden Landscaping Bath | Aspect Builds"
   description="Professional property maintenance, garden landscaping, structural retaining walls and responsive repairs across Bath & BANES. Reliable, organised, insured."
-  preloadImage="/images/hero-home.webp"
+  preloadImage="/images/hero-bath-landscaping.webp"
+  serviceSchema={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Property Maintenance",
+    "name": "Property Care & Landscaping Bath",
+    "description": "Outdoor and architectural landscaping, structural retaining walls, comprehensive property maintenance and responsive home repairs across Bath and BANES.",
+    "provider": {
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Aspect Builds & Maintenance Ltd",
+      "url": "https://www.aspectbuilds.co.uk"
+    },
+    "areaServed": ["Bath", "Keynsham", "Bradford on Avon", "Chippenham", "Corsham", "Frome", "Box", "Batheaston", "Bathampton", "Bathford"],
+    "url": "https://www.aspectbuilds.co.uk/services/property-care/"
+  }}
 >
   <Hero
-    image="/images/hero-home.webp"
+    image="/images/hero-bath-landscaping.webp"
     overlay="left"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: 'Property Care & Landscaping' }]}
     eyebrow="Landscaping · Maintenance · Repairs"
@@ -30,21 +45,35 @@ import ImageCTA from '../../components/ImageCTA.astro';
     { value: 'Clean', label: 'Respect for Your Home' },
   ]} />
 
-  <SplitFeature
-    image="/images/services/property-care.webp"
-    imageAlt="Garden landscaping and property maintenance in Bath"
-    eyebrow="Property Care & Landscaping"
-    heading="The Same Standard of Care. Inside and Out."
-    body="Most building companies treat maintenance and landscaping as an afterthought. We treat them as a discipline in their own right. Bath's garden terrain — steeply sloped plots, narrow rear access, Bath stone boundary walls that need structural understanding as well as aesthetic sensitivity — demands builders who know what they're doing. Our landscaping team combines structural engineering knowledge with design sensibility. Our maintenance service is organised, accountable, and reliable — the things that most tradespeople are not."
-    dark={false}
-    list={[
-      'Structural and aesthetic landscaping across Bath\'s varied terrain',
-      'Sloped garden and retaining wall solutions on hillside plots',
-      'Planned maintenance programmes and responsive repair callouts',
-      'Fully insured, vetted tradespeople on every job',
-    ]}
-    cta={{ label: 'Discuss Your Requirements', href: '/contact' }}
-  />
+  <section class="split-video" style="padding:var(--section-pad) 0">
+    <div class="container">
+      <div class="split-video__grid">
+        <div class="split-video__media">
+          <video
+            src="/images/bath-landscaping-video.mp4"
+            poster="/images/bath-landscaping-video-poster.webp"
+            muted
+            controls
+            playsinline
+            preload="metadata"
+            class="split-video__player"
+          ></video>
+        </div>
+        <div class="split-video__content">
+          <p class="split-video__eyebrow">Property Care &amp; Landscaping</p>
+          <h2 class="split-video__heading">The Same Standard of Care. Inside and Out.</h2>
+          <p class="split-video__body">Most building companies treat maintenance and landscaping as an afterthought. We treat them as a discipline in their own right. Bath's garden terrain — steeply sloped plots, narrow rear access, Bath stone boundary walls that need structural understanding as well as aesthetic sensitivity — demands builders who know what they're doing. Our landscaping team combines structural engineering knowledge with design sensibility. Our maintenance service is organised, accountable, and reliable — the things that most tradespeople are not.</p>
+          <ul class="split-video__list">
+            <li>Structural and aesthetic landscaping across Bath's varied terrain</li>
+            <li>Sloped garden and retaining wall solutions on hillside plots</li>
+            <li>Planned maintenance programmes and responsive repair callouts</li>
+            <li>Fully insured, vetted tradespeople on every job</li>
+          </ul>
+          <a href="/contact" class="btn btn--accent">Discuss Your Requirements</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="sub-services">
     <div class="container">
@@ -108,7 +137,7 @@ import ImageCTA from '../../components/ImageCTA.astro';
   </section>
 
   <SplitFeature
-    image="/images/bath-somerset-england-uk-BY1GJE.webp"
+    image="/images/bath-landscaping-2.webp"
     imageAlt="Bath property exterior — maintenance and care"
     eyebrow="Why Maintenance Matters in Bath"
     heading="Bath Stone Weathers. Lime Mortars Need Attention. Don't Leave It."
@@ -124,6 +153,39 @@ import ImageCTA from '../../components/ImageCTA.astro';
     cta={{ label: 'Set Up a Maintenance Programme', href: '/contact' }}
   />
 
+  <section style="background:var(--stone);padding:var(--section-pad) 0">
+    <div class="container" style="max-width:48rem">
+      <TestimonialBlock
+        quote="I couldn't recommend Aspect Builds highly enough for the landscaping and garden build they completed for us. From the initial design to the final handover, the team was professional, communicative, and genuinely invested in getting the details right. Site was kept tidy, timeframes were clear, and any issues were handled quickly with no fuss."
+        name="Cole Hulbert"
+        role="Landscaping & Garden Build · TrustATrader"
+      />
+    </div>
+  </section>
+
+  {/* ── Areas We Cover ── */}
+  <section style="padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Coverage"
+        heading="Property Care &amp; Landscaping Across Bath &amp; BANES"
+        body="We maintain, repair, and landscape properties throughout Bath, BANES, and West Wiltshire. Responsive service, clean sites, proper finishes."
+      />
+      <div class="area-links">
+        <a href="/areas-covered/central-bath-districts">Central Bath & Districts</a>
+        <a href="/areas-covered/batheaston">Batheaston</a>
+        <a href="/areas-covered/bathampton">Bathampton</a>
+        <a href="/areas-covered/bathford">Bathford</a>
+        <a href="/areas-covered/bradford-on-avon">Bradford on Avon</a>
+        <a href="/areas-covered/corsham">Corsham</a>
+        <a href="/areas-covered/saltford-keynsham">Keynsham & Saltford</a>
+        <a href="/areas-covered/box">Box</a>
+        <a href="/areas-covered/chippenham">Chippenham</a>
+        <a href="/areas-covered/frome-radstock-midsomer-norton">Frome & Radstock</a>
+      </div>
+    </div>
+  </section>
+
   <ImageCTA
     heading="Keep Your Property in Peak Condition."
     body="Whether you need a one-off repair or a planned annual maintenance programme, we provide fixed-price, reliable, fully insured property care across Bath &amp; BANES."
@@ -133,6 +195,103 @@ import ImageCTA from '../../components/ImageCTA.astro';
 </Base>
 
 <style>
+  .split-video__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl, 3rem);
+    align-items: center;
+  }
+
+  .split-video__player {
+    width: 100%;
+    border-radius: 4px;
+    background: #000;
+  }
+
+  .split-video__eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin: 0 0 var(--space-s, 0.5rem);
+  }
+
+  .split-video__heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.15;
+    color: var(--chalk);
+    margin: 0 0 var(--space-m, 1rem);
+  }
+
+  .split-video__body {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    margin: 0 0 var(--space-l, 1.5rem);
+  }
+
+  .split-video__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-l, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .split-video__list li {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--chalk);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .split-video__list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .area-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-xl);
+  }
+
+  .area-links a {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--chalk);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(26, 35, 50, 0.12);
+    background: #fff;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .area-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .split-video__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl, 2rem);
+    }
+  }
+
   .sub-services {
     padding: var(--section-pad) 0;
     background: var(--stone);

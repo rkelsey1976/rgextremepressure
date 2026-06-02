@@ -40,6 +40,7 @@ const servicePillars = [
     action="/contact/success"
     data-netlify="true"
     netlify-honeypot="bot-field"
+    data-netlify-recaptcha="true"
   >
     <input type="hidden" name="form-name" value="contact" />
     <p class="mcf__honeypot" aria-hidden="true">
@@ -118,6 +119,9 @@ const servicePillars = [
       <label class="mcf__label" for="cf-brief">Project Brief &amp; Details *</label>
       <textarea id="cf-brief" name="brief" required rows="5" placeholder="Outline the scope of works, period specifics, and timeline goals&hellip;" class="mcf__input mcf__textarea"></textarea>
     </div>
+
+    {/* ── reCAPTCHA ── */}
+    <div data-netlify-recaptcha="true" class="mcf__recaptcha"></div>
 
     {/* ── Submit ── */}
     <div class="mcf__actions">
@@ -288,6 +292,11 @@ const servicePillars = [
   .mcf__radio-pill:has(.mcf__radio-input:checked) {
     border-color: var(--accent);
     background: rgba(174, 132, 85, 0.06);
+  }
+
+  /* ── reCAPTCHA ── */
+  .mcf__recaptcha {
+    margin-bottom: var(--space-m);
   }
 
   /* ── Submit ── */

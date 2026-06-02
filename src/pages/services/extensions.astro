@@ -1,0 +1,410 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import SplitFeature from '../../components/SplitFeature.astro';
+import TrustMetrics from '../../components/TrustMetrics.astro';
+import ImageCTA from '../../components/ImageCTA.astro';
+import TestimonialBlock from '../../components/TestimonialBlock.astro';
+---
+
+<Base
+  title="House Extensions Bath | Single & Double-Storey Extension Builders | Aspect Builds"
+  description="Extension builders in Bath. Single-storey rear extensions, double-storey, side-return, wraparound and garden rooms across Bath & BANES. Fixed quotes, full planning management."
+  preloadImage="/images/hero-medford-garden-extension.webp"
+  serviceSchema={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "House Extensions",
+    "name": "House Extensions Bath",
+    "description": "Single and double-storey rear extensions, side-return, wraparound and garden rooms across Bath and BANES. Fixed quotes, full planning management, clean sites.",
+    "provider": {
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Aspect Builds & Maintenance Ltd",
+      "url": "https://www.aspectbuilds.co.uk"
+    },
+    "areaServed": ["Bath", "Keynsham", "Bradford on Avon", "Chippenham", "Corsham", "Frome", "Box", "Batheaston", "Bathampton", "Bathford"],
+    "url": "https://www.aspectbuilds.co.uk/services/extensions/"
+  }}
+>
+
+  <Hero
+    image="/images/hero-medford-garden-extension.webp"
+    overlay="left"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: 'Extensions' }]}
+    eyebrow="Rear · Side-Return · Double-Storey · Garden Rooms"
+    heading="House Extensions<br>in Bath"
+    body="Add genuine living space with a properly built extension — open-plan kitchens, additional bedrooms, garden-connected living. Fixed-price contracts, clean sites, and full planning management across Bath &amp; BANES."
+    cta={{ label: 'Get a Free Extension Quote', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  <TrustMetrics metrics={[
+    { value: 'Fixed', label: 'Transparent Pricing' },
+    { value: '4.97', label: 'TrustATrader Rating' },
+    { value: '8–14', label: 'Weeks Typical Duration' },
+    { value: 'Insured', label: 'Fully Insured' },
+  ]} />
+
+  <SplitFeature
+    image="/images/medford-garden-extension-8.webp"
+    imageAlt="Extension build in progress — structural steelwork and blockwork"
+    eyebrow="Extension Builders"
+    heading="Extending in Bath Means Navigating Planning from Day One"
+    body="Bath is one of the most planning-constrained cities in England. Conservation areas, Article 4 Directions, listed building protections, and the UNESCO World Heritage designation all affect whether — and how — you can extend. We assess your planning position before you spend a penny on drawings, and we manage the full application if needed. No surprises at the planning stage."
+    dark={false}
+    list={[
+      'Planning position assessment before you commit',
+      'Permitted development checks — including conservation area constraints',
+      'Full planning applications managed end-to-end',
+      'Party Wall Notice served and awards obtained',
+    ]}
+    cta={{ label: 'Check Your Planning Options', href: '/contact' }}
+  />
+
+  {/* ── Extension Types ── */}
+  <section class="sub-services">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Extension Types"
+        heading="Five Extension Approaches.<br>One Fixed-Price Contract."
+        body="The right extension depends on your property, your plot, and what planning will allow. We advise on all options — not just the most profitable one."
+      />
+      <div class="sub-grid">
+
+        <div class="sub-card">
+          <div class="sub-card__num">01</div>
+          <h3 class="sub-card__title">Single-Storey Rear Extensions</h3>
+          <p class="sub-card__body">The most common extension type in Bath — opening up the rear of the property for open-plan kitchen and living space. Under permitted development, you can extend up to 6m (terraced/semi) or 8m (detached) without planning permission — unless Article 4 Directions or conservation area restrictions apply. We check first, always.</p>
+          <ul class="sub-card__list">
+            <li>Open-plan kitchen and living space</li>
+            <li>Permitted development up to 6m or 8m depth</li>
+            <li>Full-width glazing and bi-fold options</li>
+            <li>Level threshold for indoor-outdoor living</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">02</div>
+          <h3 class="sub-card__title">Double-Storey Extensions</h3>
+          <p class="sub-card__body">Double the space for less than double the cost — foundations and groundworks serve both floors, making the per-square-metre rate more efficient. Always requires planning permission, and in Bath, design and materials must respect the existing streetscape. We coordinate planning, structural engineering, and the full build under one contract.</p>
+          <ul class="sub-card__list">
+            <li>More cost-efficient per square metre than single-storey</li>
+            <li>Additional bedrooms and bathroom above</li>
+            <li>Always requires planning permission</li>
+            <li>Streetscape-sensitive design and material specification</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">03</div>
+          <h3 class="sub-card__title">Side-Return Extensions</h3>
+          <p class="sub-card__body">Many Bath terraces have an unused side passage between the house and the boundary — a side-return extension captures that space to widen the ground floor. Planning can be complex (party walls, proximity to neighbours, Rights of Light) but the space gain is significant, especially for narrow Victorian and Georgian terraces.</p>
+          <ul class="sub-card__list">
+            <li>Widens narrow terraced ground floors significantly</li>
+            <li>Party wall and Rights of Light considerations managed</li>
+            <li>Often combined with rear extension for maximum impact</li>
+            <li>Glazed roof options for natural light</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">04</div>
+          <h3 class="sub-card__title">Wraparound Extensions</h3>
+          <p class="sub-card__body">A side and rear extension combined — the most dramatic transformation possible for a terraced or semi-detached property. Always requires planning permission due to the scale, and the design must work with the existing property proportions. Our experience with BANES planning gives you the best chance of approval first time.</p>
+          <ul class="sub-card__list">
+            <li>Maximum ground-floor transformation</li>
+            <li>Always requires full planning permission</li>
+            <li>Design must respect existing property proportions</li>
+            <li>Structural steel and foundation coordination</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">05</div>
+          <h3 class="sub-card__title">Garden Rooms &amp; Orangeries</h3>
+          <p class="sub-card__body">A standalone or semi-connected garden structure — home office, studio, guest suite, or garden room. Often permitted development (subject to height and placement limits), garden rooms are the fastest route to additional space. We build them properly — insulated, heated, and finished to the same standard as the main house.</p>
+          <ul class="sub-card__list">
+            <li>Often permitted development — fastest route to space</li>
+            <li>Home office, studio, or guest accommodation</li>
+            <li>Insulated and heated to habitable standard</li>
+            <li>Foundations and drainage included</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* ── Bath Planning ── */}
+  <SplitFeature
+    image="/images/medford-garden-extension-14.webp"
+    imageAlt="Completed extension interior — open plan living space"
+    eyebrow="Planning in Bath"
+    heading="Conservation Areas, Article 4 &amp; Your Extension"
+    body="Bath's conservation area designations remove many permitted development rights that apply elsewhere in England. Article 4 Directions — covering much of central Bath, Widcombe, Lansdown, and surrounding villages — mean side extensions, dormers, cladding alterations, and even window replacements may need explicit planning permission. Listed buildings require Listed Building Consent for any extension. We navigate this every day."
+    dark={true}
+    reverse={true}
+    list={[
+      'Conservation area and Article 4 Direction checks as standard',
+      'Listed Building Consent for extensions to listed properties',
+      'Pre-application discussions with BANES planning officers',
+      'Party Wall Notice and award management for shared boundaries',
+    ]}
+    cta={{ label: 'Discuss Your Extension Plans', href: '/contact' }}
+  />
+
+  {/* ── Case Study ── */}
+  <section style="background:var(--stone);padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Recent Project"
+        heading="Medford Garden Extension — Open-Plan Living With Garden Connection"
+        body="A garden extension that opens the home to the outdoors — full-width glazing, seamless floor transition, and a connection to the garden that works whatever the weather."
+      />
+      <div class="case-study-grid">
+        <div class="case-study-images">
+          <img src="/images/medford-garden-extension-1.webp" alt="Extension exterior" width="400" height="300" loading="lazy" />
+          <img src="/images/medford-garden-extension-14.webp" alt="Extension interior" width="400" height="300" loading="lazy" />
+        </div>
+        <div class="case-study-detail">
+          <span class="rule--accent"></span>
+          <span class="t-label" style="color:var(--accent)">Garden Extension · Medford, Bath</span>
+          <h3 class="case-study-heading">Open-Plan Living Connected to the Garden</h3>
+          <p>The existing rear of the property was small and disconnected from the garden. The client wanted an open-plan living and dining space that genuinely brought the outside in — not just bi-folds on a box, but a considered extension where the garden felt like part of the room.</p>
+          <p>Full-width glazing with minimal frames for maximum sightlines. Level threshold between inside and out. Structural steelwork to open the rear wall. New foundations and insulated slab. Internally finished to move straight in.</p>
+          <a href="/projects/medford-garden-extension" class="btn btn--primary">View Full Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Areas We Cover ── */}
+  <section style="padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Coverage"
+        heading="Areas We Cover for Extensions"
+        body="We build extensions across Bath, BANES, and West Wiltshire. Our team understands local planning constraints, building types, and conservation area boundaries."
+      />
+      <div class="area-links">
+        <a href="/areas-covered/central-bath-districts">Central Bath & Districts</a>
+        <a href="/areas-covered/batheaston">Batheaston</a>
+        <a href="/areas-covered/bathampton">Bathampton</a>
+        <a href="/areas-covered/bathford">Bathford</a>
+        <a href="/areas-covered/bradford-on-avon">Bradford on Avon</a>
+        <a href="/areas-covered/corsham">Corsham</a>
+        <a href="/areas-covered/saltford-keynsham">Keynsham & Saltford</a>
+        <a href="/areas-covered/box">Box</a>
+        <a href="/areas-covered/chippenham">Chippenham</a>
+        <a href="/areas-covered/frome-radstock-midsomer-norton">Frome & Radstock</a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Related Services ── */}
+  <section style="background:var(--charcoal);padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Related Services"
+        heading="Also in Structural &amp; Scale Builds"
+        body="Extensions are part of our structural work. See our other specialisms."
+        dark={true}
+      />
+      <div class="related-links">
+        <a href="/services/loft-conversions">Loft Conversions</a>
+        <a href="/services/structural-builds">Structural Builds Overview</a>
+        <a href="/services/heritage-restoration">Heritage & Listed Building Work</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--stone);padding:var(--section-pad) 0">
+    <div class="container" style="max-width:48rem">
+      <TestimonialBlock
+        quote="Aspect did an amazing job painting my house. They were efficient, friendly, tidy and I would definitely use them again. Can't fault them."
+        name="Barbara"
+        role="Exterior Works · TrustATrader Verified"
+      />
+    </div>
+  </section>
+
+  <ImageCTA
+    heading="Ready to Extend?"
+    body="Arrange a free, no-obligation site visit. We will assess your property, check your planning position, and provide a fully itemised fixed-price quote."
+    cta={{ label: 'Get a Free Extension Quote', href: '/contact' }}
+    image="/images/hero-medford-garden-extension.webp"
+  />
+
+</Base>
+
+<style>
+  .sub-services {
+    padding: var(--section-pad) 0;
+    background: var(--stone);
+  }
+
+  .sub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .sub-card {
+    background: #fff;
+    padding: var(--space-xl);
+    border: 1px solid rgba(26, 35, 50, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .sub-card__num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.4;
+  }
+
+  .sub-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .sub-card__body {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .sub-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-top: 1px solid var(--stone);
+    padding-top: var(--space-m);
+  }
+
+  .sub-card__list li {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--chalk);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sub-card__list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .case-study-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+    align-items: start;
+  }
+
+  .case-study-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-s);
+  }
+
+  .case-study-images img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  .case-study-detail {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .case-study-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+    text-transform: uppercase;
+    color: var(--chalk);
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  .case-study-detail p {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .area-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-xl);
+  }
+
+  .area-links a {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--chalk);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(26, 35, 50, 0.12);
+    background: #fff;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .area-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .related-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-xl);
+  }
+
+  .related-links a {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .related-links a:hover {
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .sub-grid { grid-template-columns: 1fr; }
+    .case-study-grid { grid-template-columns: 1fr; }
+  }
+</style>

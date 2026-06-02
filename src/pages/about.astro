@@ -9,9 +9,9 @@ import TestimonialBlock from '../components/TestimonialBlock.astro';
 import ImageCTA from '../components/ImageCTA.astro';
 ---
 
-<Base title="About — Aspect Builds & Maintenance" preloadImage="/images/about-hero.webp">
+<Base title="About — Aspect Builds & Maintenance" preloadImage="/images/hero-chilcompton-rendering.webp">
   <Hero
-    image="/images/about-hero.webp"
+    image="/images/hero-chilcompton-rendering.webp"
     eyebrow="About Aspect Builds"
     heading="Built on Precision.<br>Delivered with Trust."
     body="We are a Bath-based construction and maintenance firm built on one principle: the work should speak for itself. No surprises, no shortcuts, no compromises on craft."
@@ -21,8 +21,8 @@ import ImageCTA from '../components/ImageCTA.astro';
 
   <!-- The Story -->
   <SplitFeature
-    image="/images/hero-home.webp"
-    imageAlt="Aspect construction site"
+    image="/images/hero-about-traditional.webp"
+    imageAlt="Merging traditional standards with modern engineering"
     heading="Merging Traditional Standards with Modern Engineering"
     body="Aspect Builds & Maintenance Ltd was founded to close the gap between the craftsmanship Bath's heritage architecture demands and the project management rigour that premium clients expect. We operate across Bath, Bradford on Avon, Keynsham, and the wider West Wiltshire region — managing extensions, loft conversions, period renovations, and new builds with the same exacting standard."
     dark={false}
@@ -30,17 +30,15 @@ import ImageCTA from '../components/ImageCTA.astro';
   />
 
   <!-- The Problem We Solve -->
-  <section id="approach" style="background:var(--charcoal);padding:var(--section-pad) 0">
-    <div class="container">
-      <SectionHeader
-        eyebrow="Why Choose Aspect Builds"
-        heading="Quality Building &amp; Property Maintenance You Can Trust"
-        body="Based in Bath, we deliver reliable building and maintenance work across the city and surrounding areas. No shortcuts, no surprises — just honest work from a team that cares about getting it right."
-        align="left"
-        dark={true}
-      />
-    </div>
-  </section>
+  <SplitFeature
+    image="/images/hero-home-loft.webp"
+    imageAlt="Roof stripped back during structural work in Bath"
+    eyebrow="Why Choose Aspect Builds"
+    heading="Quality Building &amp; Property Maintenance You Can Trust"
+    body="Based in Bath, we deliver reliable building and maintenance work across the city and surrounding areas. No shortcuts, no surprises — just honest work from a team that cares about getting it right."
+    dark={true}
+    cta={{ label: 'Our Values', href: '#values' }}
+  />
 
   <!-- Core Values -->
   <ValueCards
@@ -72,8 +70,8 @@ import ImageCTA from '../components/ImageCTA.astro';
 
   <!-- Craftsmanship Philosophy -->
   <SplitFeature
-    image="/images/hero-bath.webp"
-    imageAlt="Bath Georgian architecture"
+    image="/images/chilcompton-rendering-1.webp"
+    imageAlt="Bath stone exterior rendering work"
     heading="Respecting Bath Stone. Embracing Contemporary Design."
     body="Bath is a UNESCO World Heritage city. Every build here exists in conversation with centuries of architectural precedent. Our approach respects that context — traditional lime mortars, Bath stone repairs, and heritage joinery sit alongside structural steel, bifold doors, and smart spatial planning."
     dark={true}
@@ -95,10 +93,9 @@ import ImageCTA from '../components/ImageCTA.astro';
   <section style="padding:var(--section-pad) 0;background:var(--stone)">
     <div class="container" style="max-width:48rem">
       <TestimonialBlock
-        quote="From the first site visit to the final walk-through, Aspect communicated clearly, kept to the schedule, and delivered a finish that exceeded our expectations. The attention to Bath stone detail was remarkable."
-        name="Catherine M."
-        role="Homeowner"
-        location="Bear Flat, Bath"
+        quote="I have worked with Aspect on several projects. I have always found James approachable with Aspect working to a high standard."
+        name="Timothy"
+        role="Multiple Projects · TrustATrader Verified"
         dark={false}
       />
     </div>
@@ -106,8 +103,8 @@ import ImageCTA from '../components/ImageCTA.astro';
 
   <!-- Process Standard -->
   <SplitFeature
-    image="/images/hulkiokantabak-bath-5083699_1920.webp"
-    imageAlt="Bath historic streetscape"
+    image="/images/medford-garden-extension-4.webp"
+    imageAlt="Professional build oversight"
     heading="Professional Oversight. Every Stage."
     body="Every Aspect project follows a structured process: initial site appraisal, detailed specification and fixed quote, scheduled build phases with weekly progress updates, and a proper handover with a comprehensive snag list. Clean site, clear timeline, zero ambiguity."
     dark={false}
@@ -119,6 +116,6 @@ import ImageCTA from '../components/ImageCTA.astro';
     heading="Work With a Team That Respects Your Property"
     body="From the initial site appraisal to handing over an immaculate completed build, discover the difference of professional construction management."
     cta={{ label: 'Arrange a Consultation', href: '/contact' }}
-    image="/images/hero-batheaston-renovation.webp"
+    image="/images/hero-medford-garden-extension.webp"
   />
 </Base>

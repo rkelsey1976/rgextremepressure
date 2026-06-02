@@ -27,15 +27,15 @@ const marketAreas = [
 ];
 ---
 
-<Base title="Builders & Property Maintenance Across Bath & West Wiltshire | Aspect Builds" preloadImage="/images/hero-bath.webp">
+<Base title="Builders & Property Maintenance Across Bath & West Wiltshire | Aspect Builds" preloadImage="/images/hero-bath-landscaping.webp">
   {/* ── Hero ── */}
   <Hero
-    image="/images/hero-bath.webp"
+    image="/images/hero-bath-landscaping.webp"
     overlay="left"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Locations' }]}
     eyebrow="Across Bath & West Wiltshire"
     heading="Builders & Property Maintenance"
-    body="From historic city-centre restorations to modern family home extensions and complete garden transformations. Trusted, accredited, and fully insured local builders."
+    body="From historic city-centre restorations to modern family home extensions and complete garden transformations. Trusted, experienced, and fully insured local builders."
     cta={{ label: 'Arrange a Consultation', href: '/contact' }}
     minHeight="compact"
   />
@@ -51,15 +51,14 @@ const marketAreas = [
   />
 
   {/* ── About Our Coverage ── */}
-  <section style="padding:var(--section-pad) 0">
-    <div class="container" style="max-width:var(--text-max)">
-      <SectionHeader
-        eyebrow="Proudly Serving Bath, Somerset, and West Wiltshire"
-        heading="Heritage Craft. Modern Construction. Local Knowledge."
-        body="At Aspect Builds & Maintenance Ltd, we bridge the gap between traditional heritage building practices and modern construction excellence. Based locally, our team handles everything from complex period restorations in strict conservation zones to large-scale contemporary home extensions and landscaping. We understand the local housing stock, the regional planning guidelines, and the unique logistics required to deliver a clean, stress-free build."
-      />
-    </div>
-  </section>
+  <SplitFeature
+    image="/images/medford-garden-extension-8.webp"
+    imageAlt="Modern extension construction in Bath"
+    eyebrow="Proudly Serving Bath, Somerset, and West Wiltshire"
+    heading="Heritage Craft. Modern Construction. Local Knowledge."
+    body="At Aspect Builds & Maintenance Ltd, we bridge the gap between traditional heritage building practices and modern construction excellence. Based locally, our team handles everything from complex period restorations in strict conservation zones to large-scale contemporary home extensions and landscaping. We understand the local housing stock, the regional planning guidelines, and the unique logistics required to deliver a clean, stress-free build."
+    dark={false}
+  />
 
   {/* ── Regional Coverage Network ── */}
   <section style="padding:0 0 var(--section-pad);background:var(--stone)">
@@ -79,7 +78,7 @@ const marketAreas = [
 
   {/* ── Core Expertise ── */}
   <SplitFeature
-    image="/images/hero-home.webp"
+    image="/images/hero-medford-garden-extension.webp"
     imageAlt="Aspect construction project"
     heading="Our Core Expertise"
     body="Every Aspect project combines local knowledge with professional project management — fixed quotes, clean sites, and results that endure."
@@ -132,7 +131,7 @@ const marketAreas = [
     heading="Ready to Start Planning Your Next Project?"
     body="Whether you need minor property maintenance in Bathford or a major home extension in Keynsham, get in touch today to arrange a free, transparent site consultation."
     cta={{ label: 'Arrange a Consultation', href: '/contact' }}
-    image="/images/hero-bath.webp"
+    image="/images/hero-bath-landscaping.webp"
     imagePosition="center 60%"
   />
 </Base>

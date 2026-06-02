@@ -9,7 +9,7 @@
   <div class="cs-block">
     <span class="cs-rule"></span>
     <span class="t-label cs-label">Direct Line</span>
-    <a href="tel:+447498158747" class="cs-value">07498 158 747</a>
+    <a href="tel:+447552060932" class="cs-value">07552 060932</a>
     <p class="cs-note">Available Mon–Fri, 08:00–18:00. Weekend site visits by arrangement.</p>
   </div>
 
@@ -53,10 +53,29 @@
     <span class="cs-rule"></span>
     <span class="t-label cs-label">Credentials</span>
     <ul class="cs-creds">
-      <li>&#10003;&ensp;Fully Insured</li>
-      <li>&#10003;&ensp;FMB Member</li>
-      <li>&#10003;&ensp;Gas Safe Registered</li>
-      <li>&#10003;&ensp;NICEIC Approved</li>
+      <li>&#10003;&ensp;Registered Limited Company</li>
+      <li>&#10003;&ensp;£10M Public &amp; Employer's Liability</li>
+      <li>&#10003;&ensp;Fully Insured (AXA Verified)</li>
+    </ul>
+    <a
+      href="https://www.trustatrader.com/traders/aspect-builds-maintenance-ltd-interior-refurbishment-bath-south"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="cs-trustatrader"
+      aria-label="4.97 out of 5 from 12 reviews on TrustATrader"
+    >
+      <img src="/images/trustatrader-logo.svg" alt="TrustATrader Verified Member" width="64" height="64" loading="lazy" />
+      <span class="cs-trustatrader__text">
+        <strong>4.97 / 5</strong>
+        <span>12 verified reviews</span>
+      </span>
+    </a>
+    <ul class="cs-tt-checks">
+      <li>&#10003;&ensp;Identification checked</li>
+      <li>&#10003;&ensp;Company address verified</li>
+      <li>&#10003;&ensp;Customer references checked</li>
+      <li>&#10003;&ensp;Agreed to TrustATrader's high standards</li>
+      <li>&#10003;&ensp;Agreed to complaints procedure</li>
     </ul>
   </div>
 </aside>
@@ -153,6 +172,52 @@
   .cs-creds li {
     position: relative;
     padding-left: 0;
+  }
+
+  .cs-tt-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+    padding: 0.6rem 0.75rem;
+    background: rgba(26,35,50,0.04);
+    border-left: 2px solid var(--accent);
+    list-style: none;
+    margin: 0;
+  }
+
+  .cs-tt-checks li {
+    font-size: 0.75rem;
+    color: var(--concrete);
+    line-height: 1.4;
+  }
+
+  .cs-trustatrader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .cs-trustatrader:hover { opacity: 0.8; }
+
+  .cs-trustatrader__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .cs-trustatrader__text strong {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    color: var(--chalk);
+  }
+
+  .cs-trustatrader__text span {
+    font-size: 0.75rem;
+    color: var(--concrete);
   }
 
   @media (max-width: 768px) {

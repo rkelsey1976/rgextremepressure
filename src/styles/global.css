@@ -2,6 +2,7 @@
    ASPECT BUILDS — Global Design System
    ============================================ */
 
+
 :root {
   --charcoal: #2f3538;
   --navy: #0d1520;
@@ -225,11 +226,12 @@ ul, ol { list-style: none; }
 
 /* ── Over DARK hero: white logo, light links ── */
 body:has(.hero) .site-nav:not(.is-scrolled) .ab-logo__name { color: #fff; }
-body:has(.hero) .site-nav:not(.is-scrolled) .ab-logo__sub { color: rgba(255,255,255,.5); }
+body:has(.hero) .site-nav:not(.is-scrolled) .ab-logo__sub { color: rgba(255,255,255,.7); }
 body:has(.hero) .site-nav:not(.is-scrolled) .ab-logo__mark { color: var(--accent); }
 body:has(.hero) .site-nav:not(.is-scrolled) .nav-link { color: rgba(255,255,255,.65); }
 body:has(.hero) .site-nav:not(.is-scrolled) .nav-link:hover { color: #fff; }
 body:has(.hero) .site-nav:not(.is-scrolled) .nav-cta { color: #fff !important; border-color: rgba(255,255,255,.3) !important; }
+body:has(.hero) .site-nav:not(.is-scrolled) .nav-phone { color: #fff; }
 body:has(.hero) .site-nav:not(.is-scrolled) .nav-hamburger span { background: #fff; }
 
 /* ── Scrolled: solid dark bg, white text ── */
@@ -239,11 +241,12 @@ body:has(.hero) .site-nav:not(.is-scrolled) .nav-hamburger span { background: #f
   padding: 0.8rem 0;
 }
 .site-nav.is-scrolled .ab-logo__name { color: #fff; }
-.site-nav.is-scrolled .ab-logo__sub { color: rgba(255,255,255,.5); }
+.site-nav.is-scrolled .ab-logo__sub { color: rgba(255,255,255,.7); }
 .site-nav.is-scrolled .ab-logo__mark { color: var(--accent); }
 .site-nav.is-scrolled .nav-link { color: rgba(255,255,255,.65); }
 .site-nav.is-scrolled .nav-link:hover { color: #fff; }
 .site-nav.is-scrolled .nav-cta { color: #fff !important; border-color: rgba(255,255,255,.3) !important; }
+.site-nav.is-scrolled .nav-phone { color: #fff; }
 .site-nav.is-scrolled .nav-hamburger span { background: #fff; }
 
 /* ── Hamburger default (light page) ── */

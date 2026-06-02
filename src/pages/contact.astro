@@ -1,13 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+import TestimonialBlock from '../components/TestimonialBlock.astro';
 import ContactSidebar from '../components/forms/ContactSidebar.astro';
 import MainContactForm from '../components/forms/MainContactForm.astro';
 ---
 
-<Base title="Arrange a Consultation | Aspect Builds & Maintenance" preloadImage="/images/about-hero.webp">
+<Base title="Arrange a Consultation | Aspect Builds & Maintenance" preloadImage="/images/hero-bath-loft-extension.webp">
   <Hero
-    image="/images/about-hero.webp"
+    image="/images/hero-bath-loft-extension.webp"
     overlay="left"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
     eyebrow="Get in touch"
@@ -15,6 +16,18 @@ import MainContactForm from '../components/forms/MainContactForm.astro';
     body="Whether you're planning an extension, a loft conversion, or a full new build — we'd rather hear from you early. The sooner we're involved, the smoother the process."
     minHeight="compact"
   />
+
+  {/* ── Testimonial strip ── */}
+  <section style="background:var(--chalk);padding:var(--space-2xl) 0">
+    <div class="container" style="max-width:48rem">
+      <TestimonialBlock
+        quote="I couldn't recommend Aspect Builds highly enough. From the initial design to the final handover, the team was professional, communicative, and genuinely invested in getting the details right. Site was kept tidy, timeframes were clear, and any issues were handled quickly with no fuss."
+        name="Cole Hulbert"
+        role="Landscaping & Garden Build · TrustATrader Verified"
+        dark={true}
+      />
+    </div>
+  </section>
 
   {/* ── Contact Section: Sidebar + Form ── */}
   <section class="contact-section">

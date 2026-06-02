@@ -9,20 +9,50 @@ export interface ServicePillar {
   description: string;
   features: string[];
   image: string;
+  video?: string;
+  videoPoster?: string;
   href: string;
 }
 
 export const servicesData: ServicePillar[] = [
   {
+    id: 'loft',
+    title: 'Loft Conversions',
+    subtitle: 'Dormer, Velux, Hip-to-Gable & Mansard',
+    description: 'The most cost-effective way to add a bedroom, ensuite, or home office without losing garden space. Dormer, Velux, hip-to-gable, and mansard conversions — all managed under one fixed-price contract with full building regs compliance.',
+    features: [
+      'Dormer Conversions (Rear & Side)',
+      'Velux Rooflight Conversions',
+      'Hip-to-Gable & Mansard',
+      'Full Building Regs & Planning Management',
+    ],
+    image: '/images/hero-bath-loft-extension.webp',
+    href: '/services/loft-conversions',
+  },
+  {
+    id: 'extensions',
+    title: 'House Extensions',
+    subtitle: 'Single & Double-Storey, Side-Return, Garden Rooms',
+    description: 'Add genuine living space with a properly built extension — open-plan kitchens, additional bedrooms, garden-connected living. Fixed-price contracts and full planning management across Bath & BANES.',
+    features: [
+      'Single-Storey Rear Extensions',
+      'Double-Storey Extensions',
+      'Side-Return & Wraparound',
+      'Garden Rooms & Orangeries',
+    ],
+    image: '/images/hero-medford-garden-extension.webp',
+    href: '/services/extensions',
+  },
+  {
     id: 'structural',
     title: 'Structural & Scale Builds',
-    subtitle: 'Architectural Additions & Engineering Excellence',
-    description: 'Expand your property\'s footprint and market value with flawless structural additions. From single and double-storey extensions to complete turnkey new builds and complex conversions, we handle the entire process from groundworks to structural steel installations.',
+    subtitle: 'New Build, RSJs, Basement & Garage Conversions',
+    description: 'Full structural project delivery — new builds, RSJ installations, basement conversions, and garage transformations. Engineering precision, clean sites, and single-point project management.',
     features: [
-      'House Extensions (Single & Double-Storey)',
       'New Build Projects (Turnkey Delivery)',
-      'Loft & Basement Conversions',
       'Structural Steel & RSJ Installations',
+      'Basement & Garage Conversions',
+      'Complete Groundworks & Substructure',
     ],
     image: '/images/services/structural-builds.webp',
     href: '/services/structural-builds',
@@ -31,7 +61,7 @@ export const servicesData: ServicePillar[] = [
     id: 'heritage',
     title: 'Heritage & Restoration',
     subtitle: 'Preserving Period Character with Authentic Craftsmanship',
-    description: 'Specialized renovation care for Grade II listed buildings, traditional Bath stone properties, and conservation zone homes. We understand traditional building materials, replacing damaging modern patches with authentic, breathable materials to restore structural integrity.',
+    description: 'Specialized renovation care for Grade II listed buildings, traditional Bath stone properties, and conservation zone homes. Authentic, breathable materials to restore structural integrity.',
     features: [
       'Period Property Renovations',
       'Traditional Lime Mortar Repointing',
@@ -45,21 +75,21 @@ export const servicesData: ServicePillar[] = [
     id: 'interiors',
     title: 'Turnkey Interiors & Refurbishments',
     subtitle: 'High-Specification Internal Transformations',
-    description: 'Complete internal remodels executed with surgical precision. We open up restricted historical layouts into bright, contemporary spaces, installing premium kitchens, luxury bathrooms, and high-end joinery finishes.',
+    description: 'Complete internal remodels executed with surgical precision. Premium kitchens, luxury bathrooms, and high-end joinery finishes.',
     features: [
       'Full Property Refurbishments',
       'Bespoke Kitchen Design & Installation',
       'Luxury Bathrooms & Wetrooms',
       'Internal Wall Reconfigurations',
     ],
-    image: '/images/services/turnkey-interiors.webp',
+    image: '/images/medford-garden-extension-14.webp',
     href: '/services/interiors-refurbishments',
   },
   {
     id: 'property-care',
     title: 'Property Care & Landscaping',
     subtitle: 'Premium External Works & Ongoing Maintenance',
-    description: 'Protecting your investment inside and out. We combine master garden landscaping — specializing in structural retaining walls and premium paving — with a reliable, highly organized domestic maintenance and repair service.',
+    description: 'Protecting your investment inside and out. Master garden landscaping, structural retaining walls, and a reliable domestic maintenance and repair service.',
     features: [
       'Outdoor & Architectural Landscaping',
       'Structural Stone Retaining Walls',
@@ -67,6 +97,8 @@ export const servicesData: ServicePillar[] = [
       'Responsive Home Repairs & Roofing',
     ],
     image: '/images/services/property-care.webp',
+    video: '/images/bath-landscaping-video.mp4',
+    videoPoster: '/images/bath-landscaping-video-poster.webp',
     href: '/services/property-care',
   },
 ];

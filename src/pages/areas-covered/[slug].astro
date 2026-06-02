@@ -15,10 +15,10 @@ export async function getStaticPaths() {
 const { location } = Astro.props;
 ---
 
-<Base title={location.metaTitle} preloadImage="/images/hero-bath.webp">
+<Base title={location.metaTitle} preloadImage="/images/hero-bath-landscaping.webp">
   {/* ── Hero ── */}
   <Hero
-    image="/images/hero-bath.webp"
+    image="/images/hero-bath-landscaping.webp"
     overlay="left"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Locations', href: '/locations' }, { label: location.townName }]}
     eyebrow={location.heroEyebrow}
@@ -31,9 +31,9 @@ const { location } = Astro.props;
   {/* ── Trust Bar ── */}
   <section style="background:var(--charcoal);padding:var(--space-xl) 0">
     <div class="container" style="display:flex;justify-content:center;gap:var(--space-2xl);flex-wrap:wrap;text-align:center">
-      <div><span class="t-label" style="color:var(--accent);display:block">4.9 Rating</span><span style="color:rgba(255,255,255,.72);font-size:.88rem">Local Homeowners</span></div>
-      <div><span class="t-label" style="color:var(--accent);display:block">TrustATrader</span><span style="color:rgba(255,255,255,.72);font-size:.88rem">Certified & Verified</span></div>
-      <div><span class="t-label" style="color:var(--accent);display:block">&pound;5M+ Cover</span><span style="color:rgba(255,255,255,.72);font-size:.88rem">Fully Insured</span></div>
+      <div><span class="t-label" style="color:var(--accent);display:block">4.97 / 5</span><span style="color:rgba(255,255,255,.72);font-size:.88rem">12 Reviews</span></div>
+      <div><a href="https://www.trustatrader.com/traders/aspect-builds-maintenance-ltd-interior-refurbishment-bath-south" target="_blank" rel="noopener noreferrer" style="text-decoration:none"><span class="t-label" style="color:var(--accent);display:block">TrustATrader</span><span style="color:rgba(255,255,255,.72);font-size:.88rem">Verified Member</span></a></div>
+      <div><span class="t-label" style="color:var(--accent);display:block">&pound;10M+ Cover</span><span style="color:rgba(255,255,255,.72);font-size:.88rem">Fully Insured</span></div>
       <div><span class="t-label" style="color:var(--accent);display:block">Turnkey</span><span style="color:rgba(255,255,255,.72);font-size:.88rem">Professional Maintenance</span></div>
     </div>
   </section>
@@ -68,7 +68,7 @@ const { location } = Astro.props;
               ))}
             </ul>
             <div class="checklist-badge">
-              Fully Vetted &middot; Insured to &pound;5M &middot; Accredited Trades
+              Fully Vetted &middot; Insured to &pound;10M &middot; Fully Insured
             </div>
           </div>
         </div>
@@ -87,12 +87,49 @@ const { location } = Astro.props;
     </div>
   </section>
 
+  {/* ── Services in this area ── */}
+  <section style="padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow={`Our Services in ${location.townName}`}
+        heading={`What We Build in ${location.townName}`}
+        body="From structural extensions and loft conversions to heritage restoration and ongoing property care — one team, one point of contact."
+      />
+      <div class="area-services-grid">
+        <a href="/services/extensions" class="area-service-card">
+          <h3>Extensions</h3>
+          <p>Single &amp; double-storey rear extensions, side returns, wraparounds, and garden rooms.</p>
+        </a>
+        <a href="/services/loft-conversions" class="area-service-card">
+          <h3>Loft Conversions</h3>
+          <p>Dormer, Velux, hip-to-gable and mansard conversions with full building regs compliance.</p>
+        </a>
+        <a href="/services/heritage-restoration" class="area-service-card">
+          <h3>Heritage &amp; Restoration</h3>
+          <p>Bath stone restoration, lime repointing, listed building work, and conservation area repairs.</p>
+        </a>
+        <a href="/services/interiors-refurbishments" class="area-service-card">
+          <h3>Interiors &amp; Refurbishments</h3>
+          <p>Full refurbishments, kitchens, bathrooms, and internal layout reconfigurations.</p>
+        </a>
+        <a href="/services/property-care" class="area-service-card">
+          <h3>Property Care &amp; Landscaping</h3>
+          <p>Maintenance, repairs, external landscaping, retaining walls, and paving.</p>
+        </a>
+        <a href="/services/structural-builds" class="area-service-card">
+          <h3>Structural &amp; Scale Builds</h3>
+          <p>Full overview of our structural services — RSJs, new builds, basement conversions.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
   {/* ── CTA ── */}
   <ImageCTA
     heading={location.ctaHeading}
     body="Arrange an on-site evaluation with our build management team. Clear advice, strict structural assessment, and itemized transparent cost breakdowns."
     cta={{ label: 'Arrange a Consultation', href: '/contact' }}
-    image="/images/hero-bath.webp"
+    image="/images/hero-bath-landscaping.webp"
     imagePosition="center 60%"
   />
 </Base>
@@ -186,6 +223,52 @@ const { location } = Astro.props;
     color: var(--chalk);
     margin: 0;
     font-style: italic;
+  }
+
+  /* ── Area services grid ── */
+  .area-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-l);
+    margin-top: var(--space-xl);
+  }
+
+  .area-service-card {
+    background: #fff;
+    border: 1px solid rgba(26, 35, 50, 0.08);
+    padding: var(--space-l);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: border-color 0.2s;
+  }
+
+  .area-service-card:hover {
+    border-color: var(--accent);
+  }
+
+  .area-service-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .area-service-card p {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .area-services-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 960px) {

@@ -1,0 +1,196 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import ImageCTA from '../../components/ImageCTA.astro';
+
+const faqs = [
+  {
+    question: 'Do I need planning permission for an extension in Bath?',
+    answer: 'It depends. Smaller single-storey rear extensions often fall within permitted development rights — up to 6 metres for a terraced or semi-detached house, and 8 metres for a detached house. However, Bath has extensive conservation area designations and Article 4 Directions that remove many permitted development rights, particularly in central areas. If your property is listed, all alterations require Listed Building Consent regardless of size. We advise speaking to us before assuming your project is permitted development — a quick call can save months of complications.',
+  },
+  {
+    question: 'What is a party wall agreement and do I need one?',
+    answer: 'A party wall agreement (technically a Party Wall Award) is required under the Party Wall etc. Act 1996 when building work affects a shared wall, boundary, or excavations near a neighbouring foundation. If your extension involves a wall shared with next door, or you are digging foundations within 3 metres (and below the level) of a neighbour\'s property, you must serve a Party Wall Notice. We handle this process as part of our project management — serving notices, appointing surveyors if needed, and ensuring the award is in place before work begins.',
+  },
+  {
+    question: 'How long does a loft conversion take?',
+    answer: 'A straightforward Velux loft conversion typically takes 4–6 weeks. A dormer loft conversion is more complex and usually takes 8–12 weeks. Hip-to-gable conversions fall somewhere in between. The timeline extends if you need planning permission, a party wall agreement, or if structural reinforcements (like steel beams) are required. We give you a fixed timeline alongside your fixed quote so there are no surprises.',
+  },
+  {
+    question: 'Can I extend a listed building in Bath?',
+    answer: 'Yes — but the process is more involved. Any alteration to a listed building (inside or out) requires Listed Building Consent from BANES, in addition to any standard planning permission. Conservation officers will assess the impact of your proposed works on the building\'s special architectural or historic interest. Extensions to listed buildings must be demonstrably sympathetic — using appropriate materials, respecting original proportions, and avoiding the loss of historic fabric. We manage the full consent process, engage with conservation officers pre-application, and ensure your project meets heritage standards.',
+  },
+  {
+    question: 'How much does an extension cost in Bath?',
+    answer: 'Realistic budgets for 2026: a single-storey rear extension starts around £1,500–£2,000 per square metre for a basic specification, rising to £2,500+ per square metre for a high-end finish with premium materials. Double-storey extensions are more efficient per square metre. Heritage and listed building work commands a premium due to specialist materials and conservation compliance. We provide fully itemised fixed quotes — no day rates, no open-ended estimates.',
+  },
+  {
+    question: 'How much does a loft conversion cost in Bath?',
+    answer: 'Loft conversion costs vary significantly by type. A Velux conversion (minimal structural change) typically starts around £25,000–£35,000. A dormer loft conversion — the most common type in Bath — ranges from £35,000 to £55,000 depending on size and specification. Hip-to-gable and mansard conversions are more complex and typically cost £45,000–£70,000+. Listed building work or conservation area compliance adds to these figures. Every loft conversion we quote is fully itemised with no provisional sums.',
+  },
+  {
+    question: 'Do you do loft conversions in Bath?',
+    answer: 'Yes — loft conversions are one of our core services. We convert lofts across Bath, BANES, and West Wiltshire — including dormer, Velux, hip-to-gable, and mansard conversions. Bath\'s housing stock (Georgian terraces, Victorian semis, 1930s detached) each require different structural approaches. We assess your roof structure, staircase position, and party wall situation before recommending the right conversion type. Every conversion is managed under a single fixed-price contract with full building regs compliance.',
+  },
+  {
+    question: 'What is the difference between lime mortar and cement mortar?',
+    answer: 'Lime mortar is breathable — it allows moisture to move through masonry and evaporate, which is essential for older buildings with solid walls. Cement mortar is rigid and waterproof. When cement mortar is applied to Bath stone or other traditional masonry, it traps moisture inside the wall, leading to damp, stone decay, and spalling. For any pre-1930s property in Bath, we specify NHL (Natural Hydraulic Lime) mortars mixed to match the original substrate — this is not optional, it is a conservation standard.',
+  },
+  {
+    question: 'Do you charge for quotes?',
+    answer: 'No. Initial consultations and fixed-price quotes are completely free and without obligation. We visit your property, assess the scope, and return a fully itemised quote within a few working days. There is no pressure and no time limit on the quote.',
+  },
+  {
+    question: 'What areas do you cover?',
+    answer: 'We work across Bath, BANES, and into West Wiltshire — including Bradford on Avon, Corsham, Chippenham, Box, and surrounding villages. We also serve Batheaston, Bathampton, Bathford, Keynsham, Saltford, Frome, Radstock, and Midsomer Norton. If you are just outside these areas, give us a call — we are flexible for the right project.',
+  },
+  {
+    question: 'Are you insured?',
+    answer: 'Yes. We carry full public liability insurance and employer\'s liability insurance. Details are available on request and all documentation is provided before work begins on your property.',
+  },
+  {
+    question: 'How do I know if my property is in a conservation area?',
+    answer: 'BANES has an online conservation area map on their planning portal. Most of central Bath, Widcombe, Lansdown, and the surrounding villages have conservation area designations. If your property is within a conservation area, permitted development rights are often restricted by Article 4 Directions — meaning works that would normally not need planning permission (like replacing windows or adding a porch) may require consent. We check all of this as part of our initial assessment.',
+  },
+  {
+    question: 'Do you handle planning permission applications?',
+    answer: 'Yes — we manage the full planning process as part of our service. This includes pre-application advice from BANES, preparation and submission of planning applications, Listed Building Consent where required, building regulations submissions, and party wall notices. You do not need to appoint a separate planning consultant or architect for the application — we coordinate everything under one contract.',
+  },
+  {
+    question: 'Can you work on Bath stone and heritage properties?',
+    answer: 'Absolutely — heritage restoration is a core specialism. We work on Grade II listed buildings, Bath stone facades, lime-washed walls, sash windows, and traditional masonry across Bath and BANES. Our heritage work includes Bath stone restoration, lime mortar repointing, and sympathetic internal fabric repairs. We understand the conservation standards BANES requires and use authentic, breathable materials throughout.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer,
+    },
+  })),
+};
+---
+
+<Base
+  title="Frequently Asked Questions — Building in Bath"
+  description="Common questions about extensions, listed buildings, planning permission, party walls, and building costs in Bath. Answered by Aspect Builds & Maintenance."
+  preloadImage="/images/hero-bath-loft-extension.webp"
+>
+
+  <Hero
+    image="/images/hero-bath-loft-extension.webp"
+    overlay="left"
+    eyebrow="Common Questions"
+    heading="FAQ"
+    body="Planning permission, listed buildings, party walls, costs — straightforward answers to the questions Bath homeowners ask us most often."
+    minHeight="compact"
+  />
+
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-item__question">
+              <span>{faq.question}</span>
+              <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-item__answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ImageCTA
+    heading="Still Have Questions?"
+    body="Arrange a free, no-obligation site visit and we will talk through your project, address any concerns, and give you a clear picture of what is involved."
+    cta={{ label: 'Arrange a Consultation', href: '/contact' }}
+    image="/images/hero-medford-garden-extension.webp"
+  />
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+</Base>
+
+<style>
+  .faq-section {
+    padding: var(--section-pad) 0;
+  }
+
+  .faq-list {
+    max-width: var(--text-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .faq-item {
+    background: var(--stone);
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .faq-item[open] {
+    border-left-color: var(--accent);
+    background: #fff;
+  }
+
+  .faq-item__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    padding: var(--space-l) var(--space-xl);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--chalk);
+    list-style: none;
+    user-select: none;
+  }
+
+  .faq-item__question::-webkit-details-marker { display: none; }
+
+  .faq-item__icon {
+    flex-shrink: 0;
+    transition: transform 0.25s var(--ease-out-expo);
+    color: var(--accent);
+  }
+
+  .faq-item[open] .faq-item__icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-item__answer {
+    padding: 0 var(--space-xl) var(--space-l);
+  }
+
+  .faq-item__answer p {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .faq-item__question {
+      padding: var(--space-m) var(--space-l);
+    }
+    .faq-item__answer {
+      padding: 0 var(--space-l) var(--space-m);
+    }
+  }
+</style>

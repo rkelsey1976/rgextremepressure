@@ -7,14 +7,14 @@ import ImageCTA from '../components/ImageCTA.astro';
 import { servicesData } from '../data/services';
 ---
 
-<Base title="Aspect Builds — Built for Bath" preloadImage="/images/hero-home.webp">
+<Base title="Aspect Builds — Built for Bath" preloadImage="/images/hero-home-loft.webp">
   {/*
     ═══════════════════════════════════════
     A. DARK LUXURY HERO FOLD
     ═══════════════════════════════════════
   */}
   <Hero
-    image="/images/hero-home.webp"
+    image="/images/hero-home-loft.webp"
     overlay="left"
     eyebrow="Bath · BANES · Wiltshire"
     heading="We Build Bath's<br>Best Projects<span class='gold-period'>.</span>"
@@ -33,7 +33,7 @@ import { servicesData } from '../data/services';
     <div class="container">
       <SectionHeader
         eyebrow="What We Deliver"
-        heading="Four Pillars. One Standard."
+        heading="Six Services. One Standard."
         body="Every project — whether a heritage restoration in Bathwick or a modern extension in Keynsham — is governed by the same rigorous process."
       />
 
@@ -43,7 +43,18 @@ import { servicesData } from '../data/services';
           return (
             <div class:list={['pillar-row', isReversed && 'pillar-row--reversed']}>
               <div class="pillar-row__image">
-                <img src={pillar.image} alt={pillar.subtitle} loading="lazy" />
+                {pillar.video ? (
+                  <video
+                    src={pillar.video}
+                    poster={pillar.videoPoster || undefined}
+                    muted
+                    controls
+                    playsinline
+                    preload="metadata"
+                  ></video>
+                ) : (
+                  <img src={pillar.image} alt={pillar.subtitle} loading="lazy" />
+                )}
               </div>
               <div class="pillar-row__text">
                 <span class="t-label" style="color:var(--accent-dim)">{pillar.subtitle}</span>
@@ -124,26 +135,42 @@ import { servicesData } from '../data/services';
   <section style="background:var(--stone);padding:var(--section-pad) 0">
     <div class="container">
       <SectionHeader
-        eyebrow="Client Testimonials"
+        eyebrow="Verified Client Reviews"
         heading="What Our Clients Say"
       />
 
       <div class="testimonials-grid">
         <TestimonialBlock
-          quote="They delivered our extension on budget, on time, and with a level of site cleanliness we have never experienced with builders before. Absolutely first class."
-          name="Sarah M."
-          location="Central Bath"
+          quote="I couldn't recommend Aspect Builds highly enough for the landscaping and garden build they completed for us. From the initial design to the final handover, the team was professional, communicative, and genuinely invested in getting the details right. The quality of workmanship is excellent. Site was kept tidy, timeframes were clear, and any issues were handled quickly with no fuss."
+          name="Cole Hulbert"
+          role="Landscaping & Garden Build"
         />
         <TestimonialBlock
-          quote="The lime repointing on our Grade II property was handled with genuine knowledge and care. No shortcuts, no modern cement patches — exactly what a period home needs."
-          name="James & Rachel T."
-          location="Bradford on Avon"
+          quote="I have worked with Aspect on several projects. I have always found James approachable with Aspect working to a high standard."
+          name="Timothy"
+          role="Multiple Projects"
         />
         <TestimonialBlock
-          quote="From the first site visit to the final walkthrough, communication was clear and consistent. No surprises, no hidden costs. Just honest, professional building work."
-          name="David P."
-          location="Keynsham"
+          quote="Very happy with work. James Martin decorated 2 rooms for us. Very reliable and clean and tidy. Arrived on time every day and work was very satisfactory. Would highly recommend."
+          name="Amy"
+          role="Interior Decoration"
         />
+      </div>
+
+      <div style="display:flex;justify-content:center;margin-top:var(--space-xl)">
+        <a
+          href="https://www.trustatrader.com/traders/aspect-builds-maintenance-ltd-interior-refurbishment-bath-south"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="trustatrader-badge"
+          aria-label="4.97 out of 5 from 12 verified reviews on TrustATrader"
+        >
+          <img src="/images/trustatrader-logo.svg" alt="TrustATrader" width="72" height="72" loading="lazy" />
+          <span class="trustatrader-badge__text">
+            <strong>4.97 / 5</strong>
+            <span>12 verified reviews on TrustATrader</span>
+          </span>
+        </a>
       </div>
     </div>
   </section>
@@ -163,38 +190,38 @@ import { servicesData } from '../data/services';
 
       <div class="projects-showcase">
         {/* ── Featured hero project (large, left) ── */}
-        <a href="/projects/georgian-townhouse-bath" class="project-card project-card--featured">
+        <a href="/projects/chilcompton-rendering-decoration" class="project-card project-card--featured">
           <div class="project-card__image">
-            <img src="/images/georgian-town-houses-in-lansdown-road-bath-taken-in-bath-somerset-uk-on-29-december-2016-PR68NG.webp" alt="Georgian Townhouse — full period restoration" loading="lazy" />
+            <img src="/images/hero-chilcompton-rendering.webp" alt="Chilcompton Rendering & Decoration" width="800" height="600" loading="lazy" />
           </div>
           <div class="project-card__overlay">
             <span class="t-label" style="color:var(--accent)">Heritage</span>
-            <h3 class="project-card__title">Georgian Townhouse</h3>
-            <p class="project-card__body">Full period restoration of a Grade II listed Bath townhouse — stone repointing, sash windows, internal fabric repair.</p>
+            <h3 class="project-card__title">Chilcompton Rendering</h3>
+            <p class="project-card__body">Exterior rendering and decoration — transforming a tired facade into a crisp, weatherproof finish.</p>
             <span class="project-card__cta">View project</span>
           </div>
         </a>
 
         {/* ── Two stacked side projects (right) ── */}
         <div class="project-card__side">
-          <a href="/projects/contemporary-extension-keynsham" class="project-card project-card--small">
+          <a href="/projects/medford-garden-extension" class="project-card project-card--small">
             <div class="project-card__image">
-              <img src="/images/josh-olalde-X1P1_EDNnok-unsplash.webp" alt="Contemporary Extension" loading="lazy" />
+              <img src="/images/hero-medford-garden-extension.webp" alt="Garden Extension" width="600" height="450" loading="lazy" />
             </div>
             <div class="project-card__content">
               <span class="t-label" style="color:var(--accent-dim);font-size:0.65rem">Extensions</span>
-              <h3 class="project-card__title-sm">Contemporary Extension</h3>
-              <p class="project-card__body-sm">Open-plan rear extension and kitchen remodel for a growing family.</p>
+              <h3 class="project-card__title-sm">Medford Garden Extension</h3>
+              <p class="project-card__body-sm">Open-plan living with full-width glazing and seamless garden connection.</p>
             </div>
           </a>
-          <a href="/projects/open-plan-kitchen-saltford" class="project-card project-card--small">
+          <a href="/projects/frome-garage-conversion" class="project-card project-card--small">
             <div class="project-card__image">
-              <img src="/images/daniel-mccullough-HtBlQdxfG9k-unsplash.webp" alt="Open-Plan Kitchen" loading="lazy" />
+              <img src="/images/hero-frome-garage-conversion.webp" alt="Garage Conversion" width="600" height="450" loading="lazy" />
             </div>
             <div class="project-card__content">
-              <span class="t-label" style="color:var(--accent-dim);font-size:0.65rem">Interiors</span>
-              <h3 class="project-card__title-sm">Open-Plan Kitchen</h3>
-              <p class="project-card__body-sm">Full kitchen and living space transformation with structural knock-through.</p>
+              <span class="t-label" style="color:var(--accent-dim);font-size:0.65rem">Conversions</span>
+              <h3 class="project-card__title-sm">Frome Garage Conversion</h3>
+              <p class="project-card__body-sm">Unused garage transformed into warm, habitable living space.</p>
             </div>
           </a>
         </div>
@@ -216,8 +243,49 @@ import { servicesData } from '../data/services';
     heading="Ready to Start Your Project?"
     body="Get a fixed, transparent quote from a local team that treats your home like their own."
     cta={{ label: 'Arrange a Consultation', href: '/contact' }}
-    image="/images/hero-home.webp"
+    image="/images/hero-medford-garden-extension.webp"
   />
+
+  {/* ── Review schema — only on this page where reviews are displayed ── */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Aspect Builds & Maintenance Ltd",
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": { "@type": "Person", "name": "Cole Hulbert" },
+        "reviewBody": "I couldn't recommend Aspect Builds highly enough for the landscaping and garden build they completed for us. From the initial design to the final handover, the team was professional, communicative, and genuinely invested in getting the details right. The quality of workmanship is excellent. Site was kept tidy, timeframes were clear, and any issues were handled quickly with no fuss.",
+        "datePublished": "2026-02-16",
+        "publisher": { "@type": "Organization", "name": "TrustATrader" }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": { "@type": "Person", "name": "Timothy" },
+        "reviewBody": "I have worked with Aspect on several projects. I have always found James approachable with Aspect working to a high standard.",
+        "datePublished": "2026-02-16",
+        "publisher": { "@type": "Organization", "name": "TrustATrader" }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": { "@type": "Person", "name": "Amy" },
+        "reviewBody": "Very happy with work. James Martin decorated 2 rooms for us. Very reliable and clean and tidy. Arrived on time every day and work was very satisfactory. Would highly recommend.",
+        "datePublished": "2026-03-06",
+        "publisher": { "@type": "Organization", "name": "TrustATrader" }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": { "@type": "Person", "name": "Barbara" },
+        "reviewBody": "Aspect did an amazing job painting my house. They were efficient, friendly, tidy and I would definitely use them again. Can't fault them.",
+        "datePublished": "2026-06-01",
+        "publisher": { "@type": "Organization", "name": "TrustATrader" }
+      }
+    ]
+  })} />
 </Base>
 
 <style>
@@ -260,14 +328,16 @@ import { servicesData } from '../data/services';
     background: var(--stone);
   }
 
-  .pillar-row__image img {
+  .pillar-row__image img,
+  .pillar-row__image video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s var(--ease-out-expo);
   }
 
-  .pillar-row:hover .pillar-row__image img {
+  .pillar-row:hover .pillar-row__image img,
+  .pillar-row:hover .pillar-row__image video {
     transform: scale(1.03);
   }
 
@@ -392,6 +462,34 @@ import { servicesData } from '../data/services';
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-2xl);
     margin-top: var(--space-2xl);
+  }
+
+  .trustatrader-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .trustatrader-badge:hover { opacity: 0.8; }
+
+  .trustatrader-badge__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .trustatrader-badge__text strong {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+    color: var(--chalk);
+  }
+
+  .trustatrader-badge__text span {
+    font-size: 0.8rem;
+    color: var(--concrete);
   }
 
   /* ── Project Showcase ── */

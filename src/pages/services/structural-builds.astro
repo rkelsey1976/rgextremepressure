@@ -5,15 +5,30 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import SplitFeature from '../../components/SplitFeature.astro';
 import TrustMetrics from '../../components/TrustMetrics.astro';
 import ImageCTA from '../../components/ImageCTA.astro';
+import TestimonialBlock from '../../components/TestimonialBlock.astro';
 ---
 
 <Base
   title="House Extensions, Loft Conversions & New Builds Bath | Aspect Builds"
   description="Structural extensions, loft conversions, basement conversions and new builds across Bath & BANES. Fixed-price quotes, clean sites, full project management."
-  preloadImage="/images/hero-larkhall-extension.webp"
+  preloadImage="/images/hero-medford-garden-extension.webp"
+  serviceSchema={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Structural Building",
+    "name": "Structural & Scale Builds Bath",
+    "description": "New build projects, structural steel and RSJ installations, basement and garage conversions, and complete groundworks across Bath and BANES.",
+    "provider": {
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Aspect Builds & Maintenance Ltd",
+      "url": "https://www.aspectbuilds.co.uk"
+    },
+    "areaServed": ["Bath", "Keynsham", "Bradford on Avon", "Chippenham", "Corsham", "Frome", "Box", "Batheaston", "Bathampton", "Bathford"],
+    "url": "https://www.aspectbuilds.co.uk/services/structural-builds/"
+  }}
 >
   <Hero
-    image="/images/hero-larkhall-extension.webp"
+    image="/images/hero-medford-garden-extension.webp"
     overlay="left"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: 'Structural & Scale Builds' }]}
     eyebrow="Extensions · Conversions · New Build"
@@ -108,7 +123,7 @@ import ImageCTA from '../../components/ImageCTA.astro';
   </section>
 
   <SplitFeature
-    image="/images/hero-bath.webp"
+    image="/images/hero-bath-loft-extension.webp"
     imageAlt="Bath Georgian terrace — extensions and planning"
     eyebrow="Planning in Bath"
     heading="Conservation Areas, Listed Buildings &amp; Permitted Development"
@@ -123,6 +138,39 @@ import ImageCTA from '../../components/ImageCTA.astro';
     ]}
     cta={{ label: 'Arrange a Site Appraisal', href: '/contact' }}
   />
+
+  <section style="background:var(--stone);padding:var(--section-pad) 0">
+    <div class="container" style="max-width:48rem">
+      <TestimonialBlock
+        quote="I have worked with Aspect on several projects. I have always found James approachable with Aspect working to a high standard."
+        name="Timothy"
+        role="Multiple Projects · TrustATrader"
+      />
+    </div>
+  </section>
+
+  {/* ── Areas We Cover ── */}
+  <section style="padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Coverage"
+        heading="Structural Builds Across Bath &amp; BANES"
+        body="We deliver structural projects throughout Bath, BANES, and West Wiltshire. Our team understands local planning constraints, party wall requirements, and building control expectations."
+      />
+      <div class="area-links">
+        <a href="/areas-covered/central-bath-districts">Central Bath & Districts</a>
+        <a href="/areas-covered/batheaston">Batheaston</a>
+        <a href="/areas-covered/bathampton">Bathampton</a>
+        <a href="/areas-covered/bathford">Bathford</a>
+        <a href="/areas-covered/bradford-on-avon">Bradford on Avon</a>
+        <a href="/areas-covered/corsham">Corsham</a>
+        <a href="/areas-covered/saltford-keynsham">Keynsham & Saltford</a>
+        <a href="/areas-covered/box">Box</a>
+        <a href="/areas-covered/chippenham">Chippenham</a>
+        <a href="/areas-covered/frome-radstock-midsomer-norton">Frome & Radstock</a>
+      </div>
+    </div>
+  </section>
 
   <ImageCTA
     heading="Ready to Extend, Convert, or Build?"
@@ -204,6 +252,30 @@ import ImageCTA from '../../components/ImageCTA.astro';
     left: 0;
     color: var(--accent);
     font-weight: 700;
+  }
+
+  .area-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-xl);
+  }
+
+  .area-links a {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--chalk);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(26, 35, 50, 0.12);
+    background: #fff;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .area-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   @media (max-width: 768px) {

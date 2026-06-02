@@ -1,0 +1,217 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+const ogImage = post.data.image || '/images/hero-bath-loft-extension.webp';
+---
+
+<Base
+  title={post.data.title}
+  description={post.data.description}
+  ogImage={ogImage}
+  preloadImage={post.data.image}
+>
+
+  {/* Article schema */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.data.title,
+    "description": post.data.description,
+    "datePublished": post.data.pubDate.toISOString(),
+    "author": {
+      "@type": "Person",
+      "name": post.data.author,
+      "jobTitle": "Managing Director",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Aspect Builds & Maintenance Ltd",
+        "url": "https://www.aspectbuilds.co.uk"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Aspect Builds & Maintenance Ltd",
+      "url": "https://www.aspectbuilds.co.uk"
+    },
+    "image": ogImage ? `https://www.aspectbuilds.co.uk${ogImage}` : undefined,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://www.aspectbuilds.co.uk/blog/${post.id}`
+    }
+  })} />
+
+  <Hero
+    image={post.data.image || '/images/hero-bath-loft-extension.webp'}
+    overlay="left"
+    minHeight="compact"
+    breadcrumb={[{ label: 'Blog', href: '/blog' }, { label: post.data.category }]}
+    eyebrow={post.data.category}
+    heading={post.data.title}
+    body={post.data.description}
+    meta={[
+      { label: 'By', value: `${post.data.author} · Managing Director` },
+      { label: 'Published', value: formatDate(post.data.pubDate) },
+    ]}
+  />
+
+  {/* ── Article body ── */}
+  <section class="post-body-section">
+    <div class="container">
+      <div class="post-layout">
+        <article class="post-content prose">
+          <Content />
+        </article>
+
+        {/* Sidebar */}
+        <aside class="post-sidebar">
+          <div class="post-sidebar__card">
+            <span class="post-sidebar__rule"></span>
+            <span class="t-label post-sidebar__label">Get a Quote</span>
+            <p class="post-sidebar__body">Planning a project in Bath? We provide fixed-price quotes with no hidden costs.</p>
+            <a href="/contact" class="post-sidebar__cta">Arrange a consultation →</a>
+          </div>
+
+          {post.data.serviceUrl && (
+            <div class="post-sidebar__card post-sidebar__card--service">
+              <span class="post-sidebar__rule"></span>
+              <span class="t-label post-sidebar__label">Related Service</span>
+              <p class="post-sidebar__body">{post.data.service}</p>
+              <a href={post.data.serviceUrl} class="post-sidebar__cta">View service →</a>
+            </div>
+          )}
+
+          <div class="post-sidebar__trust">
+            <a
+              href="https://www.trustatrader.com/traders/aspect-builds-maintenance-ltd-interior-refurbishment-bath-south"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="post-sidebar__tt"
+            >
+              <img src="/images/trustatrader-logo.svg" alt="TrustATrader Verified" width="52" height="52" loading="lazy" />
+              <span>
+                <strong>4.97 / 5</strong>
+                <span>12 verified reviews</span>
+              </span>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  {/* ── CTA strip ── */}
+  <section class="post-cta">
+    <div class="container">
+      <div class="post-cta__inner">
+        <div>
+          <h2 class="post-cta__heading">Ready to discuss your project?</h2>
+          <p class="post-cta__body">Get a free, no-obligation site visit from James and a fully itemised fixed-price quote.</p>
+        </div>
+        <a href="/contact" class="post-cta__btn">Arrange a Consultation →</a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  /* ── Body ── */
+  .post-body-section {
+    padding: var(--section-pad) 0;
+    background: #fff;
+  }
+
+  .post-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  /* ── Prose ── */
+  .prose { font-size: 1.05rem; line-height: 1.8; color: var(--chalk); }
+  .prose h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 1.9rem); text-transform: uppercase; letter-spacing: 0.02em; color: var(--chalk); margin: 2.5rem 0 1rem; }
+  .prose h3 { font-family: var(--font-display); font-size: clamp(1.1rem, 1.8vw, 1.4rem); text-transform: uppercase; letter-spacing: 0.02em; color: var(--chalk); margin: 2rem 0 0.75rem; }
+  .prose p { margin: 0 0 1.3rem; }
+  .prose ul, .prose ol { margin: 0 0 1.3rem 1.4rem; }
+  .prose li { margin-bottom: 0.4rem; }
+  .prose strong { font-weight: 600; color: var(--chalk); }
+  .prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .prose a:hover { color: var(--accentD, #8A6840); }
+  .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  .prose th { background: var(--chalk); color: #fff; padding: 0.6rem 0.9rem; text-align: left; font-family: var(--font-display); letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.78rem; }
+  .prose td { padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--stone); color: var(--concrete); }
+  .prose tr:last-child td { border-bottom: none; }
+
+  /* ── Sidebar ── */
+  .post-sidebar { display: flex; flex-direction: column; gap: var(--space-l); position: sticky; top: 5rem; }
+
+  .post-sidebar__card {
+    display: flex; flex-direction: column; gap: 0.6rem;
+    padding: var(--space-l);
+    background: var(--stone);
+  }
+
+  .post-sidebar__card--service { background: var(--chalk); }
+  .post-sidebar__card--service .post-sidebar__label { color: var(--accent); }
+  .post-sidebar__card--service .post-sidebar__body { color: rgba(255,255,255,0.65); }
+
+  .post-sidebar__rule { display: block; width: 28px; height: 2px; background: var(--accent); }
+  .post-sidebar__label { color: var(--accent); }
+  .post-sidebar__body { font-size: 0.88rem; line-height: 1.6; color: var(--concrete); margin: 0; }
+  .post-sidebar__cta { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; transition: letter-spacing 0.2s; }
+  .post-sidebar__cta:hover { letter-spacing: 0.16em; }
+
+  .post-sidebar__trust { padding: var(--space-m); border: 1px solid var(--stone); }
+  .post-sidebar__tt { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+  .post-sidebar__tt span { display: flex; flex-direction: column; gap: 0.1rem; }
+  .post-sidebar__tt strong { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.04em; color: var(--chalk); }
+  .post-sidebar__tt span span { font-size: 0.7rem; color: var(--concrete); }
+
+  /* ── CTA strip ── */
+  .post-cta { background: var(--chalk); padding: var(--space-2xl) 0; }
+
+  .post-cta__inner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: var(--space-xl); flex-wrap: wrap;
+  }
+
+  .post-cta__heading {
+    font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem);
+    text-transform: uppercase; letter-spacing: 0.02em; color: #fff; margin: 0 0 0.5rem;
+  }
+
+  .post-cta__body { font-size: 0.95rem; color: rgba(255,255,255,0.6); margin: 0; }
+
+  .post-cta__btn {
+    flex-shrink: 0;
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+    color: #fff; background: var(--accent); text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .post-cta__btn:hover { background: var(--accentD, #8A6840); }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .post-layout { grid-template-columns: 1fr; }
+    .post-sidebar { position: static; }
+  }
+</style>

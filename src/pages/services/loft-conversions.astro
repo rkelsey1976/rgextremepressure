@@ -1,0 +1,483 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import SplitFeature from '../../components/SplitFeature.astro';
+import TrustMetrics from '../../components/TrustMetrics.astro';
+import ImageCTA from '../../components/ImageCTA.astro';
+import TestimonialBlock from '../../components/TestimonialBlock.astro';
+---
+
+<Base
+  title="Loft Conversions Bath | Dormer, Velux & Hip-to-Gable Specialists | Aspect Builds"
+  description="Loft conversion specialists in Bath. Dormer, Velux, hip-to-gable and mansard conversions across Bath & BANES. Fixed quotes, clean sites, full building regs management."
+  preloadImage="/images/hero-bath-loft-extension.webp"
+  serviceSchema={{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Loft Conversions",
+    "name": "Loft Conversions Bath",
+    "description": "Dormer, Velux, hip-to-gable and mansard loft conversions across Bath and BANES. Fixed-price quotes, clean sites, full building regs management, and party wall compliance.",
+    "provider": {
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Aspect Builds & Maintenance Ltd",
+      "url": "https://www.aspectbuilds.co.uk"
+    },
+    "areaServed": ["Bath", "Keynsham", "Bradford on Avon", "Chippenham", "Corsham", "Frome", "Box", "Batheaston", "Bathampton", "Bathford"],
+    "url": "https://www.aspectbuilds.co.uk/services/loft-conversions/"
+  }}
+>
+
+  <Hero
+    image="/images/hero-bath-loft-extension.webp"
+    overlay="left"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: 'Loft Conversions' }]}
+    eyebrow="Dormer · Velux · Hip-to-Gable · Mansard"
+    heading="Loft Conversions<br>in Bath"
+    body="The most cost-effective way to add a bedroom, ensuite, or home office without losing a metre of garden. We convert lofts across Bath &amp; BANES with fixed-price quotes, clean sites, and building regs compliance built in."
+    cta={{ label: 'Get a Free Loft Assessment', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  <TrustMetrics metrics={[
+    { value: 'Fixed', label: 'Transparent Pricing' },
+    { value: '4.97', label: 'TrustATrader Rating' },
+    { value: '6–12', label: 'Weeks Typical Duration' },
+    { value: 'Clean', label: 'Respect for Your Home' },
+  ]} />
+
+  <SplitFeature
+    image="/images/bath-loft-extension-6.webp"
+    imageAlt="Loft conversion structural work — exposed beams and new floor joists"
+    eyebrow="Loft Conversion Specialists"
+    heading="Bath Roofs Demand Specialist Conversion Knowledge"
+    body="Bath's housing stock — Georgian terraces with timber-purlin roofs, Victorian semis with hipped ends, 1930sdetached with steep pitches — each requires a different conversion approach. Getting the structural assessment wrong on a Bath terrace (party walls, shared chimneys, fire compartmentation) doesn't just cost money — it can stop the project entirely. We survey your roof structure, staircase options, and party wall position before committing to a conversion type."
+    dark={false}
+    list={[
+      'Structural survey and roof assessment before any quote',
+      'Party wall positions mapped and Notice served early',
+      'Staircase design that meets building regs without sacrificing the floor below',
+      'Building control sign-off managed as standard — no extra coordination needed',
+    ]}
+    cta={{ label: 'Book a Loft Survey', href: '/contact' }}
+  />
+
+  {/* ── Conversion Types ── */}
+  <section class="sub-services">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Conversion Types"
+        heading="Four Loft Conversion Approaches.<br>One Fixed-Price Contract."
+        body="The right conversion type depends on your roof structure, your budget, and what building control will accept. We advise on all four — not just the most expensive one."
+      />
+      <div class="sub-grid">
+
+        <div class="sub-card">
+          <div class="sub-card__num">01</div>
+          <h3 class="sub-card__title">Dormer Conversions</h3>
+          <p class="sub-card__body">A dormer extends the roof vertically, creating full standing height and genuine floor space — the most common loft conversion in Bath because it transforms the space most dramatically. Rear dormers are generally acceptable under permitted development (subject to conservation area checks). Side dormers on terraced properties require careful party wall management.</p>
+          <ul class="sub-card__list">
+            <li>Full standing height and usable floor area</li>
+            <li>Rear dormer — most planning-friendly option</li>
+            <li>Side dormer for hipped-roof properties</li>
+            <li>L-shaped dormer for extended terraces</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">02</div>
+          <h3 class="sub-card__title">Velux Rooflight Conversions</h3>
+          <p class="sub-card__body">The simplest conversion type — roof structure stays intact, rooflights are fitted between existing rafters, and the interior is insulated and finished. Minimal structural change means faster programme times, lower cost, and less planning risk. Best suited to lofts with generous existing head height (2.2m+ at the ridge).</p>
+          <ul class="sub-card__list">
+            <li>Fastest programme — typically 4–6 weeks</li>
+            <li>Lowest cost conversion option</li>
+            <li>Minimal external alteration — conservation-friendly</li>
+            <li>Requires adequate existing head height at ridge</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">03</div>
+          <h3 class="sub-card__title">Hip-to-Gable Conversions</h3>
+          <p class="sub-card__body">For properties with hipped roofs (sloping at the side), a hip-to-gable conversion replaces the sloping section with a vertical gable wall — significantly increasing internal volume. Common on 1930s semi-detached and detached houses in Keynsham, Saltford, and suburban Bath. Often combined with a rear dormer for maximum space.</p>
+          <ul class="sub-card__list">
+            <li>Maximum volume gain for hipped-roof properties</li>
+            <li>Often combined with rear dormer extension</li>
+            <li>Works best on semi-detached and detached houses</li>
+            <li>Requires structural ridge beam and gable wall construction</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-card__num">04</div>
+          <h3 class="sub-card__title">Mansard Conversions</h3>
+          <p class="sub-card__body">The most structurally complex conversion — creating a flat roof with a steeply sloped front face. Mansards offer the greatest internal volume but always require planning permission and are most commonly approved in conservation areas where a traditional slate mansard matches the existing streetscape. Our experience with BANES planning makes the difference between approval and refusal.</p>
+          <ul class="sub-card__list">
+            <li>Maximum internal volume of any conversion type</li>
+            <li>Always requires planning permission</li>
+            <li>Conservation area appropriate — slate finish matches period streetscape</li>
+            <li>Specialist structural and waterproofing specification</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* ── Bath Planning Context ── */}
+  <SplitFeature
+    image="/images/bath-loft-extension-5.webp"
+    imageAlt="Completed loft conversion interior in Bath"
+    eyebrow="Planning in Bath"
+    heading="Conservation Areas Change the Rules for Loft Conversions"
+    body="Much of Bath falls within conservation areas with Article 4 Directions — meaning permitted development rights for dormers and roof alterations may be removed. In Central Bath, a dormer that would be lawful in Keynsham may require a full planning application. Listed buildings need Listed Building Consent for any loft work, including rooflight installations. We check every constraint before you commit, and we manage the full application if planning is required."
+    dark={true}
+    reverse={true}
+    list={[
+      'Conservation area and Article 4 checks before you commit',
+      'Listed Building Consent applications for period properties',
+      'BANES pre-application advice as standard',
+      'Party Wall Notice served early to avoid programme delays',
+    ]}
+    cta={{ label: 'Check Your Planning Position', href: '/contact' }}
+  />
+
+  {/* ── What's Involved ── */}
+  <section class="process-section">
+    <div class="container">
+      <SectionHeader
+        eyebrow="The Process"
+        heading="What a Loft Conversion Actually Involves"
+        body="Every conversion follows the same structural and regulatory path. Here is what happens, in order."
+      />
+      <div class="process-grid">
+        <div class="process-step">
+          <span class="process-step__num">1</span>
+          <h3 class="process-step__title">Structural Survey</h3>
+          <p class="process-step__body">We measure the ridge height, assess the existing joists and purlins, check party wall positions, and confirm which conversion types are structurally viable. No guesswork — everything is measured and specified before the quote.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">2</span>
+          <h3 class="process-step__title">Staircase Design</h3>
+          <p class="process-step__body">The staircase is the most constrained element of any loft conversion — it must meet building regs (2m headroom, maximum pitch, landings) without eating the bedroom or landing below. We design the staircase position early because it determines the entire floor layout.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">3</span>
+          <h3 class="process-step__title">Structural Works</h3>
+          <p class="process-step__body">New floor joists, ridge beams, dormer framing, or gable wall construction depending on conversion type. Steel beams are fabricated to spec, hoisted into position, and signed off by building control before any internal work begins.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">4</span>
+          <h3 class="process-step__title">Weatherproofing &amp; Insulation</h3>
+          <p class="process-step__body">Roof covering, dormer cheeks, flashings, and full insulation to current building regs (minimum U-value 0.18 W/m²K). This stage is critical — weathertight before first-fix, insulated before plasterboard.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">5</span>
+          <h3 class="process-step__title">First &amp; Second Fix</h3>
+          <p class="process-step__body">Plumbing and electrics first-fix, then plasterboard and plastering. Second fix includes doors, skirting, fittings, and final connections. Building control inspects at key stages — we manage all inspection bookings.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">6</span>
+          <h3 class="process-step__title">Completion &amp; Sign-Off</h3>
+          <p class="process-step__body">Final building control inspection, completion certificate issued, and a walk-through with you to review every detail. Any snags are dealt with immediately. You get a handover pack including all certificates and material specifications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Case Study ── */}
+  <section style="background:var(--stone);padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Recent Project"
+        heading="Bath Loft Extension — Four Rooms From an Unused Roof"
+        body="A full top-floor conversion delivering four rooms, an ensuite, and two Juliet balconies from an existing Bath terrace footprint."
+      />
+      <div class="case-study-grid">
+        <div class="case-study-images">
+          <img src="/images/bath-loft-extension-6.webp" alt="Loft structural work" width="400" height="300" loading="lazy" />
+          <img src="/images/bath-loft-extension-11.webp" alt="Completed loft interior" width="400" height="300" loading="lazy" />
+        </div>
+        <div class="case-study-detail">
+          <span class="rule--accent"></span>
+          <span class="t-label" style="color:var(--accent)">Structural Loft Conversion · Bath</span>
+          <h3 class="case-study-heading">Four Rooms, Ensuite, Two Juliet Balconies</h3>
+          <p>Converting a loft into habitable space means getting the structure right. Floor joists strong enough for four rooms. Staircase that meets building regs without eating the floor below. Waterproof Juliet balconies integrated into a listed-city roofline. And an ensuite that needs plumbing run through two storeys of existing build.</p>
+          <p>New structural floor throughout. Purpose-built staircase designed to building regs. Four distinct rooms — bedroom, dressing area, ensuite, and landing. Two Juliet balconies for natural light and outlook. Every detail tied back to structural integrity and watertight finish.</p>
+          <a href="/projects/bath-loft-extension" class="btn btn--primary">View Full Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Areas We Cover ── */}
+  <section style="padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Coverage"
+        heading="Areas We Cover for Loft Conversions"
+        body="We convert lofts across Bath, BANES, and West Wiltshire. Local knowledge of planning constraints, building types, and conservation area boundaries means fewer surprises."
+      />
+      <div class="area-links">
+        <a href="/areas-covered/central-bath-districts">Central Bath & Districts</a>
+        <a href="/areas-covered/batheaston">Batheaston</a>
+        <a href="/areas-covered/bathampton">Bathampton</a>
+        <a href="/areas-covered/bathford">Bathford</a>
+        <a href="/areas-covered/bradford-on-avon">Bradford on Avon</a>
+        <a href="/areas-covered/corsham">Corsham</a>
+        <a href="/areas-covered/saltford-keynsham">Keynsham & Saltford</a>
+        <a href="/areas-covered/box">Box</a>
+        <a href="/areas-covered/chippenham">Chippenham</a>
+        <a href="/areas-covered/frome-radstock-midsomer-norton">Frome & Radstock</a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Related Services ── */}
+  <section style="background:var(--charcoal);padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Related Services"
+        heading="Also in Structural &amp; Scale Builds"
+        body="Loft conversions are part of our structural work. See our other specialisms."
+        dark={true}
+      />
+      <div class="related-links">
+        <a href="/services/extensions">House Extensions</a>
+        <a href="/services/structural-builds">Structural Builds Overview</a>
+        <a href="/services/heritage-restoration">Heritage & Listed Building Work</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--stone);padding:var(--section-pad) 0">
+    <div class="container" style="max-width:48rem">
+      <TestimonialBlock
+        quote="I have worked with Aspect on several projects. I have always found James approachable with Aspect working to a high standard."
+        name="Timothy"
+        role="Multiple Projects · TrustATrader"
+      />
+    </div>
+  </section>
+
+  <ImageCTA
+    heading="Ready to Convert Your Loft?"
+    body="Book a free structural assessment. We will survey your roof, advise on conversion type, check planning constraints, and give you a fully itemised fixed-price quote — with no obligation."
+    cta={{ label: 'Book a Free Loft Assessment', href: '/contact' }}
+    image="/images/hero-bath-loft-extension.webp"
+  />
+
+</Base>
+
+<style>
+  .sub-services {
+    padding: var(--section-pad) 0;
+    background: var(--stone);
+  }
+
+  .sub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .sub-card {
+    background: #fff;
+    padding: var(--space-xl);
+    border: 1px solid rgba(26, 35, 50, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .sub-card__num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.4;
+  }
+
+  .sub-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .sub-card__body {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .sub-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-top: 1px solid var(--stone);
+    padding-top: var(--space-m);
+  }
+
+  .sub-card__list li {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--chalk);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sub-card__list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ── Process ── */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-l);
+    margin-top: var(--space-xl);
+  }
+
+  .process-step {
+    padding: var(--space-l);
+    border-left: 3px solid var(--accent);
+    background: var(--stone);
+  }
+
+  .process-step__num {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .process-step__title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--chalk);
+    margin: var(--space-xs) 0 var(--space-xs);
+  }
+
+  .process-step__body {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  /* ── Case Study ── */
+  .case-study-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+    align-items: start;
+  }
+
+  .case-study-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-s);
+  }
+
+  .case-study-images img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  .case-study-detail {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .case-study-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+    text-transform: uppercase;
+    color: var(--chalk);
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  .case-study-detail p {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  /* ── Area Links ── */
+  .area-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-xl);
+  }
+
+  .area-links a {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--chalk);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(26, 35, 50, 0.12);
+    background: #fff;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .area-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── Related Links ── */
+  .related-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-xl);
+  }
+
+  .related-links a {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .related-links a:hover {
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .sub-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr; }
+    .case-study-grid { grid-template-columns: 1fr; }
+  }
+</style>
