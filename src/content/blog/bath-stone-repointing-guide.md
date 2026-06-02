@@ -5,7 +5,7 @@ pubDate: 2026-06-02
 category: "Heritage & Restoration"
 service: "Heritage & Restoration"
 serviceUrl: "/services/heritage-restoration"
-image: "/images/hero-chilcompton-rendering.webp"
+image: "/images/hero-james-bath-property-10.webp"
 author: "James Martin"
 featured: true
 ---

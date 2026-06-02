@@ -5,7 +5,7 @@ pubDate: 2026-06-02
 category: "Structural Builds"
 service: "Extensions & Loft Conversions"
 serviceUrl: "/services/structural-builds"
-image: "/images/hero-medford-garden-extension.webp"
+image: "/images/hero-james-bath-property-5.webp"
 author: "James Martin"
 featured: false
 ---

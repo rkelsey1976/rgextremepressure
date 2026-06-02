@@ -26,7 +26,7 @@ export const servicesData: ServicePillar[] = [
       'Hip-to-Gable & Mansard',
       'Full Building Regs & Planning Management',
     ],
-    image: '/images/hero-bath-loft-extension.webp',
+    image: '/images/hero-james-bath-property-4.webp',
     href: '/services/loft-conversions',
   },
   {
@@ -40,7 +40,7 @@ export const servicesData: ServicePillar[] = [
       'Side-Return & Wraparound',
       'Garden Rooms & Orangeries',
     ],
-    image: '/images/hero-medford-garden-extension.webp',
+    image: '/images/hero-james-bath-property-5.webp',
     href: '/services/extensions',
   },
   {
@@ -54,7 +54,7 @@ export const servicesData: ServicePillar[] = [
       'Basement & Garage Conversions',
       'Complete Groundworks & Substructure',
     ],
-    image: '/images/services/structural-builds.webp',
+    image: '/images/hero-james-bath-property-6.webp',
     href: '/services/structural-builds',
   },
   {
@@ -68,7 +68,7 @@ export const servicesData: ServicePillar[] = [
       'Bath Stone Restoration & Masonry',
       'Sympathetic Internal Fabric Repairs',
     ],
-    image: '/images/services/heritage-restoration.webp',
+    image: '/images/hero-james-bath-property-10.webp',
     href: '/services/heritage-restoration',
   },
   {
@@ -82,7 +82,7 @@ export const servicesData: ServicePillar[] = [
       'Luxury Bathrooms & Wetrooms',
       'Internal Wall Reconfigurations',
     ],
-    image: '/images/medford-garden-extension-14.webp',
+    image: '/images/james-bath-interior-1.webp',
     href: '/services/interiors-refurbishments',
   },
   {

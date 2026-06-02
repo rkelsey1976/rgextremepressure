@@ -7,14 +7,14 @@ import ImageCTA from '../components/ImageCTA.astro';
 import { servicesData } from '../data/services';
 ---
 
-<Base title="Aspect Builds — Built for Bath" preloadImage="/images/hero-home-loft.webp">
+<Base title="Aspect Builds — Built for Bath" preloadImage="/images/hero-james-bath-property-1.webp">
   {/*
     ═══════════════════════════════════════
     A. DARK LUXURY HERO FOLD
     ═══════════════════════════════════════
   */}
   <Hero
-    image="/images/hero-home-loft.webp"
+    image="/images/hero-james-bath-property-1.webp"
     overlay="left"
     eyebrow="Bath · BANES · Wiltshire"
     heading="We Build Bath's<br>Best Projects<span class='gold-period'>.</span>"
@@ -132,11 +132,13 @@ import { servicesData } from '../data/services';
     E. TESTIMONIALS
     ═══════════════════════════════════════
   */}
-  <section style="background:var(--stone);padding:var(--section-pad) 0">
-    <div class="container">
+  <section class="testimonials-section">
+    <div class="testimonials-bg" aria-hidden="true"></div>
+    <div class="container" style="position:relative;z-index:1">
       <SectionHeader
         eyebrow="Verified Client Reviews"
         heading="What Our Clients Say"
+        dark={true}
       />
 
       <div class="testimonials-grid">
@@ -144,16 +146,22 @@ import { servicesData } from '../data/services';
           quote="I couldn't recommend Aspect Builds highly enough for the landscaping and garden build they completed for us. From the initial design to the final handover, the team was professional, communicative, and genuinely invested in getting the details right. The quality of workmanship is excellent. Site was kept tidy, timeframes were clear, and any issues were handled quickly with no fuss."
           name="Cole Hulbert"
           role="Landscaping & Garden Build"
+          stars={5}
+          dark={true}
         />
         <TestimonialBlock
           quote="I have worked with Aspect on several projects. I have always found James approachable with Aspect working to a high standard."
           name="Timothy"
           role="Multiple Projects"
+          stars={5}
+          dark={true}
         />
         <TestimonialBlock
           quote="Very happy with work. James Martin decorated 2 rooms for us. Very reliable and clean and tidy. Arrived on time every day and work was very satisfactory. Would highly recommend."
           name="Amy"
           role="Interior Decoration"
+          stars={5}
+          dark={true}
         />
       </div>
 
@@ -162,7 +170,7 @@ import { servicesData } from '../data/services';
           href="https://www.trustatrader.com/traders/aspect-builds-maintenance-ltd-interior-refurbishment-bath-south"
           target="_blank"
           rel="noopener noreferrer"
-          class="trustatrader-badge"
+          class="trustatrader-badge trustatrader-badge--dark"
           aria-label="4.97 out of 5 from 12 verified reviews on TrustATrader"
         >
           <img src="/images/trustatrader-logo.svg" alt="TrustATrader" width="72" height="72" loading="lazy" />
@@ -206,7 +214,7 @@ import { servicesData } from '../data/services';
         <div class="project-card__side">
           <a href="/projects/medford-garden-extension" class="project-card project-card--small">
             <div class="project-card__image">
-              <img src="/images/hero-medford-garden-extension.webp" alt="Garden Extension" width="600" height="450" loading="lazy" />
+              <img src="/images/hero-james-bath-property-5.webp" alt="Bath Property" width="600" height="450" loading="lazy" />
             </div>
             <div class="project-card__content">
               <span class="t-label" style="color:var(--accent-dim);font-size:0.65rem">Extensions</span>
@@ -243,7 +251,7 @@ import { servicesData } from '../data/services';
     heading="Ready to Start Your Project?"
     body="Get a fixed, transparent quote from a local team that treats your home like their own."
     cta={{ label: 'Arrange a Consultation', href: '/contact' }}
-    image="/images/hero-medford-garden-extension.webp"
+    image="/images/hero-james-bath-property-3.webp"
   />
 
   {/* ── Review schema — only on this page where reviews are displayed ── */}
@@ -457,10 +465,25 @@ import { servicesData } from '../data/services';
   }
 
   /* ── Testimonials ── */
+  .testimonials-section {
+    position: relative;
+    padding: var(--section-pad) 0;
+    background: var(--navy);
+    overflow: hidden;
+  }
+
+  .testimonials-bg {
+    position: absolute;
+    inset: 0;
+    background: url('/images/hero-james-bath-property-5.webp') center 40% / cover no-repeat;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
   .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-2xl);
+    gap: var(--space-l);
     margin-top: var(--space-2xl);
   }
 
@@ -490,6 +513,14 @@ import { servicesData } from '../data/services';
   .trustatrader-badge__text span {
     font-size: 0.8rem;
     color: var(--concrete);
+  }
+
+  .trustatrader-badge--dark .trustatrader-badge__text strong {
+    color: #fff;
+  }
+
+  .trustatrader-badge--dark .trustatrader-badge__text span {
+    color: rgba(255, 255, 255, 0.55);
   }
 
   /* ── Project Showcase ── */

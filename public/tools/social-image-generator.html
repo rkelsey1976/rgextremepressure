@@ -224,6 +224,7 @@
         <button class="btn-tog active" data-logosize="md">Medium</button>
         <button class="btn-tog" data-logosize="lg">Large</button>
         <button class="btn-tog" data-logosize="xl">XL</button>
+        <button class="btn-tog" data-logosize="xxl">XXL</button>
       </div>
       <span class="ctrl-label">Colour</span>
       <div class="btn-row" style="margin-bottom:10px">
@@ -412,7 +413,7 @@ const state = {
   showTagline: false,
 };
 
-const LOGO_SCALE = { xs: 0.45, sm: 0.7, md: 1.0, lg: 1.45, xl: 1.9 };
+const LOGO_SCALE = { xs: 0.45, sm: 0.7, md: 1.0, lg: 1.45, xl: 1.9, xxl: 2.6 };
 const FOOTER_SCALE = { xs: 0.55, sm: 0.75, md: 1.0, lg: 1.35 };
 
 const FORMATS = {
@@ -982,7 +983,7 @@ function drawLogoExport(w, h) {
 
   } else {
     // ── Full: horizontal logo centred ──
-    const logoSc    = Math.min(w, h) * 0.00038 * LOGO_SCALE[state.logoSize];
+    const logoSc    = Math.min(w, h) * 0.00055 * LOGO_SCALE[state.logoSize];
     const markSize  = 28 * logoSc * (w / 340);
     const nameSz    = 22 * logoSc * (w / 340);
     const subSz     = 8  * logoSc * (w / 340);

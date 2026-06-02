@@ -5,7 +5,7 @@ pubDate: 2026-06-02
 category: "Structural Builds"
 service: "Extensions & Loft Conversions"
 serviceUrl: "/services/structural-builds"
-image: "/images/hero-bath-loft-extension.webp"
+image: "/images/hero-james-bath-property-4.webp"
 author: "James Martin"
 featured: true
 ---

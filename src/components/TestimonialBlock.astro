@@ -1,13 +1,14 @@
 ---
-// TestimonialBlock.astro — Single client testimonial quote
-// Gold accent bar, quote text, name + location in label style
-// Stack 2-3 on the homepage
+// TestimonialBlock.astro — Premium testimonial card
+// Gold opening quote mark, stars, avatar initials, card shell
+// For "dark" variant (on dark backgrounds)
 
 interface Props {
   quote: string;
   name: string;
   role?: string;
   location?: string;
+  stars?: number;
   dark?: boolean;
 }
 
@@ -16,89 +17,173 @@ const {
   name,
   role,
   location,
+  stars = 5,
   dark = false,
 } = Astro.props;
+
+// Build initials from name
+const initials = name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
 ---
 
-<blockquote class:list={['testimonial', dark && 'testimonial--dark']}>
-  <span class="testimonial__rule"></span>
-  <p class:list={['testimonial__quote', dark && 'testimonial__quote--dark']}>&ldquo;{quote}&rdquo;</p>
-  <footer class="testimonial__footer">
-    <cite class="testimonial__name">{name}</cite>
-    {(role || location) && (
-      <span class="testimonial__detail">
-        {role && <>{role}</>}
-        {role && location && <>, </>}
-        {location && <>{location}</>}
-      </span>
-    )}
+<blockquote class:list={['testimonial-card', dark && 'testimonial-card--dark']}>
+  {/* Opening quote mark */}
+  <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
+
+  {/* Star rating */}
+  <div class="testimonial-card__stars" aria-label={`${stars} out of 5`}>
+    {Array.from({ length: 5 }).map((_, i) => (
+      <svg class:list={['testimonial-card__star', i < stars && 'testimonial-card__star--filled']} width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill={i < stars ? 'currentColor' : 'none'} stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    ))}
+  </div>
+
+  <p class:list={['testimonial-card__quote', dark && 'testimonial-card__quote--dark']}>&ldquo;{quote}&rdquo;</p>
+
+  <footer class="testimonial-card__footer">
+    <div class="testimonial-card__avatar">{initials}</div>
+    <div class="testimonial-card__meta">
+      <cite class:list={['testimonial-card__name', dark && 'testimonial-card__name--dark']}>{name}</cite>
+      {(role || location) && (
+        <span class:list={['testimonial-card__detail', dark && 'testimonial-card__detail--dark']}>
+          {role && <>{role}</>}
+          {role && location && <> &middot; </>}
+          {location && <>{location}</>}
+        </span>
+      )}
+    </div>
   </footer>
 </blockquote>
 
 <style>
-  .testimonial {
+  .testimonial-card {
     position: relative;
-    padding-left: var(--space-l);
-    margin: 0;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 0.5rem;
+    padding: var(--space-xl) var(--space-l) var(--space-l);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
-  .testimonial--dark {
-    color: #fff;
+  .testimonial-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
   }
 
-  /* Gold accent bar */
-  .testimonial__rule {
+  .testimonial-card--dark {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .testimonial-card--dark:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Opening quote mark */
+  .testimonial-card__mark {
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    line-height: 0.8;
+    color: var(--accent);
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--accent);
+    top: 0.35rem;
+    left: var(--space-l);
+    opacity: 0.7;
+    pointer-events: none;
   }
 
-  /* Quote */
-  .testimonial__quote {
-    font-size: clamp(1.1rem, 1.3vw, 1.3rem);
+  /* Star rating */
+  .testimonial-card__stars {
+    display: flex;
+    gap: 0.15rem;
+    margin-bottom: var(--space-m);
+    margin-top: 1.8rem;
+  }
+
+  .testimonial-card__star {
+    color: var(--accent);
+    width: 14px;
+    height: 14px;
+  }
+
+  .testimonial-card__star--filled {
+    fill: var(--accent);
+  }
+
+  /* Quote text */
+  .testimonial-card__quote {
+    font-size: clamp(1rem, 1.1vw, 1.15rem);
     font-weight: 300;
     font-style: italic;
     line-height: 1.75;
     color: var(--chalk);
     margin: 0;
+    flex: 1;
   }
 
-  .testimonial__quote--dark {
+  .testimonial-card__quote--dark {
     color: rgba(255, 255, 255, 0.85);
   }
 
-  /* Attribution */
-  .testimonial__footer {
-    margin-top: var(--space-m);
+  /* Footer */
+  .testimonial-card__footer {
+    margin-top: var(--space-l);
     display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
+    align-items: center;
+    gap: 0.75rem;
   }
 
-  .testimonial__name {
+  /* Avatar with initials */
+  .testimonial-card__avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--accent);
     font-family: var(--font-display);
-    font-size: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .testimonial-card--dark .testimonial-card__avatar {
+    background: var(--accent);
+    color: var(--navy);
+  }
+
+  .testimonial-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .testimonial-card__name {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
     font-style: normal;
+    font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--chalk);
-    not:display: block;
   }
 
-  .testimonial--dark .testimonial__name {
-    color: var(--accent);
+  .testimonial-card__name--dark {
+    color: #fff;
   }
 
-  .testimonial__detail {
-    font-size: 0.8rem;
+  .testimonial-card__detail {
+    font-size: 0.78rem;
     color: var(--concrete);
     font-weight: 400;
   }
 
-  .testimonial--dark .testimonial__detail {
+  .testimonial-card__detail--dark {
     color: rgba(255, 255, 255, 0.5);
   }
 </style>

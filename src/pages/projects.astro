@@ -17,14 +17,15 @@ const projects = portfolio.map((entry) => ({
 }));
 ---
 
-<Base title="Projects — Aspect Builds & Maintenance" preloadImage="/images/hero-medford-garden-extension.webp">
+<Base title="Projects — Aspect Builds & Maintenance" preloadImage="/images/hero-james-bath-property-1.webp">
   <Hero
-    image="/images/hero-medford-garden-extension.webp"
+    image="/images/hero-james-bath-property-1.webp"
     overlay="left"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Projects' }]}
     eyebrow="Our work"
     heading="Built.<br>Delivered.<br>Proven."
     body={`${projects.length} completed projects across Bath and BANES. Every one delivered on time, on budget, and to a standard we put our name on.`}
+    cta={{ label: 'Get a Quote', href: '/contact' }}
   />
 
   <PortfolioGrid projects={projects} />
@@ -33,6 +34,6 @@ const projects = portfolio.map((entry) => ({
     heading="Ready to Start Your Project?"
     body="Get a fixed-price quote from a team that delivers on budget, on time — every time."
     cta={{ label: 'Get a Quote', href: '/contact' }}
-    image="/images/hero-medford-garden-extension.webp"
+    image="/images/hero-james-bath-property-1.webp"
   />
 </Base>
