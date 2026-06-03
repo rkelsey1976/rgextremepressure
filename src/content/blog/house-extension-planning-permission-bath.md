@@ -1,6 +1,6 @@
 ---
-title: "House Extension Planning Permission in Bath: What You Need to Know"
-description: "A practical guide to planning permission for home extensions in Bath & BANES — permitted development rights, conservation areas, listed buildings, and realistic timelines."
+title: "Planning Permission for Extensions in Bath"
+description: "Planning permission for home extensions in Bath — permitted development rights, conservation areas, listed buildings, and realistic timelines."
 pubDate: 2026-06-02
 category: "Structural Builds"
 service: "Extensions & Loft Conversions"

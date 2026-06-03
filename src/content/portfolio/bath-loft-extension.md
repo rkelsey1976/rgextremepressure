@@ -1,10 +1,10 @@
 ---
-title: "Bath Loft Extension — Four-Room Top Floor With Ensuite & Juliet Balconies"
+title: "Bath Loft Extension"
 location: "Bath"
 category: "structural"
 categoryLabel: "Structural & Scale Builds"
 image: "/images/hero-bath-loft-extension.webp"
-brief: "A full top-floor loft extension in Bath — four rooms, ensuite bathroom, new staircase, and two Juliet balconies. Maximum space from an existing footprint, built to last."
+brief: "Full loft extension in Bath — four rooms, ensuite, new staircase and two Juliet balconies. Maximum space from an existing footprint."
 challenge: "Converting a loft into habitable space means getting the structure right. Floor joists strong enough for four rooms. Staircase that meets building regs without eating the floor below. Waterproof Juliet balconies integrated into a listed-city roofline. And an ensuite that needs plumbing run through two storeys of existing build."
 execution: "New structural floor throughout. Purpose-built staircase designed to building regs. Four distinct rooms — bedroom, dressing area, ensuite, and landing. Two Juliet balconies for natural light and outlook. Every detail tied back to structural integrity and watertight finish."
 gallery:

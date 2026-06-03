@@ -1,5 +1,5 @@
 ---
-title: "Bath Stone Repointing: Why It Matters and When to Act"
+title: "Bath Stone Repointing: Why It Matters"
 description: "Signs your Bath stone property needs repointing, the critical difference between lime and cement mortar, what the work involves, and realistic costs for 2026."
 pubDate: 2026-06-02
 category: "Heritage & Restoration"

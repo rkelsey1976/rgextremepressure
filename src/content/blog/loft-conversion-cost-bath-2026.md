@@ -1,6 +1,6 @@
 ---
-title: "How Much Does a Loft Conversion Cost in Bath? (2026 Guide)"
-description: "A realistic breakdown of loft conversion costs across Bath & BANES — Velux, dormer and hip-to-gable — plus what drives the final price and what to watch for when getting quotes."
+title: "Loft Conversion Cost in Bath: 2026 Guide"
+description: "Realistic loft conversion costs in Bath — Velux, dormer and hip-to-gable prices, what drives the final quote, and what to watch for when comparing builders."
 pubDate: 2026-06-02
 category: "Structural Builds"
 service: "Extensions & Loft Conversions"

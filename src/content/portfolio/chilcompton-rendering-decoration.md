@@ -1,5 +1,5 @@
 ---
-title: "Chilcompton Exterior Rendering & Decoration"
+title: "Chilcompton Rendering & Decoration"
 location: "Chilcompton"
 category: "heritage"
 categoryLabel: "Heritage & Stonework"

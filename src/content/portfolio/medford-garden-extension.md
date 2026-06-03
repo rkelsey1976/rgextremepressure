@@ -1,10 +1,10 @@
 ---
-title: "Medford Garden Extension — Open-Plan Living With Garden Connection"
+title: "Medford Garden Extension"
 location: "Medford, Bath"
 category: "structural"
 categoryLabel: "Structural & Scale Builds"
 image: "/images/hero-medford-garden-extension.webp"
-brief: "A garden extension in Medford that opens the home to the outdoors — open-plan living space with full-width glazing, seamless floor transition, and a connection to the garden that doesn't rely on the weather."
+brief: "Garden extension in Medford — open-plan living with full-width glazing, seamless floor transition, and a connection to the garden."
 challenge: "The existing rear of the property was small and disconnected from the garden. The client wanted an open-plan living and dining space that genuinely brought the outside in — not just bi-folds on a box, but a considered extension where the garden felt like part of the room."
 execution: "Full-width glazing with minimal frames for maximum sightlines. Level threshold between inside and out so the floor runs clean. Structural steelwork to open the rear wall without compromise. New foundations and insulated slab. Internally finished to move straight in — plastered, decorated, flooring laid."
 gallery:

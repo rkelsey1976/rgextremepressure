@@ -1,10 +1,10 @@
 ---
-title: "Frome Garage Conversion — Living Space From an Unused Garage"
+title: "Frome Garage Conversion"
 location: "Frome"
 category: "structural"
 categoryLabel: "Structural & Scale Builds"
 image: "/images/hero-frome-garage-conversion.webp"
-brief: "A garage conversion in Frome — turning unused space into a proper living area. New floor, insulated walls, full electrics and plumbing, finished to move-in standard."
+brief: "Garage conversion in Frome — unused space transformed into a proper living area. New floor, insulated walls, full electrics and plumbing."
 challenge: "The garage was a cold, damp shell with a concrete floor and no insulation. The client needed it to become genuine living space — warm, bright, and indistinguishable from the rest of the house. That means dealing with damp-proofing, thermal efficiency, building regs, and making the conversion feel like it was always part of the home, not a afterthought tacked on the side."
 execution: "Full damp-proof course and insulated floor slab. Internal wall insulation throughout. New window and door replacing the garage door opening. Electrics, plumbing, and heating tied into the existing system. Plastered, decorated, and finished to match the rest of the property."
 gallery:
