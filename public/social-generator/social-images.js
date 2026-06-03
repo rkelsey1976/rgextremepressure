@@ -110,19 +110,19 @@ function drawLogo(ctx, unit, W) {
   // Chevron mark (gold)
   drawChevron(ctx, logoX, logoY, markSize, ACCENT);
 
-  // "ASPECT" — Bebas Neue display font (all caps with letter spacing)
+  // "Aspect" — Bebas Neue display font matching site nav
   const textX = logoX + markSize + unit * 1.8;
   const nameY = logoY + markSize * 0.5;
   ctx.fillStyle = WHITE;
   ctx.font = `900 ${unit * 5.5}px 'Bebas Neue', sans-serif`;
   ctx.textBaseline = 'middle';
   ctx.textAlign = 'left';
-  ctx.fillText('A S P E C T', textX, nameY);
+  ctx.fillText('ASPECT', textX, nameY);
 
   // "BUILDS & MAINTENANCE LTD" sub — small tracking, DM Sans
   ctx.fillStyle = WHITE70;
   ctx.font = `500 ${unit * 2}px 'DM Sans', sans-serif`;
-  ctx.fillText('BATH  &  SOMERSET', textX, nameY + unit * 4.5);
+  ctx.fillText('BUILDS  &  MAINTENANCE  LTD', textX, nameY + unit * 4.5);
 }
 
 function renderCanvas() {
@@ -204,19 +204,17 @@ function renderCanvas() {
   ctx.textBaseline = 'top';
   ctx.textAlign = 'left';
 
-  // Word wrap headline — add letter spacing manually for Bebas Neue
-  const letterSpacing = headSize * 0.05;
-  const words = svc.title.toUpperCase().split(' ');
+  // Word wrap headline
+  const words = svc.title.split(' ');
   let lines = [];
   let currentLine = [];
   for (const word of words) {
-    const testLine = [...currentLine, word];
-    const testWidth = testLine.reduce((w, wrd) => w + ctx.measureText(wrd).width + letterSpacing * (wrd.length), 0);
-    if (testWidth > maxW && currentLine.length > 0) {
+    const testLine = currentLine.length ? currentLine.join(' ') + ' ' + word : word;
+    if (ctx.measureText(testLine).width > maxW && currentLine.length > 0) {
       lines.push(currentLine.join(' '));
       currentLine = [word];
     } else {
-      currentLine = testLine;
+      currentLine.push(word);
     }
   }
   if (currentLine.length) lines.push(currentLine.join(' '));
@@ -224,14 +222,8 @@ function renderCanvas() {
   const headlineLineH = headSize * 1.05;
   let textY = headlineY;
   for (const line of lines) {
-    // Draw each character with letter spacing for Bebas Neue
-    const chars = line.split('');
-    let xPos = unit * 5;
-    for (const ch of chars) {
-      ctx.fillStyle = WHITE;
-      ctx.fillText(ch, xPos, textY);
-      xPos += ctx.measureText(ch).width + letterSpacing;
-    }
+    ctx.fillStyle = WHITE;
+    ctx.fillText(line, unit * 5, textY);
     textY += headlineLineH;
   }
 
