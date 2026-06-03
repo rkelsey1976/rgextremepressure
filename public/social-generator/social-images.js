@@ -149,6 +149,12 @@ function drawChevron(ctx, x, y, size, colour) {
 }
 
 function renderCanvas() {
+  // Sync toggle states from DOM to props
+  ['showAccent','showLogo','showRule','showCTA','showPhone','showTrust','showTagline','showFeatures','showSizeLabel'].forEach(key => {
+    const el = document.getElementById(key);
+    if (el) props[key] = el.checked;
+  });
+
   const canvas = document.getElementById('canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
