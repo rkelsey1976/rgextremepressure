@@ -344,27 +344,22 @@ function renderCanvas() {
   // ── TrustATrader badge ──
   if (p.showTrust && trustLogoLoaded) {
     const tSize = unit * p.trustSize;
-    const tX = (p.trustX / 100) * W - tSize / 2;
+    const tX = (p.trustX / 100) * W;
     const tY = (p.trustY / 100) * H;
 
-    // White circle background for contrast
-    ctx.fillStyle = '#ffffff';
-    ctx.beginPath();
-    ctx.arc(tX + tSize * 0.15, tY + tSize * 0.15, tSize * 0.3, 0, Math.PI * 2);
-    ctx.fill();
+    // Logo (SVG already contains its own white circle)
+    const logoDim = tSize * 0.8;
+    ctx.drawImage(trustLogo, tX - logoDim / 2, tY, logoDim, logoDim);
 
-    // Logo
-    ctx.drawImage(trustLogo, tX, tY, tSize * 0.55, tSize * 0.55);
-
-    // "Verified Member" text
-    ctx.fillStyle = WHITE;
+    // "TrustATrader / Verified Member" text below
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
-    ctx.font = `600 ${unit * 1.5}px 'DM Sans', sans-serif`;
-    ctx.fillText('TrustATrader', tX + tSize * 0.275, tY + tSize * 0.58);
+    ctx.fillStyle = WHITE;
+    ctx.font = `700 ${unit * 1.6}px 'DM Sans', sans-serif`;
+    ctx.fillText('TrustATrader', tX, tY + logoDim + unit * 0.5);
     ctx.fillStyle = WHITE70;
-    ctx.font = `400 ${unit * 1.1}px 'DM Sans', sans-serif`;
-    ctx.fillText('Verified Member', tX + tSize * 0.275, tY + tSize * 0.72);
+    ctx.font = `400 ${unit * 1.2}px 'DM Sans', sans-serif`;
+    ctx.fillText('Verified Member', tX, tY + logoDim + unit * 2.3);
     ctx.textAlign = 'left';
   }
 
