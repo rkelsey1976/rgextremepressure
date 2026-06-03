@@ -73,6 +73,7 @@ const DEFAULTS = {
   headlineSize: 7,
   taglineSize: 2.8,
   logoSize: 5.5,
+  logoGap: 4,
   ctaPos: 18,
   focusX: 50,
   focusY: 50,
@@ -223,7 +224,7 @@ function renderCanvas() {
     ctx.fillStyle = WHITE70;
     ctx.font = `500 ${logoSize * 0.36}px 'DM Sans', sans-serif`;
     ctx.fillText('BUILDS  &  MAINTENANCE  LTD', textX, nameY + logoSize * 0.82);
-    contentY += markSize + unit * 2;
+    contentY += markSize + unit * p.logoGap;
   }
 
   // ── Gold rule ──
@@ -383,7 +384,7 @@ function updateSlider(key, value) {
 }
 
 function syncUIFromProps() {
-  ['overlay','fade','posX','posY','contentWidth','headlineSize','taglineSize','logoSize','ctaPos','focusX','focusY'].forEach(key => {
+  ['overlay','fade','posX','posY','contentWidth','headlineSize','taglineSize','logoSize','logoGap','ctaPos','focusX','focusY'].forEach(key => {
     const el = document.getElementById(key);
     if (!el) return;
     if (key === 'overlay') el.value = props.overlay * 100;

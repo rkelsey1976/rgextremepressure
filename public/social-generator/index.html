@@ -201,6 +201,10 @@
         <input type="range" id="logoSize" min="3" max="9" value="5.5" step="0.5" oninput="updateSlider('logoSize', parseFloat(this.value)); renderCanvas();">
       </div>
       <div class="slider-group">
+        <label>Logo Gap <span id="val-logoGap">4</span></label>
+        <input type="range" id="logoGap" min="0" max="15" value="4" oninput="updateSlider('logoGap', parseInt(this.value)); renderCanvas();">
+      </div>
+      <div class="slider-group">
         <label>CTA Y Offset <span id="val-ctaPos">18</span></label>
         <input type="range" id="ctaPos" min="8" max="35" value="18" oninput="updateSlider('ctaPos', parseInt(this.value)); renderCanvas();">
       </div>
