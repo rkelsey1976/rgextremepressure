@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Offline">
+  <section style="min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;">
+    <div>
+      <h1 style="font-size:2.5rem;margin-bottom:1rem;">You're Offline</h1>
+      <p style="max-width:32rem;margin:0 auto 1.5rem;color:var(--concrete);">
+        It looks like you've lost your internet connection. Once you're back online, the site will load normally.
+      </p>
+      <button onclick="window.location.reload()" style="background:var(--accent);color:var(--navy);padding:.75rem 2rem;font-weight:600;border:none;cursor:pointer;font-size:1rem;">
+        Try Again
+      </button>
+    </div>
+  </section>
+</Base>

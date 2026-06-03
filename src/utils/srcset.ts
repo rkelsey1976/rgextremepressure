@@ -5,8 +5,8 @@
  * Returns undefined if no responsive variants exist.
  */
 export function srcset(imagePath: string): string | undefined {
-  // Match our hero/interior image naming pattern
-  const pattern = /^\/images\/(hero-james-bath-property-\d+|james-bath-interior-\d+)\.webp$/;
+  // Match images that have responsive variants
+  const pattern = /^\/images\/(hero-james-bath-property-\d+|james-bath-interior-\d+|hero-bath-loft-extension|hero-chilcompton-rendering|bath-landscaping-1|hero-frome-garage-conversion)\.webp$/;
   const match = imagePath.match(pattern);
   if (!match) return undefined;
   
