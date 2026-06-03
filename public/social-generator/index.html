@@ -10,82 +10,107 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: #0d1520;
-      color: #f8fafc;
-      min-height: 100vh;
-    }
+    body { font-family: 'DM Sans', sans-serif; background: #0d1520; color: #f8fafc; min-height: 100vh; }
     .header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 24px;
-      background: #1a2332;
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 20px; background: #1a2332;
       border-bottom: 1px solid rgba(174,132,85,0.3);
     }
-    .header h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.05em;
-      color: #AE8455;
-    }
-    .header span { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+    .header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.05em; color: #AE8455; }
+    .header span { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+
     .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding: 16px 24px;
-      background: #1a2332;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      align-items: flex-start;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 0; background: #1a2332;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .control-group { display: flex; flex-direction: column; gap: 6px; }
-    .control-group label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
-    .btn-row { display: flex; flex-wrap: wrap; gap: 4px; }
+    .panel { padding: 12px 16px; border-right: 1px solid rgba(255,255,255,0.06); }
+    .panel:last-child { border-right: none; }
+    .panel-title {
+      font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: #AE8455; margin-bottom: 8px; font-weight: 600;
+    }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 3px; }
     .svc-btn, .size-btn {
-      padding: 6px 12px;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: transparent;
-      color: rgba(255,255,255,0.6);
-      border-radius: 4px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      transition: all 0.15s;
+      padding: 4px 9px; border: 1px solid rgba(255,255,255,0.1);
+      background: transparent; color: rgba(255,255,255,0.5);
+      border-radius: 3px; font-size: 0.72rem; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; transition: all 0.15s;
     }
     .svc-btn:hover, .size-btn:hover { border-color: rgba(174,132,85,0.5); color: #fff; }
     .svc-btn.active, .size-btn.active { background: #AE8455; color: #0d1520; border-color: #AE8455; font-weight: 600; }
+
+    .slider-group { margin-bottom: 6px; }
+    .slider-group label {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.68rem; color: rgba(255,255,255,0.45); margin-bottom: 1px;
+    }
+    .slider-group label span { color: #AE8455; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .slider-group input[type="range"] {
+      width: 100%; height: 3px; -webkit-appearance: none; appearance: none;
+      background: rgba(255,255,255,0.08); border-radius: 2px; outline: none;
+    }
+    .slider-group input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%;
+      background: #AE8455; cursor: pointer; border: 2px solid #0d1520;
+    }
+
+    .toggle-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+    .toggle { display: flex; align-items: center; gap: 4px; cursor: pointer; font-size: 0.72rem; color: rgba(255,255,255,0.5); }
+    .toggle input[type="checkbox"] { width: 13px; height: 13px; accent-color: #AE8455; cursor: pointer; }
+    .toggle input:checked + span { color: #fff; }
+
+    .img-upload {
+      display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px;
+    }
+    .img-upload-row { display: flex; gap: 4px; }
+    .img-upload input[type="file"] {
+      font-size: 0.72rem; color: rgba(255,255,255,0.6); flex: 1;
+    }
+    .img-upload input[type="text"] {
+      flex: 1; padding: 4px 8px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 3px;
+      color: #fff; font-size: 0.72rem; font-family: 'DM Sans', sans-serif;
+    }
+    .img-upload input[type="text"]::placeholder { color: rgba(255,255,255,0.3); }
+    .btn-sm {
+      padding: 4px 10px; border: 1px solid rgba(255,255,255,0.15);
+      background: transparent; color: rgba(255,255,255,0.6);
+      border-radius: 3px; font-size: 0.7rem; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; transition: all 0.15s; white-space: nowrap;
+    }
+    .btn-sm:hover { border-color: #AE8455; color: #fff; }
+    .btn-sm.active-img { background: #AE8455; color: #0d1520; border-color: #AE8455; }
+
+    select.loc-select {
+      width: 100%; padding: 4px 8px; background: #0d1520;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 3px;
+      color: #fff; font-size: 0.75rem; font-family: 'DM Sans', sans-serif;
+      margin-bottom: 6px;
+    }
+
     .actions {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      margin-left: auto;
+      display: flex; gap: 8px; padding: 10px 20px;
+      background: #1a2332; border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .btn-download {
-      padding: 8px 20px;
-      border: none;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      transition: all 0.15s;
+      padding: 7px 16px; border: none; border-radius: 4px;
+      font-size: 0.82rem; font-weight: 600; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; transition: all 0.15s;
     }
     .btn-primary { background: #AE8455; color: #0d1520; }
     .btn-primary:hover { background: #c4986a; }
     .btn-secondary { background: transparent; color: #AE8455; border: 1px solid #AE8455; }
     .btn-secondary:hover { background: rgba(174,132,85,0.1); }
+    .btn-reset { background: transparent; color: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.12); }
+    .btn-reset:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+
     .canvas-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 24px;
-      min-height: calc(100vh - 140px);
+      display: flex; justify-content: center; align-items: flex-start;
+      padding: 20px; min-height: calc(100vh - 280px);
     }
     canvas {
-      max-width: 100%;
-      max-height: 70vh;
+      max-width: 100%; max-height: 65vh;
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
       border: 1px solid rgba(255,255,255,0.05);
     }
@@ -98,32 +123,119 @@
   </div>
 
   <div class="controls">
-    <div class="control-group">
-      <label>Service</label>
-      <div class="btn-row">
-        <button class="svc-btn" onclick="selectService(0)">Loft Conversions</button>
+    <div class="panel">
+      <div class="panel-title">Service & Size</div>
+      <div class="btn-row" style="margin-bottom:6px">
+        <button class="svc-btn" onclick="selectService(0)">Loft</button>
         <button class="svc-btn" onclick="selectService(1)">Extensions</button>
-        <button class="svc-btn" onclick="selectService(2)">Structural Builds</button>
+        <button class="svc-btn" onclick="selectService(2)">Structural</button>
         <button class="svc-btn" onclick="selectService(3)">Heritage</button>
         <button class="svc-btn" onclick="selectService(4)">Interiors</button>
         <button class="svc-btn" onclick="selectService(5)">Property Care</button>
       </div>
-    </div>
-    <div class="control-group">
-      <label>Size</label>
       <div class="btn-row">
-        <button class="size-btn" data-size="fb-feed" onclick="selectSize('fb-feed')">FB Feed 1200×628</button>
-        <button class="size-btn" data-size="fb-square" onclick="selectSize('fb-square')">Square 1080×1080</button>
-        <button class="size-btn" data-size="fb-story" onclick="selectSize('fb-story')">Story 1080×1920</button>
-        <button class="size-btn" data-size="ig-post" onclick="selectSize('ig-post')">IG Post 1080²</button>
-        <button class="size-btn" data-size="ig-story" onclick="selectSize('ig-story')">IG Story 1080×1920</button>
-        <button class="size-btn" data-size="gbp-post" onclick="selectSize('gbp-post')">GBP 1080×608</button>
+        <button class="size-btn" data-size="fb-feed" onclick="selectSize('fb-feed')">FB Feed</button>
+        <button class="size-btn" data-size="fb-square" onclick="selectSize('fb-square')">Square</button>
+        <button class="size-btn" data-size="fb-story" onclick="selectSize('fb-story')">Story</button>
+        <button class="size-btn" data-size="ig-post" onclick="selectSize('ig-post')">IG Post</button>
+        <button class="size-btn" data-size="ig-story" onclick="selectSize('ig-story')">IG Story</button>
+        <button class="size-btn" data-size="gbp-post" onclick="selectSize('gbp-post')">GBP</button>
+      </div>
+      <div class="panel-title" style="margin-top:10px">Background Image</div>
+      <div class="img-upload">
+        <div class="img-upload-row">
+          <input type="file" id="imageUpload" accept="image/*">
+          <button class="btn-sm" id="resetImage">Reset</button>
+        </div>
+        <div class="img-upload-row">
+          <input type="text" id="imageUrl" placeholder="Paste image URL...">
+          <button class="btn-sm" id="imageUrlBtn">Load</button>
+        </div>
       </div>
     </div>
-    <div class="actions">
-      <button class="btn-download btn-primary" onclick="downloadPNG()">Download PNG</button>
-      <button class="btn-download btn-secondary" onclick="downloadAll()">Download All (36)</button>
+
+    <div class="panel">
+      <div class="panel-title">Overlay & Position</div>
+      <div class="slider-group">
+        <label><span style="color:rgba(255,255,255,0.7)">Overlay Opacity</span> <span id="val-overlay">0.94</span></label>
+        <input type="range" id="overlay" min="0" max="100" value="94" oninput="updateSlider('overlay', this.value / 100); renderCanvas();">
+      </div>
+      <div class="slider-group">
+        <label>Overlay Fade (right edge) <span id="val-fade">0.60</span></label>
+        <input type="range" id="fade" min="0" max="100" value="60" oninput="updateSlider('fade', this.value / 100); renderCanvas();">
+      </div>
+      <div class="slider-group">
+        <label>Content Left Pad <span id="val-posX">5</span></label>
+        <input type="range" id="posX" min="2" max="50" value="5" oninput="updateSlider('posX', parseInt(this.value)); renderCanvas();">
+      </div>
+      <div class="slider-group">
+        <label>Content Top Pad <span id="val-posY">5</span></label>
+        <input type="range" id="posY" min="1" max="40" value="5" oninput="updateSlider('posY', parseInt(this.value)); renderCanvas();">
+      </div>
+      <div class="slider-group">
+        <label>Content Width % <span id="val-contentWidth">60</span></label>
+        <input type="range" id="contentWidth" min="30" max="95" value="60" oninput="updateSlider('contentWidth', parseInt(this.value)); renderCanvas();">
+      </div>
+      <div class="slider-group">
+        <label>Image Focus X <span id="val-focusX">50</span>%</label>
+        <input type="range" id="focusX" min="0" max="100" value="50" oninput="updateSlider('focusX', parseInt(this.value)); renderCanvas();">
+      </div>
+      <div class="slider-group">
+        <label>Image Focus Y <span id="val-focusY">50</span>%</label>
+        <input type="range" id="focusY" min="0" max="100" value="50" oninput="updateSlider('focusY', parseInt(this.value)); renderCanvas();">
+      </div>
     </div>
+
+    <div class="panel">
+      <div class="panel-title">Typography & Elements</div>
+      <div class="slider-group">
+        <label>Headline Size <span id="val-headlineSize">7</span></label>
+        <input type="range" id="headlineSize" min="3" max="12" value="7" step="0.5" oninput="updateSlider('headlineSize', parseFloat(this.value)); renderCanvas();">
+      </div>
+      <div class="slider-group">
+        <label>Tagline Size <span id="val-taglineSize">2.8</span></label>
+        <input type="range" id="taglineSize" min="1" max="5" value="2.8" step="0.2" oninput="updateSlider('taglineSize', parseFloat(this.value)); renderCanvas();">
+      </div>
+      <div class="slider-group">
+        <label>Logo Size <span id="val-logoSize">5.5</span></label>
+        <input type="range" id="logoSize" min="3" max="9" value="5.5" step="0.5" oninput="updateSlider('logoSize', parseFloat(this.value)); renderCanvas();">
+      </div>
+      <div class="slider-group">
+        <label>CTA Y Offset <span id="val-ctaPos">18</span></label>
+        <input type="range" id="ctaPos" min="8" max="35" value="18" oninput="updateSlider('ctaPos', parseInt(this.value)); renderCanvas();">
+      </div>
+      <div class="panel-title" style="margin-top:6px">Location Badge</div>
+      <select class="loc-select" id="locationSelect">
+        <option value="0">Central Bath & Districts</option>
+        <option value="1">Batheaston</option>
+        <option value="2">Bathford</option>
+        <option value="3">Bathampton</option>
+        <option value="4">Box</option>
+        <option value="5">Bradford on Avon</option>
+        <option value="6">Corsham</option>
+        <option value="7">Saltford & Keynsham</option>
+        <option value="8">Chippenham</option>
+        <option value="9">Frome, Radstock & Midsomer Norton</option>
+      </select>
+      <div class="panel-title" style="margin-top:6px">Show / Hide</div>
+      <div class="toggle-row">
+        <label class="toggle"><input type="checkbox" id="showAccent" checked onchange="renderCanvas()"><span>Bar</span></label>
+        <label class="toggle"><input type="checkbox" id="showLogo" checked onchange="renderCanvas()"><span>Logo</span></label>
+        <label class="toggle"><input type="checkbox" id="showRule" checked onchange="renderCanvas()"><span>Rule</span></label>
+        <label class="toggle"><input type="checkbox" id="showTagline" checked onchange="renderCanvas()"><span>Tagline</span></label>
+        <label class="toggle"><input type="checkbox" id="showFeatures" checked onchange="renderCanvas()"><span>Features</span></label>
+        <label class="toggle"><input type="checkbox" id="showCTA" checked onchange="renderCanvas()"><span>CTA</span></label>
+        <label class="toggle"><input type="checkbox" id="showPhone" checked onchange="renderCanvas()"><span>Phone</span></label>
+        <label class="toggle"><input type="checkbox" id="showLocation" checked onchange="renderCanvas()"><span>Location</span></label>
+        <label class="toggle"><input type="checkbox" id="showSizeLabel" checked onchange="renderCanvas()"><span>Size</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn-download btn-primary" onclick="downloadPNG()">Download PNG</button>
+    <button class="btn-download btn-secondary" onclick="downloadAll()">Download All (36)</button>
+    <button class="btn-download btn-reset" onclick="resetDefaults()">Reset Defaults</button>
   </div>
 
   <div class="canvas-wrap">

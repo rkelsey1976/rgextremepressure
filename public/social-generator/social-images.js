@@ -49,18 +49,58 @@ const services = [
   },
 ];
 
-// Brand colours — matching site exactly
+// ── Locations from site ──
+const locations = [
+  { name: 'Central Bath & Districts', slug: 'central-bath-districts', lat: 51.3811, lng: -2.3590 },
+  { name: 'Batheaston', slug: 'batheaston', lat: 51.3990, lng: -2.3310 },
+  { name: 'Bathford', slug: 'bathford', lat: 51.3710, lng: -2.3050 },
+  { name: 'Bathampton', slug: 'bathampton', lat: 51.3890, lng: -2.3410 },
+  { name: 'Box', slug: 'box', lat: 51.4130, lng: -2.2480 },
+  { name: 'Bradford on Avon', slug: 'bradford-on-avon', lat: 51.3490, lng: -2.2380 },
+  { name: 'Corsham', slug: 'corsham', lat: 51.4340, lng: -2.1890 },
+  { name: 'Saltford & Keynsham', slug: 'saltford-keynsham', lat: 51.4070, lng: -2.4920 },
+  { name: 'Chippenham', slug: 'chippenham', lat: 51.4550, lng: -2.1170 },
+  { name: 'Frome, Radstock & Midsomer Norton', slug: 'frome-radstock-midsomer-norton', lat: 51.2270, lng: -2.3210 },
+];
+
+// ── Default props ──
+const DEFAULTS = {
+  overlay: 0.94,
+  fade: 0.60,
+  posX: 5,
+  posY: 5,
+  contentWidth: 60,
+  headlineSize: 7,
+  taglineSize: 2.8,
+  logoSize: 5.5,
+  ctaPos: 18,
+  focusX: 50,
+  focusY: 50,
+  showAccent: true,
+  showLogo: true,
+  showRule: true,
+  showCTA: true,
+  showPhone: true,
+  showTagline: true,
+  showFeatures: true,
+  showSizeLabel: true,
+  showLocation: true,
+  locationIndex: 0,
+};
+
+let props = { ...DEFAULTS };
+
+// Brand colours
 const NAVY = '#0d1520';
-const CHARCOAL = '#1a2332';
 const ACCENT = '#AE8455';
 const WHITE = '#ffffff';
 const WHITE70 = 'rgba(255,255,255,0.70)';
 const WHITE50 = 'rgba(255,255,255,0.50)';
 
 const SIZES = {
-  'fb-feed': { w: 1200, h: 628, label: 'Facebook Feed Ad' },
-  'fb-square': { w: 1080, h: 1080, label: 'Facebook Square Post' },
-  'fb-story': { w: 1080, h: 1920, label: 'Facebook Story / Reel' },
+  'fb-feed': { w: 1200, h: 628, label: 'Facebook Feed' },
+  'fb-square': { w: 1080, h: 1080, label: 'Facebook Square' },
+  'fb-story': { w: 1080, h: 1920, label: 'Facebook Story' },
   'ig-post': { w: 1080, h: 1080, label: 'Instagram Post' },
   'ig-story': { w: 1080, h: 1920, label: 'Instagram Story' },
   'gbp-post': { w: 1080, h: 608, label: 'GBP Post' },
@@ -70,9 +110,9 @@ let currentIndex = 0;
 let currentSize = 'fb-feed';
 let bgImages = {};
 let bgImagesLoaded = {};
-let fontsReady = false;
+let customImage = null;
 
-// Preload background images
+// Preload
 services.forEach((svc, i) => {
   const img = new Image();
   img.crossOrigin = 'anonymous';
@@ -82,11 +122,7 @@ services.forEach((svc, i) => {
   img.onerror = () => { bgImagesLoaded[i] = false; renderCanvas(); };
 });
 
-// Wait for fonts to load before rendering
-document.fonts.ready.then(() => {
-  fontsReady = true;
-  renderCanvas();
-});
+document.fonts.ready.then(() => renderCanvas());
 
 function drawChevron(ctx, x, y, size, colour) {
   ctx.save();
@@ -100,29 +136,6 @@ function drawChevron(ctx, x, y, size, colour) {
   ctx.lineTo(x + size, y + size * 0.78);
   ctx.stroke();
   ctx.restore();
-}
-
-function drawLogo(ctx, unit, W) {
-  const logoY = unit * 5;
-  const logoX = unit * 5;
-  const markSize = unit * 6;
-
-  // Chevron mark (gold)
-  drawChevron(ctx, logoX, logoY, markSize, ACCENT);
-
-  // "Aspect" — Bebas Neue display font matching site nav
-  const textX = logoX + markSize + unit * 1.8;
-  const nameY = logoY + markSize * 0.5;
-  ctx.fillStyle = WHITE;
-  ctx.font = `900 ${unit * 5.5}px 'Bebas Neue', sans-serif`;
-  ctx.textBaseline = 'middle';
-  ctx.textAlign = 'left';
-  ctx.fillText('ASPECT', textX, nameY);
-
-  // "BUILDS & MAINTENANCE LTD" sub — small tracking, DM Sans
-  ctx.fillStyle = WHITE70;
-  ctx.font = `500 ${unit * 2}px 'DM Sans', sans-serif`;
-  ctx.fillText('BUILDS  &  MAINTENANCE  LTD', textX, nameY + unit * 4.5);
 }
 
 function renderCanvas() {
@@ -141,23 +154,31 @@ function renderCanvas() {
   const isPortrait = H > W;
   const isSquare = W === H;
   const unit = Math.min(W, H) / 100;
+  const p = props;
+  const padX = unit * p.posX;
+  let contentY = unit * p.posY;
+  const maxW = (p.contentWidth / 100) * W;
 
-  // ── Background image ──
-  if (bgImagesLoaded[currentIndex]) {
-    const img = bgImages[currentIndex];
+  // ── Background ──
+  const imgSource = customImage || bgImages[currentIndex];
+  const imgLoaded = customImage ? true : bgImagesLoaded[currentIndex];
+  if (imgLoaded && imgSource) {
+    const img = imgSource;
     const imgRatio = img.naturalWidth / img.naturalHeight;
     const canvasRatio = W / H;
+    const focusXPct = p.focusX / 100;
+    const focusYPct = p.focusY / 100;
     let sx, sy, sw, sh;
     if (imgRatio > canvasRatio) {
       sh = img.naturalHeight;
       sw = sh * canvasRatio;
-      sx = (img.naturalWidth - sw) / 2;
       sy = 0;
+      sx = Math.max(0, Math.min(img.naturalWidth - sw, img.naturalWidth * focusXPct - sw / 2));
     } else {
       sw = img.naturalWidth;
       sh = sw / canvasRatio;
       sx = 0;
-      sy = (img.naturalHeight - sh) / 2;
+      sy = Math.max(0, Math.min(img.naturalHeight - sh, img.naturalHeight * focusYPct - sh / 2));
     }
     ctx.drawImage(img, sx, sy, sw, sh, 0, 0, W, H);
   } else {
@@ -165,15 +186,14 @@ function renderCanvas() {
     ctx.fillRect(0, 0, W, H);
   }
 
-  // ── Overlay — dark vignette, left-heavy matching site hero ──
+  // ── Overlay ──
   const overlay = ctx.createLinearGradient(0, 0, W, 0);
-  overlay.addColorStop(0, 'rgba(0,0,0,0.94)');
-  overlay.addColorStop(0.45, 'rgba(0,0,0,0.90)');
-  overlay.addColorStop(1, 'rgba(0,0,0,0.60)');
+  overlay.addColorStop(0, `rgba(0,0,0,${p.overlay})`);
+  overlay.addColorStop(0.45, `rgba(0,0,0,${Math.max(0, p.overlay - 0.04)})`);
+  overlay.addColorStop(1, `rgba(0,0,0,${p.fade})`);
   ctx.fillStyle = overlay;
   ctx.fillRect(0, 0, W, H);
 
-  // For portrait/square: add a bottom gradient boost for readability
   if (isPortrait || isSquare) {
     const bottomOverlay = ctx.createLinearGradient(0, H * 0.3, 0, H);
     bottomOverlay.addColorStop(0, 'rgba(0,0,0,0)');
@@ -182,29 +202,43 @@ function renderCanvas() {
     ctx.fillRect(0, 0, W, H);
   }
 
-  // ── Gold accent bar at top ──
-  ctx.fillStyle = ACCENT;
-  ctx.fillRect(0, 0, W, Math.max(3, unit * 0.5));
+  // ── Accent bar ──
+  if (p.showAccent) {
+    ctx.fillStyle = ACCENT;
+    ctx.fillRect(0, 0, W, Math.max(3, unit * 0.5));
+  }
 
   // ── Logo ──
-  drawLogo(ctx, unit, W);
+  if (p.showLogo) {
+    const logoSize = unit * p.logoSize;
+    const markSize = logoSize * 1.1;
+    drawChevron(ctx, padX, contentY, markSize, ACCENT);
+    const textX = padX + markSize + unit * 1.8;
+    const nameY = contentY + markSize * 0.5;
+    ctx.fillStyle = WHITE;
+    ctx.font = `900 ${logoSize}px 'Bebas Neue', sans-serif`;
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'left';
+    ctx.fillText('ASPECT', textX, nameY);
+    ctx.fillStyle = WHITE70;
+    ctx.font = `500 ${logoSize * 0.36}px 'DM Sans', sans-serif`;
+    ctx.fillText('BUILDS  &  MAINTENANCE  LTD', textX, nameY + logoSize * 0.82);
+    contentY += markSize + unit * 2;
+  }
 
-  // ── Gold rule below logo ──
-  const markSize = unit * 6;
-  const ruleY = unit * 5 + markSize + unit * 6.5;
-  ctx.fillStyle = ACCENT;
-  ctx.fillRect(unit * 5, ruleY, unit * 10, Math.max(2, unit * 0.3));
+  // ── Gold rule ──
+  if (p.showRule) {
+    ctx.fillStyle = ACCENT;
+    ctx.fillRect(padX, contentY, unit * 10, Math.max(2, unit * 0.3));
+    contentY += unit * 3;
+  }
 
   // ── Headline ──
-  const headlineY = ruleY + unit * 4;
-  const maxW = isPortrait ? W * 0.88 : W * 0.6;
+  const headSize = unit * p.headlineSize;
   ctx.fillStyle = WHITE;
-  const headSize = isPortrait ? unit * 7 : unit * 7;
   ctx.font = `900 ${headSize}px 'Bebas Neue', sans-serif`;
   ctx.textBaseline = 'top';
   ctx.textAlign = 'left';
-
-  // Word wrap headline
   const words = svc.title.split(' ');
   let lines = [];
   let currentLine = [];
@@ -218,99 +252,190 @@ function renderCanvas() {
     }
   }
   if (currentLine.length) lines.push(currentLine.join(' '));
-
-  const headlineLineH = headSize * 1.05;
-  let textY = headlineY;
   for (const line of lines) {
     ctx.fillStyle = WHITE;
-    ctx.fillText(line, unit * 5, textY);
-    textY += headlineLineH;
+    ctx.fillText(line, padX, contentY);
+    contentY += headSize * 1.05;
   }
 
-  // ── Tagline in accent ──
-  textY += unit * 0.5;
-  ctx.fillStyle = ACCENT;
-  ctx.font = `600 ${isPortrait ? unit * 3 : unit * 2.8}px 'DM Sans', sans-serif`;
-  ctx.textBaseline = 'top';
-  const tagWords = svc.tagline.split(' ');
-  let tagLines = [];
-  let tagLine = '';
-  for (const word of tagWords) {
-    const test = tagLine ? tagLine + ' ' + word : word;
-    if (ctx.measureText(test).width > maxW && tagLine) {
-      tagLines.push(tagLine);
-      tagLine = word;
-    } else {
-      tagLine = test;
+  // ── Tagline ──
+  if (p.showTagline && svc.tagline) {
+    contentY += unit * 0.5;
+    ctx.fillStyle = ACCENT;
+    ctx.font = `600 ${isPortrait ? unit * p.taglineSize * 1.07 : unit * p.taglineSize}px 'DM Sans', sans-serif`;
+    ctx.textBaseline = 'top';
+    const tagWords = svc.tagline.split(' ');
+    let tagLines = [];
+    let tagLine = '';
+    for (const word of tagWords) {
+      const test = tagLine ? tagLine + ' ' + word : word;
+      if (ctx.measureText(test).width > maxW && tagLine) {
+        tagLines.push(tagLine);
+        tagLine = word;
+      } else {
+        tagLine = test;
+      }
+    }
+    if (tagLine) tagLines.push(tagLine);
+    for (const line of tagLines) {
+      ctx.fillText(line, padX, contentY);
+      contentY += isPortrait ? unit * 4 : unit * 3.8;
     }
   }
-  if (tagLine) tagLines.push(tagLine);
-  for (const line of tagLines) {
-    ctx.fillText(line, unit * 5, textY);
-    textY += isPortrait ? unit * 4 : unit * 3.8;
-  }
 
-  // ── Feature bullets (portrait + square only) ──
-  if (isPortrait || isSquare) {
-    textY += unit * 2;
+  // ── Features ──
+  if (p.showFeatures && (isPortrait || isSquare) && svc.features) {
+    contentY += unit * 2;
     ctx.font = `400 ${unit * 2.8}px 'DM Sans', sans-serif`;
     for (const feat of svc.features) {
       ctx.fillStyle = ACCENT;
-      ctx.fillText('\u25CF  ', unit * 5, textY);
-      const bulletW = ctx.measureText('\u25CF  ').width;
+      const bullet = '\u25CF  ';
+      ctx.fillText(bullet, padX, contentY);
+      const bulletW = ctx.measureText(bullet).width;
       ctx.fillStyle = WHITE70;
-      ctx.fillText(feat, unit * 5 + bulletW, textY);
-      textY += unit * 4.2;
+      ctx.fillText(feat, padX + bulletW, contentY);
+      contentY += unit * 4.2;
     }
   }
 
   // ── CTA pill ──
-  const ctaH = isPortrait ? unit * 7 : unit * 6.5;
-  const ctaY = isPortrait ? H - unit * 22 : H - unit * 18;
-  const ctaText = 'Get a Free Quote';
-  ctx.font = `600 ${isPortrait ? unit * 3 : unit * 2.8}px 'DM Sans', sans-serif`;
-  const ctaTW = ctx.measureText(ctaText).width;
-  const ctaW = ctaTW + unit * 6;
-  const ctaX = unit * 5;
+  if (p.showCTA) {
+    const ctaH = isPortrait ? unit * 7 : unit * 6.5;
+    const ctaY = H - unit * p.ctaPos;
+    const ctaText = 'Get a Free Quote';
+    ctx.font = `600 ${isPortrait ? unit * 3 : unit * 2.8}px 'DM Sans', sans-serif`;
+    const ctaTW = ctx.measureText(ctaText).width;
+    const ctaW = ctaTW + unit * 6;
+    ctx.fillStyle = ACCENT;
+    ctx.beginPath();
+    ctx.roundRect(padX, ctaY, ctaW, ctaH, ctaH / 2);
+    ctx.fill();
+    ctx.fillStyle = NAVY;
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'left';
+    ctx.fillText(ctaText, padX + unit * 3, ctaY + ctaH / 2);
+  }
 
-  ctx.fillStyle = ACCENT;
-  ctx.beginPath();
-  ctx.roundRect(ctaX, ctaY, ctaW, ctaH, ctaH / 2);
-  ctx.fill();
+  // ── Location badge ──
+  if (p.showLocation) {
+    const loc = locations[p.locationIndex];
+    const locText = loc.name;
+    ctx.font = `500 ${unit * 2}px 'DM Sans', sans-serif`;
+    const locTW = ctx.measureText(locText).width;
+    const badgePadX = unit * 2;
+    const badgePadY = unit * 1;
+    const badgeH = unit * 2 + badgePadY * 2;
+    const badgeX = W - padX - locTW - badgePadX * 2;
+    const badgeY = H - unit * p.ctaPos - badgeH - unit * 1;
 
-  ctx.fillStyle = NAVY;
-  ctx.textBaseline = 'middle';
-  ctx.textAlign = 'left';
-  ctx.fillText(ctaText, ctaX + unit * 3, ctaY + ctaH / 2);
+    // Pill background
+    ctx.fillStyle = 'rgba(13, 21, 32, 0.85)';
+    ctx.beginPath();
+    ctx.roundRect(badgeX, badgeY, locTW + badgePadX * 2, badgeH, unit);
+    ctx.fill();
+
+    // Gold pin dot
+    const pinX = badgeX + badgePadX;
+    const pinY = badgeY + badgeH / 2;
+    ctx.fillStyle = ACCENT;
+    ctx.beginPath();
+    ctx.arc(pinX + unit * 0.6, pinY, unit * 0.6, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Location name
+    ctx.fillStyle = WHITE;
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'left';
+    ctx.fillText(locText, pinX + unit * 1.8, pinY);
+
+    // GPS coords in smaller text below
+    const coordText = `${loc.lat.toFixed(4)}\u00B0N  ${Math.abs(loc.lng).toFixed(4)}\u00B0W`;
+    ctx.fillStyle = WHITE50;
+    ctx.font = `400 ${unit * 1.5}px 'DM Sans', sans-serif`;
+    ctx.textBaseline = 'top';
+    ctx.fillText(coordText, badgeX + badgePadX, badgeY + badgeH + unit * 0.5);
+  }
 
   // ── Phone + URL ──
-  ctx.fillStyle = WHITE50;
-  ctx.font = `400 ${unit * 2.2}px 'DM Sans', sans-serif`;
-  ctx.textBaseline = 'bottom';
-  ctx.textAlign = 'left';
-  ctx.fillText('07552 060932  \u00B7  aspectbuilds.co.uk', unit * 5, H - unit * 3);
+  if (p.showPhone) {
+    ctx.fillStyle = WHITE50;
+    ctx.font = `400 ${unit * 2.2}px 'DM Sans', sans-serif`;
+    ctx.textBaseline = 'bottom';
+    ctx.textAlign = 'left';
+    ctx.fillText('07552 060932  \u00B7  aspectbuilds.co.uk', padX, H - unit * 3);
+  }
 
-  // ── Size label (bottom right) ──
-  ctx.fillStyle = 'rgba(255,255,255,0.15)';
-  ctx.font = `400 ${unit * 1.8}px 'DM Sans', sans-serif`;
-  ctx.textAlign = 'right';
-  ctx.fillText(`${size.w}\u00D7${size.h}`, W - unit * 3, H - unit * 3);
-  ctx.textAlign = 'left';
+  // ── Size label ──
+  if (p.showSizeLabel) {
+    ctx.fillStyle = 'rgba(255,255,255,0.15)';
+    ctx.font = `400 ${unit * 1.8}px 'DM Sans', sans-serif`;
+    ctx.textAlign = 'right';
+    ctx.fillText(`${size.w}\u00D7${size.h}`, W - unit * 3, H - unit * 3);
+    ctx.textAlign = 'left';
+  }
+}
+
+// ── UI ──
+function updateSlider(key, value) {
+  props[key] = value;
+  const el = document.getElementById('val-' + key);
+  if (el) el.textContent = typeof value === 'number' ? (Number.isInteger(value) ? value : value.toFixed(2)) : value;
+}
+
+function syncUIFromProps() {
+  ['overlay','fade','posX','posY','contentWidth','headlineSize','taglineSize','logoSize','ctaPos','focusX','focusY'].forEach(key => {
+    const el = document.getElementById(key);
+    if (!el) return;
+    if (key === 'overlay') el.value = props.overlay * 100;
+    else if (key === 'fade') el.value = props.fade * 100;
+    else el.value = props[key];
+    updateSlider(key, props[key]);
+  });
+  ['showAccent','showLogo','showRule','showCTA','showPhone','showTagline','showFeatures','showSizeLabel','showLocation'].forEach(key => {
+    const el = document.getElementById(key);
+    if (el) el.checked = props[key];
+  });
+  const locSel = document.getElementById('locationSelect');
+  if (locSel) locSel.value = props.locationIndex;
 }
 
 function selectService(index) {
   currentIndex = index;
-  document.querySelectorAll('.svc-btn').forEach((btn, i) => {
-    btn.classList.toggle('active', i === index);
-  });
+  customImage = null;
+  document.querySelectorAll('.svc-btn').forEach((btn, i) => btn.classList.toggle('active', i === index));
   renderCanvas();
 }
 
 function selectSize(size) {
   currentSize = size;
-  document.querySelectorAll('.size-btn').forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.size === size);
-  });
+  document.querySelectorAll('.size-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.size === size));
+  renderCanvas();
+}
+
+function handleImageUpload(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => { customImage = img; renderCanvas(); };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleImageURL(url) {
+  if (!url) return;
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = () => { customImage = img; renderCanvas(); };
+  img.onerror = () => alert('Could not load image from that URL.');
+  img.src = url;
+}
+
+function resetDefaults() {
+  props = { ...DEFAULTS };
+  customImage = null;
+  syncUIFromProps();
   renderCanvas();
 }
 
@@ -349,4 +474,14 @@ function downloadAll() {
 window.addEventListener('DOMContentLoaded', () => {
   selectService(0);
   selectSize('fb-feed');
+  syncUIFromProps();
+
+  const fileInput = document.getElementById('imageUpload');
+  if (fileInput) fileInput.addEventListener('change', (e) => { if (e.target.files[0]) handleImageUpload(e.target.files[0]); });
+  const urlBtn = document.getElementById('imageUrlBtn');
+  if (urlBtn) urlBtn.addEventListener('click', () => { const url = document.getElementById('imageUrl').value.trim(); if (url) handleImageURL(url); });
+  const resetImgBtn = document.getElementById('resetImage');
+  if (resetImgBtn) resetImgBtn.addEventListener('click', () => { customImage = null; renderCanvas(); });
+  const locSel = document.getElementById('locationSelect');
+  if (locSel) locSel.addEventListener('change', (e) => { props.locationIndex = parseInt(e.target.value); renderCanvas(); });
 });
