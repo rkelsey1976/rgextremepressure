@@ -332,7 +332,7 @@ function renderCanvas() {
     ctx.font = `400 ${unit * 2.2}px 'DM Sans', sans-serif`;
     ctx.textBaseline = 'bottom';
     ctx.textAlign = 'left';
-    ctx.fillText('07552 060932  \u00B7  aspectbuilds.co.uk', padX, H - unit * 3);
+    ctx.fillText('07498 158747  \u00B7  aspectbuilds.co.uk', padX, H - unit * 3);
   }
 
   // ── TrustATrader badge ──
