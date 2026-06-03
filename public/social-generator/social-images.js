@@ -77,11 +77,15 @@ const DEFAULTS = {
   ctaPos: 18,
   focusX: 50,
   focusY: 50,
+  trustSize: 6,
+  trustX: 88,
+  trustY: 6,
   showAccent: true,
   showLogo: true,
   showRule: true,
   showCTA: true,
   showPhone: true,
+  showTrust: false,
   showTagline: true,
   showFeatures: true,
   showSizeLabel: true,
@@ -111,6 +115,12 @@ let currentSize = 'fb-feed';
 let bgImages = {};
 let bgImagesLoaded = {};
 let customImage = null;
+let trustLogo = new Image();
+let trustLogoLoaded = false;
+trustLogo.crossOrigin = 'anonymous';
+trustLogo.src = '/images/trustatrader-logo.svg';
+trustLogo.onload = () => { trustLogoLoaded = true; renderCanvas(); };
+trustLogo.onerror = () => { trustLogoLoaded = false; };
 
 // Preload
 services.forEach((svc, i) => {
@@ -325,6 +335,33 @@ function renderCanvas() {
     ctx.fillText('07552 060932  \u00B7  aspectbuilds.co.uk', padX, H - unit * 3);
   }
 
+  // ── TrustATrader badge ──
+  if (p.showTrust && trustLogoLoaded) {
+    const tSize = unit * p.trustSize;
+    const tX = (p.trustX / 100) * W - tSize / 2;
+    const tY = (p.trustY / 100) * H;
+
+    // White circle background for contrast
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.arc(tX + tSize * 0.15, tY + tSize * 0.15, tSize * 0.3, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Logo
+    ctx.drawImage(trustLogo, tX, tY, tSize * 0.55, tSize * 0.55);
+
+    // "Verified Member" text
+    ctx.fillStyle = WHITE;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.font = `600 ${unit * 1.5}px 'DM Sans', sans-serif`;
+    ctx.fillText('TrustATrader', tX + tSize * 0.275, tY + tSize * 0.58);
+    ctx.fillStyle = WHITE70;
+    ctx.font = `400 ${unit * 1.1}px 'DM Sans', sans-serif`;
+    ctx.fillText('Verified Member', tX + tSize * 0.275, tY + tSize * 0.72);
+    ctx.textAlign = 'left';
+  }
+
   // ── Size label ──
   if (p.showSizeLabel) {
     ctx.fillStyle = 'rgba(255,255,255,0.15)';
@@ -343,7 +380,7 @@ function updateSlider(key, value) {
 }
 
 function syncUIFromProps() {
-  ['overlay','fade','posX','posY','contentWidth','headlineSize','taglineSize','logoSize','logoGap','ctaPos','focusX','focusY'].forEach(key => {
+  ['overlay','fade','posX','posY','contentWidth','headlineSize','taglineSize','logoSize','logoGap','ctaPos','focusX','focusY','trustSize','trustX','trustY'].forEach(key => {
     const el = document.getElementById(key);
     if (!el) return;
     if (key === 'overlay') el.value = props.overlay * 100;
@@ -351,7 +388,7 @@ function syncUIFromProps() {
     else el.value = props[key];
     updateSlider(key, props[key]);
   });
-  ['showAccent','showLogo','showRule','showCTA','showPhone','showTagline','showFeatures','showSizeLabel'].forEach(key => {
+  ['showAccent','showLogo','showRule','showCTA','showPhone','showTrust','showTagline','showFeatures','showSizeLabel'].forEach(key => {
     const el = document.getElementById(key);
     if (el) el.checked = props[key];
   });

@@ -226,12 +226,34 @@
         <label class="toggle"><input type="checkbox" id="showAccent" checked onchange="renderCanvas()"><span>Bar</span></label>
         <label class="toggle"><input type="checkbox" id="showLogo" checked onchange="renderCanvas()"><span>Logo</span></label>
         <label class="toggle"><input type="checkbox" id="showRule" checked onchange="renderCanvas()"><span>Rule</span></label>
+        <label class="toggle"><input type="checkbox" id="showTrust" onchange="renderCanvas()"><span>TrustATrader</span></label>
         <label class="toggle"><input type="checkbox" id="showTagline" checked onchange="renderCanvas()"><span>Tagline</span></label>
         <label class="toggle"><input type="checkbox" id="showFeatures" checked onchange="renderCanvas()"><span>Features</span></label>
         <label class="toggle"><input type="checkbox" id="showCTA" checked onchange="renderCanvas()"><span>CTA</span></label>
         <label class="toggle"><input type="checkbox" id="showPhone" checked onchange="renderCanvas()"><span>Phone</span></label>
         <label class="toggle"><input type="checkbox" id="showSizeLabel" checked onchange="renderCanvas()"><span>Size</span></label>
       </div>
+      <div id="trustControls" style="display:none; margin-top:8px">
+        <div class="panel-title">TrustATrader Position</div>
+        <div class="slider-group">
+          <label>Badge Size <span id="val-trustSize">6</span></label>
+          <input type="range" id="trustSize" min="3" max="15" value="6" step="0.5" oninput="updateSlider('trustSize', parseFloat(this.value)); renderCanvas();">
+        </div>
+        <div class="slider-group">
+          <label>X Position % <span id="val-trustX">88</span></label>
+          <input type="range" id="trustX" min="5" max="95" value="88" oninput="updateSlider('trustX', parseInt(this.value)); renderCanvas();">
+        </div>
+        <div class="slider-group">
+          <label>Y Position % <span id="val-trustY">6</span></label>
+          <input type="range" id="trustY" min="3" max="95" value="6" oninput="updateSlider('trustY', parseInt(this.value)); renderCanvas();">
+        </div>
+      </div>
+
+<script>
+document.getElementById('showTrust').addEventListener('change', function() {
+  document.getElementById('trustControls').style.display = this.checked ? 'block' : 'none';
+});
+</script>
     </div>
   </div>
 
