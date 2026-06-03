@@ -122,7 +122,7 @@ function drawLogo(ctx, unit, W) {
   // "BUILDS & MAINTENANCE LTD" sub — small tracking, DM Sans
   ctx.fillStyle = WHITE70;
   ctx.font = `500 ${unit * 2}px 'DM Sans', sans-serif`;
-  ctx.fillText('BUILDS  &  MAINTENANCE  LTD', textX, nameY + unit * 4.5);
+  ctx.fillText('BATH  &  SOMERSET', textX, nameY + unit * 4.5);
 }
 
 function renderCanvas() {
@@ -165,11 +165,11 @@ function renderCanvas() {
     ctx.fillRect(0, 0, W, H);
   }
 
-  // ── Overlay — left vignette matching site hero ──
+  // ── Overlay — dark vignette, left-heavy matching site hero ──
   const overlay = ctx.createLinearGradient(0, 0, W, 0);
-  overlay.addColorStop(0, 'rgba(0,0,0,0.92)');
-  overlay.addColorStop(0.4, 'rgba(0,0,0,0.88)');
-  overlay.addColorStop(1, 'rgba(0,0,0,0.45)');
+  overlay.addColorStop(0, 'rgba(0,0,0,0.94)');
+  overlay.addColorStop(0.45, 'rgba(0,0,0,0.90)');
+  overlay.addColorStop(1, 'rgba(0,0,0,0.60)');
   ctx.fillStyle = overlay;
   ctx.fillRect(0, 0, W, H);
 
@@ -177,7 +177,7 @@ function renderCanvas() {
   if (isPortrait || isSquare) {
     const bottomOverlay = ctx.createLinearGradient(0, H * 0.3, 0, H);
     bottomOverlay.addColorStop(0, 'rgba(0,0,0,0)');
-    bottomOverlay.addColorStop(1, 'rgba(0,0,0,0.7)');
+    bottomOverlay.addColorStop(1, 'rgba(0,0,0,0.8)');
     ctx.fillStyle = bottomOverlay;
     ctx.fillRect(0, 0, W, H);
   }
@@ -274,7 +274,7 @@ function renderCanvas() {
 
   // ── CTA pill ──
   const ctaH = isPortrait ? unit * 7 : unit * 6.5;
-  const ctaY = isPortrait ? H - unit * 16 : H - unit * 13;
+  const ctaY = isPortrait ? H - unit * 22 : H - unit * 18;
   const ctaText = 'Get a Free Quote';
   ctx.font = `600 ${isPortrait ? unit * 3 : unit * 2.8}px 'DM Sans', sans-serif`;
   const ctaTW = ctx.measureText(ctaText).width;
