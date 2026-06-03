@@ -1,0 +1,36 @@
+/* Self-hosted fonts for social image generator — no external CDN dependency */
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('fonts/BebasNeue.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('fonts/DMSans-400.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url('fonts/DMSans-500.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url('fonts/DMSans-600.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url('fonts/DMSans-700.ttf') format('truetype');
+}
