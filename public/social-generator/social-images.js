@@ -137,7 +137,7 @@ let trustLogo = new Image();
 let trustLogoLoaded = false;
 trustLogo.crossOrigin = 'anonymous';
 trustLogo.src = '/images/trustatrader-logo.svg';
-trustLogo.onload = () => { trustLogoLoaded = true; if (fontsReady) renderCanvas(); };
+trustLogo.onload = () => { trustLogoLoaded = true; renderCanvas(); };
 trustLogo.onerror = () => { trustLogoLoaded = false; };
 
 // Preload background images
@@ -146,8 +146,8 @@ services.forEach((svc, i) => {
   img.crossOrigin = 'anonymous';
   img.src = svc.image;
   bgImages[i] = img;
-  img.onload = () => { bgImagesLoaded[i] = true; if (fontsReady) renderCanvas(); };
-  img.onerror = () => { bgImagesLoaded[i] = false; if (fontsReady) renderCanvas(); };
+  img.onload = () => { bgImagesLoaded[i] = true; renderCanvas(); };
+  img.onerror = () => { bgImagesLoaded[i] = false; renderCanvas(); };
 });
 
 function drawChevron(ctx, x, y, size, colour) {
@@ -165,6 +165,7 @@ function drawChevron(ctx, x, y, size, colour) {
 }
 
 function renderCanvas() {
+  if (!fontsReady) return;  // block ALL renders until fonts loaded
   // Sync toggle states from DOM to props
   ['showAccent','showLogo','showRule','showCTA','showPhone','showTrust','showTagline','showFeatures','showSizeLabel'].forEach(key => {
     const el = document.getElementById(key);
