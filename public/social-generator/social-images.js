@@ -439,14 +439,115 @@ function resetDefaults() {
   renderCanvas();
 }
 
+// ── PNG tEXt chunk injection ──
+// PNG spec: each chunk = length(4B) + type(4B) + data(lengthB) + CRC(4B)
+// tEXt chunk type: keyword\0text  (Latin-1 encoded)
+function encodePNGChunk(type, data) {
+  const len = new Uint8Array(4);
+  len[0] = (data.length >> 24) & 0xff;
+  len[1] = (data.length >> 16) & 0xff;
+  len[2] = (data.length >> 8) & 0xff;
+  len[3] = data.length & 0xff;
+  const typeBytes = new TextEncoder().encode(type);
+  const crcInput = new Uint8Array(typeBytes.length + data.length);
+  crcInput.set(typeBytes, 0);
+  crcInput.set(data, typeBytes.length);
+  const crc = crc32(crcInput);
+  const crcBytes = new Uint8Array(4);
+  crcBytes[0] = (crc >>> 24) & 0xff;
+  crcBytes[1] = (crc >>> 16) & 0xff;
+  crcBytes[2] = (crc >>> 8) & 0xff;
+  crcBytes[3] = crc & 0xff;
+  const chunk = new Uint8Array(4 + typeBytes.length + data.length + 4);
+  chunk.set(len, 0);
+  chunk.set(typeBytes, 4);
+  chunk.set(data, 8);
+  chunk.set(crcBytes, 8 + data.length);
+  return chunk;
+}
+
+// CRC32 for PNG chunks (ISO 3309 / ITU-T V.42)
+function crc32(buf) {
+  let crc = 0xffffffff;
+  const table = crc32.table || (crc32.table = (() => {
+    const t = new Uint32Array(256);
+    for (let n = 0; n < 256; n++) {
+      let c = n;
+      for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+      t[n] = c;
+    }
+    return t;
+  })());
+  for (let i = 0; i < buf.length; i++) {
+    crc = table[(crc ^ buf[i]) & 0xff] ^ (crc >>> 8);
+  }
+  return (crc ^ 0xffffffff) >>> 0;
+}
+
+function makeTextChunk(keyword, text) {
+  const kw = new TextEncoder().encode(keyword + '\0');
+  const val = new TextEncoder().encode(text);
+  const data = new Uint8Array(kw.length + val.length);
+  data.set(kw, 0);
+  data.set(val, kw.length);
+  return encodePNGChunk('tEXt', data);
+}
+
+function injectGeoIntoPNG(pngArrayBuffer, loc, svc) {
+  const src = new Uint8Array(pngArrayBuffer);
+  // Find position after the IHDR chunk (the second chunk in the file)
+  // PNG signature = 8 bytes, then IHDR chunk
+  const ihdrLen = (src[8] << 24 | src[9] << 16 | src[10] << 8 | src[11]) >>> 0;
+  const ihdrEnd = 8 + 4 + 4 + ihdrLen + 4; // sig + len + type + data + crc
+  const insertAt = ihdrEnd;
+
+  // Build metadata chunks
+  const chunks = [];
+  chunks.push(makeTextChunk('GPSLatitude', loc.lat.toFixed(6)));
+  chunks.push(makeTextChunk('GPSLongitude', loc.lng.toFixed(6)));
+  chunks.push(makeTextChunk('LocationName', loc.name));
+  chunks.push(makeTextChunk('LocationSlug', loc.slug));
+  chunks.push(makeTextChunk('Service', svc.title));
+  chunks.push(makeTextChunk('ServiceId', svc.id));
+  chunks.push(makeTextChunk('Business', 'Aspect Builds & Maintenance Ltd'));
+  chunks.push(makeTextChunk('Website', 'https://www.aspectbuilds.co.uk'));
+  // RFC 6350 geo URI for easy extraction
+  chunks.push(makeTextChunk('GeoURI', `geo:${loc.lat},${loc.lng};u=20`));
+
+  // Splice chunks after IHDR
+  const totalNew = chunks.reduce((s, c) => s + c.length, 0);
+  const result = new Uint8Array(src.length + totalNew);
+  result.set(src.subarray(0, insertAt), 0);
+  let offset = insertAt;
+  for (const chunk of chunks) {
+    result.set(chunk, offset);
+    offset += chunk.length;
+  }
+  result.set(src.subarray(insertAt), offset);
+  return result.buffer;
+}
+
 function downloadPNG() {
   const canvas = document.getElementById('canvas');
   const svc = services[currentIndex];
   const size = SIZES[currentSize];
-  const link = document.createElement('a');
-  link.download = `aspect-builds-${svc.id}-${currentSize}-${size.w}x${size.h}.png`;
-  link.href = canvas.toDataURL('image/png');
-  link.click();
+  const loc = locations[props.locationIndex];
+  const filename = `aspect-builds-${svc.id}-${currentSize}-${size.w}x${size.h}.png`;
+
+  canvas.toBlob((blob) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const injected = injectGeoIntoPNG(reader.result, loc, svc);
+      const outBlob = new Blob([injected], { type: 'image/png' });
+      const url = URL.createObjectURL(outBlob);
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = url;
+      link.click();
+      URL.revokeObjectURL(url);
+    };
+    reader.readAsArrayBuffer(blob);
+  }, 'image/png');
 }
 
 function downloadAll() {
