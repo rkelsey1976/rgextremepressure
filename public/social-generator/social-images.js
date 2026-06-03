@@ -85,7 +85,6 @@ const DEFAULTS = {
   showTagline: true,
   showFeatures: true,
   showSizeLabel: true,
-  showLocation: true,
   locationIndex: 0,
 };
 
@@ -317,46 +316,6 @@ function renderCanvas() {
     ctx.fillText(ctaText, padX + unit * 3, ctaY + ctaH / 2);
   }
 
-  // ── Location badge ──
-  if (p.showLocation) {
-    const loc = locations[p.locationIndex];
-    const locText = loc.name;
-    ctx.font = `500 ${unit * 2}px 'DM Sans', sans-serif`;
-    const locTW = ctx.measureText(locText).width;
-    const badgePadX = unit * 2;
-    const badgePadY = unit * 1;
-    const badgeH = unit * 2 + badgePadY * 2;
-    const badgeX = W - padX - locTW - badgePadX * 2;
-    const badgeY = H - unit * p.ctaPos - badgeH - unit * 1;
-
-    // Pill background
-    ctx.fillStyle = 'rgba(13, 21, 32, 0.85)';
-    ctx.beginPath();
-    ctx.roundRect(badgeX, badgeY, locTW + badgePadX * 2, badgeH, unit);
-    ctx.fill();
-
-    // Gold pin dot
-    const pinX = badgeX + badgePadX;
-    const pinY = badgeY + badgeH / 2;
-    ctx.fillStyle = ACCENT;
-    ctx.beginPath();
-    ctx.arc(pinX + unit * 0.6, pinY, unit * 0.6, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Location name
-    ctx.fillStyle = WHITE;
-    ctx.textBaseline = 'middle';
-    ctx.textAlign = 'left';
-    ctx.fillText(locText, pinX + unit * 1.8, pinY);
-
-    // GPS coords in smaller text below
-    const coordText = `${loc.lat.toFixed(4)}\u00B0N  ${Math.abs(loc.lng).toFixed(4)}\u00B0W`;
-    ctx.fillStyle = WHITE50;
-    ctx.font = `400 ${unit * 1.5}px 'DM Sans', sans-serif`;
-    ctx.textBaseline = 'top';
-    ctx.fillText(coordText, badgeX + badgePadX, badgeY + badgeH + unit * 0.5);
-  }
-
   // ── Phone + URL ──
   if (p.showPhone) {
     ctx.fillStyle = WHITE50;
@@ -392,7 +351,7 @@ function syncUIFromProps() {
     else el.value = props[key];
     updateSlider(key, props[key]);
   });
-  ['showAccent','showLogo','showRule','showCTA','showPhone','showTagline','showFeatures','showSizeLabel','showLocation'].forEach(key => {
+  ['showAccent','showLogo','showRule','showCTA','showPhone','showTagline','showFeatures','showSizeLabel'].forEach(key => {
     const el = document.getElementById(key);
     if (el) el.checked = props[key];
   });
