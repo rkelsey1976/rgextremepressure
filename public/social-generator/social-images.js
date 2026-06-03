@@ -134,6 +134,21 @@ services.forEach((svc, i) => {
 
 document.fonts.ready.then(() => renderCanvas());
 
+// Force-load self-hosted fonts before first canvas render
+Promise.all([
+  new FontFace('Bebas Neue', "url('fonts/BebasNeue.ttf')").load(),
+  new FontFace('DM Sans', "url('fonts/DMSans-400.ttf')", { weight: '400' }).load(),
+  new FontFace('DM Sans', "url('fonts/DMSans-500.ttf')", { weight: '500' }).load(),
+  new FontFace('DM Sans', "url('fonts/DMSans-600.ttf')", { weight: '600' }).load(),
+  new FontFace('DM Sans', "url('fonts/DMSans-700.ttf')", { weight: '700' }).load(),
+]).then(fonts => {
+  fonts.forEach(f => document.fonts.add(f));
+  renderCanvas();
+}).catch(() => {
+  // Fallback: still try to render
+  renderCanvas();
+});
+
 function drawChevron(ctx, x, y, size, colour) {
   ctx.save();
   ctx.strokeStyle = colour;
