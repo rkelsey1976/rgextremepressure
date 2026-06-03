@@ -115,26 +115,9 @@ let currentSize = 'fb-feed';
 let bgImages = {};
 let bgImagesLoaded = {};
 let customImage = null;
-let trustLogo = new Image();
-let trustLogoLoaded = false;
-trustLogo.crossOrigin = 'anonymous';
-trustLogo.src = '/images/trustatrader-logo.svg';
-trustLogo.onload = () => { trustLogoLoaded = true; renderCanvas(); };
-trustLogo.onerror = () => { trustLogoLoaded = false; };
+let fontsReady = false;  // gate: no canvas render until fonts are loaded
 
-// Preload
-services.forEach((svc, i) => {
-  const img = new Image();
-  img.crossOrigin = 'anonymous';
-  img.src = svc.image;
-  bgImages[i] = img;
-  img.onload = () => { bgImagesLoaded[i] = true; renderCanvas(); };
-  img.onerror = () => { bgImagesLoaded[i] = false; renderCanvas(); };
-});
-
-document.fonts.ready.then(() => renderCanvas());
-
-// Force-load self-hosted fonts before first canvas render
+// ── Fonts FIRST — block everything else until loaded ──
 Promise.all([
   new FontFace('Bebas Neue', "url('fonts/BebasNeue.ttf')").load(),
   new FontFace('DM Sans', "url('fonts/DMSans-400.ttf')", { weight: '400' }).load(),
@@ -143,10 +126,28 @@ Promise.all([
   new FontFace('DM Sans', "url('fonts/DMSans-700.ttf')", { weight: '700' }).load(),
 ]).then(fonts => {
   fonts.forEach(f => document.fonts.add(f));
-  renderCanvas();
+  fontsReady = true;
+  renderCanvas();  // first safe render
 }).catch(() => {
-  // Fallback: still try to render
+  fontsReady = true;  // allow renders even if font load failed
   renderCanvas();
+});
+
+let trustLogo = new Image();
+let trustLogoLoaded = false;
+trustLogo.crossOrigin = 'anonymous';
+trustLogo.src = '/images/trustatrader-logo.svg';
+trustLogo.onload = () => { trustLogoLoaded = true; if (fontsReady) renderCanvas(); };
+trustLogo.onerror = () => { trustLogoLoaded = false; };
+
+// Preload background images
+services.forEach((svc, i) => {
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.src = svc.image;
+  bgImages[i] = img;
+  img.onload = () => { bgImagesLoaded[i] = true; if (fontsReady) renderCanvas(); };
+  img.onerror = () => { bgImagesLoaded[i] = false; if (fontsReady) renderCanvas(); };
 });
 
 function drawChevron(ctx, x, y, size, colour) {
