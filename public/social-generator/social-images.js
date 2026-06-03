@@ -1,0 +1,323 @@
+const services = [
+  {
+    id: 'loft',
+    title: 'Loft Conversions',
+    subtitle: 'Dormer, Velux, Hip-to-Gable & Mansard',
+    tagline: 'Add Space. Add Value. No Moving Required.',
+    features: ['Dormer Conversions', 'Velux Rooflight', 'Hip-to-Gable & Mansard', 'Full Building Regs'],
+    image: '/images/hero-james-bath-property-4.webp',
+  },
+  {
+    id: 'extensions',
+    title: 'House Extensions',
+    subtitle: 'Single & Double-Storey, Side-Return, Garden Rooms',
+    tagline: 'Real Living Space. Fixed Price. Full Planning Managed.',
+    features: ['Single-Storey Rear', 'Double-Storey', 'Side-Return & Wraparound', 'Garden Rooms'],
+    image: '/images/hero-james-bath-property-5.webp',
+  },
+  {
+    id: 'structural',
+    title: 'Structural & Scale Builds',
+    subtitle: 'New Build, RSJs, Basement & Garage Conversions',
+    tagline: 'Engineering Precision. Single-Point Project Management.',
+    features: ['New Build (Turnkey)', 'RSJ Installations', 'Basement Conversions', 'Groundworks & Substructure'],
+    image: '/images/hero-james-bath-property-6.webp',
+  },
+  {
+    id: 'heritage',
+    title: 'Heritage & Restoration',
+    subtitle: 'Listed Buildings. Bath Stone. Authentic Craftsmanship.',
+    tagline: 'Period Character Preserved. Modern Standards Delivered.',
+    features: ['Period Renovations', 'Lime Mortar Repointing', 'Bath Stone Restoration', 'Listed Building Compliance'],
+    image: '/images/hero-james-bath-property-10.webp',
+  },
+  {
+    id: 'interiors',
+    title: 'Interiors & Refurbishments',
+    subtitle: 'Bespoke Kitchens, Bathrooms & Full Renovations',
+    tagline: 'High-Spec. Turnkey. No Compromise.',
+    features: ['Full Refurbishments', 'Bespoke Kitchens', 'Luxury Bathrooms', 'Wall Reconfigurations'],
+    image: '/images/james-bath-interior-1.webp',
+  },
+  {
+    id: 'property-care',
+    title: 'Property Care & Landscaping',
+    subtitle: 'Outdoor Works, Maintenance & Responsive Repairs',
+    tagline: 'Protect Your Investment. Inside and Out.',
+    features: ['Garden Landscaping', 'Stone Retaining Walls', 'Property Maintenance', 'Roofing & Repairs'],
+    image: '/images/services/property-care.webp',
+  },
+];
+
+// Brand colours
+const NAVY = '#0d1520';
+const CHARCOAL = '#1a2332';
+const ACCENT = '#AE8455';
+const ACCENT_DIM = '#8a6a43';
+const WHITE = '#ffffff';
+const WHITE80 = 'rgba(255,255,255,0.80)';
+const WHITE50 = 'rgba(255,255,255,0.50)';
+
+const SIZES = {
+  'fb-feed': { w: 1200, h: 628, label: 'Facebook Feed Ad' },
+  'fb-story': { w: 1080, h: 1920, label: 'Facebook Story / Reel' },
+  'fb-square': { w: 1080, h: 1080, label: 'Facebook Square Post' },
+  'ig-post': { w: 1080, h: 1080, label: 'Instagram Post' },
+  'ig-story': { w: 1080, h: 1920, label: 'Instagram Story' },
+  'gbp-post': { w: 1080, h: 608, label: 'GBP Post' },
+};
+
+let currentIndex = 0;
+let currentSize = 'fb-feed';
+let bgImages = {};
+let bgImagesLoaded = {};
+
+// Preload background images
+services.forEach((svc, i) => {
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.src = svc.image;
+  bgImages[i] = img;
+  img.onload = () => { bgImagesLoaded[i] = true; renderCanvas(); };
+  img.onerror = () => { bgImagesLoaded[i] = false; renderCanvas(); };
+});
+
+// Load the logo SVG
+const logoImg = new Image();
+let logoLoaded = false;
+logoImg.crossOrigin = 'anonymous';
+logoImg.src = '/favicon.svg';
+logoImg.onload = () => { logoLoaded = true; renderCanvas(); };
+
+function renderCanvas() {
+  const canvas = document.getElementById('canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const svc = services[currentIndex];
+  const size = SIZES[currentSize];
+
+  canvas.width = size.w;
+  canvas.height = size.h;
+  ctx.clearRect(0, 0, size.w, size.h);
+
+  const W = size.w;
+  const H = size.h;
+  const isPortrait = H > W;
+  const unit = Math.min(W, H) / 100;
+
+  // Background image
+  if (bgImagesLoaded[currentIndex]) {
+    const img = bgImages[currentIndex];
+    // Cover crop
+    const imgRatio = img.naturalWidth / img.naturalHeight;
+    const canvasRatio = W / H;
+    let sx, sy, sw, sh;
+    if (imgRatio > canvasRatio) {
+      sh = img.naturalHeight;
+      sw = sh * canvasRatio;
+      sx = (img.naturalWidth - sw) / 2;
+      sy = 0;
+    } else {
+      sw = img.naturalWidth;
+      sh = sw / canvasRatio;
+      sx = 0;
+      sy = (img.naturalHeight - sh) / 2;
+    }
+    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, W, H);
+    // Dark overlay
+    ctx.fillStyle = 'rgba(13,21,32,0.78)';
+    ctx.fillRect(0, 0, W, H);
+  } else {
+    // Fallback: solid navy
+    ctx.fillStyle = NAVY;
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  // Accent bar at top
+  ctx.fillStyle = ACCENT;
+  ctx.fillRect(0, 0, W, Math.max(4, unit * 0.6));
+
+  // Logo (chevron) — draw as SVG path instead of image for reliability
+  const logoSize = unit * 8;
+  const logoY = unit * 5;
+  const logoX = unit * 5;
+  ctx.save();
+  ctx.translate(logoX, logoY);
+  // Draw chevron/roofline
+  ctx.strokeStyle = ACCENT;
+  ctx.lineWidth = Math.max(2, unit * 0.8);
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  ctx.moveTo(0, logoSize * 0.7);
+  ctx.lineTo(logoSize / 2, 0);
+  ctx.lineTo(logoSize, logoSize * 0.7);
+  ctx.stroke();
+  ctx.restore();
+
+  // Brand name next to logo
+  const brandX = logoX + logoSize + unit * 2;
+  ctx.fillStyle = WHITE;
+  ctx.font = `600 ${unit * 4}px 'DM Sans', sans-serif`;
+  ctx.textBaseline = 'middle';
+  ctx.fillText('Aspect Builds', brandX, logoY + logoSize * 0.35);
+  // "Bath" tag
+  ctx.fillStyle = ACCENT;
+  ctx.font = `500 ${unit * 2.5}px 'DM Sans', sans-serif`;
+  ctx.fillText('Bath & Somerset', brandX + ctx.measureText('Aspect Builds ').width + unit, logoY + logoSize * 0.35);
+
+  // Divider line
+  const divY = logoY + logoSize + unit * 3;
+  ctx.fillStyle = ACCENT;
+  ctx.fillRect(unit * 5, divY, unit * 12, 2);
+
+  // Main headline
+  const headlineY = divY + unit * 5;
+  const maxW = isPortrait ? W * 0.88 : W * 0.65;
+  ctx.fillStyle = WHITE;
+  ctx.font = `700 ${isPortrait ? unit * 9 : unit * 7}px 'DM Sans', sans-serif`;
+
+  // Word wrap
+  const words = svc.title.split(' ');
+  let lines = [];
+  let currentLine = '';
+  for (const word of words) {
+    const test = currentLine ? currentLine + ' ' + word : word;
+    if (ctx.measureText(test).width > maxW && currentLine) {
+      lines.push(currentLine);
+      currentLine = word;
+    } else {
+      currentLine = test;
+    }
+  }
+  if (currentLine) lines.push(currentLine);
+
+  const lineHeight = isPortrait ? unit * 11 : unit * 9;
+  let textY = headlineY;
+  for (const line of lines) {
+    ctx.fillText(line, unit * 5, textY);
+    textY += lineHeight;
+  }
+
+  // Tagline in accent
+  textY += unit * 0.5;
+  ctx.fillStyle = ACCENT;
+  ctx.font = `500 ${isPortrait ? unit * 4 : unit * 3}px 'DM Sans', sans-serif`;
+  // Word wrap tagline too
+  const tagWords = svc.tagline.split(' ');
+  let tagLines = [];
+  let tagLine = '';
+  for (const word of tagWords) {
+    const test = tagLine ? tagLine + ' ' + word : word;
+    if (ctx.measureText(test).width > maxW && tagLine) {
+      tagLines.push(tagLine);
+      tagLine = word;
+    } else {
+      tagLine = test;
+    }
+  }
+  if (tagLine) tagLines.push(tagLine);
+  for (const line of tagLines) {
+    ctx.fillText(line, unit * 5, textY);
+    textY += isPortrait ? unit * 5.5 : unit * 4.5;
+  }
+
+  // Feature bullets (portrait layouts only)
+  if (isPortrait) {
+    textY += unit * 3;
+    ctx.fillStyle = WHITE80;
+    ctx.font = `400 ${unit * 3}px 'DM Sans', sans-serif`;
+    for (const feat of svc.features) {
+      ctx.fillStyle = ACCENT;
+      ctx.fillText('●', unit * 5, textY);
+      ctx.fillStyle = WHITE80;
+      ctx.fillText('  ' + feat, unit * 5 + ctx.measureText('● ').width, textY);
+      textY += unit * 4.5;
+    }
+  }
+
+  // CTA pill
+  const ctaY = isPortrait ? H - unit * 14 : H - unit * 12;
+  const ctaText = 'Get a Free Quote';
+  ctx.font = `600 ${isPortrait ? unit * 3.5 : unit * 3}px 'DM Sans', sans-serif`;
+  const ctaW = ctx.measureText(ctaText).width + unit * 6;
+  const ctaH = isPortrait ? unit * 8 : unit * 7;
+  const ctaX = unit * 5;
+  // Pill background
+  ctx.fillStyle = ACCENT;
+  ctx.beginPath();
+  ctx.roundRect(ctaX, ctaY, ctaW, ctaH, ctaH / 2);
+  ctx.fill();
+  // Pill text
+  ctx.fillStyle = NAVY;
+  ctx.textBaseline = 'middle';
+  ctx.fillText(ctaText, ctaX + unit * 3, ctaY + ctaH / 2);
+
+  // Phone number
+  ctx.fillStyle = WHITE50;
+  ctx.font = `400 ${unit * 2.5}px 'DM Sans', sans-serif`;
+  ctx.textBaseline = 'bottom';
+  ctx.fillText('07552 060932  ·  aspectbuilds.co.uk', unit * 5, H - unit * 3);
+
+  // Size label (bottom right)
+  ctx.fillStyle = 'rgba(255,255,255,0.2)';
+  ctx.font = `400 ${unit * 2}px 'DM Sans', sans-serif`;
+  ctx.textAlign = 'right';
+  ctx.fillText(`${size.w}×${size.h}`, W - unit * 3, H - unit * 3);
+  ctx.textAlign = 'left';
+}
+
+function selectService(index) {
+  currentIndex = index;
+  // Update active tab
+  document.querySelectorAll('.svc-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i === index);
+  });
+  renderCanvas();
+}
+
+function selectSize(size) {
+  currentSize = size;
+  document.querySelectorAll('.size-btn').forEach((btn) => {
+    btn.classList.toggle('active', btn.dataset.size === size);
+  });
+  renderCanvas();
+}
+
+function downloadPNG() {
+  const canvas = document.getElementById('canvas');
+  const svc = services[currentIndex];
+  const size = SIZES[currentSize];
+  const link = document.createElement('a');
+  link.download = `aspect-builds-${svc.id}-${currentSize}-${size.w}x${size.h}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+function downloadAll() {
+  const origIndex = currentIndex;
+  const origSize = currentSize;
+  let delay = 0;
+  for (const sizeKey of Object.keys(SIZES)) {
+    for (let i = 0; i < services.length; i++) {
+      setTimeout(() => {
+        currentIndex = i;
+        currentSize = sizeKey;
+        renderCanvas();
+        downloadPNG();
+      }, delay);
+      delay += 300;
+    }
+  }
+  setTimeout(() => {
+    currentIndex = origIndex;
+    currentSize = origSize;
+    renderCanvas();
+  }, delay);
+}
+
+// Initialize
+window.addEventListener('DOMContentLoaded', () => {
+  selectService(0);
+  selectSize('fb-feed');
+});

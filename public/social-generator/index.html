@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aspect Builds — Social Image Generator</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0d1520;
+      color: #f8fafc;
+      min-height: 100vh;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: #1a2332;
+      border-bottom: 1px solid rgba(174,132,85,0.3);
+    }
+    .header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      color: #AE8455;
+    }
+    .header span { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 16px 24px;
+      background: #1a2332;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      align-items: flex-start;
+    }
+    .control-group { display: flex; flex-direction: column; gap: 6px; }
+    .control-group label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 4px; }
+    .svc-btn, .size-btn {
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.15s;
+    }
+    .svc-btn:hover, .size-btn:hover { border-color: rgba(174,132,85,0.5); color: #fff; }
+    .svc-btn.active, .size-btn.active { background: #AE8455; color: #0d1520; border-color: #AE8455; font-weight: 600; }
+    .actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-left: auto;
+    }
+    .btn-download {
+      padding: 8px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.15s;
+    }
+    .btn-primary { background: #AE8455; color: #0d1520; }
+    .btn-primary:hover { background: #c4986a; }
+    .btn-secondary { background: transparent; color: #AE8455; border: 1px solid #AE8455; }
+    .btn-secondary:hover { background: rgba(174,132,85,0.1); }
+    .canvas-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px;
+      min-height: calc(100vh - 140px);
+    }
+    canvas {
+      max-width: 100%;
+      max-height: 70vh;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>ASPECT BUILDS — Social Images</h1>
+    <span>Generate branded service images for Facebook, Instagram & GBP</span>
+  </div>
+
+  <div class="controls">
+    <div class="control-group">
+      <label>Service</label>
+      <div class="btn-row">
+        <button class="svc-btn" onclick="selectService(0)">Loft Conversions</button>
+        <button class="svc-btn" onclick="selectService(1)">Extensions</button>
+        <button class="svc-btn" onclick="selectService(2)">Structural Builds</button>
+        <button class="svc-btn" onclick="selectService(3)">Heritage</button>
+        <button class="svc-btn" onclick="selectService(4)">Interiors</button>
+        <button class="svc-btn" onclick="selectService(5)">Property Care</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <label>Size</label>
+      <div class="btn-row">
+        <button class="size-btn" data-size="fb-feed" onclick="selectSize('fb-feed')">FB Feed 1200×628</button>
+        <button class="size-btn" data-size="fb-square" onclick="selectSize('fb-square')">Square 1080×1080</button>
+        <button class="size-btn" data-size="fb-story" onclick="selectSize('fb-story')">Story 1080×1920</button>
+        <button class="size-btn" data-size="ig-post" onclick="selectSize('ig-post')">IG Post 1080²</button>
+        <button class="size-btn" data-size="ig-story" onclick="selectSize('ig-story')">IG Story 1080×1920</button>
+        <button class="size-btn" data-size="gbp-post" onclick="selectSize('gbp-post')">GBP 1080×608</button>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn-download btn-primary" onclick="downloadPNG()">Download PNG</button>
+      <button class="btn-download btn-secondary" onclick="downloadAll()">Download All (36)</button>
+    </div>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script src="social-images.js"></script>
+</body>
+</html>
