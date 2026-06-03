@@ -203,45 +203,6 @@ import { srcset } from '../utils/srcset';
 
       <div class="projects-showcase">
         {/* ── Featured hero project (large, left) ── */}
-        <a href="/projects/chilcompton-rendering-decoration" class="project-card project-card--featured">
-          <div class="project-card__image">
-            <img src="/images/hero-chilcompton-rendering.webp" alt="Chilcompton Rendering & Decoration" width="800" height="600" loading="lazy" />
-          </div>
-          <div class="project-card__overlay">
-            <span class="t-label" style="color:var(--accent)">Heritage</span>
-            <h3 class="project-card__title">Chilcompton Rendering</h3>
-            <p class="project-card__body">Exterior rendering and decoration — transforming a tired facade into a crisp, weatherproof finish.</p>
-            <span class="project-card__cta">View project</span>
-          </div>
-        </a>
-
-        {/* ── Two stacked side projects (right) ── */}
-        <div class="project-card__side">
-          <a href="/projects/medford-garden-extension" class="project-card project-card--small">
-            <div class="project-card__image">
-              <img src="/images/hero-james-bath-property-5.webp" alt="Bath Property" width="600" height="450" loading="lazy" />
-            </div>
-            <div class="project-card__content">
-              <span class="t-label" style="color:var(--accent-dim);font-size:0.65rem">Extensions</span>
-              <h3 class="project-card__title-sm">Medford Garden Extension</h3>
-              <p class="project-card__body-sm">Open-plan living with full-width glazing and seamless garden connection.</p>
-            </div>
-          </a>
-          <a href="/projects/frome-garage-conversion" class="project-card project-card--small">
-            <div class="project-card__image">
-              <img src="/images/hero-frome-garage-conversion.webp" alt="Garage Conversion" width="600" height="450" loading="lazy" />
-            </div>
-            <div class="project-card__content">
-              <span class="t-label" style="color:var(--accent-dim);font-size:0.65rem">Conversions</span>
-              <h3 class="project-card__title-sm">Frome Garage Conversion</h3>
-              <p class="project-card__body-sm">Unused garage transformed into warm, habitable living space.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      {/* ── Second row: 1 featured + 2 stacked ── */}
-      <div class="projects-showcase" style="margin-top:var(--space-l)">
         <a href="/projects/bath-loft-extension" class="project-card project-card--featured">
           <div class="project-card__image">
             <img src="/images/hero-bath-loft-extension.webp" alt="Bath Loft Extension" width="800" height="600" loading="lazy" />
@@ -254,7 +215,28 @@ import { srcset } from '../utils/srcset';
           </div>
         </a>
 
+        {/* ── Four stacked side projects (right) ── */}
         <div class="project-card__side">
+          <a href="/projects/medford-garden-extension" class="project-card project-card--small">
+            <div class="project-card__image">
+              <img src="/images/hero-james-bath-property-5.webp" alt="Medford Garden Extension" width="600" height="450" loading="lazy" />
+            </div>
+            <div class="project-card__content">
+              <span class="t-label" style="color:var(--accent-dim);font-size:0.65rem">Extensions</span>
+              <h3 class="project-card__title-sm">Medford Garden Extension</h3>
+              <p class="project-card__body-sm">Open-plan living with full-width glazing and seamless garden connection.</p>
+            </div>
+          </a>
+          <a href="/projects/chilcompton-rendering-decoration" class="project-card project-card--small">
+            <div class="project-card__image">
+              <img src="/images/hero-chilcompton-rendering.webp" alt="Chilcompton Rendering" width="600" height="450" loading="lazy" />
+            </div>
+            <div class="project-card__content">
+              <span class="t-label" style="color:var(--accent-dim);font-size:0.65rem">Heritage</span>
+              <h3 class="project-card__title-sm">Chilcompton Rendering</h3>
+              <p class="project-card__body-sm">Exterior rendering — crisp, weatherproof finish on a tired facade.</p>
+            </div>
+          </a>
           <a href="/projects/bath-countryside-landscaping" class="project-card project-card--small">
             <div class="project-card__image">
               <img src="/images/bath-landscaping-1.webp" alt="Bath Countryside Landscaping" width="600" height="450" loading="lazy" />
@@ -262,17 +244,17 @@ import { srcset } from '../utils/srcset';
             <div class="project-card__content">
               <span class="t-label" style="color:var(--accent-dim);font-size:0.65rem">Landscaping</span>
               <h3 class="project-card__title-sm">Bath Countryside Landscaping</h3>
-              <p class="project-card__body-sm">Cobble borders, sandstone paving, greenhouse on reclaimed London brick.</p>
+              <p class="project-card__body-sm">Cobble borders, sandstone paving, greenhouse on reclaimed brick.</p>
             </div>
           </a>
-          <a href="/projects/batheaston-heritage-renovation" class="project-card project-card--small">
+          <a href="/projects/frome-garage-conversion" class="project-card project-card--small">
             <div class="project-card__image">
-              <img src="/images/hero-chilcompton-rendering.webp" alt="Batheaston Heritage Renovation" width="600" height="450" loading="lazy" />
+              <img src="/images/hero-frome-garage-conversion.webp" alt="Frome Garage Conversion" width="600" height="450" loading="lazy" />
             </div>
             <div class="project-card__content">
-              <span class="t-label" style="color:var(--accent-dim);font-size:0.65rem">Heritage</span>
-              <h3 class="project-card__title-sm">Batheaston Georgian Renovation</h3>
-              <p class="project-card__body-sm">Grade II listed villa — period joinery, lime plaster, rear extension.</p>
+              <span class="t-label" style="color:var(--accent-dim);font-size:0.65rem">Conversions</span>
+              <h3 class="project-card__title-sm">Frome Garage Conversion</h3>
+              <p class="project-card__body-sm">Unused garage transformed into warm, habitable living space.</p>
             </div>
           </a>
         </div>
@@ -665,7 +647,7 @@ import { srcset } from '../utils/srcset';
   .project-card__side {
     display: flex;
     flex-direction: column;
-    gap: var(--space-l);
+    gap: var(--space-s);
   }
 
   .project-card--small {
