@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aspect Builds — Brand Tools</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #0d1520; color: #f8fafc; min-height: 100vh; }
+
+    .header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 20px; background: #1a2332;
+      border-bottom: 1px solid rgba(174,132,85,0.3);
+    }
+    .header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.05em; color: #AE8455; }
+    .header .tabs { display: flex; gap: 4px; }
+    .tab-btn {
+      padding: 6px 14px; border: 1px solid rgba(255,255,255,0.12); background: transparent;
+      color: rgba(255,255,255,0.5); border-radius: 3px; font-size: 0.78rem;
+      cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s;
+    }
+    .tab-btn:hover { border-color: rgba(174,132,85,0.5); color: #fff; }
+    .tab-btn.active { background: #AE8455; color: #0d1520; border-color: #AE8455; font-weight: 600; }
+
+    .controls {
+      display: flex; flex-wrap: wrap; gap: 12px; padding: 12px 20px;
+      background: #1a2332; border-bottom: 1px solid rgba(255,255,255,0.06);
+      align-items: flex-end;
+    }
+    .control-group { display: flex; flex-direction: column; gap: 3px; }
+    .control-group label {
+      font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: #AE8455; font-weight: 600;
+    }
+    .control-group input[type="number"] {
+      width: 80px; padding: 5px 8px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 3px;
+      color: #fff; font-size: 0.82rem; font-family: 'DM Sans', sans-serif;
+    }
+    .control-group select {
+      padding: 5px 8px; background: #0d1520;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 3px;
+      color: #fff; font-size: 0.82rem; font-family: 'DM Sans', sans-serif;
+    }
+    .control-group input[type="color"] {
+      width: 36px; height: 30px; border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 3px; background: none; cursor: pointer;
+    }
+
+    .toggle-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .toggle { display: flex; align-items: center; gap: 4px; cursor: pointer; font-size: 0.76rem; color: rgba(255,255,255,0.55); }
+    .toggle input[type="checkbox"] { width: 14px; height: 14px; accent-color: #AE8455; cursor: pointer; }
+    .toggle input:checked + span { color: #fff; }
+
+    .actions { display: flex; gap: 8px; padding: 10px 20px; background: #1a2332; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .btn {
+      padding: 7px 16px; border: none; border-radius: 4px; font-size: 0.82rem;
+      font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s;
+    }
+    .btn-primary { background: #AE8455; color: #0d1520; }
+    .btn-primary:hover { background: #c4986a; }
+    .btn-secondary { background: transparent; color: #AE8455; border: 1px solid #AE8455; }
+    .btn-secondary:hover { background: rgba(174,132,85,0.1); }
+
+    .canvas-wrap {
+      display: flex; justify-content: center; align-items: flex-start;
+      padding: 30px 20px; min-height: calc(100vh - 260px);
+    }
+    canvas { background: #0d1520; border: 1px solid rgba(255,255,255,0.08); }
+    .card-canvas { border-radius: 8px; }
+
+    .loading { position: fixed; inset: 0; background: rgba(13,21,32,0.9); display: flex; align-items: center; justify-content: center; z-index: 999; }
+    .loading span { color: #AE8455; font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.1em; }
+
+    @media (max-width: 768px) {
+      .controls { gap: 8px; }
+      .canvas-wrap { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>ASPECT BUILDS — BRAND TOOLS</h1>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="logo">Logo Export</button>
+      <button class="tab-btn" data-tab="card">Business Card</button>
+    </div>
+  </div>
+
+  <!-- LOGO TOOL -->
+  <div id="logo-panel">
+    <div class="controls">
+      <div class="control-group">
+        <label>Width (px)</label>
+        <input type="number" id="logo-width" value="800" min="100" max="4000" step="50">
+      </div>
+      <div class="control-group">
+        <label>Background</label>
+        <select id="logo-bg">
+          <option value="navy">Navy #0d1520</option>
+          <option value="white">White</option>
+          <option value="transparent">Transparent</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Chevron Color</label>
+        <input type="color" id="chevron-color" value="#AE8455">
+      </div>
+      <div class="control-group">
+        <label>Name Color</label>
+        <input type="color" id="name-color" value="#FFFFFF">
+      </div>
+      <div class="control-group">
+        <label>Sub color</label>
+        <input type="color" id="sub-color" value="#AE8455">
+      </div>
+      <div class="toggle-row">
+        <label class="toggle"><input type="checkbox" id="show-chevron" checked><span>Chevron</span></label>
+        <label class="toggle"><input type="checkbox" id="show-name" checked><span>Name</span></label>
+        <label class="toggle"><input type="checkbox" id="show-sub" checked><span>Sub-line</span></label>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary" id="export-logo-png">Export PNG</button>
+      <button class="btn btn-secondary" id="export-logo-svg">Export SVG</button>
+      <button class="btn btn-secondary" id="export-logo-ico">Export Favicon Set</button>
+    </div>
+    <div class="canvas-wrap">
+      <canvas id="logo-canvas"></canvas>
+    </div>
+  </div>
+
+  <!-- BUSINESS CARD TOOL -->
+  <div id="card-panel" style="display:none;">
+    <div class="controls">
+      <div class="control-group">
+        <label>Card Style</label>
+        <select id="card-style">
+          <option value="dark">Dark (Navy)</option>
+          <option value="light">Light (White)</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Resolution</label>
+        <select id="card-res">
+          <option value="2">2x (Print Ready)</option>
+          <option value="3">3x (Ultra)</option>
+          <option value="1">1x (Preview)</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Accent Color</label>
+        <input type="color" id="card-accent" value="#AE8455">
+      </div>
+      <div class="toggle-row">
+        <label class="toggle"><input type="checkbox" id="card-trust" checked><span>TrustATrader</span></label>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary" id="export-card-front">Export Front</button>
+      <button class="btn btn-primary" id="export-card-back">Export Back</button>
+    </div>
+    <div class="canvas-wrap">
+      <canvas id="card-canvas" class="card-canvas"></canvas>
+    </div>
+  </div>
+
+  <div class="loading" id="loading" style="display:none;"><span>LOADING FONTS…</span></div>
+
+  <script>
+    // ── Font loading ──
+    const FONT_BASE = '/social-generator/fonts/';
+    const fontsReady = { done: false };
+
+    async function loadFonts() {
+      const fonts = [
+        { family: 'Bebas Neue', weight: '400', src: FONT_BASE + 'BebasNeue-Regular.ttf' },
+        { family: 'DM Sans', weight: '400', src: FONT_BASE + 'DMSans-400.ttf' },
+        { family: 'DM Sans', weight: '500', src: FONT_BASE + 'DMSans-500.ttf' },
+        { family: 'DM Sans', weight: '600', src: FONT_BASE + 'DMSans-600.ttf' },
+        { family: 'DM Sans', weight: '700', src: FONT_BASE + 'DMSans-700.ttf' },
+      ];
+      await Promise.all(fonts.map(f => {
+        const ff = new FontFace(f.family, `url(${f.src})`, { weight: f.weight, style: 'normal' });
+        return ff.load().then(loaded => { document.fonts.add(loaded); });
+      }));
+      fontsReady.done = true;
+      renderLogo();
+    }
+
+    document.getElementById('loading').style.display = 'flex';
+    loadFonts().then(() => { document.getElementById('loading').style.display = 'none'; });
+
+    // ── Tab switching ──
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('logo-panel').style.display = btn.dataset.tab === 'logo' ? '' : 'none';
+        document.getElementById('card-panel').style.display = btn.dataset.tab === 'card' ? '' : 'none';
+        if (btn.dataset.tab === 'card') renderCard();
+      });
+    });
+
+    // ── Shared helpers ──
+    const NAVY = '#0d1520';
+    const ACCENT = '#AE8455';
+
+    function drawChevron(ctx, x, y, size, color) {
+      // size = height of chevron. Width = size * 1.1
+      const w = size * 1.1;
+      const sw = size * 0.22; // stroke width
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = sw;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.beginPath();
+      ctx.moveTo(x, y + size * 0.85);
+      ctx.lineTo(x + w * 0.5, y + size * 0.05);
+      ctx.lineTo(x + w, y + size * 0.85);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // ── LOGO RENDERER ──
+    function renderLogo() {
+      if (!fontsReady.done) return;
+      const canvas = document.getElementById('logo-canvas');
+      const ctx = canvas.getContext('2d');
+      const width = parseInt(document.getElementById('logo-width').value) || 800;
+      const bg = document.getElementById('logo-bg').value;
+      const chevronColor = document.getElementById('chevron-color').value;
+      const nameColor = document.getElementById('name-color').value;
+      const subColor = document.getElementById('sub-color').value;
+      const showChevron = document.getElementById('show-chevron').checked;
+      const showName = document.getElementById('show-name').checked;
+      const showSub = document.getElementById('show-sub').checked;
+
+      // Logo proportions: chevron mark + text, centered
+      // Logo height is proportional to width: roughly 0.35 ratio
+      const logoH = Math.round(width * 0.35);
+      const padding = Math.round(width * 0.06);
+      const totalH = logoH + padding * 2;
+
+      // Scale canvas for crisp output
+      const dpr = 2;
+      canvas.width = width * dpr;
+      canvas.height = totalH * dpr;
+      canvas.style.width = width + 'px';
+      canvas.style.height = totalH + 'px';
+      ctx.scale(dpr, dpr);
+
+      // Background
+      if (bg === 'transparent') {
+        ctx.clearRect(0, 0, width, totalH);
+      } else {
+        ctx.fillStyle = bg === 'navy' ? NAVY : '#FFFFFF';
+        ctx.fillRect(0, 0, width, totalH);
+      }
+
+      // Calculate sizes based on logo height
+      const chevronH = showChevron ? logoH * 0.65 : 0;
+      const chevronW = chevronH * 1.1;
+      const nameSize = logoH * 0.52;
+      const subSize = logoH * 0.14;
+      const gapAfterChevron = chevronW * 0.25;
+      const gapBetweenLines = nameSize * 0.06;
+
+      // Measure text widths
+      ctx.font = `${nameSize}px "Bebas Neue"`;
+      const nameW = showName ? ctx.measureText('ASPECT').width : 0;
+      ctx.font = `${subSize}px "DM Sans"`;
+      const subW = showSub ? ctx.measureText('BUILDS & MAINTENANCE LTD').width : 0;
+
+      // Total logo width = chevron + gap + max(nameW, subW)
+      const textBlockW = Math.max(nameW, subW);
+      const totalLogoW = chevronH + gapAfterChevron + textBlockW;
+      const startX = (width - totalLogoW) / 2;
+      const centerY = totalH / 2;
+
+      // Draw chevron
+      if (showChevron) {
+        drawChevron(ctx, startX, centerY - chevronH / 2, chevronH, chevronColor);
+      }
+
+      // Text start X
+      const textX = startX + chevronH + gapAfterChevron;
+
+      // Draw name
+      if (showName) {
+        ctx.font = `${nameSize}px "Bebas Neue"`;
+        ctx.fillStyle = nameColor;
+        ctx.textBaseline = 'top';
+        const nameY = centerY - (showSub ? nameSize + gapBetweenLines / 2 : nameSize / 2);
+        ctx.fillText('ASPECT', textX, nameY);
+      }
+
+      // Draw sub-line
+      if (showSub) {
+        ctx.font = `600 ${subSize}px "DM Sans"`;
+        ctx.fillStyle = subColor;
+        ctx.textBaseline = 'top';
+        const subY = showName ? centerY + gapBetweenLines / 2 : centerY - subSize / 2;
+        ctx.fillText('BUILDS & MAINTENANCE LTD', textX, subY);
+      }
+    }
+
+    // Logo controls trigger re-render
+    ['logo-width', 'logo-bg', 'chevron-color', 'name-color', 'sub-color'].forEach(id => {
+      document.getElementById(id).addEventListener('input', renderLogo);
+    });
+    ['show-chevron', 'show-name', 'show-sub'].forEach(id => {
+      document.getElementById(id).addEventListener('change', renderLogo);
+    });
+
+    // ── Logo export ──
+    document.getElementById('export-logo-png').addEventListener('click', () => {
+      const canvas = document.getElementById('logo-canvas');
+      const link = document.createElement('a');
+      const w = canvas.width / 2; // dpr=2
+      link.download = `aspect-builds-logo-${w}w.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    document.getElementById('export-logo-svg').addEventListener('click', () => {
+      const bg = document.getElementById('logo-bg').value;
+      const chevronColor = document.getElementById('chevron-color').value;
+      const nameColor = document.getElementById('name-color').value;
+      const subColor = document.getElementById('sub-color').value;
+      const showChevron = document.getElementById('show-chevron').checked;
+      const showName = document.getElementById('show-name').checked;
+      const showSub = document.getElementById('show-sub').checked;
+      const width = parseInt(document.getElementById('logo-width').value) || 800;
+
+      const logoH = width * 0.35;
+      const padding = width * 0.06;
+      const totalH = logoH + padding * 2;
+      const chevronH = showChevron ? logoH * 0.65 : 0;
+      const nameSize = logoH * 0.52;
+      const subSize = logoH * 0.14;
+      const chevronW = chevronH * 1.1;
+      const sw = chevronH * 0.22;
+      const gapAfterChevron = chevronW * 0.25;
+      const gapBetweenLines = nameSize * 0.06;
+      const totalLogoW = chevronH + gapAfterChevron + Math.max(nameSize * 3.8, subSize * 14);
+      const startX = (width - totalLogoW) / 2;
+      const centerY = totalH / 2;
+
+      let bgRect = '';
+      if (bg === 'navy') bgRect = `<rect width="${width}" height="${totalH}" fill="${NAVY}"/>`;
+      else if (bg === 'white') bgRect = `<rect width="${width}" height="${totalH}" fill="#FFFFFF"/>`;
+
+      let chevronSvg = '';
+      if (showChevron) {
+        const cx = startX;
+        const cy1 = centerY - chevronH * 0.5 + chevronH * 0.85;
+        const cy2 = centerY - chevronH * 0.5 + chevronH * 0.05;
+        const cy3 = cy1;
+        const cx2 = cx + chevronW;
+        chevronSvg = `<polyline points="${cx},${cy1} ${cx + chevronW/2},${cy2} ${cx2},${cy3}" stroke="${chevronColor}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
+      }
+
+      let nameSvg = '', subSvg = '';
+      if (showName) {
+        const textX = startX + chevronH + gapAfterChevron;
+        const nameY = centerY - (showSub ? nameSize + gapBetweenLines/2 : nameSize/2) + nameSize * 0.82;
+        nameSvg = `<text x="${textX}" y="${nameY}" font-family="Bebas Neue, sans-serif" font-size="${nameSize}" fill="${nameColor}">ASPECT</text>`;
+      }
+      if (showSub) {
+        const textX = startX + chevronH + gapAfterChevron;
+        const subY = centerY + gapBetweenLines/2 + subSize * 0.82;
+        subSvg = `<text x="${textX}" y="${subY}" font-family="DM Sans, sans-serif" font-weight="600" font-size="${subSize}" fill="${subColor}">BUILDS &amp; MAINTENANCE LTD</text>`;
+      }
+
+      const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${totalH}" viewBox="0 0 ${width} ${totalH}">
+  ${bgRect}
+  ${chevronSvg}
+  ${nameSvg}
+  ${subSvg}
+</svg>`;
+
+      const blob = new Blob([svg], { type: 'image/svg+xml' });
+      const link = document.createElement('a');
+      link.download = 'aspect-builds-logo.svg';
+      link.href = URL.createObjectURL(blob);
+      link.click();
+    });
+
+    document.getElementById('export-logo-ico').addEventListener('click', () => {
+      // Generate multiple favicon sizes: 16, 32, 48, 180 (apple-touch), 512 (android)
+      const sizes = [16, 32, 48, 180, 512];
+      const bg = document.getElementById('logo-bg').value;
+      const chevronColor = document.getElementById('chevron-color').value;
+      const nameColor = document.getElementById('name-color').value;
+      const subColor = document.getElementById('sub-color').value;
+
+      sizes.forEach(size => {
+        const offscreen = document.createElement('canvas');
+        offscreen.width = size * 2;
+        offscreen.height = size * 2;
+        const ctx = offscreen.getContext('2d');
+        ctx.scale(2, 2);
+
+        // Background
+        if (bg === 'navy') { ctx.fillStyle = NAVY; ctx.fillRect(0, 0, size, size); }
+        else if (bg === 'white') { ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, size, size); }
+
+        // For favicon: only chevron for small sizes, chevron+name for 180/512
+        const chevronH = size * 0.55;
+        const cx = (size - chevronH * 0.55) / 2;
+        const cy = (size - chevronH) / 2;
+        drawChevron(ctx, cx, cy, chevronH, chevronColor);
+
+        if (size >= 180) {
+          // Add small text below chevron
+          const subSize2 = size * 0.06;
+          ctx.font = `600 ${subSize2}px "DM Sans"`;
+          ctx.fillStyle = subColor;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'top';
+          ctx.fillText('BUILDS & MAINTENANCE LTD', size / 2, cy + chevronH + size * 0.04);
+          ctx.textAlign = 'start'; // reset
+        }
+
+        const link = document.createElement('a');
+        link.download = `favicon-${size}x${size}.png`;
+        link.href = offscreen.toDataURL('image/png');
+        link.click();
+      });
+    });
+
+    // ── BUSINESS CARD RENDERER ──
+    // UK card: 85mm x 55mm, 3.5mm bleed each side = 92mm x 62mm
+    // At 300dpi: 1087x733px (with bleed), 984x630px (trim)
+    // We work in mm, scale up by res multiplier
+
+    const CARD_W_MM = 85;
+    const CARD_H_MM = 53.98; // standard credit card size
+    const BLEED_MM = 3;
+    const TRIM_LEFT_MM = BLEED_MM;
+    const TRIM_TOP_MM = BLEED_MM;
+    const TRIM_RIGHT_MM = CARD_W_MM + BLEED_MM;
+    const TRIM_BOTTOM_MM = CARD_H_MM + BLEED_MM;
+    const TOTAL_W_MM = CARD_W_MM + BLEED_MM * 2;
+    const TOTAL_H_MM = CARD_H_MM + BLEED_MM * 2;
+    const MM_TO_PX = 3.7795; // 1mm = 3.7795px at 96dpi
+
+    let trustLogo = new Image();
+    trustLogo.crossOrigin = 'anonymous';
+    trustLogo.src = '/images/trustatrader-logo.svg';
+
+    function renderCard() {
+      if (!fontsReady.done) return;
+      const canvas = document.getElementById('card-canvas');
+      const ctx = canvas.getContext('2d');
+      const style = document.getElementById('card-style').value;
+      const res = parseFloat(document.getElementById('card-res').value);
+      const accentColor = document.getElementById('card-accent').value;
+      const showTrust = document.getElementById('card-trust').checked;
+
+      const scale = res * MM_TO_PX; // px per mm
+      const w = Math.round(TOTAL_W_MM * scale);
+      const h = Math.round(TOTAL_H_MM * scale);
+
+      canvas.width = w;
+      canvas.height = h;
+      canvas.style.width = Math.round(TOTAL_W_MM * MM_TO_PX) + 'px';
+      canvas.style.height = Math.round(TOTAL_H_MM * MM_TO_PX) + 'px';
+
+      const mm = (v) => v * scale; // convert mm to canvas px
+
+      // Background
+      const isDark = style === 'dark';
+      const bg = isDark ? NAVY : '#FFFFFF';
+      const textPrimary = isDark ? '#FFFFFF' : NAVY;
+      const textSecondary = isDark ? 'rgba(255,255,255,0.6)' : '#546178';
+      const textTertiary = isDark ? 'rgba(255,255,255,0.35)' : 'rgba(84,97,120,0.5)';
+
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, w, h);
+
+      // Accent bar along bottom (inside trim)
+      const barH = mm(2.5);
+      ctx.fillStyle = accentColor;
+      ctx.fillRect(mm(BLEED_MM), mm(BLEED_MM + CARD_H_MM - 2.5), mm(CARD_W_MM), barH);
+
+      // Accent bleed marks (corner accents)
+      ctx.fillStyle = accentColor;
+      // Top-left accent mark
+      const cornerSize = mm(6);
+      ctx.fillRect(mm(0), mm(0), cornerSize, mm(BLEED_MM));
+      ctx.fillRect(mm(0), mm(0), mm(BLEED_MM), cornerSize);
+      // Bottom-right
+      ctx.fillRect(mm(TRIM_RIGHT_MM), mm(0), mm(BLEED_MM), cornerSize);
+      ctx.fillRect(mm(TRIM_RIGHT_MM - cornerSize + mm(BLEED_MM)), mm(0), cornerSize, mm(BLEED_MM));
+
+      // Trim line indicator (subtle)
+      ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)';
+      ctx.lineWidth = 0.5 * res;
+      ctx.setLineDash([mm(2), mm(2)]);
+      ctx.strokeRect(mm(BLEED_MM), mm(BLEED_MM), mm(CARD_W_MM), mm(CARD_H_MM));
+      ctx.setLineDash([]);
+
+      // ── Logo (top-left, inside trim) ──
+      const logoX = mm(BLEED_MM + 7);
+      const logoY = mm(BLEED_MM + 6);
+      const chevronH = mm(8);
+      const chevronW = chevronH * 1.1;
+      const sw = chevronH * 0.22;
+
+      // Chevron
+      ctx.strokeStyle = accentColor;
+      ctx.lineWidth = sw;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.beginPath();
+      ctx.moveTo(logoX, logoY + chevronH * 0.85);
+      ctx.lineTo(logoX + chevronW / 2, logoY + chevronH * 0.05);
+      ctx.lineTo(logoX + chevronW, logoY + chevronH * 0.85);
+      ctx.stroke();
+
+      // Name
+      const nameSize = mm(7.5);
+      ctx.font = `${nameSize}px "Bebas Neue"`;
+      ctx.fillStyle = textPrimary;
+      ctx.textBaseline = 'top';
+      ctx.fillText('ASPECT', logoX + chevronW + mm(2), logoY);
+
+      // Sub-line
+      const subSize = mm(2);
+      ctx.font = `600 ${subSize}px "DM Sans"`;
+      ctx.fillStyle = accentColor;
+      ctx.fillText('BUILDS & MAINTENANCE LTD', logoX + chevronW + mm(2), logoY + nameSize + mm(0.5));
+
+      // ── Contact info (bottom area, above accent bar) ──
+      const infoY = mm(BLEED_MM + CARD_H_MM - 12);
+      const infoX = mm(BLEED_MM + 7);
+
+      // Phone
+      ctx.font = `500 ${mm(3) * 1}px "DM Sans"`;
+      ctx.fillStyle = textPrimary;
+      ctx.fillText('07498 158747', infoX, infoY);
+
+      // Email
+      ctx.font = `400 ${mm(2.3)}px "DM Sans"`;
+      ctx.fillStyle = textSecondary;
+      ctx.fillText('james.aspectbuilds@gmail.com', infoX, infoY + mm(4));
+
+      // Website
+      ctx.fillText('aspectbuilds.co.uk', infoX, infoY + mm(7));
+
+      // Area badge
+      ctx.font = `400 ${mm(1.8)}px "DM Sans"`;
+      ctx.fillStyle = textTertiary;
+      ctx.fillText('Bath · BANES · Wiltshire', infoX, infoY + mm(10));
+
+      // ── TrustATrader badge (right side) ──
+      if (showTrust && trustLogo.complete && trustLogo.naturalWidth) {
+        const trustSize = mm(10);
+        const trustX = mm(BLEED_MM + CARD_W_MM - 7) - trustSize;
+        const trustY = mm(BLEED_MM + 6);
+        try {
+          ctx.drawImage(trustLogo, trustX, trustY, trustSize, trustSize);
+        } catch(e) {}
+
+        // Rating text below logo
+        ctx.font = `600 ${mm(2)}px "DM Sans"`;
+        ctx.fillStyle = textPrimary;
+        ctx.textAlign = 'center';
+        ctx.fillText('4.97 / 5', trustX + trustSize / 2, trustY + trustSize + mm(1.5));
+        ctx.font = `400 ${mm(1.5)}px "DM Sans"`;
+        ctx.fillStyle = textSecondary;
+        ctx.fillText('12 Reviews', trustX + trustSize / 2, trustY + trustSize + mm(3.8));
+        ctx.textAlign = 'start';
+      }
+    }
+
+    // Card controls trigger re-render
+    ['card-style', 'card-res'].forEach(id => {
+      document.getElementById(id).addEventListener('change', renderCard);
+    });
+    ['card-accent'].forEach(id => {
+      document.getElementById(id).addEventListener('input', renderCard);
+    });
+    ['card-trust'].forEach(id => {
+      document.getElementById(id).addEventListener('change', renderCard);
+    });
+    trustLogo.onload = () => { if (document.getElementById('card-panel').style.display !== 'none') renderCard(); };
+
+    document.getElementById('export-card-front').addEventListener('click', () => {
+      renderCard(); // ensure fresh
+      const canvas = document.getElementById('card-canvas');
+      const link = document.createElement('a');
+      link.download = 'aspect-builds-card-front.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    // Back of card
+    document.getElementById('export-card-back').addEventListener('click', () => {
+      if (!fontsReady.done) return;
+      const style = document.getElementById('card-style').value;
+      const accentColor = document.getElementById('card-accent').value;
+      const res = parseFloat(document.getElementById('card-res').value);
+      const scale = res * MM_TO_PX;
+
+      const canvas = document.createElement('canvas');
+      const w = Math.round(TOTAL_W_MM * scale);
+      const h = Math.round(TOTAL_H_MM * scale);
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+
+      const mm = (v) => v * scale;
+      const isDark = style === 'dark';
+      const bg = isDark ? NAVY : '#FFFFFF';
+      const textPrimary = isDark ? '#FFFFFF' : NAVY;
+
+      // Background
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, w, h);
+
+      // Accent bar bottom
+      ctx.fillStyle = accentColor;
+      ctx.fillRect(mm(BLEED_MM), mm(BLEED_MM + CARD_H_MM - 2.5), mm(CARD_W_MM), mm(2.5));
+
+      // Trim line
+      ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)';
+      ctx.lineWidth = 0.5 * res;
+      ctx.setLineDash([mm(2), mm(2)]);
+      ctx.strokeRect(mm(BLEED_MM), mm(BLEED_MM), mm(CARD_W_MM), mm(CARD_H_MM));
+      ctx.setLineDash([]);
+
+      // Large centered chevron
+      const bigChevronH = mm(18);
+      const bigChevronW = bigChevronH * 1.1;
+      const chX = mm(TOTAL_W_MM) / 2 - bigChevronW / 2;
+      const chY = mm(TOTAL_H_MM) / 2 - bigChevronH / 2 - mm(5);
+      drawChevron(ctx, chX, chY, bigChevronH, accentColor);
+
+      // "ASPECT BUILDS" centered below
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      const nameSize = mm(9);
+      ctx.font = `${nameSize}px "Bebas Neue"`;
+      ctx.fillStyle = textPrimary;
+      ctx.fillText('ASPECT', mm(TOTAL_W_MM) / 2, chY + bigChevronH + mm(3));
+
+      const subSize = mm(2.5);
+      ctx.font = `600 ${subSize}px "DM Sans"`;
+      ctx.fillStyle = accentColor;
+      ctx.fillText('BUILDS & MAINTENANCE LTD', mm(TOTAL_W_MM) / 2, chY + bigChevronH + mm(3) + nameSize + mm(1));
+
+      ctx.textAlign = 'start';
+
+      const link = document.createElement('a');
+      link.download = 'aspect-builds-card-back.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+  </script>
+</body>
+</html>
