@@ -3,6 +3,7 @@ Allow: /
 Disallow: /style-guide
 Disallow: /contact/success
 Disallow: /social-generator
+Disallow: /brand-tools
 
 # AI crawlers — explicitly allowed
 User-agent: GPTBot
