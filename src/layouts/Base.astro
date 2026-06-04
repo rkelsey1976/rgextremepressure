@@ -74,6 +74,7 @@ const ogImageURL   = new URL(ogImage, Astro.site);
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
+    "@id": "https://aspectbuilds.co.uk/#organization",
     "name": "Aspect Builds & Maintenance Ltd",
     "legalName": "Aspect Builds & Maintenance Ltd",
     "description": "Building and property maintenance company in Bath serving BANES and West Wiltshire. Loft conversions, extensions, new builds, heritage restoration and ongoing property care.",
@@ -169,6 +170,58 @@ const ogImageURL   = new URL(ogImage, Astro.site);
       "bestRating": "5",
       "worstRating": "1"
     }
+  })} />
+
+  <!-- WebSite schema with SearchAction -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://aspectbuilds.co.uk/#website",
+    "url": "https://aspectbuilds.co.uk",
+    "name": "Aspect Builds & Maintenance Ltd",
+    "inLanguage": "en-GB",
+    "publisher": {
+      "@id": "https://aspectbuilds.co.uk/#organization"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://aspectbuilds.co.uk/?s={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  })} />
+
+  <!-- WebPage schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://aspectbuilds.co.uk/#webpage",
+    "url": canonicalURL.href,
+    "name": title + " | Aspect Builds",
+    "description": description,
+    "isPartOf": {
+      "@id": "https://aspectbuilds.co.uk/#website"
+    },
+    "about": {
+      "@id": "https://aspectbuilds.co.uk/#organization"
+    },
+    "inLanguage": "en-GB"
+  })} />
+
+  <!-- BreadcrumbList schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://aspectbuilds.co.uk/"
+      }
+    ]
   })} />
   {serviceSchema && (
     <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
