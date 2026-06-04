@@ -182,10 +182,19 @@
         <label>Contact Y <span class="slider-val" id="card-info-y-val">42</span></label>
         <input type="range" id="card-info-y" min="25" max="50" value="42" step="0.5">
       </div>
+      <div class="control-group">
+        <label>Name X <span class="slider-val" id="card-name-x-val">7</span></label>
+        <input type="range" id="card-name-x" min="3" max="75" value="7" step="0.5">
+      </div>
+      <div class="control-group">
+        <label>Name Y <span class="slider-val" id="card-name-y-val">30</span></label>
+        <input type="range" id="card-name-y" min="10" max="45" value="30" step="0.5">
+      </div>
       <div class="toggle-row">
         <label class="toggle"><input type="checkbox" id="card-trust" checked><span>TrustATrader</span></label>
         <label class="toggle"><input type="checkbox" id="card-accent-bar" checked><span>Accent Bar</span></label>
         <label class="toggle"><input type="checkbox" id="card-bleed" checked><span>Show Bleed</span></label>
+        <label class="toggle"><input type="checkbox" id="card-show-personal" checked><span>Name/Title</span></label>
       </div>
     </div>
     <div class="actions">
@@ -585,6 +594,24 @@
       ctx.fillStyle = accentColor;
       ctx.fillText('BUILDS & MAINTENANCE LTD', logoX + chevronW + mm(2), logoY + nameSize + mm(0.5));
 
+      // ── Personal name + title (positioned by sliders) ──
+      const showPersonal = document.getElementById('card-show-personal').checked;
+      if (showPersonal) {
+        const personalX = mm(BLEED_MM + parseFloat(document.getElementById('card-name-x').value));
+        const personalY = mm(parseFloat(document.getElementById('card-name-y').value));
+
+        // Name
+        ctx.font = `700 ${mm(3.2) * 1}px "DM Sans"`;
+        ctx.fillStyle = textPrimary;
+        ctx.textBaseline = 'top';
+        ctx.fillText('James Norris', personalX, personalY);
+
+        // Title
+        ctx.font = `400 ${mm(2) * 1}px "DM Sans"`;
+        ctx.fillStyle = accentColor;
+        ctx.fillText('Director', personalX, personalY + mm(3.8));
+      }
+
       // ── Contact info (positioned by sliders) ──
       const infoY = mm(infoYMm);
       const infoX = mm(BLEED_MM + infoXMm);
@@ -627,10 +654,10 @@
     ['card-accent'].forEach(id => {
       document.getElementById(id).addEventListener('input', renderCard);
     });
-    ['card-trust', 'card-accent-bar', 'card-bleed'].forEach(id => {
+    ['card-trust', 'card-accent-bar', 'card-bleed', 'card-show-personal'].forEach(id => {
       document.getElementById(id).addEventListener('change', renderCard);
     });
-    ['card-logo-x', 'card-logo-y', 'card-info-x', 'card-info-y'].forEach(id => {
+    ['card-logo-x', 'card-logo-y', 'card-info-x', 'card-info-y', 'card-name-x', 'card-name-y'].forEach(id => {
       document.getElementById(id).addEventListener('input', (e) => {
         document.getElementById(id + '-val').textContent = e.target.value;
         renderCard();
