@@ -44,6 +44,18 @@
       border: 1px solid rgba(255,255,255,0.15); border-radius: 3px;
       color: #fff; font-size: 0.82rem; font-family: 'DM Sans', sans-serif;
     }
+    .control-group input[type="range"] {
+      width: 80px; height: 3px; -webkit-appearance: none; appearance: none;
+      background: rgba(255,255,255,0.08); border-radius: 2px; outline: none; margin-top: 2px;
+    }
+    .control-group input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%;
+      background: #AE8455; cursor: pointer; border: 2px solid #0d1520;
+    }
+    .control-group .slider-val {
+      font-size: 0.6rem; color: #AE8455; font-weight: 600;
+      font-variant-numeric: tabular-nums; min-width: 2.5em; text-align: right;
+    }
     .control-group input[type="color"] {
       width: 36px; height: 30px; border: 1px solid rgba(255,255,255,0.12);
       border-radius: 3px; background: none; cursor: pointer;
@@ -154,8 +166,26 @@
         <label>Accent Color</label>
         <input type="color" id="card-accent" value="#AE8455">
       </div>
+      <div class="control-group">
+        <label>Logo X <span class="slider-val" id="card-logo-x-val">7</span></label>
+        <input type="range" id="card-logo-x" min="3" max="75" value="7" step="0.5">
+      </div>
+      <div class="control-group">
+        <label>Logo Y <span class="slider-val" id="card-logo-y-val">6</span></label>
+        <input type="range" id="card-logo-y" min="3" max="40" value="6" step="0.5">
+      </div>
+      <div class="control-group">
+        <label>Contact X <span class="slider-val" id="card-info-x-val">7</span></label>
+        <input type="range" id="card-info-x" min="3" max="75" value="7" step="0.5">
+      </div>
+      <div class="control-group">
+        <label>Contact Y <span class="slider-val" id="card-info-y-val">42</span></label>
+        <input type="range" id="card-info-y" min="25" max="50" value="42" step="0.5">
+      </div>
       <div class="toggle-row">
         <label class="toggle"><input type="checkbox" id="card-trust" checked><span>TrustATrader</span></label>
+        <label class="toggle"><input type="checkbox" id="card-accent-bar" checked><span>Accent Bar</span></label>
+        <label class="toggle"><input type="checkbox" id="card-bleed" checked><span>Show Bleed</span></label>
       </div>
     </div>
     <div class="actions">
@@ -263,47 +293,56 @@
 
       // Calculate sizes based on logo height
       const chevronH = showChevron ? logoH * 0.65 : 0;
-      const chevronW = chevronH * 1.1;
+      const chevronW = chevronH * 1.1;     // horizontal space the chevron occupies
       const nameSize = logoH * 0.52;
       const subSize = logoH * 0.14;
-      const gapAfterChevron = chevronW * 0.25;
-      const gapBetweenLines = nameSize * 0.06;
+      const gapAfterChevron = chevronH * 0.3;  // horizontal gap after chevronmark
+      const gapBetweenLines = nameSize * 0.08;
 
-      // Measure text widths
+      // Measure actual text widths
       ctx.font = `${nameSize}px "Bebas Neue"`;
       const nameW = showName ? ctx.measureText('ASPECT').width : 0;
-      ctx.font = `${subSize}px "DM Sans"`;
+      ctx.font = `600 ${subSize}px "DM Sans"`;
       const subW = showSub ? ctx.measureText('BUILDS & MAINTENANCE LTD').width : 0;
 
-      // Total logo width = chevron + gap + max(nameW, subW)
-      const textBlockW = Math.max(nameW, subW);
-      const totalLogoW = chevronH + gapAfterChevron + textBlockW;
-      const startX = (width - totalLogoW) / 2;
+      // Total logo width = chevron width + gap + text block
+      const textBlockW = showChevron ? Math.max(nameW, subW) : Math.max(nameW, subW);
+      const logoW = (showChevron ? chevronW : 0) + (showChevron && (showName || showSub) ? gapAfterChevron : 0) + textBlockW;
+      const startX = (width - logoW) / 2;
       const centerY = totalH / 2;
 
-      // Draw chevron
+      // ── Vertical alignment: center the text block as a group ──
+      // Text block height = name + gap + sub
+      const textBlockH = (showName ? nameSize : 0) + (showName && showSub ? gapBetweenLines : 0) + (showSub ? subSize : 0);
+      // Vertical center of text block = centerY - textBlockH/2
+      const textBlockTop = centerY - textBlockH / 2;
+
+      // Draw chevron — centered vertically on the text block center
       if (showChevron) {
-        drawChevron(ctx, startX, centerY - chevronH / 2, chevronH, chevronColor);
+        // Chevron visual center is at 45% from top (V-shape, top-heavy)
+        const chevronVisualCenter = chevronH * 0.45;
+        const chevronTop = centerY - chevronVisualCenter - (chevronH * 0.55) / 2;
+        drawChevron(ctx, startX, chevronTop, chevronH, chevronColor);
       }
 
       // Text start X
-      const textX = startX + chevronH + gapAfterChevron;
+      const textX = startX + (showChevron ? chevronW + gapAfterChevron : 0);
 
-      // Draw name
+      // Draw name — aligned to baseline for crisp rendering
       if (showName) {
         ctx.font = `${nameSize}px "Bebas Neue"`;
         ctx.fillStyle = nameColor;
         ctx.textBaseline = 'top';
-        const nameY = centerY - (showSub ? nameSize + gapBetweenLines / 2 : nameSize / 2);
+        const nameY = textBlockTop;
         ctx.fillText('ASPECT', textX, nameY);
       }
 
-      // Draw sub-line
+      // Draw sub-line — tight below name
       if (showSub) {
         ctx.font = `600 ${subSize}px "DM Sans"`;
         ctx.fillStyle = subColor;
         ctx.textBaseline = 'top';
-        const subY = showName ? centerY + gapBetweenLines / 2 : centerY - subSize / 2;
+        const subY = textBlockTop + (showName ? nameSize + gapBetweenLines : 0);
         ctx.fillText('BUILDS & MAINTENANCE LTD', textX, subY);
       }
     }
@@ -336,19 +375,27 @@
       const showSub = document.getElementById('show-sub').checked;
       const width = parseInt(document.getElementById('logo-width').value) || 800;
 
-      const logoH = width * 0.35;
-      const padding = width * 0.06;
+      const logoH = Math.round(width * 0.35);
+      const padding = Math.round(width * 0.06);
       const totalH = logoH + padding * 2;
       const chevronH = showChevron ? logoH * 0.65 : 0;
+      const chevronW = chevronH * 1.1;
       const nameSize = logoH * 0.52;
       const subSize = logoH * 0.14;
-      const chevronW = chevronH * 1.1;
       const sw = chevronH * 0.22;
-      const gapAfterChevron = chevronW * 0.25;
-      const gapBetweenLines = nameSize * 0.06;
-      const totalLogoW = chevronH + gapAfterChevron + Math.max(nameSize * 3.8, subSize * 14);
-      const startX = (width - totalLogoW) / 2;
+      const gapAfterChevron = chevronH * 0.3;
+      const gapBetweenLines = nameSize * 0.08;
+
+      // Approximate text widths for SVG (Bebas Neue is ~0.55em wide per char, DM Sans 600 ~0.6em for sub)
+      const nameApproxW = nameSize * 0.62 * 6; // "ASPECT" = 6 chars
+      const subApproxW = subSize * 0.6 * 24; // "BUILDS & MAINTENANCE LTD" ≈ 24 chars
+      const textBlockW = Math.max(showName ? nameApproxW : 0, showSub ? subApproxW : 0);
+      const logoW = (showChevron ? chevronW : 0) + (showChevron && (showName || showSub) ? gapAfterChevron : 0) + textBlockW;
+      const startX = (width - logoW) / 2;
       const centerY = totalH / 2;
+
+      const textBlockH = (showName ? nameSize : 0) + (showName && showSub ? gapBetweenLines : 0) + (showSub ? subSize : 0);
+      const textBlockTop = centerY - textBlockH / 2;
 
       let bgRect = '';
       if (bg === 'navy') bgRect = `<rect width="${width}" height="${totalH}" fill="${NAVY}"/>`;
@@ -356,24 +403,24 @@
 
       let chevronSvg = '';
       if (showChevron) {
+        const chevronVisualCenter = chevronH * 0.45;
+        const chevronTop = centerY - chevronVisualCenter - (chevronH * 0.55) / 2;
         const cx = startX;
-        const cy1 = centerY - chevronH * 0.5 + chevronH * 0.85;
-        const cy2 = centerY - chevronH * 0.5 + chevronH * 0.05;
-        const cy3 = cy1;
-        const cx2 = cx + chevronW;
-        chevronSvg = `<polyline points="${cx},${cy1} ${cx + chevronW/2},${cy2} ${cx2},${cy3}" stroke="${chevronColor}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
+        const cy_top = chevronTop + chevronH * 0.05;
+        const cy_bot = chevronTop + chevronH * 0.85;
+        chevronSvg = `<polyline points="${cx},${cy_bot} ${cx + chevronW/2},${cy_top} ${cx + chevronW},${cy_bot}" stroke="${chevronColor}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
       }
+
+      const textX = startX + (showChevron ? chevronW + gapAfterChevron : 0);
 
       let nameSvg = '', subSvg = '';
       if (showName) {
-        const textX = startX + chevronH + gapAfterChevron;
-        const nameY = centerY - (showSub ? nameSize + gapBetweenLines/2 : nameSize/2) + nameSize * 0.82;
-        nameSvg = `<text x="${textX}" y="${nameY}" font-family="Bebas Neue, sans-serif" font-size="${nameSize}" fill="${nameColor}">ASPECT</text>`;
+        const nameY = textBlockTop;
+        nameSvg = `<text x="${textX}" y="${nameY + nameSize}" font-family="Bebas Neue, sans-serif" font-size="${nameSize}" fill="${nameColor}">ASPECT</text>`;
       }
       if (showSub) {
-        const textX = startX + chevronH + gapAfterChevron;
-        const subY = centerY + gapBetweenLines/2 + subSize * 0.82;
-        subSvg = `<text x="${textX}" y="${subY}" font-family="DM Sans, sans-serif" font-weight="600" font-size="${subSize}" fill="${subColor}">BUILDS &amp; MAINTENANCE LTD</text>`;
+        const subY = textBlockTop + (showName ? nameSize + gapBetweenLines : 0);
+        subSvg = `<text x="${textX}" y="${subY + subSize}" font-family="DM Sans, sans-serif" font-weight="600" font-size="${subSize}" fill="${subColor}">BUILDS &amp; MAINTENANCE LTD</text>`;
       }
 
       const svg = `<?xml version="1.0" encoding="UTF-8"?>
@@ -484,31 +531,32 @@
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, w, h);
 
+      const showAccentBar = document.getElementById('card-accent-bar').checked;
+      const showBleed = document.getElementById('card-bleed').checked;
+      const logoXMm = parseFloat(document.getElementById('card-logo-x').value);
+      const logoYMm = parseFloat(document.getElementById('card-logo-y').value);
+      const infoXMm = parseFloat(document.getElementById('card-info-x').value);
+      const infoYMm = parseFloat(document.getElementById('card-info-y').value);
+
       // Accent bar along bottom (inside trim)
-      const barH = mm(2.5);
-      ctx.fillStyle = accentColor;
-      ctx.fillRect(mm(BLEED_MM), mm(BLEED_MM + CARD_H_MM - 2.5), mm(CARD_W_MM), barH);
+      if (showAccentBar) {
+        const barH = mm(2.5);
+        ctx.fillStyle = accentColor;
+        ctx.fillRect(mm(BLEED_MM), mm(BLEED_MM + CARD_H_MM - 2.5), mm(CARD_W_MM), barH);
+      }
 
-      // Accent bleed marks (corner accents)
-      ctx.fillStyle = accentColor;
-      // Top-left accent mark
-      const cornerSize = mm(6);
-      ctx.fillRect(mm(0), mm(0), cornerSize, mm(BLEED_MM));
-      ctx.fillRect(mm(0), mm(0), mm(BLEED_MM), cornerSize);
-      // Bottom-right
-      ctx.fillRect(mm(TRIM_RIGHT_MM), mm(0), mm(BLEED_MM), cornerSize);
-      ctx.fillRect(mm(TRIM_RIGHT_MM - cornerSize + mm(BLEED_MM)), mm(0), cornerSize, mm(BLEED_MM));
+      // Bleed guide (dashed trim line only)
+      if (showBleed) {
+        ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.08)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([mm(2), mm(2)]);
+        ctx.strokeRect(mm(BLEED_MM), mm(BLEED_MM), mm(CARD_W_MM), mm(CARD_H_MM));
+        ctx.setLineDash([]);
+      }
 
-      // Trim line indicator (subtle)
-      ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)';
-      ctx.lineWidth = 0.5 * res;
-      ctx.setLineDash([mm(2), mm(2)]);
-      ctx.strokeRect(mm(BLEED_MM), mm(BLEED_MM), mm(CARD_W_MM), mm(CARD_H_MM));
-      ctx.setLineDash([]);
-
-      // ── Logo (top-left, inside trim) ──
-      const logoX = mm(BLEED_MM + 7);
-      const logoY = mm(BLEED_MM + 6);
+      // ── Logo (positioned by sliders) ──
+      const logoX = mm(BLEED_MM + logoXMm);
+      const logoY = mm(BLEED_MM + logoYMm);
       const chevronH = mm(8);
       const chevronW = chevronH * 1.1;
       const sw = chevronH * 0.22;
@@ -537,9 +585,9 @@
       ctx.fillStyle = accentColor;
       ctx.fillText('BUILDS & MAINTENANCE LTD', logoX + chevronW + mm(2), logoY + nameSize + mm(0.5));
 
-      // ── Contact info (bottom area, above accent bar) ──
-      const infoY = mm(BLEED_MM + CARD_H_MM - 12);
-      const infoX = mm(BLEED_MM + 7);
+      // ── Contact info (positioned by sliders) ──
+      const infoY = mm(infoYMm);
+      const infoX = mm(BLEED_MM + infoXMm);
 
       // Phone
       ctx.font = `500 ${mm(3) * 1}px "DM Sans"`;
@@ -568,15 +616,7 @@
           ctx.drawImage(trustLogo, trustX, trustY, trustSize, trustSize);
         } catch(e) {}
 
-        // Rating text below logo
-        ctx.font = `600 ${mm(2)}px "DM Sans"`;
-        ctx.fillStyle = textPrimary;
-        ctx.textAlign = 'center';
-        ctx.fillText('4.97 / 5', trustX + trustSize / 2, trustY + trustSize + mm(1.5));
-        ctx.font = `400 ${mm(1.5)}px "DM Sans"`;
-        ctx.fillStyle = textSecondary;
-        ctx.fillText('12 Reviews', trustX + trustSize / 2, trustY + trustSize + mm(3.8));
-        ctx.textAlign = 'start';
+
       }
     }
 
@@ -587,8 +627,14 @@
     ['card-accent'].forEach(id => {
       document.getElementById(id).addEventListener('input', renderCard);
     });
-    ['card-trust'].forEach(id => {
+    ['card-trust', 'card-accent-bar', 'card-bleed'].forEach(id => {
       document.getElementById(id).addEventListener('change', renderCard);
+    });
+    ['card-logo-x', 'card-logo-y', 'card-info-x', 'card-info-y'].forEach(id => {
+      document.getElementById(id).addEventListener('input', (e) => {
+        document.getElementById(id + '-val').textContent = e.target.value;
+        renderCard();
+      });
     });
     trustLogo.onload = () => { if (document.getElementById('card-panel').style.display !== 'none') renderCard(); };
 
@@ -625,16 +671,23 @@
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, w, h);
 
-      // Accent bar bottom
-      ctx.fillStyle = accentColor;
-      ctx.fillRect(mm(BLEED_MM), mm(BLEED_MM + CARD_H_MM - 2.5), mm(CARD_W_MM), mm(2.5));
+      const showAccentBar = document.getElementById('card-accent-bar').checked;
+      const showBleed = document.getElementById('card-bleed').checked;
 
-      // Trim line
-      ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)';
-      ctx.lineWidth = 0.5 * res;
-      ctx.setLineDash([mm(2), mm(2)]);
-      ctx.strokeRect(mm(BLEED_MM), mm(BLEED_MM), mm(CARD_W_MM), mm(CARD_H_MM));
-      ctx.setLineDash([]);
+      // Accent bar bottom
+      if (showAccentBar) {
+        ctx.fillStyle = accentColor;
+        ctx.fillRect(mm(BLEED_MM), mm(BLEED_MM + CARD_H_MM - 2.5), mm(CARD_W_MM), mm(2.5));
+      }
+
+      // Bleed guide (optional)
+      if (showBleed) {
+        ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.08)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([mm(2), mm(2)]);
+        ctx.strokeRect(mm(BLEED_MM), mm(BLEED_MM), mm(CARD_W_MM), mm(CARD_H_MM));
+        ctx.setLineDash([]);
+      }
 
       // Large centered chevron
       const bigChevronH = mm(18);
