@@ -32,7 +32,7 @@ for webp in "$SRC"/*.webp; do
     bath-loft-extension)    lat="51.3813864"; lon="-2.3596963" ;;
     chilcompton-rendering)  lat="51.2618429"; lon="-2.5121834" ;;
     frome-garage-conversion) lat="51.2294852"; lon="-2.3198467" ;;
-    medford-garden-extension) lat="51.1267494"; lon="-2.7397217" ;;
+    midford-garden-extension) lat="51.1267494"; lon="-2.7397217" ;;
     about-traditional)      lat="51.3813864"; lon="-2.3596963" ;;
     home-loft)              lat="51.3813864"; lon="-2.3596963" ;;
     *) echo "SKIP (no GPS): $filename"; ((SKIPPED++)) || true; continue ;;
