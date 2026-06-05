@@ -85,7 +85,18 @@ const ogImageURL   = new URL(ogImage, Astro.site);
     "founder": {
       "@type": "Person",
       "name": "James John Martin",
-      "jobTitle": "Director"
+      "jobTitle": "Director",
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Member of the Chartered Institute of Building (MCIOB)",
+        "credentialCategory": "Professional Membership",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Chartered Institute of Building",
+          "url": "https://www.ciob.org"
+        }
+      },
+      "sameAs": "https://www.linkedin.com/in/james-martin-mciob-314a3132a/"
     },
     "image": "https://aspectbuilds.co.uk/favicon.svg",
     "logo": "https://aspectbuilds.co.uk/favicon.svg",
