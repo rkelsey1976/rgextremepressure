@@ -98,8 +98,13 @@ const ogImageURL   = new URL(ogImage, Astro.site);
       },
       "sameAs": "https://www.linkedin.com/in/james-martin-mciob-314a3132a/"
     },
-    "image": "https://aspectbuilds.co.uk/favicon.svg",
-    "logo": "https://aspectbuilds.co.uk/favicon.svg",
+    "image": "https://aspectbuilds.co.uk/images/hero-james-bath-property-1.webp",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aspectbuilds.co.uk/favicon.svg",
+      "width": 512,
+      "height": 512
+    },
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "2 Fir Tree Cottages, Dunkerton",
@@ -136,6 +141,12 @@ const ogImageURL   = new URL(ogImage, Astro.site);
         "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
         "opens": "08:00",
         "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday","Sunday"],
+        "opens": "00:00",
+        "closes": "00:00"
       }
     ],
     "knowsAbout": [
@@ -152,6 +163,8 @@ const ogImageURL   = new URL(ogImage, Astro.site);
       "Carpentry & Joinery (City & Guilds)",
       "Construction Skills Certification Scheme (CSCS)"
     ],
+    "currenciesAccepted": "GBP",
+    "paymentAccepted": "Cash, Bank Transfer, Cheque",
     "priceRange": "££-££££",
     "memberOf": [
       {
