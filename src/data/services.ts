@@ -96,7 +96,7 @@ export const servicesData: ServicePillar[] = [
       'Comprehensive Property Maintenance',
       'Responsive Home Repairs & Roofing',
     ],
-    image: '/images/services/property-care.webp',
+    image: '/images/landscaping.jpg',
     video: '/images/bath-landscaping-video.mp4',
     videoPoster: '/images/bath-landscaping-video-poster.webp',
     href: '/services/property-care',
