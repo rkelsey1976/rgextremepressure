@@ -10,6 +10,7 @@ interface Props {
   ogImage?: string;
   bodyClass?: string;
   serviceSchema?: Record<string, unknown>;
+  noindex?: boolean;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
   ogImage = '/images/hero-james-bath-property-1.webp',
   bodyClass,
   serviceSchema,
+  noindex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -31,6 +33,7 @@ const ogImageURL   = new URL(ogImage, Astro.site);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <meta name="description" content={description} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
   <title>{title} | Aspect Builds</title>
   <link rel="canonical" href={canonicalURL} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
