@@ -264,7 +264,6 @@ const ogImageURL   = new URL(ogImage, Astro.site);
       <a href="/about" class="nav-overlay__link">About</a>
       <a href="/services" class="nav-overlay__link">Services</a>
       <a href="/areas-covered" class="nav-overlay__link">Areas</a>
-      <a href="/contact" class="nav-overlay__link nav-cta">Get a Quote</a>
       <a href="/blog" class="nav-overlay__link">Blog</a>
       <a href="/faq" class="nav-overlay__link">FAQ</a>
       <a href="tel:07474939398" class="nav-overlay__link nav-overlay__phone">
@@ -537,13 +536,13 @@ const ogImageURL   = new URL(ogImage, Astro.site);
     position: fixed;
     inset: 0;
     z-index: 99;
-    background: var(--charcoal);
+    background: linear-gradient(160deg, var(--navy) 0%, #0a2444 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s var(--ease-out-expo);
+    transition: opacity 0.35s ease;
   }
 
   .nav-overlay.is-open {
@@ -556,20 +555,23 @@ const ogImageURL   = new URL(ogImage, Astro.site);
     flex-direction: column;
     align-items: center;
     gap: var(--space-m);
+    padding: var(--space-xl) var(--space-l);
   }
 
   .nav-overlay__link {
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.2s;
   }
 
-  .nav-overlay__link:hover {
-    color: var(--accent);
+  .nav-overlay__link:hover,
+  .nav-overlay__link:focus-visible {
+    color: #fff;
   }
 
   .nav-overlay__phone {
@@ -577,26 +579,35 @@ const ogImageURL   = new URL(ogImage, Astro.site);
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    color: var(--accent) !important;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.85) !important;
     font-weight: 600;
+    margin-top: var(--space-s);
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: var(--space-m);
+    width: 100%;
+    text-decoration: none;
   }
 
   .nav-overlay__cta {
-    margin-top: var(--space-s);
+    margin-top: var(--space-xs);
     font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.9rem 2rem;
+    background: var(--cta);
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s;
   }
 
   .nav-overlay__cta:hover {
-    border-color: var(--accent);
+    background: var(--cta-hover);
     color: #fff;
-    background: rgba(0, 0, 0, 0.5);
   }
 
   /* ── Mobile breakpoint ── */
