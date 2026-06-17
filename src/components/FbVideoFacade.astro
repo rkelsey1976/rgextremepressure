@@ -1,0 +1,112 @@
+---
+// FbVideoFacade.astro — Click-to-play wrapper for Facebook video embeds.
+// The iframe is injected into the DOM only after the user clicks, keeping
+// Facebook's scripts and video data off the critical path entirely.
+
+interface Props {
+  src: string;          // Full Facebook plugin URL
+  title: string;        // Accessible label for the iframe
+  poster?: string;      // Optional thumbnail override; falls back to a blue gradient
+  aspectW?: number;     // Source width  (default 560)
+  aspectH?: number;     // Source height (default 314)
+}
+
+const {
+  src,
+  title,
+  poster,
+  aspectW = 560,
+  aspectH = 314,
+} = Astro.props;
+
+const ratio = (aspectH / aspectW * 100).toFixed(4);
+---
+
+<div class="fb-facade" data-src={src} data-title={title} style={`--ratio:${ratio}%`}>
+  {poster
+    ? <img class="fb-facade__poster" src={poster} alt="" aria-hidden="true" loading="lazy" />
+    : <div class="fb-facade__poster fb-facade__poster--gradient" aria-hidden="true"></div>
+  }
+  <button class="fb-facade__btn" type="button" aria-label={`Play video: ${title}`}>
+    <svg class="fb-facade__play" viewBox="0 0 72 72" aria-hidden="true" focusable="false">
+      <circle cx="36" cy="36" r="36" fill="rgba(0,0,0,0.55)" />
+      <polygon points="28,20 56,36 28,52" fill="#ffffff" />
+    </svg>
+  </button>
+</div>
+
+<style>
+  .fb-facade {
+    position: relative;
+    width: 100%;
+    padding-bottom: var(--ratio);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0b1f3a;
+    cursor: pointer;
+  }
+
+  .fb-facade__poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .fb-facade__poster--gradient {
+    background: linear-gradient(135deg, #0055A5 0%, #003D7A 100%);
+  }
+
+  .fb-facade__btn {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .fb-facade__btn:hover { background: rgba(0,0,0,0.1); }
+  .fb-facade__btn:focus-visible { outline: 3px solid #F26522; outline-offset: 3px; }
+
+  .fb-facade__play {
+    width: 72px;
+    height: 72px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    transition: transform 0.15s;
+  }
+
+  .fb-facade__btn:hover .fb-facade__play { transform: scale(1.08); }
+
+  .fb-facade iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.fb-facade').forEach(facade => {
+    facade.addEventListener('click', () => {
+      const src   = facade.dataset.src!;
+      const title = facade.dataset.title!;
+      const iframe = document.createElement('iframe');
+      iframe.src = src + '&autoplay=1';
+      iframe.title = title;
+      iframe.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', 'true');
+      facade.innerHTML = '';
+      facade.appendChild(iframe);
+    }, { once: true });
+  });
+</script>
