@@ -10,6 +10,8 @@ interface Props {
   ogImage?: string;
   bodyClass?: string;
   serviceSchema?: Record<string, unknown>;
+  faqSchema?: Record<string, unknown>;
+  breadcrumbs?: { name: string; item: string }[];
   noindex?: boolean;
 }
 
@@ -20,6 +22,8 @@ const {
   ogImage = '/images/hero-home.webp',
   bodyClass,
   serviceSchema,
+  faqSchema,
+  breadcrumbs = [],
   noindex = false,
 } = Astro.props;
 
@@ -213,16 +217,20 @@ const ogImageURL   = new URL(ogImage, Astro.site);
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rgextremepressure.co.uk/" },
+      ...breadcrumbs.map((crumb, i) => ({
         "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://rgextremepressure.co.uk/"
-      }
+        "position": i + 2,
+        "name": crumb.name,
+        "item": crumb.item
+      }))
     ]
   })} />
   {serviceSchema && (
     <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  )}
+  {faqSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   )}
 </head>
 <body class={bodyClass}>

@@ -253,24 +253,17 @@ import { googleReviews } from '../data/reviews';
     image="/images/before-after/roof-after-2.webp"
   />
 
-  {/* ── Review schema ── */}
+  {/* ── Review schema — attached to the main LocalBusiness entity ── */}
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    "name": "RG Extreme Pressure",
+    "@type": "LocalBusiness",
+    "@id": "https://rgextremepressure.co.uk/#organization",
     "review": googleReviews.map(r => ({
       "@type": "Review",
-      "reviewRating": { "@type": "Rating", "ratingValue": String(r.stars), "bestRating": "5" },
+      "reviewRating": { "@type": "Rating", "ratingValue": String(r.stars), "bestRating": "5", "worstRating": "1" },
       "author": { "@type": "Person", "name": r.name },
       "reviewBody": r.quote
-    })),
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "bestRating": "5",
-      "worstRating": "1",
-      "reviewCount": "111"
-    }
+    }))
   })} />
 </Base>
 

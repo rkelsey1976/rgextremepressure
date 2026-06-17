@@ -58,7 +58,10 @@ const serviceSchema = {
 };
 ---
 
-<Base {title} {description} serviceSchema={serviceSchema}>
+<Base {title} {description} serviceSchema={serviceSchema} faqSchema={faqSchema} breadcrumbs={[
+  { name: 'Services', item: 'https://rgextremepressure.co.uk/services' },
+  { name: 'Roof Cleaning Bath', item: 'https://rgextremepressure.co.uk/roof-cleaning-bath' }
+]}>
   <Hero
     image="/images/before-after/roof-after-1.webp"
     overlay="blue"
