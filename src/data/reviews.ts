@@ -1,5 +1,5 @@
 // Real Google reviews for RG Extreme Pressure
-// Source: Google Business Profile (27 five-star reviews, 4.8/5)
+// Source: Google Business Profile (111 five-star reviews, 4.8/5)
 
 export interface Review {
   quote: string;

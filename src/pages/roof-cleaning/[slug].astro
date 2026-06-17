@@ -22,7 +22,7 @@ const hubLabel    = isBristol ? 'Bristol' : 'Bath';
 const hubHref     = isBristol ? '/bristol' : '/services';
 
 const title       = `Roof Cleaning ${loc.townName} | Moss Removal ${loc.townName}`;
-const description = `Professional roof cleaning and moss removal in ${loc.townName}. Spinning brush system cleans tiles safely from ground level — no walking on your roof. 27 five-star reviews. Call 07474 939 398.`;
+const description = `Professional roof cleaning and moss removal in ${loc.townName}. Spinning brush system cleans tiles safely from ground level — no walking on your roof. 111 five-star reviews. Call 07474 939 398.`;
 
 const localContext = loc.serviceContext['roof-cleaning'] || `Professional roof moss removal in ${loc.townName} — spinning brush system cleans tiles safely from ground level. No concentrated pressure. Biocide treatment included.`;
 
@@ -86,7 +86,7 @@ const serviceSchema = {
     "name": loc.townName,
     "geo": { "@type": "GeoCoordinates", "latitude": loc.lat, "longitude": loc.lng },
   },
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "reviewCount": "27" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "111" },
 };
 ---
 
@@ -102,13 +102,13 @@ const serviceSchema = {
     ]}
     eyebrow={`Roof Cleaning ${loc.townName}`}
     heading={`Roof Cleaning & Moss Removal in ${loc.townName}`}
-    body={`Safe, effective roof moss removal in ${loc.townName}. Our spinning brush system cleans tiles from ground level — no walking on your roof, no concentrated pressure on ageing tiles. Biocide treatment included. 27 five-star reviews. Free quotes.`}
+    body={`Safe, effective roof moss removal in ${loc.townName}. Our spinning brush system cleans tiles from ground level — no walking on your roof, no concentrated pressure on ageing tiles. Biocide treatment included. 111 five-star reviews. Free quotes.`}
     cta={{ label: 'Get a Free Quote', href: '/contact' }}
     minHeight="compact"
   />
 
   <TrustMetrics metrics={[
-    { value: '27', label: 'Five-Star Reviews' },
+    { value: '111', label: 'Five-Star Reviews' },
     { value: '10', label: 'Years Experience' },
     { value: 'Insured', label: 'Fully Insured' },
     { value: '5.2K', label: 'FB Followers' },
@@ -186,7 +186,7 @@ const serviceSchema = {
             <span class="rule--accent"></span>
             <span class="t-label" style="color:var(--accent)">Trusted Local Service</span>
             <div class="sidebar-trust">
-              <div class="sidebar-trust__item"><span class="sidebar-trust__value">27</span><span class="sidebar-trust__label">Five-Star Reviews</span></div>
+              <div class="sidebar-trust__item"><span class="sidebar-trust__value">111</span><span class="sidebar-trust__label">Five-Star Reviews</span></div>
               <div class="sidebar-trust__item"><span class="sidebar-trust__value">10</span><span class="sidebar-trust__label">Years Experience</span></div>
               <div class="sidebar-trust__item"><span class="sidebar-trust__value">&#10003;</span><span class="sidebar-trust__label">Fully Insured</span></div>
             </div>

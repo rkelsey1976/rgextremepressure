@@ -23,7 +23,7 @@ const hubHref     = isBristol ? '/bristol' : '/services';
 const postcodes   = isBristol ? 'BS1–BS16' : 'BA1–BA2';
 
 const title       = `Driveway Cleaning ${loc.townName} | Jet Washing ${loc.townName}`;
-const description = `Professional driveway cleaning in ${loc.townName}. Block paving, tarmac and concrete jet washed, re-sanded and sealed. 27 five-star reviews. Call 07474 939 398.`;
+const description = `Professional driveway cleaning in ${loc.townName}. Block paving, tarmac and concrete jet washed, re-sanded and sealed. 111 five-star reviews. Call 07474 939 398.`;
 
 const localContext = loc.serviceContext['driveway-cleaning'] || `Professional driveway jet washing in ${loc.townName} — block paving, tarmac and concrete cleaned, re-sanded and restored.`;
 
@@ -87,7 +87,7 @@ const serviceSchema = {
     "name": loc.townName,
     "geo": { "@type": "GeoCoordinates", "latitude": loc.lat, "longitude": loc.lng },
   },
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "reviewCount": "27" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "111" },
 };
 ---
 
@@ -103,13 +103,13 @@ const serviceSchema = {
     ]}
     eyebrow={`Driveway Cleaning ${loc.townName}`}
     heading={`Driveway Cleaning in ${loc.townName}`}
-    body={`Professional jet washing restores ${loc.townName} driveways to like-new condition. Block paving, tarmac, concrete and resin — all surfaces cleaned, re-sanded and optionally sealed. 27 five-star reviews. Free quotes.`}
+    body={`Professional jet washing restores ${loc.townName} driveways to like-new condition. Block paving, tarmac, concrete and resin — all surfaces cleaned, re-sanded and optionally sealed. 111 five-star reviews. Free quotes.`}
     cta={{ label: 'Get a Free Quote', href: '/contact' }}
     minHeight="compact"
   />
 
   <TrustMetrics metrics={[
-    { value: '27', label: 'Five-Star Reviews' },
+    { value: '111', label: 'Five-Star Reviews' },
     { value: '10', label: 'Years Experience' },
     { value: 'Insured', label: 'Fully Insured' },
     { value: '5.2K', label: 'FB Followers' },
@@ -187,7 +187,7 @@ const serviceSchema = {
             <span class="rule--accent"></span>
             <span class="t-label" style="color:var(--accent)">Trusted Local Service</span>
             <div class="sidebar-trust">
-              <div class="sidebar-trust__item"><span class="sidebar-trust__value">27</span><span class="sidebar-trust__label">Five-Star Reviews</span></div>
+              <div class="sidebar-trust__item"><span class="sidebar-trust__value">111</span><span class="sidebar-trust__label">Five-Star Reviews</span></div>
               <div class="sidebar-trust__item"><span class="sidebar-trust__value">10</span><span class="sidebar-trust__label">Years Experience</span></div>
               <div class="sidebar-trust__item"><span class="sidebar-trust__value">&#10003;</span><span class="sidebar-trust__label">Fully Insured</span></div>
             </div>
