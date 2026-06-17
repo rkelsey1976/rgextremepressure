@@ -1,41 +1,31 @@
 ---
 import { srcset } from '../utils/srcset';
 
-// Hero.astro — Unified dark-overlay hero component for Aspect Builds
-// All pages use this one component. Props drive every variation.
-// Desktop default: left vignette (overlay='left')
-// Mobile: automatically switches to bottom-up gradient for readability
+// Hero.astro — Modern, clean hero for RG Extreme Pressure
+// Options: image-based hero with blue overlay, or clean no-image hero
+// New: pill eyebrow badge, Montserrat h1, wave SVG divider
 
 interface Props {
-  // Background image URL
-  image: string;
-  // Overlay style: 'left' (left-to-right, default), 'gradient' (bottom-up)
-  overlay?: 'gradient' | 'left';
-  // Breadcrumb trail: array of { label: string, href?: string }
+  image?: string;
+  video?: string;
+  overlay?: 'gradient' | 'blue';
   breadcrumb?: { label: string; href?: string }[];
-  // Eyebrow label text (appears above h1)
   eyebrow?: string;
-  // h1 heading — supports <br> via HTML
   heading: string;
-  // Body text
   body: string;
-  // Body max-width in ch (default 52)
   bodyMaxWidth?: number;
-  // Primary CTA
   cta?: { label: string; href: string };
-  // Secondary CTA
   ctaSecondary?: { label: string; href: string };
-  // Tags (project detail pages)
   tags?: string[];
-  // Meta row for project detail (key-value pairs)
   meta?: { label: string; value: string }[];
-  // Min height: 'full' (100svh) or 'compact' (70svh)
   minHeight?: 'full' | 'compact';
+  variant?: 'default' | 'dark';
 }
 
 const {
   image,
-  overlay = 'left',
+  video,
+  overlay = 'blue',
   breadcrumb,
   eyebrow,
   heading,
@@ -46,40 +36,51 @@ const {
   tags,
   meta,
   minHeight = 'full',
+  variant = 'default',
 } = Astro.props;
 
-const heroSrcset = srcset(image);
-
-const overlayStyles: Record<string, string> = {
-  gradient: 'linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.6) 40%, rgba(0,0,0,.15) 100%)',
-  left: 'linear-gradient(to right, rgba(0,0,0,.85) 0%, rgba(0,0,0,.82) 35%, rgba(0,0,0,.3) 100%)',
-};
+const heroSrcset = image ? srcset(image) : undefined;
+const hasMedia = !!(image || video);
 ---
 
 <section
   class:list={[
     'hero',
-    'noise',
     minHeight === 'compact' ? 'hero--compact' : '',
+    hasMedia ? 'hero--has-image' : '',
+    variant === 'dark' ? 'hero--dark' : '',
   ]}
   id="hero"
 >
   <div class="hero__bg">
-    <img
-      class="hero__img"
-      src={image}
-      srcset={heroSrcset}
-      sizes="100vw"
-      alt=""
-      aria-hidden="true"
-      fetchpriority="high"
-      decoding="async"
-      loading="eager"
-    />
-    <div
-      class="hero__overlay"
-      data-overlay={overlay}
-    ></div>
+    {video && (
+      <video
+        class="hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="/images/hero-home.webp"
+        aria-hidden="true"
+      >
+        <source src={video} type="video/mp4" />
+      </video>
+    )}
+    {!video && image && (
+      <img
+        class="hero__img"
+        src={image}
+        srcset={heroSrcset}
+        sizes="100vw"
+        alt=""
+        aria-hidden="true"
+        fetchpriority="high"
+        decoding="async"
+        loading="eager"
+      />
+    )}
+    <div class="hero__overlay" data-overlay={overlay}></div>
   </div>
 
   <div class="container hero__content">
@@ -100,8 +101,7 @@ const overlayStyles: Record<string, string> = {
 
     {eyebrow && (
       <div class="hero__eyebrow">
-        <span class="rule--accent"></span>
-        <span class="t-label" style="color:var(--accent)">{eyebrow}</span>
+        <span class="hero__eyebrow-pill">{eyebrow}</span>
       </div>
     )}
 
@@ -115,7 +115,7 @@ const overlayStyles: Record<string, string> = {
 
     <h1 class="hero__headline" set:html={heading} />
 
-    <p class="t-body-lg hero__sub" style={`max-width:${bodyMaxWidth}ch;color:rgba(255,255,255,.72)`}>
+    <p class="hero__sub" style={`max-width:${bodyMaxWidth}ch`}>
       {body}
     </p>
 
@@ -139,13 +139,14 @@ const overlayStyles: Record<string, string> = {
       <div class="hero__meta">
         {meta.map((item) => (
           <div class="hero__meta-item">
-            <span class="t-label" style="color:rgba(255,255,255,.7)">{item.label}</span>
-            <span style="color:#fff">{item.value}</span>
+            <span class="t-label">{item.label}</span>
+            <span>{item.value}</span>
           </div>
         ))}
       </div>
     )}
   </div>
+
 </section>
 
 <style>
@@ -154,19 +155,35 @@ const overlayStyles: Record<string, string> = {
     position: relative;
     min-height: 100svh;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     overflow: hidden;
-    background: var(--navy);
+    background: var(--accent-light);
+    padding-bottom: 0;
   }
 
   .hero--compact {
     min-height: 70svh;
   }
 
+  /* ── No-image hero: light, clean ── */
+  .hero:not(.hero--has-image) {
+    background: var(--surface);
+    align-items: center;
+  }
+
+  /* ── Dark variant ── */
+  .hero--dark {
+    background: var(--navy);
+  }
+
   .hero__bg {
     position: absolute;
     inset: 0;
     z-index: 0;
+  }
+
+  .hero:not(.hero--has-image) .hero__bg {
+    display: none;
   }
 
   .hero__img {
@@ -178,79 +195,138 @@ const overlayStyles: Record<string, string> = {
     object-position: center;
   }
 
-  /* Desktop overlay: set via data-overlay attribute */
+  .hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* ── Blue overlay for image heroes ── */
   .hero__overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
   }
 
-  .hero__overlay[data-overlay="left"] {
-    background: linear-gradient(to right, rgba(0,0,0,.92) 0%, rgba(0,0,0,.88) 40%, rgba(0,0,0,.45) 100%);
+  .hero__overlay[data-overlay="blue"] {
+    background: linear-gradient(135deg, rgba(0,85,165,0.88) 0%, rgba(0,61,122,0.75) 50%, rgba(0,61,122,0.5) 100%);
   }
 
   .hero__overlay[data-overlay="gradient"] {
-    background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.75) 40%, rgba(0,0,0,.25) 100%);
+    background: linear-gradient(to top, rgba(15,27,45,0.92) 0%, rgba(15,27,45,0.7) 40%, rgba(15,27,45,0.2) 100%);
   }
 
-  /* Mobile: top-down gradient — darkest at nav/headline, fades toward bottom */
+  /* Mobile: stronger overlay */
   @media (max-width: 768px) {
-    .hero__overlay {
-      background: linear-gradient(to bottom, rgba(0,0,0,.95) 0%, rgba(0,0,0,.75) 50%, rgba(0,0,0,.3) 100%) !important;
+    .hero__overlay[data-overlay="blue"] {
+      background: linear-gradient(to bottom, rgba(0,85,165,0.85) 0%, rgba(0,85,165,0.75) 60%, rgba(0,85,165,0.6) 100%);
+    }
+    .hero__overlay[data-overlay="gradient"] {
+      background: linear-gradient(to bottom, rgba(15,27,45,0.88) 0%, rgba(15,27,45,0.7) 50%, rgba(15,27,45,0.3) 100%);
     }
   }
 
   .hero__content {
     position: relative;
     z-index: 2;
-    padding-block: clamp(6rem, 10vw, 8rem);
+    padding-block: clamp(3rem, 6vw, 5rem);
     display: flex;
     flex-direction: column;
-    gap: var(--space-m);
+    gap: var(--space-l);
+    max-width: 66.666%;
+    margin-inline: 0;
   }
 
   .hero__breadcrumb {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.55);
     font-size: 0.85rem;
     margin-bottom: var(--space-s);
   }
 
+  /* Breadcrumb colours */
+  .hero--has-image .hero__breadcrumb,
+  .hero--dark .hero__breadcrumb {
+    color: rgba(255, 255, 255, 0.65);
+  }
+  .hero:not(.hero--has-image):not(.hero--dark) .hero__breadcrumb {
+    color: var(--concrete);
+  }
+
   .hero__breadcrumb a {
-    color: rgba(255, 255, 255, 0.55);
     text-decoration: none;
     transition: color 0.2s;
   }
 
-  .hero__breadcrumb a:hover {
+  .hero--has-image .hero__breadcrumb a:hover,
+  .hero--dark .hero__breadcrumb a:hover {
     color: #fff;
   }
+  .hero:not(.hero--has-image):not(.hero--dark) .hero__breadcrumb a:hover {
+    color: var(--accent);
+  }
 
+  /* ── Eyebrow pill badge ── */
   .hero__eyebrow {
     display: flex;
     align-items: center;
-    gap: 1rem;
   }
 
-  .rule--accent {
-    width: 40px;
-    height: 2px;
-    background: var(--accent);
+  .hero__eyebrow-pill {
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    background: rgba(0,85,165,0.12);
+    color: var(--accent);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 100px;
+  }
+
+  .hero--has-image .hero__eyebrow-pill,
+  .hero--dark .hero__eyebrow-pill {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
   }
 
   .hero__headline {
     font-family: var(--font-display);
-    font-size: clamp(3.5rem, 8vw, 8rem);
-    line-height: 0.94;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
     text-transform: uppercase;
-    color: #fff;
     letter-spacing: -0.01em;
   }
 
+  /* Headline colour */
+  .hero--has-image .hero__headline,
+  .hero--dark .hero__headline {
+    color: #fff;
+  }
+  .hero:not(.hero--has-image):not(.hero--dark) .hero__headline {
+    color: var(--chalk);
+  }
+
   .hero__sub {
-    color: rgba(255, 255, 255, 0.72);
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    line-height: 1.75;
+  }
+
+  /* Sub colour */
+  .hero--has-image .hero__sub {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .hero--dark .hero__sub {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .hero:not(.hero--has-image):not(.hero--dark) .hero__sub {
+    color: var(--concrete);
   }
 
   .hero__tags {
@@ -263,12 +339,13 @@ const overlayStyles: Record<string, string> = {
   .tag {
     font-family: var(--font-body);
     font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
     border: 1px solid rgba(255, 255, 255, 0.4);
     padding: 0.25rem 0.75rem;
+    border-radius: 100px;
   }
 
   .hero__actions {
@@ -276,6 +353,28 @@ const overlayStyles: Record<string, string> = {
     gap: var(--space-s);
     flex-wrap: wrap;
     margin-top: var(--space-s);
+  }
+
+  /* ── Outline btn on image/dark hero stays white ── */
+  .hero--has-image .btn--outline,
+  .hero--dark .btn--outline {
+    color: #fff;
+    border-color: rgba(255,255,255,0.4);
+  }
+  .hero--has-image .btn--outline:hover,
+  .hero--dark .btn--outline:hover {
+    border-color: #fff;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* ── Outline btn on light hero uses accent ── */
+  .hero:not(.hero--has-image):not(.hero--dark) .btn--outline {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .hero:not(.hero--has-image):not(.hero--dark) .btn--outline:hover {
+    color: #fff;
+    background: var(--accent);
   }
 
   .hero__meta {
@@ -287,6 +386,14 @@ const overlayStyles: Record<string, string> = {
     border-top: 1px solid rgba(255, 255, 255, 0.15);
   }
 
+  .hero--has-image .hero__meta-item span:last-child,
+  .hero--dark .hero__meta-item span:last-child {
+    color: #fff;
+  }
+  .hero:not(.hero--has-image):not(.hero--dark) .hero__meta-item span:last-child {
+    color: var(--chalk);
+  }
+
   .hero__meta-item {
     display: flex;
     flex-direction: column;
@@ -294,15 +401,15 @@ const overlayStyles: Record<string, string> = {
   }
 
   @media (max-width: 768px) {
-    .hero {
-      align-items: center;
-    }
     .hero__content {
-      padding-top: clamp(6rem, 14vw, 8rem);
-      padding-bottom: clamp(3rem, 6vw, 5rem);
+      padding-block: clamp(2rem, 4vw, 3rem);
+      max-width: 100%;
     }
     .hero__actions {
       flex-direction: column;
+    }
+    .hero__headline {
+      font-size: clamp(2rem, 8vw, 3rem);
     }
   }
 </style>

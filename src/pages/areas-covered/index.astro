@@ -1,0 +1,247 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import TrustMetrics from '../../components/TrustMetrics.astro';
+import ImageCTA from '../../components/ImageCTA.astro';
+import { locationsDatabase } from '../../data/locations';
+
+const bathDistricts = locationsDatabase.filter(loc => loc.group === 'bath-district');
+const bristolDistricts = locationsDatabase.filter(loc => loc.group === 'bristol-district');
+const somersetTowns = locationsDatabase.filter(loc => loc.group === 'town');
+const marketTowns = locationsDatabase.filter(loc => loc.group === 'market');
+---
+
+<Base title="Areas We Cover | Jet Washing Bath, Bristol & Somerset"
+  description="Professional jet washing and pressure washing across Bath, Bristol, Keynsham, Radstock, Midsomer Norton, Frome, Chippenham and surrounding areas. 111 five-star reviews. Free quotes.">
+
+  <Hero
+    image="/images/before-after/roof-after-2.webp"
+    overlay="blue"
+    eyebrow="Bath, Bristol & Beyond"
+    heading="Areas We Cover"
+    body="Professional jet washing and pressure washing across Bath, Bristol and the surrounding Somerset and Wiltshire areas. 111 five-star reviews. Free quotes everywhere we work."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  <TrustMetrics metrics={[
+    { value: '111', label: 'Five-Star Reviews' },
+    { value: '10', label: 'Years Experience' },
+    { value: 'Insured', label: 'Fully Insured' },
+    { value: '5.2K', label: 'FB Followers' },
+    { value: 'Free', label: 'Free Quotes' },
+  ]} />
+
+  {/* ── Bath & Districts — first and prominent ── */}
+  <section class="area-group area-group--bath">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Our Home City"
+        heading="Bath & Districts"
+        body="RG Extreme Pressure is based in Bath. Every jet washing and pressure washing service is available across the city and all surrounding districts."
+        align="left"
+      />
+      <div class="area-cards">
+
+        {/* Bath hub card — links to services */}
+        <a href="/services" class="area-card area-card--hub">
+          <div class="area-card__badge">Bath · Home City</div>
+          <h3 class="area-card__name">Bath</h3>
+          <p class="area-card__desc">Full range of jet washing and pressure washing services across Bath — driveways, patios, gutters, roofs, render, soffits and conservatories.</p>
+          <span class="area-card__link">View all Bath services →</span>
+        </a>
+
+        {/* Bath district cards */}
+        {bathDistricts.map((loc) => (
+          <a href={`/areas-covered/${loc.slug}`} class="area-card">
+            <div class="area-card__badge">Bath District</div>
+            <h3 class="area-card__name">{loc.townName}</h3>
+            <p class="area-card__desc">{loc.editorialBody.slice(0, 140)}...</p>
+            <span class="area-card__link">View services →</span>
+          </a>
+        ))}
+
+      </div>
+    </div>
+  </section>
+
+  {/* ── Bristol & Districts ── */}
+  <section class="area-group area-group--bristol">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Bristol Coverage"
+        heading="Bristol & Districts"
+        body="Professional jet washing across all of Bristol — from Clifton townhouses to Kingswood estates. All postcodes covered."
+        align="left"
+      />
+      <div class="area-cards">
+
+        {/* Bristol hub card */}
+        <a href="/bristol" class="area-card area-card--hub">
+          <div class="area-card__badge">Bristol · All Postcodes</div>
+          <h3 class="area-card__name">Bristol</h3>
+          <p class="area-card__desc">Full range of jet washing and pressure washing services across Bristol (BS1–BS16) — driveways, patios, gutters, roofs and render.</p>
+          <span class="area-card__link">View all Bristol services →</span>
+        </a>
+
+        {/* Bristol district cards */}
+        {bristolDistricts.map((loc) => (
+          <a href={`/areas-covered/${loc.slug}`} class="area-card">
+            <div class="area-card__badge">Bristol District</div>
+            <h3 class="area-card__name">{loc.townName}</h3>
+            <p class="area-card__desc">{loc.editorialBody.slice(0, 140)}...</p>
+            <span class="area-card__link">View services →</span>
+          </a>
+        ))}
+
+      </div>
+    </div>
+  </section>
+
+  {/* ── Somerset Towns ── */}
+  {somersetTowns.length > 0 && (
+    <section class="area-group">
+      <div class="container">
+        <SectionHeader
+          eyebrow="Our Coverage"
+          heading="Somerset Towns"
+          align="left"
+        />
+        <div class="area-cards">
+          {somersetTowns.map((loc) => (
+            <a href={`/areas-covered/${loc.slug}`} class="area-card">
+              <div class="area-card__badge">{loc.county}</div>
+              <h3 class="area-card__name">{loc.townName}</h3>
+              <p class="area-card__desc">{loc.editorialBody.slice(0, 140)}...</p>
+              <span class="area-card__link">View services →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* ── Market Towns ── */}
+  {marketTowns.length > 0 && (
+    <section class="area-group">
+      <div class="container">
+        <SectionHeader
+          eyebrow="Our Coverage"
+          heading="Market Towns & Villages"
+          align="left"
+        />
+        <div class="area-cards">
+          {marketTowns.map((loc) => (
+            <a href={`/areas-covered/${loc.slug}`} class="area-card">
+              <div class="area-card__badge">{loc.county}</div>
+              <h3 class="area-card__name">{loc.townName}</h3>
+              <p class="area-card__desc">{loc.editorialBody.slice(0, 140)}...</p>
+              <span class="area-card__link">View services →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* ── CTA ── */}
+  <ImageCTA
+    heading="Get a Free Quote in Your Area"
+    body="Call 07474 939 398 for a free, no-obligation quote. We cover Bath, Bristol and all surrounding areas."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+  />
+</Base>
+
+<style>
+  .area-group {
+    padding: var(--section-pad) 0;
+    background: var(--surface);
+  }
+
+  .area-group:nth-child(even) {
+    background: #fff;
+  }
+
+  .area-group--bath {
+    background: var(--accent-light);
+  }
+
+  .area-group--bristol {
+    background: #f0f5ff;
+  }
+
+  .area-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-l);
+    margin-top: var(--space-xl);
+  }
+
+  .area-card {
+    background: #fff;
+    border: 1px solid rgba(0,85,165,0.08);
+    border-radius: var(--radius);
+    padding: var(--space-l);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .area-card--hub {
+    border-color: var(--accent);
+    border-width: 2px;
+  }
+
+  .area-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(0,85,165,0.1);
+  }
+
+  .area-card__badge {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(0,85,165,0.06);
+    padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+    width: fit-content;
+  }
+
+  .area-card__name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .area-card__desc {
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--concrete);
+    margin: 0;
+    flex: 1;
+  }
+
+  .area-card__link {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 0.25rem;
+  }
+
+  @media (max-width: 640px) {
+    .area-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

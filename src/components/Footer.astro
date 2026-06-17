@@ -1,22 +1,30 @@
 ---
-// Footer.astro — Dark footer for Aspect Builds
+// Footer.astro — Medium-dark blue footer for RG Extreme Pressure
 // Desktop: 3-column grid. Mobile: accordion for Services & Contact.
 
 const currentYear = new Date().getFullYear();
 
 const serviceLinks = [
-  { label: 'Structural & Scale Builds', href: '/services/structural-builds' },
-  { label: 'Heritage & Restoration', href: '/services/heritage-restoration' },
-  { label: 'Turnkey Interiors & Refurbishments', href: '/services/interiors-refurbishments' },
-  { label: 'Property Care & Landscaping', href: '/services/property-care' },
+  { label: 'Driveway Cleaning Bath', href: '/driveway-cleaning-bath' },
+  { label: 'Patio Cleaning Bath', href: '/patio-cleaning-bath' },
+  { label: 'Gutter Cleaning Bath', href: '/gutter-cleaning-bath' },
+  { label: 'Roof Cleaning Bath', href: '/roof-cleaning-bath' },
+  { label: 'Render Cleaning Bath', href: '/render-cleaning-bath' },
+];
+
+const bristolLinks = [
+  { label: 'Driveway Cleaning Bristol', href: '/driveway-cleaning-bristol' },
+  { label: 'Patio Cleaning Bristol', href: '/patio-cleaning-bristol' },
+  { label: 'Roof Cleaning Bristol', href: '/roof-cleaning-bristol' },
+  { label: 'Gutter Cleaning Bristol', href: '/gutter-cleaning-bristol' },
+  { label: 'Render Cleaning Bristol', href: '/render-cleaning-bristol' },
 ];
 
 const companyLinks = [
   { label: 'About', href: '/about' },
-  { label: 'How We Work', href: '/how-we-work' },
-  { label: 'Locations', href: '/locations' },
+  { label: 'Areas Covered', href: '/areas-covered' },
   { label: 'Blog', href: '/blog' },
-  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact', href: '/contact' },
 ];
 ---
 
@@ -26,55 +34,56 @@ const companyLinks = [
 
       <!-- Column 1: Logo — always visible, no accordion -->
       <div class="footer-col footer-col--brand">
-        <a href="/" class="ab-logo nav-logo nav-logo--lg" aria-label="Aspect Builds & Maintenance Ltd — return to homepage">
-          <svg class="ab-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
-          <span class="ab-logo__text">
-            <span class="ab-logo__name">ASPECT</span>
-            <span class="ab-logo__sub">BUILDS &amp; MAINTENANCE LTD</span>
+        <a href="/" class="rg-logo nav-logo nav-logo--lg" aria-label="RG Extreme Pressure">
+          <img src="/images/logo.webp" alt="" class="rg-logo__img" width="44" height="44" aria-hidden="true" />
+          <span class="rg-logo__text">
+            <span class="rg-logo__name">RG Extreme</span>
+            <span class="rg-logo__tagline">Pressure</span>
+            <span class="rg-logo__sub">Jet Washing Services</span>
           </span>
         </a>
-        <p class="footer-about">Premium construction across Bath &amp; BANES. Extensions, loft conversions, Georgian renovation and new build &mdash; delivered with precision, without surprises.</p>
-        <a
-          href="https://www.trustatrader.com/traders/aspect-builds-maintenance-ltd-interior-refurbishment-bath-south"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="footer-trustatrader"
-          aria-label="4.6 from 27 combined reviews"
-        >
-          <img src="/images/trustatrader-logo.svg" alt="TrustATrader Verified" width="52" height="52" loading="lazy" />
-          <span class="footer-trustatrader__text">
-            <strong>4.6 / 5</strong>
-            <span>TrustATrader · 16 Reviews</span>
-          </span>
-        </a>
+        <p class="footer-about">Professional jet washing and pressure washing services in Bath and Bristol. Driveway cleaning, gutter clearing, roof cleaning, render cleaning and block paving.</p>
 
         <div class="footer-social">
-          <a href="https://facebook.com/aspectbuilds" aria-label="Facebook" class="footer-social__link">
+          <a href="https://www.facebook.com/profile.php?id=100091066506303" aria-label="Facebook" class="footer-social__link" target="_blank" rel="noopener noreferrer">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
 
-          <a href="https://www.instagram.com/aspectbuilds1" aria-label="Instagram" class="footer-social__link">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          <a href="https://www.google.com/maps?q=RG+Extreme+Pressure+Bath" aria-label="Google Reviews" class="footer-social__link" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- Column 2: Services — accordion on mobile -->
-      <div class="footer-col">
+      <!-- Columns 2+3: Services — two columns on desktop, single accordion on mobile -->
+      <div class="footer-col footer-col--services">
         <button class="footer-accordion" aria-expanded="false">
           <h3 class="footer-heading">Services</h3>
           <svg class="footer-accordion__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="footer-accordion__panel">
-          <ul class="footer-links">
-            {serviceLinks.map(link => (
-              <li><a href={link.href}>{link.label}</a></li>
-            ))}
-          </ul>
+          <div class="footer-services-grid">
+            <div>
+              <p class="footer-services__city">Bath</p>
+              <ul class="footer-links">
+                {serviceLinks.map(link => (
+                  <li><a href={link.href}>{link.label.replace(' Bath', '')}</a></li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p class="footer-services__city">Bristol</p>
+              <ul class="footer-links">
+                {bristolLinks.map(link => (
+                  <li><a href={link.href}>{link.label.replace(' Bristol', '')}</a></li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Column 2b: Company — accordion on mobile -->
+      <!-- Column 4: Company — accordion on mobile -->
       <div class="footer-col">
         <button class="footer-accordion" aria-expanded="false">
           <h3 class="footer-heading">Company</h3>
@@ -92,7 +101,10 @@ const companyLinks = [
       <!-- Column 3: Contact — accordion on mobile -->
       <div class="footer-col">
         <button class="footer-accordion" aria-expanded="false">
-          <h3 class="footer-heading">Get in touch</h3>
+          <h3 class="footer-heading">
+            <svg class="footer-heading__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Get in touch
+          </h3>
           <svg class="footer-accordion__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="footer-accordion__panel">
@@ -103,11 +115,11 @@ const companyLinks = [
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <a href="mailto:james.aspectbuilds@gmail.com">james.aspectbuilds@gmail.com</a>
+              <a href="mailto:galazkarobert@yahoo.co.uk">galazkarobert@yahoo.co.uk</a>
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <a href="tel:07498158747">07498 158747</a>
+              <a href="tel:07474939398">07474 939 398</a>
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -115,7 +127,7 @@ const companyLinks = [
             </li>
           </ul>
 
-          <a href="/locations" class="footer-areas-link">
+          <a href="/areas-covered" class="footer-areas-link">
             View all areas we cover
             <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -127,11 +139,11 @@ const companyLinks = [
     <!-- Bottom bar -->
     <div class="footer-bottom">
       <div class="footer-bottom__inner">
-        <p>&copy; {currentYear} Aspect Builds &amp; Maintenance LTD. All rights reserved.</p>
+        <p>&copy; {currentYear} RG Extreme Pressure. All rights reserved.</p>
         <div class="footer-bottom__links">
-          <a href="/how-we-work">How We Work</a>
+          <a href="/about">About</a>
           <a href="/blog">Blog</a>
-          <a href="/faq">FAQ</a>
+          <a href="/privacy">Privacy</a>
           <a href="/privacy-policy">Privacy Policy</a>
           <a href="https://seo-kings.co.uk" target="_blank" rel="noopener noreferrer" class="footer-credit" aria-label="Website design and SEO by SEO Kings">
             <svg width="14" height="14" viewBox="39 59 290 291" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -197,20 +209,20 @@ const companyLinks = [
 </script>
 
 <style>
+  /* ── Footer ── */
   .site-footer {
     background: var(--navy);
-    color: rgba(255, 255, 255, 0.7);
-    padding: clamp(4rem, 8vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
-    font-size: 0.9rem;
-    line-height: 1.8;
+    border-top: 3px solid var(--cta);
+    color: rgba(255,255,255,.8);
+    padding: var(--space-3xl) 0 var(--space-m);
   }
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    grid-template-columns: 1.5fr 2fr 1fr 1.2fr;
     gap: var(--space-xl);
     padding-bottom: var(--space-xl);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .footer-col--brand {
@@ -219,42 +231,15 @@ const companyLinks = [
     gap: var(--space-m);
   }
 
-  .site-footer .ab-logo__name { color: #fff; }
-  .site-footer .ab-logo__sub { color: rgba(255, 255, 255, 0.65); }
-  .site-footer .ab-logo__mark { color: var(--accent); }
+  .site-footer .rg-logo__name { color: #fff; font-weight: 800; }
+  .site-footer .rg-logo__tagline { color: var(--cta); }
+  .site-footer .rg-logo__sub { color: rgba(255, 255, 255, 0.65); }
+  .site-footer .rg-logo__img { border-radius: 6px; }
 
   .footer-about {
     max-width: 50ch;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.7;
-  }
-
-  .footer-trustatrader {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.65rem;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-
-  .footer-trustatrader:hover { opacity: 0.75; }
-
-  .footer-trustatrader__text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-  }
-
-  .footer-trustatrader__text strong {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    letter-spacing: 0.04em;
-    color: #fff;
-  }
-
-  .footer-trustatrader__text span {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.65);
   }
 
   .footer-social {
@@ -269,8 +254,8 @@ const companyLinks = [
     justify-content: center;
     width: 36px;
     height: 36px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.6);
     transition: background 0.2s, color 0.2s;
   }
@@ -306,11 +291,35 @@ const companyLinks = [
 
   .footer-heading {
     font-family: var(--font-display);
-    font-size: 1.1rem;
-    letter-spacing: 0.08em;
+    font-size: 0.95rem;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.08em;
     color: #fff;
-    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer-heading__icon {
+    color: var(--cta);
+    flex-shrink: 0;
+  }
+
+  .footer-services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-l);
+  }
+
+  .footer-services__city {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cta);
+    margin: 0 0 var(--space-s);
   }
 
   .footer-heading--inner {
@@ -335,7 +344,7 @@ const companyLinks = [
   }
 
   .footer-links a:hover {
-    color: var(--accent);
+    color: #fff;
   }
 
   .footer-contact {
@@ -351,7 +360,7 @@ const companyLinks = [
 
   .footer-contact svg {
     flex-shrink: 0;
-    color: var(--accent);
+    color: var(--cta);
   }
 
   .footer-contact a {
@@ -359,7 +368,7 @@ const companyLinks = [
   }
 
   .footer-contact a:hover {
-    color: var(--accent);
+    color: #fff;
   }
 
   .footer-areas-link {
@@ -371,7 +380,7 @@ const companyLinks = [
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: #fff;
     text-decoration: none;
     transition: gap 0.2s;
   }
@@ -394,7 +403,7 @@ const companyLinks = [
   }
 
   .footer-bottom p {
-    color: #8892A4;
+    color: rgba(255, 255, 255, 0.5);
     font-size: 0.8rem;
   }
 
@@ -404,14 +413,14 @@ const companyLinks = [
   }
 
   .footer-bottom__links a {
-    color: #8892A4;
+    color: rgba(255, 255, 255, 0.5);
     font-size: 0.8rem;
     text-decoration: none;
     transition: color 0.2s;
   }
 
   .footer-bottom__links a:hover {
-    color: var(--accent);
+    color: #fff;
   }
 
   .footer-credit {
@@ -419,7 +428,7 @@ const companyLinks = [
     align-items: center;
     gap: 0.3rem;
     padding-left: var(--space-m);
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .footer-credit svg {
@@ -441,11 +450,11 @@ const companyLinks = [
 
     .footer-col--brand {
       padding-bottom: var(--space-l);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .footer-col:not(.footer-col--brand) {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     /* Panels closed by default — JS overrides inline when toggled */

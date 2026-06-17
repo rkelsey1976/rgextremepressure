@@ -1,0 +1,237 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import TrustMetrics from '../components/TrustMetrics.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import ImageCTA from '../components/ImageCTA.astro';
+
+const title = 'Render Cleaning Bath';
+const description = 'Soft wash render cleaning in Bath. K-Rend, silicone and painted exteriors restored without damage. Algae and pollution stains removed. 111 five-star reviews. Call 07474 939 398.';
+
+const faqs = [
+  {
+    q: 'Is soft washing safe for K-Rend and silicone render?',
+    a: 'Yes. Soft washing is the only safe method for cleaning rendered surfaces. High-pressure washing can crack, delaminate and discolour K-Rend, silicone render and other through-colour finishes. Our low-pressure biocide treatment removes staining without any risk.'
+  },
+  {
+    q: 'How long does render cleaning last?',
+    a: 'A professional soft wash with biocide treatment typically keeps rendered walls clean for 3-5 years. The biocide kills algae spores at the root, preventing rapid regrowth. North-facing walls in shaded locations may need treatment slightly more often.'
+  },
+  {
+    q: 'Can you remove green algae streaks from render?',
+    a: 'Yes. Green algae streaks are the most common problem on rendered properties and they respond very well to soft wash treatment. The biocide kills the algae on contact and weathering removes residual staining over the following weeks.'
+  },
+  {
+    q: 'Will the cleaning damage my garden plants?',
+    a: 'We take precautions to protect plants, lawns and garden features. Where the biocide solution may contact planting, we pre-wet foliage and rinse afterwards. Our eco-friendly products are safe when used correctly.'
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+  }))
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Render Cleaning Bath",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "RG Extreme Pressure",
+    "telephone": "+447474939398",
+    "address": { "@type": "PostalAddress", "addressLocality": "Bath", "addressRegion": "Somerset" }
+  },
+  "areaServed": [{ "@type": "City", "name": "Bath" }, { "@type": "City", "name": "Bristol" }],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "111" }
+};
+---
+
+<Base {title} {description} serviceSchema={serviceSchema}>
+  <Hero
+    image="/images/before-after/roof-after-2.webp"
+    overlay="blue"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Render Cleaning' }]}
+    eyebrow="Soft Wash Render Cleaning"
+    heading="Render Cleaning Bath"
+    body="Green algae streaks and pollution stains ruin the look of rendered properties. Our soft wash system cleans K-Rend, silicone render and painted exterior walls without damage — restoring that fresh-finished look."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  <TrustMetrics metrics={[
+    { value: '111', label: 'Five-Star Reviews' },
+    { value: '10', label: 'Years Experience' },
+    { value: 'Insured', label: 'Fully Insured' },
+    { value: '5.2K', label: 'FB Followers' },
+    { value: 'Free', label: 'Free Quotes' },
+  ]} />
+
+  <section class="service-body">
+    <div class="container">
+      <div class="service-body__grid">
+        <div class="service-body__main">
+          <SectionHeader
+            eyebrow="What We Do"
+            heading="Professional Render Soft Washing"
+            body="Render is one of the most common exterior finishes in Bath and Bristol — and one of the most vulnerable to algae, pollution and weather staining. Pressure washing can crack and delaminate render. Our soft wash system removes staining safely, restoring your property's appearance without risk."
+          />
+
+          <div class="service-features">
+            <h3 class="service-features__title">What Our Render Cleaning Includes</h3>
+            <ul class="service-features__list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>K-Rend and silicone render clean</strong> — low-pressure biocide application removes algae without damaging the render finish</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Painted exterior wall washing</strong> — gentle cleaning that will not strip or blister paint finishes</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Algae and pollution stain removal</strong> — green streaks and dark staining lifted by biocide treatment</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Pebbledash and roughcast clean</strong> — soft wash suitable for textured exterior finishes</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Anti-growth biocide treatment</strong> — prevents regrowth for 3-5 years</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Garden protection</strong> — pre-wet and rinse protocol protects plants and lawns</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="service-process">
+            <SectionHeader eyebrow="Our Process" heading="How It Works" />
+            <ol class="process-steps">
+              <li><strong>Free assessment</strong> — we identify your render type and the nature of staining</li>
+              <li><strong>Masking and protection</strong> — windows, doors, vents and planting protected from overspray</li>
+              <li><strong>Pre-wet and biocide application</strong> — low-pressure soft wash solution applied to the render surface</li>
+              <li><strong>Dwell time</strong> — the biocide works on staining for the recommended period</li>
+              <li><strong>Rinse and reveal</strong> — residual staining rinses away; remaining marks fade naturally over weeks</li>
+            </ol>
+          </div>
+        </div>
+
+        <aside class="service-body__sidebar">
+          <div class="sidebar-card">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">Free Quote</span>
+            <h3 class="sidebar-card__heading">Restore Your Render Today</h3>
+            <p class="sidebar-card__body">Algae streaks and staining ruin kerb appeal. Soft wash cleaning is the safe choice for rendered properties.</p>
+            <a href="/contact" class="btn btn--primary">Get a Free Quote <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="tel:07474939398" class="sidebar-card__phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> 07474 939 398</a>
+          </div>
+          <div class="sidebar-card sidebar-card--trust">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">Trusted Local Service</span>
+            <div class="sidebar-trust">
+              <div class="sidebar-trust__item"><span class="sidebar-trust__value">111</span><span class="sidebar-trust__label">Five-Star Google Reviews</span></div>
+              <div class="sidebar-trust__item"><span class="sidebar-trust__value">10</span><span class="sidebar-trust__label">Years Experience</span></div>
+              <div class="sidebar-trust__item"><span class="sidebar-trust__value">&#10003;</span><span class="sidebar-trust__label">Fully Insured</span></div>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">Other Services</span>
+            <h3 class="sidebar-card__heading">Explore Our Services</h3>
+            <ul class="sidebar-links">
+              <li><a href="/driveway-cleaning-bath">Driveway Cleaning Bath</a></li>
+              <li><a href="/patio-cleaning-bath">Patio Cleaning Bath</a></li>
+              <li><a href="/gutter-cleaning-bath">Gutter Cleaning Bath</a></li>
+              <li><a href="/roof-cleaning-bath">Roof Cleaning Bath</a></li>
+              <li><a href="/driveway-cleaning-bath">Block Paving Cleaning Bath</a></li>
+              <li><a href="/bristol/">Jet Washing Bristol</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="before-after-section">
+    <div class="container">
+      <SectionHeader eyebrow="See the Difference" heading="Before and After" body="See the results of professional soft wash render cleaning." align="center" />
+      <div class="before-after-wrap">
+        <BeforeAfter beforeSrc="/images/render-before.webp" afterSrc="/images/render-after.webp" beforeAlt="Render before soft wash cleaning" afterAlt="Render after soft wash cleaning" caption="K-Rend property in Bath — algae streaks removed with soft wash treatment" />
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <SectionHeader eyebrow="Common Questions" heading="Render Cleaning FAQ" />
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-item__q">{faq.q}</summary>
+            <p class="faq-item__a">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ImageCTA heading="Restore Your Property's Appearance" body="Soft wash render cleaning is safe, effective and long-lasting. Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured. Eco-friendly products." cta={{ label: 'Get a Free Quote', href: '/contact' }} image="/images/before-after/roof-after-2.webp" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</Base>
+
+<style>
+  .service-body { padding: var(--section-pad) 0; }
+  .service-body__grid { display: grid; grid-template-columns: 7fr 4fr; gap: var(--space-3xl, 5rem); align-items: start; }
+  .service-features { margin-top: var(--space-2xl); }
+  .service-features__title { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.1; text-transform: uppercase; color: var(--chalk); margin: 0 0 var(--space-m); }
+  .service-features__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-m); }
+  .service-features__list li { display: flex; align-items: flex-start; gap: var(--space-s); font-size: 0.95rem; line-height: 1.7; color: var(--concrete); }
+  .service-features__list li svg { flex-shrink: 0; margin-top: 0.35em; }
+  .service-features__list li strong { color: var(--chalk); }
+  .service-process { margin-top: var(--space-3xl); }
+  .process-steps { list-style: none; padding: 0; margin: 0; counter-reset: step; display: flex; flex-direction: column; gap: var(--space-m); }
+  .process-steps li { counter-increment: step; display: flex; align-items: flex-start; gap: var(--space-s); font-size: 0.95rem; line-height: 1.7; color: var(--concrete); }
+  .process-steps li::before { content: counter(step); font-family: var(--font-display); font-size: 1.8rem; line-height: 1; color: var(--accent); flex-shrink: 0; min-width: 2rem; }
+  .process-steps li strong { color: var(--chalk); }
+  .service-body__sidebar { display: flex; flex-direction: column; gap: var(--space-xl); position: sticky; top: 6rem; }
+  .sidebar-card { background: var(--stone); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-s); }
+  .sidebar-card--trust { background: var(--navy); }
+  .sidebar-card__heading { font-family: var(--font-display); font-size: clamp(1.1rem, 1.5vw, 1.4rem); line-height: 1.1; text-transform: uppercase; color: var(--chalk); margin: 0; }
+  .sidebar-card--trust .sidebar-card__heading { color: #fff; }
+  .sidebar-card__body { font-size: 0.92rem; line-height: 1.7; color: var(--concrete); margin: 0; }
+  .sidebar-card--trust .sidebar-card__body { color: rgba(255,255,255,0.65); }
+  .sidebar-card .btn { margin-top: var(--space-xs); align-self: flex-start; }
+  .sidebar-card__phone { display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.04em; color: var(--accent); text-decoration: none; margin-top: var(--space-xs); }
+  .sidebar-card__phone svg { flex-shrink: 0; }
+  .sidebar-trust { display: flex; flex-direction: column; gap: var(--space-m); margin-top: var(--space-s); }
+  .sidebar-trust__item { display: flex; align-items: center; gap: var(--space-s); }
+  .sidebar-trust__value { font-family: var(--font-display); font-size: 2rem; line-height: 1; color: var(--accent); }
+  .sidebar-trust__label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .sidebar-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .sidebar-links a { font-size: 0.9rem; color: var(--concrete); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 0.3rem; }
+  .sidebar-links a::before { content: '\2192'; color: var(--accent); font-size: 0.8rem; }
+  .sidebar-links a:hover { color: var(--accent); }
+  .before-after-section { padding: var(--section-pad) 0; background: var(--stone); }
+  .before-after-wrap { max-width: 900px; margin: 0 auto; }
+  .faq-section { padding: var(--section-pad) 0; }
+  .faq-list { max-width: 72ch; display: flex; flex-direction: column; gap: 0; }
+  .faq-item { border-bottom: 1px solid var(--stone); }
+  .faq-item__q { font-family: var(--font-body); font-size: 1rem; font-weight: 500; line-height: 1.5; color: var(--chalk); padding: var(--space-m) 0; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .faq-item__q::-webkit-details-marker { display: none; }
+  .faq-item__q::after { content: '+'; font-family: var(--font-display); font-size: 1.5rem; color: var(--accent); flex-shrink: 0; margin-left: var(--space-s); }
+  .faq-item[open] .faq-item__q::after { content: '\2212'; }
+  .faq-item__a { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--concrete); padding: 0 0 var(--space-m); max-width: 60ch; }
+  @media (max-width: 960px) { .service-body__grid { grid-template-columns: 1fr; gap: var(--space-2xl); } .service-body__sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); } }
+  @media (max-width: 640px) { .service-body__sidebar { grid-template-columns: 1fr; } }
+</style>

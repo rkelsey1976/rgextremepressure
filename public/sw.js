@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aspect-v1';
+const CACHE_NAME = 'rg-extreme-pressure-v1';
 const PRECACHE_URLS = [
   '/',
   '/offline/',

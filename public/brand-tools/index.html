@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aspect Builds — Brand Tools</title>
+  <title>RG Extreme Pressure — Brand Tools</title>
   <meta name="robots" content="noindex, nofollow">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -94,7 +94,7 @@
 </head>
 <body>
   <div class="header">
-    <h1>ASPECT BUILDS — BRAND TOOLS</h1>
+    <h1>RG EXTREME PRESSURE BUILDS — BRAND TOOLS</h1>
     <div class="tabs">
       <button class="tab-btn active" data-tab="logo">Logo Export</button>
       <button class="tab-btn" data-tab="card">Business Card</button>
@@ -310,7 +310,7 @@
 
       // Measure actual text widths
       ctx.font = `${nameSize}px "Bebas Neue"`;
-      const nameW = showName ? ctx.measureText('ASPECT').width : 0;
+      const nameW = showName ? ctx.measureText('RG EXTREME PRESSURE').width : 0;
       ctx.font = `600 ${subSize}px "DM Sans"`;
       const subW = showSub ? ctx.measureText('BUILDS & MAINTENANCE LTD').width : 0;
 
@@ -343,7 +343,7 @@
         ctx.fillStyle = nameColor;
         ctx.textBaseline = 'top';
         const nameY = textBlockTop;
-        ctx.fillText('ASPECT', textX, nameY);
+        ctx.fillText('RG EXTREME PRESSURE', textX, nameY);
       }
 
       // Draw sub-line — tight below name
@@ -369,7 +369,7 @@
       const canvas = document.getElementById('logo-canvas');
       const link = document.createElement('a');
       const w = canvas.width / 2; // dpr=2
-      link.download = `aspect-builds-logo-${w}w.png`;
+      link.download = `rg-extreme-pressure-logo-${w}w.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     });
@@ -396,7 +396,7 @@
       const gapBetweenLines = nameSize * 0.08;
 
       // Approximate text widths for SVG (Bebas Neue is ~0.55em wide per char, DM Sans 600 ~0.6em for sub)
-      const nameApproxW = nameSize * 0.62 * 6; // "ASPECT" = 6 chars
+      const nameApproxW = nameSize * 0.62 * 6; // "RG EXTREME PRESSURE" = 6 chars
       const subApproxW = subSize * 0.6 * 24; // "BUILDS & MAINTENANCE LTD" ≈ 24 chars
       const textBlockW = Math.max(showName ? nameApproxW : 0, showSub ? subApproxW : 0);
       const logoW = (showChevron ? chevronW : 0) + (showChevron && (showName || showSub) ? gapAfterChevron : 0) + textBlockW;
@@ -425,7 +425,7 @@
       let nameSvg = '', subSvg = '';
       if (showName) {
         const nameY = textBlockTop;
-        nameSvg = `<text x="${textX}" y="${nameY + nameSize}" font-family="Bebas Neue, sans-serif" font-size="${nameSize}" fill="${nameColor}">ASPECT</text>`;
+        nameSvg = `<text x="${textX}" y="${nameY + nameSize}" font-family="Bebas Neue, sans-serif" font-size="${nameSize}" fill="${nameColor}">RG EXTREME PRESSURE</text>`;
       }
       if (showSub) {
         const subY = textBlockTop + (showName ? nameSize + gapBetweenLines : 0);
@@ -442,7 +442,7 @@
 
       const blob = new Blob([svg], { type: 'image/svg+xml' });
       const link = document.createElement('a');
-      link.download = 'aspect-builds-logo.svg';
+      link.download = 'rg-extreme-pressure-logo.svg';
       link.href = URL.createObjectURL(blob);
       link.click();
     });
@@ -586,7 +586,7 @@
       ctx.font = `${nameSize}px "Bebas Neue"`;
       ctx.fillStyle = textPrimary;
       ctx.textBaseline = 'top';
-      ctx.fillText('ASPECT', logoX + chevronW + mm(2), logoY);
+      ctx.fillText('RG EXTREME PRESSURE', logoX + chevronW + mm(2), logoY);
 
       // Sub-line
       const subSize = mm(2);
@@ -619,15 +619,15 @@
       // Phone
       ctx.font = `500 ${mm(3) * 1}px "DM Sans"`;
       ctx.fillStyle = textPrimary;
-      ctx.fillText('07498 158747', infoX, infoY);
+      ctx.fillText('07474 939 398', infoX, infoY);
 
       // Email
       ctx.font = `400 ${mm(2.3)}px "DM Sans"`;
       ctx.fillStyle = textSecondary;
-      ctx.fillText('james.aspectbuilds@gmail.com', infoX, infoY + mm(4));
+      ctx.fillText('galazkarobert@yahoo.co.uk', infoX, infoY + mm(4));
 
       // Website
-      ctx.fillText('aspectbuilds.co.uk', infoX, infoY + mm(7));
+      ctx.fillText('rgextremepressure.co.uk', infoX, infoY + mm(7));
 
       // Area badge
       ctx.font = `400 ${mm(1.8)}px "DM Sans"`;
@@ -669,7 +669,7 @@
       renderCard(); // ensure fresh
       const canvas = document.getElementById('card-canvas');
       const link = document.createElement('a');
-      link.download = 'aspect-builds-card-front.png';
+      link.download = 'rg-extreme-pressure-card-front.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
     });
@@ -723,13 +723,13 @@
       const chY = mm(TOTAL_H_MM) / 2 - bigChevronH / 2 - mm(5);
       drawChevron(ctx, chX, chY, bigChevronH, accentColor);
 
-      // "ASPECT BUILDS" centered below
+      // "RG EXTREME PRESSURE BUILDS" centered below
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
       const nameSize = mm(9);
       ctx.font = `${nameSize}px "Bebas Neue"`;
       ctx.fillStyle = textPrimary;
-      ctx.fillText('ASPECT', mm(TOTAL_W_MM) / 2, chY + bigChevronH + mm(3));
+      ctx.fillText('RG EXTREME PRESSURE', mm(TOTAL_W_MM) / 2, chY + bigChevronH + mm(3));
 
       const subSize = mm(2.5);
       ctx.font = `600 ${subSize}px "DM Sans"`;
@@ -739,7 +739,7 @@
       ctx.textAlign = 'start';
 
       const link = document.createElement('a');
-      link.download = 'aspect-builds-card-back.png';
+      link.download = 'rg-extreme-pressure-card-back.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
     });

@@ -1,6 +1,4 @@
 ---
-import { srcset } from '../utils/srcset';
-
 interface Props {
   heading: string;
   body?: string;
@@ -13,91 +11,87 @@ const {
   heading,
   body,
   cta,
-  image = '/images/hero-midford-garden-extension.webp',
-  imagePosition = 'center 40%',
+  image,
 } = Astro.props;
-
-const ctaSrcset = srcset(image);
 ---
 
-<section class="img-cta">
-  <img
-    class="img-cta__bg"
-    src={image}
-    srcset={ctaSrcset}
-    sizes="100vw"
-    alt=""
-    aria-hidden="true"
-    loading="lazy"
-    decoding="async"
-    style={`object-position:${imagePosition}`}
-  />
-  <div class="img-cta__overlay"></div>
-  <div class="img-cta__inner">
-    <span class="rule--accent"></span>
-    <span class="t-label" style="color:var(--accent)">Work With Us</span>
-    <h2 class="img-cta__heading" set:html={heading}></h2>
-    {body && <p class="img-cta__body">{body}</p>}
-    <a href={cta.href} class="btn btn--primary">
-      {cta.label}
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+<section class="cta-banner" style={image ? `background-image: url('${image}')` : undefined}>
+  <div class="cta-banner__overlay"></div>
+  <div class="container">
+    <div class="cta-banner__inner">
+      <h2 class="cta-banner__heading" set:html={heading} />
+      {body && <p class="cta-banner__body">{body}</p>}
+      <a href={cta.href} class="btn btn--primary btn--primary-on-dark">
+        {cta.label}
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
 <style>
-  .img-cta {
+  .cta-banner {
     position: relative;
-    padding: var(--section-pad) var(--gutter);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 55vh;
+    padding: clamp(4rem, 8vw, 6rem) 0;
+    background-color: var(--accent);
+    background-size: cover;
+    background-position: center;
     overflow: hidden;
   }
 
-  .img-cta__bg {
+  .cta-banner__overlay {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    background: linear-gradient(135deg, rgba(0,85,165,0.88) 0%, rgba(0,61,122,0.75) 50%, rgba(0,61,122,0.5) 100%);
     z-index: 0;
   }
 
-  .img-cta__overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(13, 21, 32, 0.72);
-    z-index: 1;
+  @media (max-width: 768px) {
+    .cta-banner__overlay {
+      background: linear-gradient(to bottom, rgba(0,85,165,0.85) 0%, rgba(0,85,165,0.75) 60%, rgba(0,85,165,0.6) 100%);
+    }
   }
 
-  .img-cta__inner {
+  .cta-banner__inner {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     gap: var(--space-m);
-    max-width: 700px;
+    max-width: 640px;
+    margin-inline: auto;
   }
 
-  .img-cta__heading {
+  .cta-banner__heading {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 7vw, 6rem);
-    text-transform: uppercase;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
     color: #fff;
-    line-height: 0.95;
+    line-height: 1.1;
     margin: 0;
   }
 
-  .img-cta__body {
-    color: rgba(255, 255, 255, 0.65);
+  .cta-banner__body {
+    color: rgba(255, 255, 255, 0.85);
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.75;
     max-width: 52ch;
     margin: 0;
+  }
+
+  .btn--primary-on-dark {
+    background: var(--cta);
+    color: #fff;
+    border-color: var(--cta);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .btn--primary-on-dark:hover {
+    background: var(--cta-hover);
+    border-color: var(--cta-hover);
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
   }
 </style>

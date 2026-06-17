@@ -17,10 +17,10 @@ const targetLocations = [
 ];
 
 const servicePillars = [
-  "House Extensions & Conversions",
-  "Period Renovation & Stonework",
-  "Full Refurbishment & Interiors",
-  "Outdoor, Landscaping & Maintenance",
+  "Driveway Cleaning",
+  "Patio Cleaning",
+  "Roof & Gutter Cleaning",
+  "Exterior Property Washing",
 ];
 ---
 
@@ -29,8 +29,8 @@ const servicePillars = [
     <span class="rule--accent"></span>
     <span class="t-label" style="color:var(--accent)">Project Consultation</span>
   </div>
-  <h3 class="mcf__title">Tell Us About Your Build</h3>
-  <p class="mcf__subtitle">Structured intake ensures we understand your project from day one. All qualified enquiries receive a response within 24 operational hours.</p>
+  <h3 class="mcf__title">Tell Us About Your Project</h3>
+  <p class="mcf__subtitle">Structured intake ensures we understand your requirements from day one. All qualified enquiries receive a response within 24 operational hours.</p>
 
   <form
     id="project-intake"
@@ -87,29 +87,29 @@ const servicePillars = [
         <label class="mcf__label" for="cf-budget">Estimated Investment Tier *</label>
         <select id="cf-budget" name="budget" required class="mcf__input mcf__select">
           <option value="" disabled selected>Select budget scale&hellip;</option>
-          <option value="maintenance">Under &pound;10,000 — Maintenance / Minor Works</option>
-          <option value="mid">&pound;10,000 – &pound;50,000</option>
-          <option value="scale">&pound;50,000 – &pound;150,000</option>
-          <option value="premium">&pound;150,000+ — Major Scale Build / Full Restoration</option>
+          <option value="maintenance">Under &pound;1,000 — Small Area / One Surface</option>
+          <option value="mid">&pound;1,000 – &pound;3,000</option>
+          <option value="scale">&pound;3,000 – &pound;10,000</option>
+          <option value="premium">&pound;10,000+ — Commercial / Large Property</option>
         </select>
       </div>
     </div>
 
     {/* ── Row 4: Planning Status (radio pills) ── */}
     <div class="mcf__field">
-      <label class="mcf__label">Architectural Drawings / Planning Status</label>
+      <label class="mcf__label">Property Type</label>
       <div class="mcf__radios">
         <label class="mcf__radio-pill">
-          <input type="radio" name="planning" value="yes" class="mcf__radio-input" />
-          <span class="mcf__radio-label">Drawings Completed</span>
+          <input type="radio" name="planning" value="residential" class="mcf__radio-input" />
+          <span class="mcf__radio-label">Residential</span>
         </label>
         <label class="mcf__radio-pill">
-          <input type="radio" name="planning" value="submitted" class="mcf__radio-input" />
-          <span class="mcf__radio-label">Submitted for Approval</span>
+          <input type="radio" name="planning" value="commercial" class="mcf__radio-input" />
+          <span class="mcf__radio-label">Commercial</span>
         </label>
         <label class="mcf__radio-pill">
-          <input type="radio" name="planning" value="no" class="mcf__radio-input" />
-          <span class="mcf__radio-label">No Drawings / Early Stages</span>
+          <input type="radio" name="planning" value="both" class="mcf__radio-input" />
+          <span class="mcf__radio-label">Both / Mixed Use</span>
         </label>
       </div>
     </div>
@@ -117,7 +117,7 @@ const servicePillars = [
     {/* ── Row 5: Project Brief ── */}
     <div class="mcf__field">
       <label class="mcf__label" for="cf-brief">Project Brief &amp; Details *</label>
-      <textarea id="cf-brief" name="brief" required rows="5" placeholder="Outline the scope of works, period specifics, and timeline goals&hellip;" class="mcf__input mcf__textarea"></textarea>
+      <textarea id="cf-brief" name="brief" required rows="5" placeholder="Describe the areas to be cleaned, surface types, and any access considerations&hellip;" class="mcf__input mcf__textarea"></textarea>
     </div>
 
     {/* ── reCAPTCHA ── */}
@@ -126,10 +126,10 @@ const servicePillars = [
     {/* ── Submit ── */}
     <div class="mcf__actions">
       <button type="submit" class="mcf__submit">
-        Request Formal Site Appraisal
+        Request Free Quotation
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <p class="mcf__disclaimer">Your submission is fully secure. We respond to all qualified architectural enquiries within 24 operational hours.</p>
+      <p class="mcf__disclaimer">Your submission is fully secure. We respond to all qualified enquiries within 24 operational hours.</p>
     </div>
   </form>
 </div>
@@ -315,16 +315,16 @@ const servicePillars = [
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #fff;
-    background: var(--charcoal);
-    border: 1px solid var(--charcoal);
+    background: var(--cta);
+    border: 1px solid var(--cta);
     padding: 1rem 2.5rem;
     cursor: pointer;
     transition: all 0.35s var(--ease-out-expo);
   }
 
   .mcf__submit:hover {
-    background: transparent;
-    color: var(--charcoal);
+    background: var(--cta-hover);
+    border-color: var(--cta-hover);
   }
 
   .mcf__submit svg {

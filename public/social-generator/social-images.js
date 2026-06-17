@@ -252,7 +252,7 @@ function renderCanvas() {
     ctx.font = `900 ${logoSize}px 'Bebas Neue', sans-serif`;
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'left';
-    ctx.fillText('ASPECT', textX, nameY);
+    ctx.fillText('RG EXTREME PRESSURE', textX, nameY);
     ctx.fillStyle = WHITE70;
     ctx.font = `500 ${logoSize * 0.36}px 'DM Sans', sans-serif`;
     ctx.fillText('BUILDS  &  MAINTENANCE  LTD', textX, nameY + logoSize * 0.82);
@@ -355,7 +355,7 @@ function renderCanvas() {
     ctx.font = `400 ${unit * 2.2}px 'DM Sans', sans-serif`;
     ctx.textBaseline = 'bottom';
     ctx.textAlign = 'left';
-    ctx.fillText('07498 158747  \u00B7  aspectbuilds.co.uk', padX, H - unit * 3);
+    ctx.fillText('07474 939 398  \u00B7  rgextremepressure.co.uk', padX, H - unit * 3);
   }
 
   // ── TrustATrader badge ──
@@ -524,8 +524,8 @@ function injectGeoIntoPNG(pngArrayBuffer, loc, svc) {
   chunks.push(makeTextChunk('LocationSlug', loc.slug));
   chunks.push(makeTextChunk('Service', svc.title));
   chunks.push(makeTextChunk('ServiceId', svc.id));
-  chunks.push(makeTextChunk('Business', 'Aspect Builds & Maintenance Ltd'));
-  chunks.push(makeTextChunk('Website', 'https://www.aspectbuilds.co.uk'));
+  chunks.push(makeTextChunk('Business', 'RG Extreme Pressure'));
+  chunks.push(makeTextChunk('Website', 'https://www.rgextremepressure.co.uk'));
   // RFC 6350 geo URI for easy extraction
   chunks.push(makeTextChunk('GeoURI', `geo:${loc.lat},${loc.lng};u=20`));
 
@@ -547,7 +547,7 @@ function downloadPNG() {
   const svc = services[currentIndex];
   const size = SIZES[currentSize];
   const loc = locations[props.locationIndex];
-  const filename = `aspect-builds-${svc.id}-${currentSize}-${size.w}x${size.h}.png`;
+  const filename = `rg-extreme-pressure-${svc.id}-${currentSize}-${size.w}x${size.h}.png`;
 
   canvas.toBlob((blob) => {
     const reader = new FileReader();

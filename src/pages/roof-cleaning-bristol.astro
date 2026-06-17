@@ -1,0 +1,263 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import TrustMetrics from '../components/TrustMetrics.astro';
+import ImageCTA from '../components/ImageCTA.astro';
+
+const title = 'Roof Cleaning Bristol';
+const description = 'Professional roof cleaning and moss removal in Bristol. Spinning brush system cleans tiles safely from ground level — no walking on your roof. 111 five-star reviews. Call 07474 939 398.';
+
+const faqs = [
+  {
+    q: 'Do you clean roofs across all Bristol postcodes?',
+    a: 'Yes. We cover all Bristol postcodes from BS1 to BS16, including Clifton, Redland, Bishopston, Henleaze, Kingswood, Fishponds, Brislington, Bedminster, Downend, Westbury-on-Trym and surrounding areas. Call 07474 939 398 to confirm coverage.',
+  },
+  {
+    q: 'How do you clean Bristol roofs without damaging the tiles?',
+    a: 'We use a spinning brush system on telescopic lances operated from ground level. The rotating brush heads remove moss and lichen evenly without the concentrated pressure of a jet wash pointed directly at tiles. Victorian clay, concrete interlocking and modern roof tiles are all cleaned safely with this method.',
+  },
+  {
+    q: 'Why do Bristol roofs get so much moss?',
+    a: "Bristol's wet south-westerly climate and relatively mild winters mean moss spores germinate rapidly on roof tiles. North-facing pitches and tiles shaded by mature trees are worst affected. Regular cleaning every 3–5 years prevents the moss from lifting tiles and causing water ingress.",
+  },
+  {
+    q: 'How much does roof cleaning cost in Bristol?',
+    a: 'Roof cleaning in Bristol starts from £299 for a standard semi-detached property. The exact price depends on roof size, pitch and extent of moss growth. We provide free, no-obligation quotes — call 07474 939 398.',
+  },
+  {
+    q: 'Does the biocide treatment stop moss coming back?',
+    a: 'Biocide significantly slows regrowth by killing remaining spores after the brush clean. Most roofs stay clear for 3–5 years after treatment. It does not provide a permanent barrier — moss will return eventually, especially on north-facing pitches in Bristol\'s wet climate.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+  })),
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Roof Cleaning Bristol",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "RG Extreme Pressure",
+    "telephone": "+447474939398",
+    "address": { "@type": "PostalAddress", "addressLocality": "Bath", "addressRegion": "Somerset" },
+  },
+  "areaServed": { "@type": "City", "name": "Bristol" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "111" },
+};
+---
+
+<Base {title} {description} serviceSchema={serviceSchema}>
+  <Hero
+    image="/images/before-after/roof-after-2.webp"
+    overlay="blue"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Bristol', href: '/bristol' }, { label: 'Roof Cleaning' }]}
+    eyebrow="Professional Roof Cleaning Bristol"
+    heading="Roof Cleaning Bristol"
+    body="Safe, effective roof moss removal across Bristol. Our spinning brush system cleans tiles from ground level — no walking on your roof, no concentrated pressure on ageing tiles. Biocide treatment included. 111 five-star reviews. Free quotes."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  <TrustMetrics metrics={[
+    { value: '111', label: 'Five-Star Reviews' },
+    { value: '10', label: 'Years Experience' },
+    { value: 'Insured', label: 'Fully Insured' },
+    { value: '5.2K', label: 'FB Followers' },
+    { value: 'Free', label: 'Free Quotes' },
+  ]} />
+
+  <section class="service-body">
+    <div class="container">
+      <div class="service-body__grid">
+        <div class="service-body__main">
+          <SectionHeader
+            eyebrow="Roof Cleaning Across Bristol"
+            heading="Professional Roof Moss Removal in Bristol"
+            body="Bristol's damp climate and mild winters make it one of the worst cities in the UK for roof moss growth. Left untreated, moss lifts tile edges, blocks gutters and causes water ingress — leading to costly repairs. Our spinning brush system removes moss safely across the whole roof, with biocide treatment applied after to slow regrowth for years."
+          />
+
+          <div class="service-features">
+            <h3 class="service-features__title">What Our Bristol Roof Cleaning Includes</h3>
+            <ul class="service-features__list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Spinning brush moss removal</strong> — rotating brush heads on telescopic lances clean the full roof from ground level</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>No walking on the roof</strong> — all work carried out safely from ground level, no risk of tile damage from foot traffic</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Safe for all tile types</strong> — clay, concrete, slate and interlocking tiles all cleaned without concentrated pressure</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Biocide treatment</strong> — specialist solution kills remaining spores and slows regrowth for 3–5 years</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Gutters cleared</strong> — dislodged moss debris cleared from gutters as part of every roof clean</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Ridge and hip tile inspection</strong> — visible ridge and hip tiles checked; pointing issues flagged</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Before and after photos</strong> — we document the result so you can see the difference</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="service-process">
+            <SectionHeader eyebrow="Our Process" heading="How It Works" />
+            <ol class="process-steps">
+              <li><strong>Free site visit</strong> — we assess roof type, tile condition and extent of moss growth</li>
+              <li><strong>Heavy moss removal</strong> — manual removal of thick moss clumps before brush cleaning begins</li>
+              <li><strong>Spinning brush clean</strong> — telescopic brush system removes remaining moss across the whole roof</li>
+              <li><strong>Gutter clear</strong> — debris cleared from gutters after the roof clean</li>
+              <li><strong>Biocide application</strong> — treatment applied across the full roof to kill spores and prevent rapid regrowth</li>
+            </ol>
+          </div>
+
+          <div class="areas-covered">
+            <SectionHeader eyebrow="Bristol Coverage" heading="Bristol Areas We Serve" />
+            <p class="areas-text">Clifton, Redland, Cotham, Montpelier, Bishopston, Westbury Park, Henleaze, Stoke Bishop, Fishponds, Stapleton, Downend, Emersons Green, Kingswood, Hanham, Brislington, Totterdown, Knowle, Bedminster, Southville, Ashton, Sea Mills, Shirehampton and all surrounding Bristol postcodes (BS1–BS16).</p>
+          </div>
+        </div>
+
+        <aside class="service-body__sidebar">
+          <div class="sidebar-card">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">Free Quote</span>
+            <h3 class="sidebar-card__heading">Get Your Bristol Roof Cleaned</h3>
+            <p class="sidebar-card__body">Free, no-obligation quotes across all Bristol postcodes. Call or use the contact form.</p>
+            <a href="/contact" class="btn btn--primary">Get a Free Quote <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="tel:07474939398" class="sidebar-card__phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> 07474 939 398</a>
+          </div>
+          <div class="sidebar-card sidebar-card--trust">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">Trusted Local Service</span>
+            <div class="sidebar-trust">
+              <div class="sidebar-trust__item"><span class="sidebar-trust__value">111</span><span class="sidebar-trust__label">Five-Star Reviews</span></div>
+              <div class="sidebar-trust__item"><span class="sidebar-trust__value">10</span><span class="sidebar-trust__label">Years Experience</span></div>
+              <div class="sidebar-trust__item"><span class="sidebar-trust__value">&#10003;</span><span class="sidebar-trust__label">Fully Insured</span></div>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">More Bristol Services</span>
+            <h3 class="sidebar-card__heading">Also in Bristol</h3>
+            <ul class="sidebar-links">
+              <li><a href="/driveway-cleaning-bristol">Driveway Cleaning Bristol</a></li>
+              <li><a href="/patio-cleaning-bristol">Patio Cleaning Bristol</a></li>
+              <li><a href="/gutter-cleaning-bristol">Gutter Cleaning Bristol</a></li>
+              <li><a href="/render-cleaning-bath">Render Cleaning</a></li>
+              <li><a href="/bristol/">All Bristol Services</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <SectionHeader eyebrow="Common Questions" heading="Roof Cleaning Bristol FAQ" />
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-item__q">{faq.q}</summary>
+            <p class="faq-item__a">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── Bristol District Links ── */}
+  <section class="district-links-section">
+    <div class="container">
+      <h2 class="district-links__heading">Roof Cleaning Across Bristol</h2>
+      <p class="district-links__intro">We cover every Bristol district. Click your area for a dedicated local page with specific information and pricing.</p>
+      <ul class="district-links__grid">
+        <li><a href="/roof-cleaning/clifton-bristol">Roof Cleaning Clifton</a></li>
+        <li><a href="/roof-cleaning/redland-bristol">Roof Cleaning Redland</a></li>
+        <li><a href="/roof-cleaning/bishopston-bristol">Roof Cleaning Bishopston</a></li>
+        <li><a href="/roof-cleaning/henleaze-bristol">Roof Cleaning Henleaze</a></li>
+        <li><a href="/roof-cleaning/kingswood-bristol">Roof Cleaning Kingswood</a></li>
+        <li><a href="/roof-cleaning/fishponds-bristol">Roof Cleaning Fishponds</a></li>
+        <li><a href="/roof-cleaning/brislington-bristol">Roof Cleaning Brislington</a></li>
+        <li><a href="/roof-cleaning/bedminster-bristol">Roof Cleaning Bedminster</a></li>
+        <li><a href="/roof-cleaning/downend-bristol">Roof Cleaning Downend</a></li>
+        <li><a href="/roof-cleaning/westbury-on-trym-bristol">Roof Cleaning Westbury-on-Trym</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <ImageCTA
+    heading="Bristol's Roof Cleaning Specialists"
+    body="Free, no-obligation quotes from a fully insured, five-star-rated jet washing service. Covering all Bristol postcodes. Call 07474 939 398."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    image="/images/before-after/roof-after-2.webp"
+  />
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</Base>
+
+<style>
+  .service-body { padding: var(--section-pad) 0; }
+  .service-body__grid { display: grid; grid-template-columns: 7fr 4fr; gap: var(--space-3xl, 5rem); align-items: start; }
+  .service-features { margin-top: var(--space-2xl); }
+  .service-features__title { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.1; text-transform: uppercase; color: var(--chalk); margin: 0 0 var(--space-m); }
+  .service-features__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-m); }
+  .service-features__list li { display: flex; align-items: flex-start; gap: var(--space-s); font-size: 0.95rem; line-height: 1.7; color: var(--concrete); }
+  .service-features__list li svg { flex-shrink: 0; margin-top: 0.35em; }
+  .service-features__list li strong { color: var(--chalk); }
+  .service-process { margin-top: var(--space-3xl); }
+  .areas-covered { margin-top: var(--space-3xl); }
+  .areas-text { font-size: 0.95rem; line-height: 1.8; color: var(--concrete); }
+  .process-steps { list-style: none; padding: 0; margin: 0; counter-reset: step; display: flex; flex-direction: column; gap: var(--space-m); }
+  .process-steps li { counter-increment: step; display: flex; align-items: flex-start; gap: var(--space-s); font-size: 0.95rem; line-height: 1.7; color: var(--concrete); }
+  .process-steps li::before { content: counter(step); font-family: var(--font-display); font-size: 1.8rem; line-height: 1; color: var(--accent); flex-shrink: 0; min-width: 2rem; }
+  .process-steps li strong { color: var(--chalk); }
+  .service-body__sidebar { display: flex; flex-direction: column; gap: var(--space-xl); position: sticky; top: 6rem; }
+  .sidebar-card { background: var(--stone); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-s); }
+  .sidebar-card--trust { background: var(--navy); }
+  .sidebar-card__heading { font-family: var(--font-display); font-size: clamp(1.1rem, 1.5vw, 1.4rem); line-height: 1.1; text-transform: uppercase; color: var(--chalk); margin: 0; }
+  .sidebar-card--trust .sidebar-card__heading { color: #fff; }
+  .sidebar-card__body { font-size: 0.92rem; line-height: 1.7; color: var(--concrete); margin: 0; }
+  .sidebar-card .btn { margin-top: var(--space-xs); align-self: flex-start; }
+  .sidebar-card__phone { display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.04em; color: var(--accent); text-decoration: none; margin-top: var(--space-xs); }
+  .sidebar-card__phone svg { flex-shrink: 0; }
+  .sidebar-trust { display: flex; flex-direction: column; gap: var(--space-m); margin-top: var(--space-s); }
+  .sidebar-trust__item { display: flex; align-items: center; gap: var(--space-s); }
+  .sidebar-trust__value { font-family: var(--font-display); font-size: 2rem; line-height: 1; color: var(--accent); }
+  .sidebar-trust__label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .sidebar-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .sidebar-links a { font-size: 0.9rem; color: var(--concrete); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 0.3rem; }
+  .sidebar-links a::before { content: '\2192'; color: var(--accent); font-size: 0.8rem; }
+  .sidebar-links a:hover { color: var(--accent); }
+  .faq-section { padding: var(--section-pad) 0; }
+  .faq-list { max-width: 72ch; display: flex; flex-direction: column; gap: 0; }
+  .faq-item { border-bottom: 1px solid var(--stone); }
+  .faq-item__q { font-family: var(--font-body); font-size: 1rem; font-weight: 500; line-height: 1.5; color: var(--chalk); padding: var(--space-m) 0; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .faq-item__q::-webkit-details-marker { display: none; }
+  .faq-item__q::after { content: '+'; font-family: var(--font-display); font-size: 1.5rem; color: var(--accent); flex-shrink: 0; margin-left: var(--space-s); }
+  .faq-item[open] .faq-item__q::after { content: '\2212'; }
+  .faq-item__a { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--concrete); padding: 0 0 var(--space-m); max-width: 60ch; }
+  @media (max-width: 960px) { .service-body__grid { grid-template-columns: 1fr; gap: var(--space-2xl); } .service-body__sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); } }
+  @media (max-width: 640px) { .service-body__sidebar { grid-template-columns: 1fr; } }
+</style>

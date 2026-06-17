@@ -2,309 +2,184 @@
 import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
-import ServicesShowcase from '../../components/ServicesShowcase.astro';
 import ServiceDirectory from '../../components/ServiceDirectory.astro';
 import TrustMetrics from '../../components/TrustMetrics.astro';
 import ImageCTA from '../../components/ImageCTA.astro';
+import { servicesData } from '../../data/services';
 ---
 
-<Base title="Building Company Bath | Loft Conversions, Extensions & More"
-  description="Building company in Bath. Loft conversions, house extensions, new builds, heritage restoration, renovations and property maintenance across Bath & BANES."
-  preloadImage="/images/hero-james-bath-property-11.webp">
-  {/* ── Hero ── */}
+<Base title="Jet Washing Services Bath | Pressure Washing"
+  description="Browse all RG Extreme Pressure cleaning services — driveway, patio, roof, gutter, render and block paving. Serving Bath, Bristol and Somerset. 111 five-star reviews. Free quotes.">
+
   <Hero
-    image="/images/hero-james-bath-property-11.webp"
-    overlay="left"
+    image="/images/before-after/roof-after-2.webp"
+    overlay="blue"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
-    eyebrow="Craftsmanship & Expertise"
-    heading="Our Core<br>Architectural Pillars"
-    body="From structural extensions and heritage restorations to turnkey interiors and ongoing property care — every service delivered with fixed quotes, clean sites, and direct communication."
-    cta={{ label: 'Arrange a Consultation', href: '/contact' }}
+    eyebrow="Professional External Cleaning"
+    heading="Jet Washing Services Bath"
+    body="From driveway deep cleans to specialist roof cleaning — every service delivered with professional equipment, eco-friendly products and honest pricing."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
     minHeight="compact"
   />
 
-  {/* ── Trust bar ── */}
-  <TrustMetrics metrics={[
-    { value: 'Insured', label: 'Fully Insured' },
-    { value: 'CSCS', label: 'Cardholders' },
-    { value: 'City & Guilds', label: 'Qualified' },
-    { value: 'Fixed', label: 'Transparent Pricing' },
-    { value: 'Clean', label: 'Respect for Your Home' },
-  ]} />
-
-  {/* ── Services showcase (tabbed) ── */}
-  <ServicesShowcase />
-
-  {/* ── Guarantee section ── */}
-  <section class="guarantee-section">
+  {/* ── Service Cards ── */}
+  <section class="service-cards-section">
     <div class="container">
-
-      {/* ── Header row ── */}
-      <div class="guarantee-header">
-        <div class="guarantee-header__left">
-          <span class="rule--accent"></span>
-          <span class="t-label guarantee-eyebrow">The Aspect Builds Guarantee</span>
-          <h2 class="guarantee-heading">Honest Advice.<br/>Transparent Pricing.<br/>Clean Sites.</h2>
-        </div>
-        <div class="guarantee-header__right">
-          <p class="guarantee-intro">Fully insured and professional service. Every on-site team member holds valid CSCS cards and City &amp; Guilds / NVQ qualifications. Honest advice with transparent pricing — what we quote is what you pay.</p>
-          <a href="/contact" class="btn btn--outline-light guarantee-cta">
-            Arrange a Consultation
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <SectionHeader
+        eyebrow="Our Services"
+        heading="Explore Each Service"
+        body="Click through for full details, before and after photos, FAQs and pricing for each of our professional cleaning services."
+      />
+      <div class="service-cards-grid">
+        {servicesData.map(s => (
+          <a href={s.href} class="service-card">
+            <div class="service-card__icon">
+              {s.id === 'driveway-cleaning' && <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="1"/><path d="M5 11V7a2 2 0 012-2h10a2 2 0 012 2v4"/><line x1="3" y1="16" x2="21" y2="16"/></svg>}
+              {s.id === 'patio-cleaning' && <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>}
+              {s.id === 'gutter-cleaning' && <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 6l2 12h12l2-12"/><path d="M10 10v4M14 10v4"/><path d="M8 6V4h8v2"/></svg>}
+              {s.id === 'roof-cleaning' && <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l9-16 9 16H3z"/><path d="M12 10v6M12 18h.01"/></svg>}
+              {s.id === 'render-cleaning' && <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>}
+              {s.id === 'block-paving-cleaning' && <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="10" height="10" rx="1"/><rect x="13" y="1" width="10" height="10" rx="1"/><rect x="1" y="13" width="10" height="10" rx="1"/><rect x="13" y="13" width="10" height="10" rx="1"/></svg>}
+            </div>
+            <span class="service-card__subtitle">{s.subtitle}</span>
+            <h3 class="service-card__title">{s.title}</h3>
+            <p class="service-card__desc">{s.description}</p>
+            <span class="service-card__link">
+              View Service
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
           </a>
-        </div>
-      </div>
-
-      {/* ── Divider ── */}
-      <div class="guarantee-divider"></div>
-
-      {/* ── Items ── */}
-      <div class="guarantee-grid">
-
-        <div class="guarantee-item">
-          <span class="guarantee-num" aria-hidden="true">01</span>
-          <div class="guarantee-item__body">
-            <h3 class="guarantee-title">Fully Insured</h3>
-            <p class="guarantee-desc">Complete public and employer's liability cover on every project. Your property and our workforce are fully protected — no exceptions.</p>
-            <span class="guarantee-proof">Full insurance on every project</span>
-          </div>
-        </div>
-
-        <div class="guarantee-item">
-          <span class="guarantee-num" aria-hidden="true">02</span>
-          <div class="guarantee-item__body">
-            <h3 class="guarantee-title">CSCS Cardholders &amp; Qualified</h3>
-            <p class="guarantee-desc">Every on-site team member holds valid CSCS cards and industry-recognized qualifications (City &amp; Guilds / NVQ), ensuring the highest standards of safety and craftsmanship.</p>
-            <span class="guarantee-proof">Verified qualifications</span>
-          </div>
-        </div>
-
-        <div class="guarantee-item">
-          <span class="guarantee-num" aria-hidden="true">03</span>
-          <div class="guarantee-item__body">
-            <h3 class="guarantee-title">Honest, Transparent Pricing</h3>
-            <p class="guarantee-desc">Itemised quotes agreed before work starts. No hidden costs, no surprise extras. What we quote is what you pay.</p>
-            <span class="guarantee-proof">Zero hidden extras on every project</span>
-          </div>
-        </div>
-
-        <div class="guarantee-item">
-          <span class="guarantee-num" aria-hidden="true">04</span>
-          <div class="guarantee-item__body">
-            <h3 class="guarantee-title">Clean, Respectful Sites</h3>
-            <p class="guarantee-desc">Dust sheets, daily tidy-ups, and protected access routes. Your home gets treated like our own — we leave it spotless.</p>
-            <span class="guarantee-proof">Clean site protocols as standard</span>
-          </div>
-        </div>
-
-        <div class="guarantee-item">
-          <span class="guarantee-num" aria-hidden="true">05</span>
-          <div class="guarantee-item__body">
-            <h3 class="guarantee-title">Reputation Earned</h3>
-            <p class="guarantee-desc">Our business is built on repeat work and personal recommendations. That only happens when you deliver — and we do, every time.</p>
-            <span class="guarantee-proof">Repeat business and referrals</span>
-          </div>
-        </div>
-
+        ))}
       </div>
     </div>
   </section>
+
+  {/* ── Trust bar ── */}
+  <TrustMetrics metrics={[
+    { value: '111', label: 'Five-Star Reviews' },
+    { value: '10', label: 'Years Experience' },
+    { value: 'Insured', label: 'Fully Insured' },
+    { value: '5.2K', label: 'FB Followers' },
+    { value: 'Free', label: 'Free Quotes' },
+  ]} />
 
   {/* ── SEO keyword directory ── */}
   <ServiceDirectory />
 
   {/* ── CTA ── */}
   <ImageCTA
-    heading="Ready to Start Planning Your Next Project?"
-    body="Whether you need a heritage restoration in Bath or a modern extension in Keynsham, get in touch today for a free, transparent site consultation."
-    cta={{ label: 'Arrange a Consultation', href: '/contact' }}
-    image="/images/hero-james-bath-property-6.webp"
+    heading="Ready for a Free Quote?"
+    body="Whether you need a driveway deep clean in Bath or a specialist roof clean in Bristol, get in touch today for a free, no-obligation quote."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    image="/images/before-after/roof-after-2.webp"
   />
 </Base>
 
 <style>
-  /* ── Guarantee section ── */
-  .guarantee-section {
-    background: var(--charcoal);
+  /* ── Service Cards ── */
+  .service-cards-section {
+    background: var(--surface);
     padding: var(--section-pad) 0;
   }
 
-  /* ── Header row: heading left, intro right ── */
-  .guarantee-header {
+  .service-cards-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-3xl, 5rem);
-    align-items: end;
-  }
-
-  .guarantee-header__left {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-s);
-  }
-
-  .guarantee-eyebrow {
-    color: var(--accent);
-  }
-
-  .guarantee-heading {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    line-height: 0.95;
-    text-transform: uppercase;
-    color: #fff;
-    margin: 0;
-    letter-spacing: -0.01em;
-  }
-
-  .guarantee-header__right {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-l);
-    padding-bottom: 0.25rem;
+    padding-top: var(--space-l);
   }
 
-  .guarantee-intro {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.75;
-    color: rgba(255, 255, 255, 0.65);
-    margin: 0;
-    max-width: 52ch;
-  }
-
-  .btn--outline-light {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: var(--font-body);
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.9rem 2rem;
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: #fff;
+    border: 1px solid rgba(0,85,165,0.08);
+    border-radius: var(--radius);
+    padding: var(--space-l);
     text-decoration: none;
-    transition: border-color 0.3s, background 0.3s;
-    align-self: flex-start;
+    color: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
   }
 
-  .btn--outline-light:hover {
+  .service-card:hover {
     border-color: var(--accent);
-    background: rgba(174, 132, 85, 0.1);
+    box-shadow: 0 4px 20px rgba(0,85,165,0.08);
+    transform: translateY(-3px);
   }
 
-  .btn--outline-light svg {
-    transition: transform 0.3s var(--ease-out-expo);
-  }
-
-  .btn--outline-light:hover svg {
-    transform: translateX(4px);
-  }
-
-  /* ── Divider ── */
-  .guarantee-divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    margin: var(--space-2xl) 0;
-  }
-
-  /* ── Items grid ── */
-  .guarantee-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .guarantee-item {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-l);
-    padding: var(--space-xl);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    border-top: 3px solid transparent;
-    transition: border-top-color 0.3s;
-  }
-
-  .guarantee-item:hover {
-    border-top-color: var(--accent);
-  }
-
-  .guarantee-num {
-    font-family: var(--font-display);
-    font-size: clamp(3.5rem, 5vw, 6rem);
-    line-height: 1;
+  .service-card__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--accent-light);
     color: var(--accent);
-    opacity: 0.25;
-    display: block;
-    transition: opacity 0.3s;
-  }
-
-  .guarantee-item:hover .guarantee-num {
-    opacity: 0.6;
-  }
-
-  .guarantee-item__body {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-s);
-    flex: 1;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-xs);
   }
 
-  .guarantee-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.3rem, 1.8vw, 2rem);
-    line-height: 1.05;
+  .service-card__subtitle {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--accent);
+  }
+
+  .service-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--chalk);
     margin: 0;
   }
 
-  .guarantee-desc {
+  .service-card__desc {
     font-size: 0.9rem;
     font-weight: 300;
-    line-height: 1.75;
-    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    color: var(--concrete);
     margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     flex: 1;
   }
 
-  .guarantee-proof {
-    display: block;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
+  .service-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent);
-    padding-top: var(--space-m);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: auto;
+    padding-top: var(--space-s);
+    transition: gap 0.2s;
   }
 
-  /* ── Responsive ── */
-  @media (max-width: 1100px) {
-    .guarantee-header {
-      grid-template-columns: 1fr;
-      gap: var(--space-xl);
-    }
+  .service-card:hover .service-card__link {
+    gap: 0.6rem;
   }
 
-  @media (max-width: 960px) {
-    .guarantee-grid {
+  @media (max-width: 1024px) {
+    .service-cards-grid {
       grid-template-columns: repeat(2, 1fr);
-      border-left: none;
-    }
-
-    .guarantee-item {
-      border-left: 1px solid rgba(255, 255, 255, 0.1);
     }
   }
 
   @media (max-width: 640px) {
-    .guarantee-grid {
+    .service-cards-grid {
       grid-template-columns: 1fr;
+    }
+    .service-card:hover {
+      transform: none;
     }
   }
 </style>

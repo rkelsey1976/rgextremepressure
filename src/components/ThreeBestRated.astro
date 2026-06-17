@@ -1,0 +1,71 @@
+---
+// ThreeBestRated.astro — Trust badge for #1 ThreeBestRated listing
+---
+
+<div class="tbr-badge">
+  <div class="tbr-badge__inner">
+    <span class="tbr-badge__icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+    </span>
+    <div class="tbr-badge__text">
+      <span class="tbr-badge__title">#1 ThreeBestRated</span>
+      <span class="tbr-badge__sub">Gutter Cleaner in Bath 2026</span>
+    </div>
+    <span class="tbr-badge__icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+    </span>
+  </div>
+</div>
+
+<style>
+  .tbr-badge {
+    display: flex;
+    justify-content: center;
+    padding: 0 0 var(--space-l);
+    background: var(--surface);
+  }
+
+  .tbr-badge__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    padding: var(--space-s) var(--space-l);
+    background: #fff;
+    border: 1px solid rgba(0,85,165,0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,85,165,0.06);
+  }
+
+  .tbr-badge__icon {
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+  }
+
+  .tbr-badge__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .tbr-badge__title {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--charcoal);
+  }
+
+  .tbr-badge__sub {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+</style>

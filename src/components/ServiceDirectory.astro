@@ -1,21 +1,21 @@
 ---
-// ServiceDirectory.astro — SEO keyword matrix grid
+// ServiceDirectory.astro — SEO keyword matrix with tag/pill layout
 const columns = [
   {
-    title: 'Structural Builds',
-    items: ['House Extensions', 'New Builds', 'Loft Conversions', 'Basement Conversions', 'Structural Knock-Throughs', 'RSJ Steel Installations'],
+    title: 'Driveway Cleaning',
+    items: ['Block Paving Deep Clean', 'Tarmac & Concrete Driveway Wash', 'Oil Stain & Tyre Mark Removal', 'Resin Drive Gentle Clean', 'Kiln-Dried Sand Re-Jointing', 'Driveway Sealing'],
   },
   {
-    title: 'Heritage and Restoration',
-    items: ['Period Property Renovation', 'Traditional Lime Repointing', 'Bath Stone Restoration', 'Boundary Wall Repairs', 'Breathable Plasterwork', 'Sash Window Refurbishment'],
+    title: 'Patio & Outdoor Cleaning',
+    items: ['Indian Sandstone Patio Cleaning', 'Porcelain & Slate Tile Washing', 'Concrete Slab & Flagstone Clean', 'Algae & Moss Treatment', 'Decking & Pathway Cleaning', 'Outdoor Surface Restoration'],
   },
   {
-    title: 'Turnkey Refurbishments',
-    items: ['Full House Refurbishments', 'Bespoke Kitchen Fits', 'Luxury Bathroom Installs', 'Internal Reconfigurations', 'Plastering and Skimming', 'Painting and Decorating'],
+    title: 'Roof & Gutter Services',
+    items: ['Soft Wash Roof Cleaning', 'Manual Moss Removal', 'Biocide Anti-Growth Treatment', 'Full Gutter Clear & Downpipe Flush', 'Soffit & Fascia Clean', 'Minor Gutter Repair & Reseal'],
   },
   {
-    title: 'Property Care and Gardens',
-    items: ['Outdoor and Landscaping', 'Porcelain Paving and Patios', 'Timber and Composite Decking', 'Structural Retaining Walls', 'Responsive Property Maintenance', 'Roofing and Gutter Repairs'],
+    title: 'Render & Exterior Cleaning',
+    items: ['K-Rend & Silicone Render Clean', 'Painted Exterior Wall Washing', 'Algae & Pollution Stain Removal', 'Pebbledash & Roughcast Clean', 'Block Paving Re-Sanding & Sealing', 'Brickwork & Stone Cleaning'],
   },
 ];
 ---
@@ -25,16 +25,12 @@ const columns = [
     <div class="sdir__grid">
       {columns.map((col) => (
         <div class="sdir__col">
-          <span class="rule--accent"></span>
           <h4 class="sdir__title">{col.title}</h4>
-          <ul class="sdir__list">
+          <div class="sdir__tags">
             {col.items.map((item) => (
-              <li class="sdir__item">
-                <span class="sdir__bullet">&#10003;</span>
-                <span>{item}</span>
-              </li>
+              <span class="sdir__tag">{item}</span>
             ))}
-          </ul>
+          </div>
         </div>
       ))}
     </div>
@@ -43,58 +39,52 @@ const columns = [
 
 <style>
   .sdir {
-    background: var(--stone);
-    padding: var(--space-2xl) 0;
+    background: var(--surface);
+    padding: var(--section-pad) 0;
   }
 
   .sdir__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-xl);
   }
 
   .sdir__col {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-m);
   }
 
   .sdir__title {
-    font-family: var(--font-body);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-    padding-bottom: var(--space-s);
-    border-bottom: 1px solid rgba(255 255 255 / 0.15);
-    margin: 0;
-  }
-
-  .sdir__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-  }
-
-  .sdir__item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    font-weight: 400;
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: none;
     color: var(--chalk);
-    line-height: 1.5;
+    margin: 0;
+    padding-bottom: var(--space-s);
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+    align-self: flex-start;
   }
 
-  .sdir__bullet {
+  .sdir__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .sdir__tag {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    background: var(--accent-light);
     color: var(--accent);
-    font-size: 0.8rem;
-    font-weight: 700;
-    flex-shrink: 0;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    border-radius: 100px;
+    line-height: 1.4;
   }
 
   @media (max-width: 960px) {

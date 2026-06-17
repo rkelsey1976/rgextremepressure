@@ -1,5 +1,5 @@
 ---
-// style-guide.astro — Live design system reference for Aspect Builds
+// style-guide.astro — Live design system reference for RG Extreme Pressure
 // Showcases every token, typography scale, colour, spacing unit, and component pattern
 // used across the site. This page is dev-only; exclude from sitemap/nav.
 import Base from '../layouts/Base.astro';
@@ -22,7 +22,7 @@ import ProjectGallery from '../components/ProjectGallery.astro';
     <header class="sg-header">
       <div class="container">
         <span class="t-label" style="color:var(--accent)">Internal Reference</span>
-        <h1 class="sg-title">Aspect Builds<br>Design System</h1>
+        <h1 class="sg-title">RG Extreme Pressure<br>Design System</h1>
         <p class="t-body-lg">Every token, type scale, colour, spacing unit, and component pattern — in one place.</p>
       </div>
     </header>
@@ -136,9 +136,9 @@ import ProjectGallery from '../components/ProjectGallery.astro';
             <div class="sg-type-meta">
               <span class="t-label">Display</span>
               <code>.t-display</code>
-              <p>Bebas Neue · clamp(4.5rem, 12vw, 14rem) · lh .92 · trackedtight · uppercase</p>
+              <p>Montserrat 800 · clamp(4.5rem, 12vw, 14rem) · lh .92 · trackedtight · uppercase</p>
             </div>
-            <div class="sg-type-sample t-display">Aspect Builds</div>
+            <div class="sg-type-sample t-display">RG Extreme Pressure</div>
           </div>
 
           <!-- Display SM -->
@@ -146,7 +146,7 @@ import ProjectGallery from '../components/ProjectGallery.astro';
             <div class="sg-type-meta">
               <span class="t-label">Display SM</span>
               <code>.t-display-sm</code>
-              <p>Bebas Neue · clamp(3rem, 6vw, 7rem) · lh .94 · uppercase</p>
+              <p>Montserrat 800 · clamp(3rem, 6vw, 7rem) · lh .94 · uppercase</p>
             </div>
             <div class="sg-type-sample t-display-sm">Bath</div>
           </div>
@@ -156,7 +156,7 @@ import ProjectGallery from '../components/ProjectGallery.astro';
             <div class="sg-type-meta">
               <span class="t-label">Hero Headline</span>
               <code>.hero__headline</code>
-              <p>Bebas Neue · clamp(3.5rem, 8vw, 8rem) · lh .94 · uppercase · white</p>
+              <p>Montserrat 800 · clamp(2.5rem, 5vw, 4.5rem) · lh 1.05 · uppercase · white</p>
             </div>
             <div class="sg-type-sample sg-type-sample--dark">
               <span class="hero__headline">Built for Bath.</span>
@@ -168,7 +168,7 @@ import ProjectGallery from '../components/ProjectGallery.astro';
             <div class="sg-type-meta">
               <span class="t-label">Heading</span>
               <code>.t-heading</code>
-              <p>Bebas Neue · clamp(2rem, 3.5vw, 4rem) · lh 1 · uppercase</p>
+              <p>Montserrat 800 · clamp(2rem, 3.5vw, 4rem) · lh 1.1 · mixed case</p>
             </div>
             <div class="sg-type-sample t-heading">Our Services</div>
           </div>
@@ -178,9 +178,9 @@ import ProjectGallery from '../components/ProjectGallery.astro';
             <div class="sg-type-meta">
               <span class="t-label">Label / Eyebrow</span>
               <code>.t-label</code>
-              <p>DM Sans · .7rem · weight 500 (semibold) · tracked .22em · uppercase · concrete</p>
+              <p>Inter · .7rem · weight 600 · tracked .12em · uppercase · concrete</p>
             </div>
-            <div class="sg-type-sample t-label">The Aspect Standard</div>
+            <div class="sg-type-sample t-label">The RG Extreme Pressure Standard</div>
           </div>
 
           <!-- Body Large -->
@@ -188,9 +188,9 @@ import ProjectGallery from '../components/ProjectGallery.astro';
             <div class="sg-type-meta">
               <span class="t-label">Body Large</span>
               <code>.t-body-lg</code>
-              <p>DM Sans · clamp(1.1rem, 1.4vw, 1.35rem) · weight 300 · lh 1.75 · concrete</p>
+              <p>Inter · clamp(1.1rem, 1.4vw, 1.35rem) · weight 400 · lh 1.75 · concrete</p>
             </div>
-            <div class="sg-type-sample t-body-lg">Premium construction across Bath & BANES. Extensions, loft conversions, Georgian renovation and new build — delivered with precision, without surprises.</div>
+            <div class="sg-type-sample t-body-lg">Professional jet washing and exterior cleaning across Bath & BANES. Driveways, patios, roofs and gutters — delivered with precision, without surprises.</div>
           </div>
 
           <!-- Body (default) -->
@@ -198,7 +198,7 @@ import ProjectGallery from '../components/ProjectGallery.astro';
             <div class="sg-type-meta">
               <span class="t-label">Body (default)</span>
               <code>body</code>
-              <p>DM Sans · clamp(1rem, 1.1vw, 1.125rem) · weight 300 · lh 1.7 · chalk</p>
+              <p>Inter · clamp(1rem, 1.1vw, 1.125rem) · weight 400 · lh 1.7 · chalk</p>
             </div>
             <div class="sg-type-sample">The price we quote is the price you pay — and the work we leave behind is something we put our name on permanently.</div>
           </div>
@@ -208,7 +208,7 @@ import ProjectGallery from '../components/ProjectGallery.astro';
             <div class="sg-type-meta">
               <span class="t-label">Footer Heading</span>
               <code>.footer-heading</code>
-              <p>Bebas Neue · 1.1rem · tracked .08em · uppercase · white</p>
+              <p>Montserrat · 1rem · weight 700 · tracked .06em · mixed case · white</p>
             </div>
             <div class="sg-type-sample sg-type-sample--dark">
               <span class="footer-heading">Services</span>
@@ -220,7 +220,7 @@ import ProjectGallery from '../components/ProjectGallery.astro';
             <div class="sg-type-meta">
               <span class="t-label">Nav Link</span>
               <code>.nav-link</code>
-              <p>DM Sans · .8rem · weight 500 (semibold) · tracked .1em · uppercase · concrete</p>
+              <p>Inter · .88rem · weight 500 · tracked .06em · uppercase · concrete</p>
             </div>
             <div class="sg-type-sample"><a href="#" class="nav-link">About</a></div>
           </div>
@@ -232,16 +232,16 @@ import ProjectGallery from '../components/ProjectGallery.astro';
           <div class="sg-pair-grid">
             <div class="sg-pair-card">
               <p class="sg-pair-card__role">Display / Headlines</p>
-              <p class="sg-pair-card__name">Bebas Neue</p>
-              <p class="sg-pair-card__meta">Condensed sans · Caps only · <code>--font-display</code></p>
-              <p class="sg-pair-card__sample" style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;line-height:.95">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</p>
+              <p class="sg-pair-card__name">Montserrat</p>
+              <p class="sg-pair-card__meta">Geometric sans · Weight 800 display · <code>--font-display</code></p>
+              <p class="sg-pair-card__sample" style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:2.5rem;line-height:1.05">RG Extreme Pressure</p>
             </div>
             <div class="sg-pair-card">
               <p class="sg-pair-card__role">Body / UI</p>
-              <p class="sg-pair-card__name">DM Sans</p>
-              <p class="sg-pair-card__meta">Wght 300/400/500 · <code>--font-body</code></p>
-              <p class="sg-pair-card__sample" style="font-family:'DM Sans',sans-serif;font-size:1.125rem;font-weight:300;line-height:1.7">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</p>
-              <p class="sg-pair-card__sample" style="font-family:'DM Sans',sans-serif;font-size:1.125rem;font-weight:500;line-height:1.7">SemiBold 500 — labels, nav, buttons</p>
+              <p class="sg-pair-card__name">Inter</p>
+              <p class="sg-pair-card__meta">Wght 400/500/600 · <code>--font-body</code></p>
+              <p class="sg-pair-card__sample" style="font-family:'Inter',sans-serif;font-size:1.125rem;font-weight:400;line-height:1.7">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</p>
+              <p class="sg-pair-card__sample" style="font-family:'Inter',sans-serif;font-size:1.125rem;font-weight:600;line-height:1.7">SemiBold 600 — labels, nav, buttons</p>
             </div>
           </div>
         </div>
@@ -366,11 +366,11 @@ import ProjectGallery from '../components/ProjectGallery.astro';
           <div class="sg-component">
             <span class="t-label">Logo — light background</span>
             <div class="sg-component__preview" style="padding:2rem">
-              <a href="/" class="ab-logo nav-logo nav-logo--lg" style="text-decoration:none">
-                <svg class="ab-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
-                <span class="ab-logo__text">
-                  <span class="ab-logo__name">Aspect</span>
-                  <span class="ab-logo__sub">Builds &amp; Maintenance LTD</span>
+              <a href="/" class="rg-logo nav-logo nav-logo--lg" style="text-decoration:none">
+                <svg class="rg-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
+                <span class="rg-logo__text">
+                  <span class="rg-logo__name">RG Extreme Pressure</span>
+                  <span class="rg-logo__sub">Jet Washing Services</span>
                 </span>
               </a>
             </div>
@@ -380,11 +380,11 @@ import ProjectGallery from '../components/ProjectGallery.astro';
           <div class="sg-component">
             <span class="t-label">Logo — dark background (hero)</span>
             <div class="sg-component__preview sg-component__preview--dark" style="padding:2rem">
-              <a href="/" class="ab-logo nav-logo nav-logo--lg" style="text-decoration:none">
-                <svg class="ab-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
-                <span class="ab-logo__text">
-                  <span class="ab-logo__name" style="color:#fff">Aspect</span>
-                  <span class="ab-logo__sub" style="color:rgba(255,255,255,.5)">Builds &amp; Maintenance LTD</span>
+              <a href="/" class="rg-logo nav-logo nav-logo--lg" style="text-decoration:none">
+                <svg class="rg-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
+                <span class="rg-logo__text">
+                  <span class="rg-logo__name" style="color:#fff">RG Extreme Pressure</span>
+                  <span class="rg-logo__sub" style="color:rgba(255,255,255,.5)">Jet Washing Services</span>
                 </span>
               </a>
             </div>
@@ -404,11 +404,11 @@ import ProjectGallery from '../components/ProjectGallery.astro';
         <div class="sg-component">
           <div class="sg-component__preview sg-component__preview--dark" style="padding:1rem 2rem">
             <div style="display:flex;align-items:center;justify-content:space-between;max-width:1440px;margin:0 auto">
-              <a href="/" class="ab-logo nav-logo nav-logo--lg" style="text-decoration:none">
-                <svg class="ab-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
-                <span class="ab-logo__text">
-                  <span class="ab-logo__name" style="color:#fff">Aspect</span>
-                  <span class="ab-logo__sub" style="color:rgba(255,255,255,.5)">Builds &amp; Maintenance LTD</span>
+              <a href="/" class="rg-logo nav-logo nav-logo--lg" style="text-decoration:none">
+                <svg class="rg-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
+                <span class="rg-logo__text">
+                  <span class="rg-logo__name" style="color:#fff">RG Extreme Pressure</span>
+                  <span class="rg-logo__sub" style="color:rgba(255,255,255,.5)">Jet Washing Services</span>
                 </span>
               </a>
               <div class="nav-links">
@@ -426,11 +426,11 @@ import ProjectGallery from '../components/ProjectGallery.astro';
         <div class="sg-component">
           <div class="sg-component__preview" style="padding:1rem 2rem;background:rgba(26,35,50,.97);backdrop-filter:blur(8px)">
             <div style="display:flex;align-items:center;justify-content:space-between;max-width:1440px;margin:0 auto">
-              <a href="/" class="ab-logo nav-logo nav-logo--lg" style="text-decoration:none">
-                <svg class="ab-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
-                <span class="ab-logo__text">
-                  <span class="ab-logo__name">Aspect</span>
-                  <span class="ab-logo__sub">Builds &amp; Maintenance LTD</span>
+              <a href="/" class="rg-logo nav-logo nav-logo--lg" style="text-decoration:none">
+                <svg class="rg-logo__mark" width="28" height="18" viewBox="-2 -2 26 18" fill="none" aria-hidden="true"><polyline points="0,14 11,0 22,14" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
+                <span class="rg-logo__text">
+                  <span class="rg-logo__name">RG Extreme Pressure</span>
+                  <span class="rg-logo__sub">Jet Washing Services</span>
                 </span>
               </a>
               <div class="nav-links">
@@ -922,8 +922,8 @@ import ProjectGallery from '../components/ProjectGallery.astro';
           <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">SectionHeader</h3>
           <SectionHeader
             eyebrow="Our Expertise"
-            heading="Construction Without Compromise"
-            body="Every project we take on is built on a fixed-price contract, managed by a dedicated project lead, and finished to a standard we put our name on."
+            heading="Cleaning Without Compromise"
+            body="Every project we take on is quoted transparently, managed by a dedicated team lead, and finished to a standard we put our name on."
           />
         </div>
 
@@ -931,9 +931,9 @@ import ProjectGallery from '../components/ProjectGallery.astro';
         <div class="sg-live-demo sg-live-demo--dark">
           <h3 class="t-label" style="color:var(--accent);margin-top:0;padding-top:0;border:none">SectionHeader (dark bg)</h3>
           <SectionHeader
-            eyebrow="The Aspect Standard"
+            eyebrow="The RG Extreme Pressure Standard"
             heading="Built on Trust."
-            body="Twelve years of fixed-price contracts. Zero planning refusals. Every project delivered on budget."
+            body="Twelve years of trusted service. Zero callback issues. Every project delivered on budget."
             dark={true}
           />
         </div>
@@ -952,9 +952,9 @@ import ProjectGallery from '../components/ProjectGallery.astro';
         <div class="sg-live-demo">
           <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">TestimonialBlock</h3>
           <TestimonialBlock
-            quote="Aspect delivered exactly what they promised. No hidden costs, no delays — just a beautifully finished extension that feels like it was always part of the house."
+            quote="RG Extreme Pressure delivered exactly what they promised. No hidden costs, no delays — our driveway looks brand new and the patio is spotless."
             name="Sarah & James Whitfield"
-            role="Rear Extension"
+            role="Driveway Cleaning"
             location="Larkhall, Bath"
           />
         </div>
@@ -963,9 +963,9 @@ import ProjectGallery from '../components/ProjectGallery.astro';
         <div class="sg-live-demo sg-live-demo--dark">
           <h3 class="t-label" style="color:var(--accent);margin-top:0;padding-top:0;border:none">TestimonialBlock (dark bg)</h3>
           <TestimonialBlock
-            quote="From the first architect drawings to the final snag list, every step was transparent. We never once worried about the budget."
+            quote="From the initial quote to the finished job, every step was transparent. We never once worried about the cost."
             name="Dr. Priya Anand"
-            role="Loft Conversion"
+            role="Roof Cleaning"
             location="Bear Flat, Bath"
             dark={true}
           />
@@ -977,9 +977,9 @@ import ProjectGallery from '../components/ProjectGallery.astro';
           <TrustMetrics
             metrics={[
               { value: '£5M', label: 'Liability Insurance' },
-              { value: '12yr', label: 'Building in Bath' },
-              { value: '0', label: 'Planning Refusals' },
-              { value: '100%', label: 'Fixed-Price Contracts' },
+              { value: '12yr', label: 'Cleaning in Bath' },
+              { value: '0', label: 'Callback Issues' },
+              { value: '100%', label: 'Satisfaction Guaranteed' },
             ]}
           />
         </div>
@@ -989,11 +989,11 @@ import ProjectGallery from '../components/ProjectGallery.astro';
           <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">SplitFeature (default)</h3>
           <SplitFeature
             image="/images/hero-midford-garden-extension.webp"
-            imageAlt="Aspect construction site"
+            imageAlt="Jet washing site"
             eyebrow="Our Approach"
             heading="Precision From Day One."
-            body="We don't estimate. We cost. Every material, every trade, every day on site is accounted for before we break ground. The result is a fixed-price contract that means exactly what it says."
-            list={['Fixed-price contracts — no variation orders', 'Dedicated project lead on every build', 'Bath stone specialists with 12 years local knowledge']}
+            body="We don't estimate. We quote. Every surface, every access requirement, every day on site is accounted for before we start. The result is a clear quote that means exactly what it says."
+            list={['Transparent pricing — no hidden extras', 'Dedicated team lead on every job', 'Surface specialists with 12 years local knowledge']}
             cta={{ label: 'Start a Project', href: '/contact' }}
           />
         </div>
@@ -1004,9 +1004,9 @@ import ProjectGallery from '../components/ProjectGallery.astro';
           <SplitFeature
             image="/images/hero-bath-landscaping.webp"
             imageAlt="Bath skyline"
-            eyebrow="Heritage Expertise"
+            eyebrow="Expert Service"
             heading="Conservation Area Specialists."
-            body="Bath has more listed buildings per square mile than almost anywhere in England. We know the conservation officers, the planning precedents, and the Bath stone suppliers by name."
+            body="Bath has more listed buildings per square mile than almost anywhere in England. We know the delicate surfaces, the access challenges, and the right cleaning methods for every property type."
             reverse={true}
             dark={true}
             cta={{ label: 'View Projects', href: '/projects' }}
@@ -1019,9 +1019,9 @@ import ProjectGallery from '../components/ProjectGallery.astro';
           <CardGrid
             columns={3}
             cards={[
-              { title: 'House Extensions', image: '/images/hero-midford-garden-extension.webp', href: '/services/extensions', tag: 'Most Popular', body: 'Single and double-storey extensions designed to feel original to the property.' },
-              { title: 'Loft Conversions', image: '/images/hero-bath-landscaping.webp', href: '/services/loft-conversions', tag: 'Bath Specialist', body: 'Dormer and hip-to-gable conversions that add bedrooms without losing garden.' },
-              { title: 'Period Renovation', image: '/images/hero-chilcompton-rendering.webp', href: '/services/period-renovation', body: 'Sympathetic restoration of Georgian and Victorian properties across BANES.' },
+              { title: 'Driveway Cleaning', image: '/images/hero-midford-garden-extension.webp', href: '/services/driveway-cleaning', tag: 'Most Popular', body: 'Professional jet washing that restores block paving, tarmac and concrete to like-new condition.' },
+              { title: 'Patio Cleaning', image: '/images/hero-bath-landscaping.webp', href: '/services/patio-cleaning', tag: 'Bath Specialist', body: 'Deep cleaning for sandstone, porcelain and all patio surfaces with re-sanding included.' },
+              { title: 'Roof Cleaning', image: '/images/hero-chilcompton-rendering.webp', href: '/services/roof-cleaning', body: 'Soft wash treatment that removes moss, algae and lichen without damaging tiles.' },
             ]}
           />
         </div>
@@ -1031,9 +1031,9 @@ import ProjectGallery from '../components/ProjectGallery.astro';
           <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">PortfolioGrid</h3>
           <PortfolioGrid
             projects={[
-              { title: 'Contemporary Rear Extension & Knock-Through', slug: 'contemporary-extension-keynsham', location: 'Keynsham', category: 'structural', categoryLabel: 'Extensions & Conversions', image: '/images/hero-midford-garden-extension.webp' },
-              { title: 'Grade II Listed Georgian Masonry Restoration', slug: 'georgian-townhouse-bath', location: 'Central Bath', category: 'heritage', categoryLabel: 'Heritage & Stonework', image: '/images/hero-chilcompton-rendering.webp' },
-              { title: 'Open-Plan Turnkey Kitchen & Living Space', slug: 'open-plan-kitchen-saltford', location: 'Saltford', category: 'interiors', categoryLabel: 'Premium Interiors', image: '/images/hero-bath-loft-extension.webp' },
+              { title: 'Driveway & Patio Deep Clean', slug: 'driveway-patio-clean-keynsham', location: 'Keynsham', category: 'structural', categoryLabel: 'Driveways & Patios', image: '/images/hero-midford-garden-extension.webp' },
+              { title: 'Listed Building Roof Soft Wash', slug: 'listed-roof-clean-bath', location: 'Central Bath', category: 'heritage', categoryLabel: 'Roofs & Gutters', image: '/images/hero-chilcompton-rendering.webp' },
+              { title: 'Decking & Fencing Restoration', slug: 'decking-fencing-saltford', location: 'Saltford', category: 'interiors', categoryLabel: 'Decking & Fencing', image: '/images/hero-bath-loft-extension.webp' },
             ]}
           />
         </div>
@@ -1042,9 +1042,9 @@ import ProjectGallery from '../components/ProjectGallery.astro';
         <div class="sg-live-demo sg-live-demo--wide" style="padding-left:0;padding-right:0">
           <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">ProjectGallery</h3>
           <ProjectGallery
-            brief="Transform a cramped 1930s kitchen into a bright, open-plan indoor-outdoor living space in Keynsham. The clients wanted a kitchen-diner that felt connected to the garden, with clean sightlines and enough room for a growing family."
-            challenge="The original rear elevation was a patchwork of single-skin extensions and poorly supported knock-throughs from previous owners. Structural Engineer calculations revealed the party wall connection needed a bespoke steel frame rather than a standard RSJ."
-            execution="Installation of a 6-meter RSJ steel beam with Moment Frame connections, bespoke flush-threshold aluminium bi-fold doors by Origin, insulated flat roof with warm-deck construction achieving 0.13 U-value, and polished concrete flooring with underfloor heating."
+            brief="Transform a tired driveway and patio into a like-new outdoor space in Keynsham. The clients wanted their block paving and sandstone patio restored to original condition after years of moss and algae build-up."
+            challenge="The block paving had deep moss growth in the joints and oil staining on the surface. The sandstone patio was heavily discoloured with black algae that standard cleaning couldn't shift."
+            execution="Professional high-pressure jet washing of all block paving with re-sanding of joints, soft wash biocide treatment for the sandstone patio to kill algae at the root, and protective sealant application to prevent rapid regrowth."
             gallery={['/images/hero-midford-garden-extension.webp', '/images/hero-frome-garage-conversion.webp', '/images/hero-bath-landscaping.webp']}
           />
         </div>
@@ -1052,7 +1052,7 @@ import ProjectGallery from '../components/ProjectGallery.astro';
         <!-- CTABanner -->
           <CTABanner
             heading="Ready to Start Your Project?"
-            body="Get a fixed-price quote from a team that delivers on budget, on time — every time."
+            body="Get a clear, no-obligation quote from a team that delivers on budget, on time — every time."
             cta={{ label: 'Get a Quote', href: '/contact' }}
           />
         </div>
@@ -1061,8 +1061,8 @@ import ProjectGallery from '../components/ProjectGallery.astro';
         <div class="sg-live-demo" style="padding-left:0;padding-right:0">
           <h3 class="t-label sg-sublabel" style="margin-top:0;padding-top:0;border:none">CTABanner (light bg)</h3>
           <CTABanner
-            heading="Discuss Your Build."
-            body="Whether it's a kitchen or a full new build, we'd rather hear from you early."
+            heading="Discuss Your Project."
+            body="Whether it's a driveway or a full exterior clean, we'd rather hear from you early."
             cta={{ label: 'Call Us', href: 'tel:01225123456' }}
             dark={false}
           />
@@ -1103,7 +1103,7 @@ import ProjectGallery from '../components/ProjectGallery.astro';
     <span class="rule--accent"></span>
     <span class="t-label" style="color:var(--accent)">Work With Us</span>
     <h2 class="img-cta__heading">Ready to Start<br>Your Project?</h2>
-    <p class="img-cta__body">Whether it's a Georgian restoration in Bath city centre or a modern extension in Keynsham — get a free, transparent site consultation with no obligation.</p>
+    <p class="img-cta__body">Whether it's a delicate listed building in Bath city centre or a large commercial property in Keynsham — get a free, transparent quote with no obligation.</p>
     <a href="/contact" class="btn btn--primary">
       Arrange a Consultation
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>

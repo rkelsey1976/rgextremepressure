@@ -2,127 +2,248 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import SplitFeature from '../components/SplitFeature.astro';
-import ValueCards from '../components/ValueCards.astro';
 import TrustMetrics from '../components/TrustMetrics.astro';
-import TestimonialBlock from '../components/TestimonialBlock.astro';
 import ImageCTA from '../components/ImageCTA.astro';
 ---
 
-<Base title="About Aspect Builds: Bath Builders"
-  description="Bath-based builders specialising in loft conversions, extensions, heritage restoration and property maintenance. Fully insured, fixed-price quotes, clean sites."
-  preloadImage="/images/hero-james-bath-property-8.webp">
+<Base title="About RG Extreme Pressure"
+  description="Meet Robert Galazka — owner of RG Extreme Pressure. 10 years of professional jet washing experience across Bath and Bristol. 111 five-star Google reviews. Fully insured."
+  ogImage="/images/robert.jpg">
+
   <Hero
-    image="/images/hero-james-bath-property-8.webp"
-    eyebrow="About Aspect Builds"
-    heading="Built on Precision.<br>Delivered with Trust."
-    body="We are a Bath-based construction and maintenance firm built on one principle: the work should speak for itself. No surprises, no shortcuts, no compromises on craft."
-    cta={{ label: 'Start a Project', href: '/contact' }}
-    ctaSecondary={{ label: 'View Our Work', href: '/projects' }}
+    image="/images/robert.jpg"
+    overlay="blue"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'About' }]}
+    eyebrow="10 Years Experience · Fully Insured"
+    heading="About RG Extreme Pressure"
+    body="Professional jet washing and pressure washing across Bath and Bristol. Built on reputation, trusted by 111 five-star reviews."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    minHeight="compact"
   />
 
-  <!-- The Story -->
-  <SplitFeature
-    image="/images/hero-about-traditional.webp"
-    imageAlt="Merging traditional standards with modern engineering"
-    heading="Merging Traditional Standards with Modern Engineering"
-    body="Aspect Builds & Maintenance Ltd was founded to close the gap between the craftsmanship Bath's heritage architecture demands and the project management rigour that premium clients expect. We operate across Bath, Bradford on Avon, Keynsham, and the wider West Wiltshire region — managing extensions, loft conversions, period renovations, and new builds with the same exacting standard."
-    dark={false}
-    cta={{ label: 'Our Approach', href: '#approach' }}
-  />
+  <TrustMetrics metrics={[
+    { value: '111', label: 'Five-Star Reviews' },
+    { value: '10', label: 'Years Experience' },
+    { value: 'Insured', label: 'Fully Insured' },
+    { value: '5.2K', label: 'FB Followers' },
+  ]} />
 
-  <!-- The Problem We Solve -->
-  <SplitFeature
-    image="/images/hero-home-loft.webp"
-    imageAlt="Roof stripped back during structural work in Bath"
-    eyebrow="Why Choose Aspect Builds"
-    heading="Quality Building &amp; Property Maintenance You Can Trust"
-    body="Based in Bath, we deliver reliable building and maintenance work across the city and surrounding areas. No shortcuts, no surprises — just honest work from a team that cares about getting it right."
-    dark={true}
-    cta={{ label: 'Our Values', href: '#values' }}
-  />
+  {/* ── About content ── */}
+  <section style="padding:var(--section-pad) 0">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-main">
+          <SectionHeader
+            eyebrow="Meet the Owner"
+            heading="Robert Galazka"
+          />
 
-  <!-- Core Values -->
-  <ValueCards
-    eyebrow="What Sets Us Apart"
-    heading="Honest, Reliable, Professional"
-    values={[
-      {
-        title: 'Fully Insured Service',
-        description: "Fully insured and professional service on every project. Your property and our workforce are fully protected."
-      },
-      {
-        title: 'MCIOB Chartered — A Qualification Most Builders Don\'t Have',
-        description: 'James holds Chartered Member status with the Chartered Institute of Building (MCIOB) — one of the most rigorous professional qualifications in UK construction. Fewer than 1 in 10 builders in Bath can say the same.'
-      },
-      {
-        title: 'CSCS Cardholders & City & Guilds Qualified',
-        description: 'Every member of our on-site team holds valid CSCS cards and industry-recognised qualifications (City & Guilds / NVQ), ensuring the highest standards of safety and craftsmanship across every build.'
-      },
-      {
-        title: 'Honest, Transparent Pricing',
-        description: 'No hidden costs, no surprise extras. Clear, itemised quotes upfront — what we quote is what you pay.'
-      },
-      {
-        title: 'Clean, Respectful Sites',
-        description: "Dust sheets, daily tidy-ups, and protected access routes. We leave your home spotless — it's how we'd want our own home treated."
-      },
-      {
-        title: 'Reputation Built on Trust',
-        description: 'Our business grows through repeat work and personal recommendations. That only happens when you deliver every time.'
-      }
-    ]}
-  />
+          <p class="about-lead">I started RG Extreme Pressure because I saw too many homeowners paying for cheap jet washing that damaged their property — too much pressure on render, no treatment after moss removal, and zero care for surrounding gardens.</p>
 
-  <!-- Craftsmanship Philosophy -->
-  <SplitFeature
-    image="/images/hero-james-bath-property-9.webp"
-    imageAlt="Respecting Bath Stone heritage while embracing contemporary design"
-    heading="Respecting Bath Stone. Embracing Contemporary Design."
-    body="Bath is a UNESCO World Heritage city. Every build here exists in conversation with centuries of architectural precedent. Our approach respects that context — traditional lime mortars, Bath stone repairs, and heritage joinery sit alongside structural steel, bifold doors, and smart spatial planning."
-    dark={true}
-    reverse={true}
-    cta={{ label: 'View Projects', href: '/projects' }}
-  />
+          <p>Ten years on, the business is built entirely on reputation. 111 five-star Google reviews from real customers. No paid reviews, no fake accounts — just honest feedback from people who saw the difference professional cleaning makes.</p>
 
-  <!-- Trust Metrics -->
-  <TrustMetrics
-    metrics={[
-      { value: 'MCIOB', label: 'Chartered Builder' },
-      { value: 'Insured', label: 'Fully Insured' },
-      { value: 'CSCS', label: 'Cardholders' },
-      { value: 'City & Guilds', label: 'Qualified' },
-      { value: 'Fixed', label: 'Transparent Pricing' },
-    ]}
-  />
+          <h3>The Right Pressure for Every Surface</h3>
+          <p>Not every surface can handle the same treatment. Block paving and concrete driveways take full pressure. Sandstone patios need a lighter touch. Render and roof tiles should never be jet washed at high pressure — they need soft wash treatment that kills organic growth at the root without blasting the surface.</p>
+          <p>That's what sets RG Extreme Pressure apart: we know which technique to use on which surface, and we always use the gentlest effective method. If a surface doesn't need high pressure, we don't use it.</p>
 
-  <!-- Testimonial -->
-  <section style="padding:var(--section-pad) 0;background:var(--stone)">
-    <div class="container" style="max-width:48rem">
-      <TestimonialBlock
-        quote="I have worked with Aspect on several projects. I have always found James approachable with Aspect working to a high standard."
-        name="Timothy"
-        role="Multiple Projects · TrustATrader Verified"
-        dark={false}
-      />
+          <h3>Eco-Friendly Approach</h3>
+          <p>All our cleaning products are eco-friendly and biodegradable. Safe for your plants, safe for your pets, safe for the water table. We protect your garden before we start — covering plants, moving furniture, and rinsing everything down after the job's done.</p>
+
+          <h3>How It Works</h3>
+          <ol class="process-list">
+            <li><strong>Free quote</strong> — I visit your property, assess what's needed, and give you an honest price with no hidden extras.</li>
+            <li><strong>Scheduled clean</strong> — We arrive on time, protect your garden and surrounding areas, and get to work.</li>
+            <li><strong>Professional result</strong> — Your driveway, patio, roof or render looks brand new. We clean up, show you the results, and you only pay when you're happy.</li>
+          </ol>
+        </div>
+
+        <aside class="about-sidebar">
+          <div class="about-photo">
+            <img src="/images/robert.jpg" alt="Robert Galazka — owner of RG Extreme Pressure" width="577" height="769" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="quick-facts">
+            <h4>Quick Facts</h4>
+            <ul>
+              <li>Owner-operated since 2016</li>
+              <li>111 five-star Google reviews</li>
+              <li>Full public liability insurance</li>
+              <li>Eco-friendly, biodegradable products</li>
+              <li>Covers Bath, Bristol and surrounding areas</li>
+              <li>Free quotes — no obligation</li>
+            </ul>
+          </div>
+
+          <div class="contact-quick">
+            <span class="t-label">Get in Touch</span>
+            <a href="tel:07474939398" class="phone-link">07474 939 398</a>
+            <a href="mailto:galazkarobert@yahoo.co.uk" class="email-link">galazkarobert@yahoo.co.uk</a>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 
-  <!-- Process Standard -->
-  <SplitFeature
-    image="/images/midford-garden-extension-4.webp"
-    imageAlt="Professional build oversight"
-    heading="Professional Oversight. Every Stage."
-    body="Every Aspect project follows a structured process: initial site appraisal, detailed specification and fixed quote, scheduled build phases with weekly progress updates, and a proper handover with a comprehensive snag list. Clean site, clear timeline, zero ambiguity."
-    dark={false}
-    list={['Fixed-quote pricing with itemised breakdowns', 'Weekly progress reports and site photographs', 'Strict safety protocols and comprehensive insurance', 'Professional snag list and final handover']}
-    cta={{ label: 'Contact Us', href: '/contact' }}
-  />
-
   <ImageCTA
-    heading="Work With a Team That Respects Your Property"
-    body="From the initial site appraisal to handing over an immaculate completed build, discover the difference of professional construction management."
-    cta={{ label: 'Arrange a Consultation', href: '/contact' }}
-    image="/images/hero-james-bath-property-5.webp"
+    heading="Ready for a Free Quote?"
+    body="Call 07474 939 398 or fill in our contact form. We cover Bath, Bristol and all surrounding areas."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    image="/images/before-after/roof-after-2.webp"
   />
 </Base>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--space-3xl, 5rem);
+    margin-top: var(--space-2xl);
+  }
+
+  .about-lead {
+    font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--chalk);
+    margin-bottom: var(--space-m);
+  }
+
+  .about-main h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: var(--space-xl) 0 var(--space-s);
+  }
+
+  .about-main p {
+    color: var(--concrete);
+    line-height: 1.75;
+    margin-bottom: var(--space-s);
+  }
+
+  .process-list {
+    list-style: none;
+    padding: 0;
+    counter-reset: process;
+  }
+
+  .process-list li {
+    padding: var(--space-m) 0;
+    padding-left: 3rem;
+    position: relative;
+    border-bottom: 1px solid rgba(26,35,50,.08);
+    color: var(--concrete);
+    line-height: 1.7;
+    counter-increment: process;
+  }
+
+  .process-list li::before {
+    content: counter(process);
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .process-list li strong {
+    color: var(--chalk);
+  }
+
+  .about-photo {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    box-shadow: 0 4px 20px rgba(0,85,165,0.08);
+  }
+
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .quick-facts {
+    background: var(--stone);
+    padding: var(--space-l);
+    border-radius: 8px;
+    margin-top: var(--space-l);
+  }
+
+  .quick-facts h4 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin-bottom: var(--space-m);
+  }
+
+  .quick-facts ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .quick-facts ul li {
+    padding: var(--space-xs) 0;
+    padding-left: 1.4rem;
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--concrete);
+  }
+
+  .quick-facts ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .contact-quick {
+    margin-top: var(--space-l);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .phone-link {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .email-link {
+    font-size: 0.9rem;
+    color: var(--concrete);
+    text-decoration: none;
+  }
+
+  .email-link:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 960px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .about-sidebar {
+      order: -1;
+    }
+
+    .about-photo-placeholder {
+      aspect-ratio: auto;
+      padding: var(--space-xl);
+    }
+  }
+</style>

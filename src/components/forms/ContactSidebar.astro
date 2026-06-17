@@ -1,15 +1,14 @@
 ---
 // ContactSidebar.astro — Left-column editorial sidebar for contact page
-// Direct lines, operational hours, trust credentials
-// No Tailwind — vanilla CSS using design tokens
+// Direct lines, operational hours, trust credentials, social links
 ---
 
 <aside class="contact-sidebar">
-  {/* ── Direct Lines ── */}
+  {/* ── Direct Line ── */}
   <div class="cs-block">
     <span class="cs-rule"></span>
     <span class="t-label cs-label">Direct Line</span>
-<a href="tel:+447498158747" class="cs-value">07498 158747</a>
+    <a href="tel:+447474939398" class="cs-value">07474 939 398</a>
     <p class="cs-note">Available Mon–Thu 08:00–17:00, Fri 07:00–17:00, Sat 08:00–13:00. Sunday closed.</p>
   </div>
 
@@ -17,21 +16,20 @@
   <div class="cs-block">
     <span class="cs-rule"></span>
     <span class="t-label cs-label">Email</span>
-    <a href="mailto:james.aspectbuilds@gmail.com" class="cs-value cs-value--small">james.aspectbuilds@gmail.com</a>
+    <a href="mailto:galazkarobert@yahoo.co.uk" class="cs-value cs-value--small">galazkarobert@yahoo.co.uk</a>
   </div>
 
-  {/* ── Office ── */}
+  {/* ── Owner ── */}
   <div class="cs-block">
     <span class="cs-rule"></span>
-    <span class="t-label cs-label">Managing Director</span>
-    <p class="cs-value cs-value--small">James Martin</p>
+    <span class="t-label cs-label">Owner</span>
+    <p class="cs-value cs-value--small">Robert Galazka</p>
   </div>
 
   <div class="cs-block">
     <span class="cs-rule"></span>
-    <span class="t-label cs-label">Registered Office</span>
+    <span class="t-label cs-label">Based In</span>
     <p class="cs-value cs-value--small cs-value--muted">
-      Aspect Builds &amp; Maintenance Ltd<br/>
       Bath, Somerset<br/>
       United Kingdom
     </p>
@@ -54,30 +52,27 @@
     <span class="cs-rule"></span>
     <span class="t-label cs-label">Credentials</span>
     <ul class="cs-creds">
-      <li>&#10003;&ensp;Registered Limited Company</li>
-      <li>&#10003;&ensp;£10M Public &amp; Employer's Liability</li>
-      <li>&#10003;&ensp;Fully Insured (AXA Verified)</li>
+      <li>&#10003;&ensp;Fully Insured — Public &amp; Employer's Liability</li>
+      <li>&#10003;&ensp;10 Years Professional Experience</li>
+      <li>&#10003;&ensp;111 Five-Star Google Reviews</li>
+      <li>&#10003;&ensp;Eco-Friendly Biodegradable Products</li>
     </ul>
-    <a
-      href="https://www.trustatrader.com/traders/aspect-builds-maintenance-ltd-interior-refurbishment-bath-south"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="cs-trustatrader"
-      aria-label="4.6 out of 5 from 27 combined reviews on TrustATrader and Checkatrade"
-    >
-      <img src="/images/trustatrader-logo.svg" alt="TrustATrader Verified Member" width="64" height="64" loading="lazy" />
-      <span class="cs-trustatrader__text">
-        <strong>4.6 / 5</strong>
-        <span>16 verified reviews</span>
-      </span>
-    </a>
-    <ul class="cs-tt-checks">
-      <li>&#10003;&ensp;Identification checked</li>
-      <li>&#10003;&ensp;Company address verified</li>
-      <li>&#10003;&ensp;Customer references checked</li>
-      <li>&#10003;&ensp;Agreed to TrustATrader's high standards</li>
-      <li>&#10003;&ensp;Agreed to complaints procedure</li>
-    </ul>
+  </div>
+
+  {/* ── Social / Reviews ── */}
+  <div class="cs-block">
+    <span class="cs-rule"></span>
+    <span class="t-label cs-label">Find Us Online</span>
+    <div class="cs-social">
+      <a href="https://www.facebook.com/profile.php?id=100091066506303" target="_blank" rel="noopener noreferrer" class="cs-social__link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <span>Facebook</span>
+      </a>
+      <a href="https://www.google.com/maps?q=RG+Extreme+Pressure+Bath" target="_blank" rel="noopener noreferrer" class="cs-social__link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        <span>Google Reviews</span>
+      </a>
+    </div>
   </div>
 </aside>
 
@@ -98,8 +93,9 @@
   .cs-rule {
     display: block;
     width: 32px;
-    height: 2px;
+    height: 3px;
     background: var(--accent);
+    border-radius: 2px;
     margin-bottom: 0.25rem;
   }
 
@@ -168,6 +164,9 @@
     font-size: 0.88rem;
     color: var(--chalk);
     line-height: 1.5;
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .cs-creds li {
@@ -175,50 +174,29 @@
     padding-left: 0;
   }
 
-  .cs-tt-checks {
+  .cs-social {
     display: flex;
     flex-direction: column;
-    gap: 0.28rem;
-    padding: 0.6rem 0.75rem;
-    background: rgba(26,35,50,0.04);
-    border-left: 2px solid var(--accent);
-    list-style: none;
-    margin: 0;
+    gap: 0.6rem;
   }
 
-  .cs-tt-checks li {
-    font-size: 0.75rem;
-    color: var(--concrete);
-    line-height: 1.4;
-  }
-
-  .cs-trustatrader {
+  .cs-social__link {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-top: 0.75rem;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-
-  .cs-trustatrader:hover { opacity: 0.8; }
-
-  .cs-trustatrader__text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-  }
-
-  .cs-trustatrader__text strong {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    letter-spacing: 0.04em;
+    gap: 0.6rem;
+    font-size: 0.92rem;
     color: var(--chalk);
+    text-decoration: none;
+    transition: color 0.2s;
   }
 
-  .cs-trustatrader__text span {
-    font-size: 0.75rem;
-    color: var(--concrete);
+  .cs-social__link:hover {
+    color: var(--accent);
+  }
+
+  .cs-social__link svg {
+    color: var(--accent);
+    flex-shrink: 0;
   }
 
   @media (max-width: 768px) {

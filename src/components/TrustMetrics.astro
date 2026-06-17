@@ -1,6 +1,6 @@
 ---
-// TrustMetrics.astro — Horizontal strip of big numbers + labels
-// Dark background, Bebas for the values
+// TrustMetrics.astro — Horizontal ticker strip with dividers
+// Compact, less boxy than card row
 
 interface Metric {
   value: string;
@@ -16,9 +16,9 @@ const { metrics } = Astro.props;
 
 <section class="trust-metrics">
   <div class="container">
-    <div class="trust-metrics__grid">
-      {metrics.map(m => (
-        <div class="trust-metrics__item">
+    <div class="trust-metrics__strip">
+      {metrics.map((m, i) => (
+        <div class:list={['trust-metrics__item', i > 0 && 'trust-metrics__item--divided']}>
           <span class="trust-metrics__value">{m.value}</span>
           <span class="trust-metrics__label">{m.label}</span>
         </div>
@@ -29,44 +29,64 @@ const { metrics } = Astro.props;
 
 <style>
   .trust-metrics {
-    background: var(--navy);
-    padding-block: clamp(3rem, 6vw, 5rem);
+    background: var(--surface);
+    padding-block: clamp(1.5rem, 3vw, 2.5rem);
+    border-bottom: 1px solid rgba(0,85,165,0.06);
   }
 
-  .trust-metrics__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: var(--space-xl);
-    text-align: center;
+  .trust-metrics__strip {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .trust-metrics__item {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.8rem clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .trust-metrics__item--divided {
+    border-left: 1px solid rgba(0,85,165,0.12);
   }
 
   .trust-metrics__value {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+    font-weight: 800;
     line-height: 1;
-    text-transform: uppercase;
     color: var(--accent);
   }
 
   .trust-metrics__label {
     font-family: var(--font-body);
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--concrete);
   }
 
   @media (max-width: 640px) {
-    .trust-metrics__grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-l);
+    .trust-metrics__strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .trust-metrics__item--divided {
+      border-left: 1px solid rgba(0,85,165,0.12);
+    }
+
+    .trust-metrics__item:nth-child(4) {
+      border-left: none;
+    }
+
+    .trust-metrics__item {
+      padding: 0.75rem 0.5rem;
     }
   }
 </style>

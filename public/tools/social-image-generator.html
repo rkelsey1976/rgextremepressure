@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Social Image Generator — Aspect Builds</title>
+  <title>Social Image Generator — RG Extreme Pressure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
@@ -175,7 +175,7 @@
     <svg width="20" height="13" viewBox="0 0 22 14" fill="none">
       <polyline points="0,14 11,0 22,14" stroke="#AE8455" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/>
     </svg>
-    <span class="header-name">Aspect Builds</span>
+    <span class="header-name">RG Extreme Pressure</span>
     <span class="header-tag">Social Image Generator</span>
     <span class="header-spacer"></span>
     <span class="header-hint">Full-resolution PNG download</span>
@@ -520,7 +520,7 @@ function drawMark(ctx, x, y, size, color) {
   ctx.restore();
 }
 
-// Horizontal logo: mark → ASPECT → BUILDS & MAINTENANCE LTD
+// Horizontal logo: mark → RG EXTREME PRESSURE → BUILDS & MAINTENANCE LTD
 function drawLogo(ctx, x, y, sc, pal) {
   const p       = pal || palette();
   const markW   = 28 * sc;
@@ -534,7 +534,7 @@ function drawLogo(ctx, x, y, sc, pal) {
   ctx.textBaseline = 'top';
   ctx.fillStyle    = p.text;
   ctx.font         = `${nameH}px 'Bebas Neue', sans-serif`;
-  ctx.fillText('ASPECT', x + markW + gap, y);
+  ctx.fillText('RG EXTREME PRESSURE', x + markW + gap, y);
 
   ctx.fillStyle    = p.logoSub;
   ctx.font         = `500 ${subH}px 'DM Sans', sans-serif`;
@@ -558,7 +558,7 @@ function drawLogoStackedAt(ctx, cx, cy, fsc, pal) {
   ctx.font         = `${nameSz}px 'Bebas Neue', sans-serif`;
   ctx.textAlign    = 'center';
   ctx.textBaseline = 'top';
-  ctx.fillText('ASPECT', cx, ry);
+  ctx.fillText('RG EXTREME PRESSURE', cx, ry);
   ry += nameSz + 3 * fsc;
 
   ctx.fillStyle    = pal.logoSub;
@@ -581,7 +581,7 @@ function drawBrandLogo(ctx, w, h, pad, sc, pal) {
   if (style === 'horizontal') {
     // Measure logo width to support right-align
     ctx.font = `${22 * fsc}px 'Bebas Neue', sans-serif`;
-    const nameW = ctx.measureText('ASPECT').width;
+    const nameW = ctx.measureText('RG EXTREME PRESSURE').width;
     ctx.font    = `500 ${8 * fsc}px 'DM Sans', sans-serif`;
     const subW  = ctx.measureText('BUILDS & MAINTENANCE LTD').width;
     const logoW = 28 * fsc + 9 * fsc + Math.max(nameW, subW);
@@ -737,7 +737,7 @@ function drawFooter(ctx, w, h, pad, sc, pal) {
 
   const lines = [];
   if (state.showPhone) lines.push('07552 060932');
-  if (state.showUrl)   lines.push('aspectbuilds.co.uk');
+  if (state.showUrl)   lines.push('rgextremepressure.co.uk');
   if (lines.length) {
     ctx.textAlign    = 'right';
     ctx.textBaseline = 'middle';
@@ -873,7 +873,7 @@ function drawService(w, h) {
   ctx.fillStyle = p.mark;
   ctx.font      = `500 ${11 * sc}px 'DM Sans', sans-serif`;
   ctx.textBaseline = 'top';
-  ctx.fillText('→   aspectbuilds.co.uk  ·  07552 060932', cx, fy + 8 * sc);
+  ctx.fillText('→   rgextremepressure.co.uk  ·  07552 060932', cx, fy + 8 * sc);
 
   drawFooter(ctx, w, h, pad, sc, p);
   drawBrandLogo(ctx, w, h, pad, sc, p);
@@ -917,7 +917,7 @@ function drawPromo(w, h) {
 
   const ctaParts = ['GET A FREE QUOTE'];
   if (state.showPhone) ctaParts.push('07552 060932');
-  if (state.showUrl)   ctaParts.push('aspectbuilds.co.uk');
+  if (state.showUrl)   ctaParts.push('rgextremepressure.co.uk');
   ctx.fillStyle    = '#fff';
   ctx.font         = `600 ${12 * sc}px 'DM Sans', sans-serif`;
   ctx.textAlign    = 'center';
@@ -961,7 +961,7 @@ function drawLogoExport(w, h) {
     ctx.font         = `${nameSz}px 'Bebas Neue', sans-serif`;
     ctx.textAlign    = 'center';
     ctx.textBaseline = 'top';
-    ctx.fillText('ASPECT', cx, ry);
+    ctx.fillText('RG EXTREME PRESSURE', cx, ry);
     ry += nameSz + 4 * lsc;
 
     ctx.fillStyle    = p.logoSub;
@@ -991,7 +991,7 @@ function drawLogoExport(w, h) {
 
     // Measure total width for centering
     ctx.font = `${nameSz}px 'Bebas Neue', sans-serif`;
-    const nameW = ctx.measureText('ASPECT').width;
+    const nameW = ctx.measureText('RG EXTREME PRESSURE').width;
     ctx.font = `500 ${subSz}px 'DM Sans', sans-serif`;
     const subW = ctx.measureText('BUILDS & MAINTENANCE LTD').width;
     const textW = Math.max(nameW, subW);
@@ -1005,7 +1005,7 @@ function drawLogoExport(w, h) {
     ctx.font         = `${nameSz}px 'Bebas Neue', sans-serif`;
     ctx.textAlign    = 'left';
     ctx.textBaseline = 'top';
-    ctx.fillText('ASPECT', lx + markSize + gap, ly);
+    ctx.fillText('RG EXTREME PRESSURE', lx + markSize + gap, ly);
 
     ctx.fillStyle    = p.logoSub;
     ctx.font         = `500 ${subSz}px 'DM Sans', sans-serif`;
@@ -1030,7 +1030,7 @@ function drawLogoExport(w, h) {
     ctx.font         = `400 ${8.5 * sc}px 'DM Sans', sans-serif`;
     ctx.textAlign    = 'right';
     ctx.textBaseline = 'bottom';
-    ctx.fillText('aspectbuilds.co.uk', w - pad, h - pad * 0.7);
+    ctx.fillText('rgextremepressure.co.uk', w - pad, h - pad * 0.7);
   }
 }
 
@@ -1062,7 +1062,7 @@ function drawGalleryPanel(ctx, w, h, panelH, sc, p) {
     const logoTopY = midY - 14 * fsc;
     drawLogo(ctx, pad, logoTopY, fsc, lp);
     ctx.font = `${22 * fsc}px 'Bebas Neue', sans-serif`;
-    const nW = ctx.measureText('ASPECT').width;
+    const nW = ctx.measureText('RG EXTREME PRESSURE').width;
     ctx.font = `500 ${8 * fsc}px 'DM Sans', sans-serif`;
     const sW = ctx.measureText('BUILDS & MAINTENANCE LTD').width;
     logoEndX = pad + 28 * fsc + 9 * fsc + Math.max(nW, sW);
@@ -1108,7 +1108,7 @@ function drawGalleryPanel(ctx, w, h, panelH, sc, p) {
     ctx.font         = `400 ${8.5 * sc}px 'DM Sans', sans-serif`;
     ctx.textAlign    = 'right';
     ctx.textBaseline = 'middle';
-    ctx.fillText('aspectbuilds.co.uk', w - pad, midY);
+    ctx.fillText('rgextremepressure.co.uk', w - pad, midY);
   }
 }
 
@@ -1521,7 +1521,7 @@ document.getElementById('btn-download').addEventListener('click', () => {
   const variant = state.template === 'logo'    ? `-${state.logoVariant}`
                : state.template === 'gallery' ? `-${state.galleryLayout}`
                : '';
-  a.download = `aspect-builds-${state.template}${variant}-${state.format}.png`;
+  a.download = `rg-extreme-pressure-${state.template}${variant}-${state.format}.png`;
   a.href     = canvas.toDataURL('image/png');
   a.click();
 });

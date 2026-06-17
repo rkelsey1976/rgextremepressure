@@ -1,0 +1,427 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import TrustMetrics from '../components/TrustMetrics.astro';
+import ImageCTA from '../components/ImageCTA.astro';
+import { servicesData } from '../data/services';
+
+// Override hrefs for services with Bristol-specific pages
+const bristolServices = servicesData.map(s => ({
+  ...s,
+  href: s.id === 'driveway-cleaning' ? '/driveway-cleaning-bristol'
+      : s.id === 'patio-cleaning'    ? '/patio-cleaning-bristol'
+      : s.id === 'roof-cleaning'     ? '/roof-cleaning-bristol'
+      : s.id === 'gutter-cleaning'   ? '/gutter-cleaning-bristol'
+      : s.id === 'render-cleaning'   ? '/render-cleaning-bristol'
+      : s.href,
+}));
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Jet Washing Bristol",
+  "description": "Professional jet washing and pressure washing services in Bristol. Driveway cleaning, patio cleaning, gutter clearing, roof cleaning and render cleaning.",
+  "provider": {
+    "@id": "https://rgextremepressure.co.uk/#organization"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Bristol"
+  },
+  "serviceType": "Jet Washing Services"
+};
+---
+
+<Base title="Jet Washing Bristol | Pressure Washing Services"
+  description="Professional jet washing and pressure washing in Bristol. Driveway cleaning, gutter clearing, roof cleaning and render washing. 111 five-star reviews. Call 07474 939 398."
+  serviceSchema={serviceSchema}>
+
+  <Hero
+    image="/images/before-after/roof-after-2.webp"
+    overlay="blue"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Bristol' }]}
+    eyebrow="Bristol & Surrounding Areas"
+    heading="Jet Washing Bristol"
+    body="Professional pressure washing for driveways, patios, roofs, gutters and render across all Bristol postcodes. 111 five-star reviews. Free quotes."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  <TrustMetrics metrics={[
+    { value: '111', label: 'Five-Star Reviews' },
+    { value: '10', label: 'Years Experience' },
+    { value: 'Insured', label: 'Fully Insured' },
+    { value: '5.2K', label: 'FB Followers' },
+    { value: 'Free', label: 'Free Quotes' },
+  ]} />
+
+  {/* ── Service Cards ── */}
+  <section class="service-cards-section">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Services in Bristol"
+        heading="What We Do in Bristol"
+        body="Every service available in Bath is available across Bristol. Click through for full details, pricing and FAQs."
+      />
+      <div class="service-cards-grid">
+        {bristolServices.map(s => (
+          <a href={s.href} class="service-card">
+            <div class="service-card__icon">
+              {s.id === 'driveway-cleaning' && <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="1"/><path d="M5 11V7a2 2 0 012-2h10a2 2 0 012 2v4"/><line x1="3" y1="16" x2="21" y2="16"/></svg>}
+              {s.id === 'patio-cleaning' && <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>}
+              {s.id === 'gutter-cleaning' && <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 6l2 12h12l2-12"/><path d="M10 10v4M14 10v4"/><path d="M8 6V4h8v2"/></svg>}
+              {s.id === 'roof-cleaning' && <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l9-16 9 16H3z"/><path d="M12 10v6M12 18h.01"/></svg>}
+              {s.id === 'render-cleaning' && <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>}
+              {s.id === 'block-paving-cleaning' && <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="10" height="10" rx="1"/><rect x="13" y="1" width="10" height="10" rx="1"/><rect x="1" y="13" width="10" height="10" rx="1"/><rect x="13" y="13" width="10" height="10" rx="1"/></svg>}
+              {s.id === 'soffit-fascia-cleaning' && <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>}
+              {s.id === 'conservatory-cleaning' && <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l9-9 9 9"/><path d="M3 12l9-9 9 9"/></svg>}
+              {s.id === 'commercial-jet-washing' && <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>}
+            </div>
+            <div class="service-card__text">
+              <span class="service-card__subtitle">{s.subtitle}</span>
+              <h3 class="service-card__title">{s.title}</h3>
+              <p class="service-card__desc">{s.description}</p>
+            </div>
+            <span class="service-card__link">
+              View Service
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── Bristol editorial ── */}
+  <section style="padding:var(--section-pad) 0">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Serving All Bristol Postcodes"
+        heading="Pressure Washing Bristol Homes and Businesses"
+        body="From Clifton townhouses to Fishponds family homes — Bristol properties face relentless algae, moss and pollution staining. Our jet washing and soft wash services restore every exterior surface safely."
+      />
+
+      <div class="bristol-grid">
+        <div class="bristol-main">
+          <h2>Jet Washing Services Across Bristol</h2>
+          <p>Bristol's damp climate grows algae and moss faster than almost anywhere else in the UK. Render stains green within months. Driveways collect tyre oil and leaf mould. Roof tiles sprout moss that cracks and loosens them with every frost.</p>
+          <p>We provide professional jet washing and soft wash cleaning across all Bristol postcodes — BS1 through BS16. Whether you need a heavy-duty driveway restore in Kingswood or a delicate render clean in Clifton, we adjust pressure and technique to suit every surface.</p>
+
+
+          <h3>Bristol Areas We Cover</h3>
+          <p>We have dedicated service pages for every Bristol neighbourhood. Click your area for local pricing and information:</p>
+          <ul class="service-list">
+            <li><a href="/areas-covered/clifton-bristol">Clifton</a> — <a href="/driveway-cleaning/clifton-bristol">driveways</a>, <a href="/patio-cleaning/clifton-bristol">patios</a>, <a href="/roof-cleaning/clifton-bristol">roofs</a></li>
+            <li><a href="/areas-covered/redland-bristol">Redland</a> — <a href="/driveway-cleaning/redland-bristol">driveways</a>, <a href="/patio-cleaning/redland-bristol">patios</a>, <a href="/roof-cleaning/redland-bristol">roofs</a></li>
+            <li><a href="/areas-covered/bishopston-bristol">Bishopston</a> — <a href="/driveway-cleaning/bishopston-bristol">driveways</a>, <a href="/patio-cleaning/bishopston-bristol">patios</a>, <a href="/roof-cleaning/bishopston-bristol">roofs</a></li>
+            <li><a href="/areas-covered/henleaze-bristol">Henleaze</a> — <a href="/driveway-cleaning/henleaze-bristol">driveways</a>, <a href="/patio-cleaning/henleaze-bristol">patios</a>, <a href="/roof-cleaning/henleaze-bristol">roofs</a></li>
+            <li><a href="/areas-covered/kingswood-bristol">Kingswood</a> — <a href="/driveway-cleaning/kingswood-bristol">driveways</a>, <a href="/patio-cleaning/kingswood-bristol">patios</a>, <a href="/roof-cleaning/kingswood-bristol">roofs</a></li>
+            <li><a href="/areas-covered/fishponds-bristol">Fishponds</a> — <a href="/driveway-cleaning/fishponds-bristol">driveways</a>, <a href="/patio-cleaning/fishponds-bristol">patios</a>, <a href="/roof-cleaning/fishponds-bristol">roofs</a></li>
+            <li><a href="/areas-covered/brislington-bristol">Brislington</a> — <a href="/driveway-cleaning/brislington-bristol">driveways</a>, <a href="/patio-cleaning/brislington-bristol">patios</a>, <a href="/roof-cleaning/brislington-bristol">roofs</a></li>
+            <li><a href="/areas-covered/bedminster-bristol">Bedminster</a> — <a href="/driveway-cleaning/bedminster-bristol">driveways</a>, <a href="/patio-cleaning/bedminster-bristol">patios</a>, <a href="/roof-cleaning/bedminster-bristol">roofs</a></li>
+            <li><a href="/areas-covered/downend-bristol">Downend</a> — <a href="/driveway-cleaning/downend-bristol">driveways</a>, <a href="/patio-cleaning/downend-bristol">patios</a>, <a href="/roof-cleaning/downend-bristol">roofs</a></li>
+            <li><a href="/areas-covered/westbury-on-trym-bristol">Westbury-on-Trym</a> — <a href="/driveway-cleaning/westbury-on-trym-bristol">driveways</a>, <a href="/patio-cleaning/westbury-on-trym-bristol">patios</a>, <a href="/roof-cleaning/westbury-on-trym-bristol">roofs</a></li>
+          </ul>
+          <p>Also covering: Cotham, Montpelier, Westbury Park, Stoke Bishop, Sea Mills, Shirehampton, Portishead, Stapleton, Emersons Green, Hanham, Totterdown, Knowle, Southville, Ashton, Hotwells, and all surrounding Bristol postcodes.</p>
+        </div>
+
+        <aside class="bristol-sidebar">
+          <div class="trust-card">
+            <span class="t-label" style="color:var(--accent)">Why Bristol Chooses Us</span>
+            <h3>111 Five-Star Reviews</h3>
+            <p>No other jet washing service in Bristol can match 111 five-star Google reviews. That's not a marketing number — it's real customers who took the time to write about their experience.</p>
+            <ul class="trust-list">
+              <li>Fully insured for all residential and commercial work</li>
+              <li>10 years' experience across Bristol properties</li>
+              <li>Eco-friendly cleaning products — safe for plants and pets</li>
+              <li>Free quotes with no obligation</li>
+            </ul>
+            <a href="/contact" class="btn btn--primary">Get a Free Quote</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  {/* ── See Us In Action ── */}
+  <section class="video-section">
+    <div class="container">
+      <SectionHeader
+        eyebrow="See Us In Action"
+        heading="Watch Our Work"
+        body="Professional jet washing that transforms properties across Bristol and surrounding areas."
+        align="center"
+      />
+      <div class="video-wrap">
+        <iframe
+          src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F100091066506303%2Fvideos%2F1751025128677768%2F&show_text=false&width=560&t=0"
+          width="560"
+          height="314"
+          style="border:none;overflow:hidden"
+          scrolling="no"
+          frameborder="0"
+          allowfullscreen="true"
+          loading="lazy"
+          title="RG Extreme Pressure — jet washing demo video"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <ImageCTA
+    heading="Ready to Book Jet Washing in Bristol?"
+    body="Call 07474 939 398 for a free quote, or fill in our contact form. We cover all Bristol postcodes."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    image="/images/before-after/roof-after-2.webp"
+  />
+</Base>
+
+<style>
+  /* ── Service Cards ── */
+  .service-cards-section {
+    background: #fff;
+    padding: var(--section-pad) 0;
+  }
+
+  .service-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-m);
+    padding-top: var(--space-l);
+  }
+
+  .service-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-m);
+    background: #fff;
+    border: 1px solid rgba(0,85,165,0.08);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: var(--space-m);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+
+  .service-card:hover {
+    box-shadow: 0 4px 20px rgba(0,85,165,0.1);
+    transform: translateY(-2px);
+  }
+
+  .service-card__icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 8px;
+    background: var(--accent-light);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-card__text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .service-card__subtitle {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .service-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.3vw, 1.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .service-card__desc {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--concrete);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .service-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: auto;
+    padding-top: var(--space-xs);
+    transition: gap 0.2s;
+  }
+
+  .service-card:hover .service-card__link { gap: 0.6rem; }
+
+  @media (max-width: 640px) {
+    .service-cards-grid { grid-template-columns: 1fr; }
+    .service-card:hover { transform: none; }
+  }
+
+  /* ── Video section ── */
+  .video-section {
+    background: #fff;
+    padding: var(--section-pad) 0;
+  }
+
+  .video-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,85,165,0.1);
+  }
+
+  .video-wrap iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 560 / 314;
+    display: block;
+  }
+
+  .bristol-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--space-3xl, 5rem);
+    margin-top: var(--space-2xl);
+  }
+
+  .bristol-main h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0 0 var(--space-m);
+  }
+
+  .bristol-main h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: var(--space-xl) 0 var(--space-s);
+  }
+
+  .bristol-main p {
+    color: var(--concrete);
+    line-height: 1.75;
+    margin-bottom: var(--space-s);
+  }
+
+  .service-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .service-list li {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid rgba(26,35,50,.08);
+    color: var(--concrete);
+  }
+
+  .service-list li a {
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .service-list li a:hover {
+    text-decoration: underline;
+  }
+
+  .trust-card {
+    background: var(--stone);
+    padding: var(--space-xl);
+    border-radius: 8px;
+  }
+
+  .trust-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: var(--space-s) 0 var(--space-m);
+  }
+
+  .trust-card p {
+    font-size: 0.95rem;
+    color: var(--concrete);
+    line-height: 1.7;
+    margin-bottom: var(--space-m);
+  }
+
+  .trust-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--space-l);
+  }
+
+  .trust-list li {
+    padding: var(--space-xs) 0;
+    padding-left: 1.4rem;
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--concrete);
+  }
+
+  .trust-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .btn--primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--accent);
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+
+  .btn--primary:hover {
+    background: var(--accent-dim);
+  }
+
+  @media (max-width: 960px) {
+    .bristol-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+</style>

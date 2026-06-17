@@ -1,7 +1,6 @@
 ---
-// TestimonialBlock.astro — Premium testimonial card
-// Gold opening quote mark, stars, avatar initials, card shell
-// For "dark" variant (on dark backgrounds)
+// TestimonialBlock.astro — Clean testimonial card with stars
+// Stars at top, quote text, reviewer name
 
 interface Props {
   quote: string;
@@ -20,19 +19,13 @@ const {
   stars = 5,
   dark = false,
 } = Astro.props;
-
-// Build initials from name
-const initials = name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
 ---
 
-<blockquote class:list={['testimonial-card', dark && 'testimonial-card--dark']}>
-  {/* Opening quote mark */}
-  <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
-
+<div class:list={['testimonial-card', dark && 'testimonial-card--dark']}>
   {/* Star rating */}
   <span class="testimonial-card__stars" role="img" aria-label={`${stars} out of 5`}>
     {Array.from({ length: 5 }).map((_, i) => (
-      <svg class:list={['testimonial-card__star', i < stars && 'testimonial-card__star--filled']} width="14" height="14" viewBox="0 0 24 24" fill="none">
+      <svg class:list={['testimonial-card__star', i < stars && 'testimonial-card__star--filled']} width="16" height="16" viewBox="0 0 24 24" fill="none">
         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill={i < stars ? 'currentColor' : 'none'} stroke="currentColor" stroke-width="1.5"/>
       </svg>
     ))}
@@ -40,8 +33,8 @@ const initials = name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 
 
   <p class:list={['testimonial-card__quote', dark && 'testimonial-card__quote--dark']}>&ldquo;{quote}&rdquo;</p>
 
-  <footer class="testimonial-card__footer">
-    <div class="testimonial-card__avatar">{initials}</div>
+  <div class="testimonial-card__footer">
+    <div class="testimonial-card__avatar">{name.charAt(0)}</div>
     <div class="testimonial-card__meta">
       <cite class:list={['testimonial-card__name', dark && 'testimonial-card__name--dark']}>{name}</cite>
       {(role || location) && (
@@ -52,60 +45,45 @@ const initials = name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 
         </span>
       )}
     </div>
-  </footer>
-</blockquote>
+  </div>
+</div>
 
 <style>
   .testimonial-card {
-    position: relative;
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.06);
-    border-radius: 0.5rem;
-    padding: var(--space-xl) var(--space-l) var(--space-l);
+    border-radius: 8px;
+    padding: var(--space-l);
     display: flex;
     flex-direction: column;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
   .testimonial-card:hover {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 85, 165, 0.08);
     transform: translateY(-2px);
   }
 
   .testimonial-card--dark {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
   }
 
   .testimonial-card--dark:hover {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 
-  /* Opening quote mark */
-  .testimonial-card__mark {
-    font-family: var(--font-display);
-    font-size: 4.5rem;
-    line-height: 0.8;
-    color: var(--accent);
-    position: absolute;
-    top: 0.35rem;
-    left: var(--space-l);
-    opacity: 0.7;
-    pointer-events: none;
-  }
-
-  /* Star rating */
+  /* Star rating at top */
   .testimonial-card__stars {
     display: flex;
     gap: 0.15rem;
     margin-bottom: var(--space-m);
-    margin-top: 1.8rem;
   }
 
   .testimonial-card__star {
     color: var(--accent);
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
   }
 
   .testimonial-card__star--filled {
@@ -114,8 +92,8 @@ const initials = name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 
 
   /* Quote text */
   .testimonial-card__quote {
-    font-size: clamp(1rem, 1.1vw, 1.15rem);
-    font-weight: 300;
+    font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    font-weight: 400;
     font-style: italic;
     line-height: 1.75;
     color: var(--chalk);
@@ -135,17 +113,16 @@ const initials = name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 
     gap: 0.75rem;
   }
 
-  /* Avatar with initials */
+  /* Avatar circle */
   .testimonial-card__avatar {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
-    background: var(--navy);
-    color: var(--accent);
+    background: var(--accent);
+    color: #fff;
     font-family: var(--font-display);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    font-weight: 800;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -153,8 +130,8 @@ const initials = name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 
   }
 
   .testimonial-card--dark .testimonial-card__avatar {
-    background: var(--accent);
-    color: var(--navy);
+    background: rgba(255,255,255,0.12);
+    color: #fff;
   }
 
   .testimonial-card__meta {
@@ -165,11 +142,11 @@ const initials = name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 
 
   .testimonial-card__name {
     font-family: var(--font-display);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-style: normal;
     font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-transform: none;
     color: var(--chalk);
   }
 

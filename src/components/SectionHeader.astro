@@ -1,6 +1,6 @@
 ---
 // SectionHeader.astro — Reusable section intro block
-// Gold eyebrow + Bebas heading + optional body
+// Blue pill eyebrow + Montserrat heading + optional body
 // Used as the opening pattern for every content section beneath the hero
 
 interface Props {
@@ -8,8 +8,8 @@ interface Props {
   heading: string;
   body?: string;
   align?: 'left' | 'center';
-  dark?: boolean;        // Set true when section bg is dark (#0A1628 / #141A24 / #1A2332)
-  id?: string;            // Optional HTML id for anchor linking
+  dark?: boolean;
+  id?: string;
 }
 
 const {
@@ -23,8 +23,7 @@ const {
 ---
 
 <div class:list={['sh', `sh--${align}`, dark && 'sh--dark']} id={id}>
-  <span class="sh__rule"></span>
-  <span class="t-label" class:list={[dark && 'sh__label--dark']}>{eyebrow}</span>
+  <span class="sh__eyebrow-pill">{eyebrow}</span>
   <h2 class="sh__heading" set:html={heading} />
   {body && <p class:list={['sh__body', dark && 'sh__body--dark']}>{body}</p>}
 </div>
@@ -41,25 +40,38 @@ const {
     text-align: center;
   }
 
-  .sh--center .sh__rule {
-    margin-inline: auto;
-  }
-
-  /* Gold accent bar */
-  .sh__rule {
-    display: block;
-    width: 40px;
-    height: 2px;
-    background: var(--accent);
+  /* ── Eyebrow pill ── */
+  .sh__eyebrow-pill {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    background: rgba(0,85,165,0.1);
+    color: var(--accent);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 100px;
     margin-bottom: var(--space-m);
   }
 
-  /* Heading — uses t-heading token scale */
+  .sh--center .sh__eyebrow-pill {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sh--dark .sh__eyebrow-pill {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+  }
+
+  /* ── Heading — Montserrat 800, mixed case ── */
   .sh__heading {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 3.5vw, 4rem);
-    line-height: 1;
-    text-transform: uppercase;
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    text-transform: none;
     color: var(--chalk);
     margin-top: var(--space-xs);
     margin-bottom: 0;
@@ -71,8 +83,8 @@ const {
 
   /* Body text */
   .sh__body {
-    font-size: clamp(1.1rem, 1.4vw, 1.35rem);
-    font-weight: 300;
+    font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+    font-weight: 400;
     line-height: 1.75;
     color: var(--concrete);
     margin-top: var(--space-m);
@@ -81,11 +93,6 @@ const {
 
   .sh__body--dark {
     color: rgba(255, 255, 255, 0.72);
-  }
-
-  /* Override t-label colour for dark context */
-  :global(.sh--dark) .t-label {
-    color: var(--accent) !important;
   }
 
   @media (max-width: 768px) {

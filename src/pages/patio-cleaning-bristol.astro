@@ -1,0 +1,260 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import TrustMetrics from '../components/TrustMetrics.astro';
+import ImageCTA from '../components/ImageCTA.astro';
+
+const title = 'Patio Cleaning Bristol';
+const description = 'Professional patio cleaning in Bristol. Jet washing for sandstone, porcelain, slate and concrete patios. Algae, moss and black spot removal. Call 07474 939 398 for a free quote.';
+
+const faqs = [
+  {
+    q: 'Do you clean patios across all Bristol postcodes?',
+    a: 'Yes. We cover all Bristol postcodes from BS1 to BS16, including Clifton, Redland, Bishopston, Henleaze, Kingswood, Fishponds, Brislington, Bedminster, Southville, Knowle and surrounding areas.'
+  },
+  {
+    q: 'Will pressure washing damage my Indian sandstone patio?',
+    a: 'No. We use a wide-fan lance at controlled pressure on natural stone. This lifts dirt and algae without etching or flaking the surface. Delicate porcelain and slate are cleaned at even lower pressures to protect the finish.'
+  },
+  {
+    q: 'Why does my Bristol patio grow so much algae?',
+    a: "Bristol's wet climate and prevailing south-westerly rain makes it one of the worst cities in the UK for algae and moss growth on outdoor surfaces. North-facing and shaded patios are particularly badly affected. Our biocide post-treatment significantly slows regrowth after cleaning."
+  },
+  {
+    q: 'How often should I have my patio cleaned?',
+    a: 'Most Bristol patios benefit from a professional clean every 12–18 months. North-facing or shaded patios that collect algae and moss quickly may need annual cleaning to keep them safe and looking their best.'
+  },
+  {
+    q: 'Can you remove black spot staining on my sandstone patio?',
+    a: 'Yes. Black spots are caused by lichen embedded in the stone pores. We apply a specialist biocide pre-treatment that kills the lichen, then follow with jet washing to lift the staining. Stubborn spots may require a second treatment.'
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+  }))
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Patio Cleaning Bristol",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "RG Extreme Pressure",
+    "telephone": "+447474939398",
+    "address": { "@type": "PostalAddress", "addressLocality": "Bath", "addressRegion": "Somerset" }
+  },
+  "areaServed": { "@type": "City", "name": "Bristol" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "111" }
+};
+---
+
+<Base {title} {description} serviceSchema={serviceSchema}>
+  <Hero
+    image="/images/before-after/roof-after-2.webp"
+    overlay="blue"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Bristol', href: '/bristol' }, { label: 'Patio Cleaning' }]}
+    eyebrow="Professional Patio Cleaning Bristol"
+    heading="Patio Cleaning Bristol"
+    body="Bring your Bristol patio back to life with professional jet washing. Algae, moss and slippery growth removed from sandstone, porcelain, slate and concrete — safely, without damaging delicate surfaces. 111 five-star reviews."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  <TrustMetrics metrics={[
+    { value: '111', label: 'Five-Star Reviews' },
+    { value: '10', label: 'Years Experience' },
+    { value: 'Insured', label: 'Fully Insured' },
+    { value: '5.2K', label: 'FB Followers' },
+    { value: 'Free', label: 'Free Quotes' },
+  ]} />
+
+  <section class="service-body">
+    <div class="container">
+      <div class="service-body__grid">
+        <div class="service-body__main">
+          <SectionHeader
+            eyebrow="Patio Cleaning Across Bristol"
+            heading="Professional Patio Jet Washing in Bristol"
+            body="Bristol's damp climate means patios grow algae and moss at a relentless pace. A slippery, stained patio isn't just an eyesore — it's a hazard. Our professional patio cleaning removes every trace of growth and staining, with pressure carefully matched to your surface type to avoid any damage."
+          />
+
+          <div class="service-features">
+            <h3 class="service-features__title">What Our Bristol Patio Cleaning Includes</h3>
+            <ul class="service-features__list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Indian sandstone patio cleaning</strong> — gentle but effective pressure wash that lifts ingrained dirt without flaking the surface</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Porcelain and slate tile washing</strong> — low-pressure clean that removes algae and staining from delicate surfaces</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Concrete slab and flagstone clean</strong> — heavier pressure to strip weather staining and organic growth</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Algae and moss treatment</strong> — biocide application kills spores and slows regrowth significantly</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Black spot lichen removal</strong> — specialist treatment for stubborn lichen staining on sandstone</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Pointing and joint clean</strong> — we flush out debris from between paving joints and slabs</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="service-process">
+            <SectionHeader eyebrow="Our Process" heading="How It Works" />
+            <ol class="process-steps">
+              <li><strong>Free assessment</strong> — we identify your patio type and any problem areas</li>
+              <li><strong>Pre-treatment</strong> — biocide or specialist cleaner applied to stubborn growth and stains</li>
+              <li><strong>Jet washing</strong> — pressure matched to your surface type for a thorough, safe clean</li>
+              <li><strong>Rinse and tidy</strong> — all debris washed away, area left clean and ready to use</li>
+              <li><strong>Optional biocide spray</strong> — anti-growth treatment applied to slow regrowth</li>
+            </ol>
+          </div>
+
+          <div class="areas-covered">
+            <SectionHeader eyebrow="Bristol Coverage" heading="Bristol Areas We Serve" />
+            <p class="areas-text">Clifton, Redland, Cotham, Montpelier, Bishopston, Westbury Park, Henleaze, Stoke Bishop, Fishponds, Stapleton, Downend, Emersons Green, Kingswood, Hanham, Brislington, Totterdown, Knowle, Bedminster, Southville, Ashton, Sea Mills, Shirehampton, Portishead and all surrounding Bristol postcodes (BS1–BS16).</p>
+          </div>
+        </div>
+
+        <aside class="service-body__sidebar">
+          <div class="sidebar-card">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">Free Quote</span>
+            <h3 class="sidebar-card__heading">Ready to Revive Your Patio?</h3>
+            <p class="sidebar-card__body">Call us or request a free, no-obligation quote. We cover all Bristol postcodes and surrounding areas.</p>
+            <a href="/contact" class="btn btn--primary">Get a Free Quote <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="tel:07474939398" class="sidebar-card__phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> 07474 939 398</a>
+          </div>
+          <div class="sidebar-card sidebar-card--trust">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">Trusted Local Service</span>
+            <div class="sidebar-trust">
+              <div class="sidebar-trust__item"><span class="sidebar-trust__value">111</span><span class="sidebar-trust__label">Five-Star Google Reviews</span></div>
+              <div class="sidebar-trust__item"><span class="sidebar-trust__value">10</span><span class="sidebar-trust__label">Years Experience</span></div>
+              <div class="sidebar-trust__item"><span class="sidebar-trust__value">&#10003;</span><span class="sidebar-trust__label">Fully Insured</span></div>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">More Bristol Services</span>
+            <h3 class="sidebar-card__heading">Also in Bristol</h3>
+            <ul class="sidebar-links">
+              <li><a href="/driveway-cleaning-bristol">Driveway Cleaning Bristol</a></li>
+              <li><a href="/gutter-cleaning-bristol">Gutter Cleaning Bristol</a></li>
+              <li><a href="/roof-cleaning-bristol">Roof Cleaning Bristol</a></li>
+              <li><a href="/render-cleaning-bath">Render Cleaning</a></li>
+              <li><a href="/bristol/">All Bristol Services</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <SectionHeader eyebrow="Common Questions" heading="Patio Cleaning Bristol FAQ" />
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-item__q">{faq.q}</summary>
+            <p class="faq-item__a">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── Bristol District Links ── */}
+  <section class="district-links-section">
+    <div class="container">
+      <h2 class="district-links__heading">Patio Cleaning Across Bristol</h2>
+      <p class="district-links__intro">We cover every Bristol district. Click your area for a dedicated local page.</p>
+      <ul class="district-links__grid">
+        <li><a href="/patio-cleaning/clifton-bristol">Patio Cleaning Clifton</a></li>
+        <li><a href="/patio-cleaning/redland-bristol">Patio Cleaning Redland</a></li>
+        <li><a href="/patio-cleaning/bishopston-bristol">Patio Cleaning Bishopston</a></li>
+        <li><a href="/patio-cleaning/henleaze-bristol">Patio Cleaning Henleaze</a></li>
+        <li><a href="/patio-cleaning/kingswood-bristol">Patio Cleaning Kingswood</a></li>
+        <li><a href="/patio-cleaning/fishponds-bristol">Patio Cleaning Fishponds</a></li>
+        <li><a href="/patio-cleaning/brislington-bristol">Patio Cleaning Brislington</a></li>
+        <li><a href="/patio-cleaning/bedminster-bristol">Patio Cleaning Bedminster</a></li>
+        <li><a href="/patio-cleaning/downend-bristol">Patio Cleaning Downend</a></li>
+        <li><a href="/patio-cleaning/westbury-on-trym-bristol">Patio Cleaning Westbury-on-Trym</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <ImageCTA
+    heading="Bristol's Patio Cleaning Specialists"
+    body="Get a free, no-obligation quote from a fully insured, five-star-rated jet washing service. Covering all Bristol postcodes. Call 07474 939 398."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    image="/images/before-after/roof-after-2.webp"
+  />
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</Base>
+
+<style>
+  .service-body { padding: var(--section-pad) 0; }
+  .service-body__grid { display: grid; grid-template-columns: 7fr 4fr; gap: var(--space-3xl, 5rem); align-items: start; }
+  .service-features { margin-top: var(--space-2xl); }
+  .service-features__title { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.1; text-transform: uppercase; color: var(--chalk); margin: 0 0 var(--space-m); }
+  .service-features__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-m); }
+  .service-features__list li { display: flex; align-items: flex-start; gap: var(--space-s); font-size: 0.95rem; line-height: 1.7; color: var(--concrete); }
+  .service-features__list li svg { flex-shrink: 0; margin-top: 0.35em; }
+  .service-features__list li strong { color: var(--chalk); }
+  .service-process { margin-top: var(--space-3xl); }
+  .areas-covered { margin-top: var(--space-3xl); }
+  .areas-text { font-size: 0.95rem; line-height: 1.8; color: var(--concrete); }
+  .process-steps { list-style: none; padding: 0; margin: 0; counter-reset: step; display: flex; flex-direction: column; gap: var(--space-m); }
+  .process-steps li { counter-increment: step; display: flex; align-items: flex-start; gap: var(--space-s); font-size: 0.95rem; line-height: 1.7; color: var(--concrete); }
+  .process-steps li::before { content: counter(step); font-family: var(--font-display); font-size: 1.8rem; line-height: 1; color: var(--accent); flex-shrink: 0; min-width: 2rem; }
+  .process-steps li strong { color: var(--chalk); }
+  .service-body__sidebar { display: flex; flex-direction: column; gap: var(--space-xl); position: sticky; top: 6rem; }
+  .sidebar-card { background: var(--stone); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-s); }
+  .sidebar-card--trust { background: var(--navy); }
+  .sidebar-card__heading { font-family: var(--font-display); font-size: clamp(1.1rem, 1.5vw, 1.4rem); line-height: 1.1; text-transform: uppercase; color: var(--chalk); margin: 0; }
+  .sidebar-card--trust .sidebar-card__heading { color: #fff; }
+  .sidebar-card__body { font-size: 0.92rem; line-height: 1.7; color: var(--concrete); margin: 0; }
+  .sidebar-card--trust .sidebar-card__body { color: rgba(255,255,255,0.65); }
+  .sidebar-card .btn { margin-top: var(--space-xs); align-self: flex-start; }
+  .sidebar-card__phone { display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.04em; color: var(--accent); text-decoration: none; margin-top: var(--space-xs); }
+  .sidebar-card__phone svg { flex-shrink: 0; }
+  .sidebar-trust { display: flex; flex-direction: column; gap: var(--space-m); margin-top: var(--space-s); }
+  .sidebar-trust__item { display: flex; align-items: center; gap: var(--space-s); }
+  .sidebar-trust__value { font-family: var(--font-display); font-size: 2rem; line-height: 1; color: var(--accent); }
+  .sidebar-trust__label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .sidebar-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .sidebar-links a { font-size: 0.9rem; color: var(--concrete); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 0.3rem; }
+  .sidebar-links a::before { content: '\2192'; color: var(--accent); font-size: 0.8rem; }
+  .sidebar-links a:hover { color: var(--accent); }
+  .faq-section { padding: var(--section-pad) 0; }
+  .faq-list { max-width: 72ch; display: flex; flex-direction: column; gap: 0; }
+  .faq-item { border-bottom: 1px solid var(--stone); }
+  .faq-item__q { font-family: var(--font-body); font-size: 1rem; font-weight: 500; line-height: 1.5; color: var(--chalk); padding: var(--space-m) 0; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .faq-item__q::-webkit-details-marker { display: none; }
+  .faq-item__q::after { content: '+'; font-family: var(--font-display); font-size: 1.5rem; color: var(--accent); flex-shrink: 0; margin-left: var(--space-s); }
+  .faq-item[open] .faq-item__q::after { content: '\2212'; }
+  .faq-item__a { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--concrete); padding: 0 0 var(--space-m); max-width: 60ch; }
+  @media (max-width: 960px) { .service-body__grid { grid-template-columns: 1fr; gap: var(--space-2xl); } .service-body__sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); } }
+  @media (max-width: 640px) { .service-body__sidebar { grid-template-columns: 1fr; } }
+</style>

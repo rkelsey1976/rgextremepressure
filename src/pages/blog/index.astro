@@ -4,7 +4,9 @@ import Hero from '../../components/Hero.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog');
-const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = allPosts
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 function formatDate(date: Date) {
   return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -12,59 +14,64 @@ function formatDate(date: Date) {
 ---
 
 <Base
-  title="Building Advice for Bath Homeowners"
-  description="Practical guides for Bath homeowners — loft conversions, extensions, planning permission, heritage restoration and property maintenance across Bath & BANES."
-  preloadImage="/images/hero-james-bath-property-2.webp"
+  title="Jet Washing Advice & Guides"
+  description="Practical guides for Bath and Bristol homeowners — driveway cleaning, gutter maintenance, roof moss removal and external property care."
+  preloadImage="/images/hero-home.webp"
 >
-
   <Hero
-    image="/images/hero-james-bath-property-2.webp"
-    overlay="left"
+    image="/images/before-after/roof-after-2.webp"
+    overlay="blue"
     minHeight="compact"
     eyebrow="Advice & Guides"
-    heading="Building Advice<br/>for Bath Homeowners"
-    body="Practical, honest guidance on extensions, loft conversions, heritage restoration and property maintenance across Bath & BANES."
+    heading="Jet Washing Advice<br/>for Bath Homeowners"
+    body="Practical guidance on driveway cleaning, gutter maintenance, roof moss removal and keeping your property exterior in top condition."
   />
 
   {/* ── Posts Grid ── */}
   <section class="blog-grid-section">
     <div class="container">
-      <div class="blog-grid">
-        {posts.map(post => (
-          <article class="blog-card">
-            {post.data.image && (
-              <a href={`/blog/${post.id}`} class="blog-card__img-wrap" tabindex="-1" aria-hidden="true">
-                <img
-                  src={post.data.image}
-                  alt=""
-                  width="800"
-                  height="450"
-                  loading="lazy"
-                  class="blog-card__img"
-                />
-              </a>
-            )}
-            <div class="blog-card__body">
-              <span class="blog-card__cat t-label">{post.data.category}</span>
-              <h2 class="blog-card__title">
-                <a href={`/blog/${post.id}`}>{post.data.title}</a>
-              </h2>
-              <p class="blog-card__desc">{post.data.description}</p>
-              <div class="blog-card__footer">
-                <time class="blog-card__date" datetime={post.data.pubDate.toISOString()}>
-                  {formatDate(post.data.pubDate)}
-                </time>
-                <a href={`/blog/${post.id}`} class="blog-card__read">
-                  Read guide
-                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+      {posts.length > 0 ? (
+        <div class="blog-grid">
+          {posts.map(post => (
+            <article class="blog-card">
+              {post.data.image && (
+                <a href={`/blog/${post.id}`} class="blog-card__img-wrap" tabindex="-1" aria-hidden="true">
+                  <img
+                    src={post.data.image}
+                    alt=""
+                    width="800"
+                    height="450"
+                    loading="lazy"
+                    class="blog-card__img"
+                  />
                 </a>
+              )}
+              <div class="blog-card__body">
+                <span class="blog-card__cat t-label">{post.data.category}</span>
+                <h2 class="blog-card__title">
+                  <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                </h2>
+                <p class="blog-card__desc">{post.data.description}</p>
+                <div class="blog-card__footer">
+                  <time class="blog-card__date" datetime={post.data.pubDate.toISOString()}>
+                    {formatDate(post.data.pubDate)}
+                  </time>
+                  <a href={`/blog/${post.id}`} class="blog-card__read">
+                    Read guide
+                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                </div>
               </div>
-            </div>
-          </article>
-        ))}
-      </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="blog-empty">
+          <p class="blog-empty__text">Guides coming soon. In the meantime, <a href="/contact">get a free quote</a> or browse our <a href="/services">services</a>.</p>
+        </div>
+      )}
     </div>
   </section>
 
@@ -74,7 +81,7 @@ function formatDate(date: Date) {
   /* ── Grid ── */
   .blog-grid-section {
     padding: var(--section-pad) 0;
-    background: var(--stone);
+    background: var(--surface);
   }
 
   .blog-grid {
@@ -88,6 +95,8 @@ function formatDate(date: Date) {
     background: #fff;
     display: flex;
     flex-direction: column;
+    border-radius: var(--radius);
+    overflow: hidden;
   }
 
   .blog-card__img-wrap {
@@ -149,7 +158,7 @@ function formatDate(date: Date) {
     align-items: center;
     justify-content: space-between;
     padding-top: var(--space-m);
-    border-top: 1px solid var(--stone);
+    border-top: 1px solid rgba(0,85,165,0.08);
     margin-top: auto;
   }
 
@@ -173,6 +182,24 @@ function formatDate(date: Date) {
   }
 
   .blog-card__read:hover { gap: 0.7rem; }
+
+  /* ── Empty state ── */
+  .blog-empty {
+    text-align: center;
+    padding: var(--space-2xl) 0;
+  }
+
+  .blog-empty__text {
+    font-size: 1.05rem;
+    color: var(--concrete);
+    line-height: 1.6;
+  }
+
+  .blog-empty__text a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 
   @media (max-width: 900px) {
     .blog-grid { grid-template-columns: repeat(2, 1fr); }

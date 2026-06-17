@@ -1,0 +1,583 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import TrustMetrics from '../components/TrustMetrics.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import ImageCTA from '../components/ImageCTA.astro';
+
+const title = 'Driveway Cleaning Bath';
+const description = 'Professional driveway cleaning in Bath. Jet washing for block paving, tarmac, concrete and resin drives. Oil stain removal, re-sanding and sealing. Call 07474 939 398.';
+
+const faqs = [
+  {
+    q: 'How much does driveway cleaning cost in Bath?',
+    a: 'Driveway cleaning typically starts from around £3 per square metre depending on surface type, condition and access. We provide free on-site quotes with no obligation.'
+  },
+  {
+    q: 'Will pressure washing damage my block paving?',
+    a: 'No. We adjust pressure and lance angle to suit each surface. Block paving is cleaned at a medium pressure that lifts dirt and moss without dislodging or etching the blocks. We always re-sand joints afterwards.'
+  },
+  {
+    q: 'How long does driveway cleaning take?',
+    a: 'A standard double driveway (approx 30m²) takes 2-4 hours. Larger driveways or heavily soiled surfaces may take a full day. We will advise on timing during your free quote.'
+  },
+  {
+    q: 'Do you offer driveway sealing after cleaning?',
+    a: 'Yes. We offer acrylic and polyurethane sealant applications for block paving. Sealing protects against oil stains, weed growth and colour fading — extending the life of your driveway.'
+  },
+  {
+    q: 'Will jet washing remove weeds from between my block paving?',
+    a: 'Yes. The jet wash lifts moss and weed growth from between the blocks. We then brush in fresh kiln-dried jointing sand to fill the joints and prevent immediate regrowth. For persistent weeds, we recommend a weed treatment before cleaning.'
+  },
+  {
+    q: 'What is the difference between acrylic and polyurethane sealant for block paving?',
+    a: 'Acrylic sealants last 2–3 years and are a cost-effective option for most driveways. Polyurethane sealants last 4–5 years, offer stronger protection against oil and fuel spills, and are better suited to driveways with heavy vehicle use. We will advise the right option for your surface during your free quote.'
+  },
+  {
+    q: 'How long before I can use my driveway after cleaning?',
+    a: 'You can walk on the surface within a few hours of re-sanding. If you opt for sealant, we recommend keeping vehicles off for 24 hours to allow full curing.'
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a
+    }
+  }))
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Driveway Cleaning Bath",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "RG Extreme Pressure",
+    "telephone": "+447474939398",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bath",
+      "addressRegion": "Somerset"
+    }
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Bath" },
+    { "@type": "City", "name": "Bristol" }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "111"
+  }
+};
+---
+
+<Base {title} {description} serviceSchema={serviceSchema}>
+  {/* ── Hero ── */}
+  <Hero
+    image="/images/before-after/roof-after-2.webp"
+    overlay="blue"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Driveway Cleaning' }]}
+    eyebrow="Professional Driveway Cleaning"
+    heading="Driveway Cleaning Bath"
+    body="Restore your driveway to look brand new. Professional jet washing removes years of dirt, oil stains, tyre marks and weed growth from any surface — block paving, tarmac, concrete or resin."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  {/* ── Trust bar ── */}
+  <TrustMetrics metrics={[
+    { value: '111', label: 'Five-Star Reviews' },
+    { value: '10', label: 'Years Experience' },
+    { value: 'Insured', label: 'Fully Insured' },
+    { value: '5.2K', label: 'FB Followers' },
+    { value: 'Free', label: 'Free Quotes' },
+  ]} />
+
+  {/* ── What's included ── */}
+  <section class="service-body">
+    <div class="container">
+      <div class="service-body__grid">
+        <div class="service-body__main">
+          <SectionHeader
+            eyebrow="What We Do"
+            heading="Professional Driveway Jet Washing"
+            body="Your driveway is the first thing visitors see. Years of vehicle traffic, weather exposure and organic growth leave block paving, tarmac and concrete looking tired and stained. Our professional jet washing service strips away the grime and brings the surface back to life."
+          />
+
+          <div class="service-features">
+            <h3 class="service-features__title">What Our Driveway Cleaning Includes</h3>
+            <ul class="service-features__list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Block paving deep clean</strong> — high-pressure wash removes ingrained dirt, algae and moss from between joints</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Oil stain and tyre mark removal</strong> — specialist pre-treatment lifts stubborn automotive stains</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Kiln-dried sand re-jointing</strong> — stabilises block paving joints after cleaning</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Tarmac and concrete wash</strong> — careful pressure adjustment protects the surface while removing growth</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Resin drive gentle clean</strong> — low-pressure wash that will not damage resin-bound surfaces</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Sealant application</strong> — optional protective seal to guard against future staining and weed growth</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Edge restraint check and repair</strong> — we inspect and re-fix any loose or damaged edge courses on block paving</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="service-process">
+            <SectionHeader
+              eyebrow="Our Process"
+              heading="How It Works"
+            />
+            <ol class="process-steps">
+              <li><strong>Free site visit</strong> — we assess surface type, condition and any problem areas</li>
+              <li><strong>Pre-treatment</strong> — oil stains and stubborn marks treated with specialist agents</li>
+              <li><strong>Jet washing</strong> — professional-grade pressure cleaning at the right pressure for your surface</li>
+              <li><strong>Re-sanding</strong> — kiln-dried jointing sand brushed into block paving joints</li>
+              <li><strong>Final inspection</strong> — we walk the job with you to make sure you are happy</li>
+            </ol>
+          </div>
+        </div>
+
+        <aside class="service-body__sidebar">
+          <div class="sidebar-card">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">Free Quote</span>
+            <h3 class="sidebar-card__heading">Ready to Transform Your Driveway?</h3>
+            <p class="sidebar-card__body">Call us or request a free, no-obligation quote today. We cover all of Bath, Bristol and surrounding areas.</p>
+            <a href="/contact" class="btn btn--primary">
+              Get a Free Quote
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="tel:07474939398" class="sidebar-card__phone">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              07474 939 398
+            </a>
+          </div>
+
+          <div class="sidebar-card sidebar-card--trust">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">Trusted Local Service</span>
+            <div class="sidebar-trust">
+              <div class="sidebar-trust__item">
+                <span class="sidebar-trust__value">111</span>
+                <span class="sidebar-trust__label">Five-Star Google Reviews</span>
+              </div>
+              <div class="sidebar-trust__item">
+                <span class="sidebar-trust__value">10</span>
+                <span class="sidebar-trust__label">Years Experience</span>
+              </div>
+              <div class="sidebar-trust__item">
+                <span class="sidebar-trust__value">&#10003;</span>
+                <span class="sidebar-trust__label">Fully Insured</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">Other Services</span>
+            <h3 class="sidebar-card__heading">Explore Our Services</h3>
+            <ul class="sidebar-links">
+              <li><a href="/patio-cleaning-bath">Patio Cleaning Bath</a></li>
+              <li><a href="/gutter-cleaning-bath">Gutter Cleaning Bath</a></li>
+              <li><a href="/roof-cleaning-bath">Roof Cleaning Bath</a></li>
+              <li><a href="/render-cleaning-bath">Render Cleaning Bath</a></li>
+              <li><a href="/bristol/">Jet Washing Bristol</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Before / After ── */}
+  <section class="before-after-section">
+    <div class="container">
+      <SectionHeader
+        eyebrow="See the Difference"
+        heading="Before and After"
+        body="See the difference professional driveway cleaning can achieve."
+        align="center"
+      />
+      <div class="before-after-wrap">
+        <img src="/images/before-after/wix-driveway.webp" alt="Driveway before and after professional jet washing" class="before-after-composite" />
+      </div>
+      <div class="before-after-wrap" style="margin-top: var(--space-xl)">
+        <BeforeAfter beforeSrc="/images/block-paving-before.webp" afterSrc="/images/block-paving-after.webp" beforeAlt="Block paving before professional cleaning" afterAlt="Block paving after professional cleaning" caption="Block paving driveway in Bath — deep clean, re-sand and seal" />
+      </div>
+    </div>
+  </section>
+
+  {/* ── FAQ ── */}
+  <section class="faq-section">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Common Questions"
+        heading="Driveway Cleaning FAQ"
+      />
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-item__q">{faq.q}</summary>
+            <p class="faq-item__a">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── Bath District Links ── */}
+  <section class="district-links-section">
+    <div class="container">
+      <h2 class="district-links__heading">Driveway Cleaning Across Bath</h2>
+      <p class="district-links__intro">We cover every Bath district. Click your area for a dedicated local page with specific information and pricing.</p>
+      <ul class="district-links__grid">
+        <li><a href="/driveway-cleaning/oldfield-park-bath">Driveway Cleaning Oldfield Park</a></li>
+        <li><a href="/driveway-cleaning/combe-down-bath">Driveway Cleaning Combe Down</a></li>
+        <li><a href="/driveway-cleaning/bear-flat-bath">Driveway Cleaning Bear Flat</a></li>
+        <li><a href="/driveway-cleaning/newbridge-bath">Driveway Cleaning Newbridge</a></li>
+        <li><a href="/driveway-cleaning/twerton-bath">Driveway Cleaning Twerton</a></li>
+        <li><a href="/driveway-cleaning/weston-bath">Driveway Cleaning Weston</a></li>
+      </ul>
+    </div>
+  </section>
+
+  {/* ── CTA ── */}
+  <ImageCTA
+    heading="Ready for a Spotless Driveway?"
+    body="Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured. Eco-friendly products."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    image="/images/before-after/roof-after-2.webp"
+  />
+
+  {/* ── FAQ Schema ── */}
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</Base>
+
+<style>
+  /* ── Service body grid ── */
+  .service-body {
+    padding: var(--section-pad) 0;
+  }
+
+  .service-body__grid {
+    display: grid;
+    grid-template-columns: 7fr 4fr;
+    gap: var(--space-3xl, 5rem);
+    align-items: start;
+  }
+
+  /* ── Features ── */
+  .service-features {
+    margin-top: var(--space-2xl);
+  }
+
+  .service-features__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0 0 var(--space-m);
+  }
+
+  .service-features__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .service-features__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-s);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--concrete);
+  }
+
+  .service-features__list li svg {
+    flex-shrink: 0;
+    margin-top: 0.35em;
+  }
+
+  .service-features__list li strong {
+    color: var(--chalk);
+  }
+
+  /* ── Process ── */
+  .service-process {
+    margin-top: var(--space-3xl);
+  }
+
+  .process-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: step;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .process-steps li {
+    counter-increment: step;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-s);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--concrete);
+  }
+
+  .process-steps li::before {
+    content: counter(step);
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    line-height: 1;
+    color: var(--accent);
+    flex-shrink: 0;
+    min-width: 2rem;
+  }
+
+  .process-steps li strong {
+    color: var(--chalk);
+  }
+
+  /* ── Sidebar ── */
+  .service-body__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    position: sticky;
+    top: 6rem;
+  }
+
+  .sidebar-card {
+    background: var(--stone);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+
+  .sidebar-card--trust {
+    background: var(--navy);
+  }
+
+  .sidebar-card__heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .sidebar-card--trust .sidebar-card__heading {
+    color: #fff;
+  }
+
+  .sidebar-card__body {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--concrete);
+    margin: 0;
+  }
+
+  .sidebar-card--trust .sidebar-card__body {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .sidebar-card .btn {
+    margin-top: var(--space-xs);
+    align-self: flex-start;
+  }
+
+  .sidebar-card__phone {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    text-decoration: none;
+    margin-top: var(--space-xs);
+  }
+
+  .sidebar-card__phone svg {
+    flex-shrink: 0;
+  }
+
+  /* ── Sidebar trust ── */
+  .sidebar-trust {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    margin-top: var(--space-s);
+  }
+
+  .sidebar-trust__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+  }
+
+  .sidebar-trust__value {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .sidebar-trust__label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  /* ── Sidebar links ── */
+  .sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sidebar-links a {
+    font-size: 0.9rem;
+    color: var(--concrete);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .sidebar-links a::before {
+    content: '\2192';
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  .sidebar-links a:hover {
+    color: var(--accent);
+  }
+
+  /* ── Before/After ── */
+  .before-after-section {
+    padding: var(--section-pad) 0;
+    background: var(--stone);
+  }
+  .before-after-wrap { max-width: 900px; margin: 0 auto; }
+  .before-after-composite { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,.1); }
+
+  /* ── FAQ ── */
+  .faq-section {
+    padding: var(--section-pad) 0;
+  }
+
+  .faq-list {
+    max-width: 72ch;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--stone);
+  }
+
+  .faq-item__q {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--chalk);
+    padding: var(--space-m) 0;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .faq-item__q::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item__q::after {
+    content: '+';
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-left: var(--space-s);
+  }
+
+  .faq-item[open] .faq-item__q::after {
+    content: '\2212';
+  }
+
+  .faq-item__a {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    padding: 0 0 var(--space-m);
+    max-width: 60ch;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 960px) {
+    .service-body__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .service-body__sidebar {
+      position: static;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-l);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .service-body__sidebar {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
