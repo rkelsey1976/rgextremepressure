@@ -64,7 +64,7 @@ const serviceSchema = servicesData.map(s => ({
     "geo": { "@type": "GeoCoordinates", "latitude": location.lat, "longitude": location.lng },
     "areaServed": { "@type": "City", "name": location.townName },
     "hasOfferCatalog": { "@type": "OfferCatalog", "name": `Jet Washing Services in ${location.townName}`, "itemListElement": serviceSchema },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "bestRating": "5", "reviewCount": "111" }
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "bestRating": "5", "reviewCount": "27" }
   })} />
 
   {/* ── Hero ── */}
@@ -81,7 +81,7 @@ const serviceSchema = servicesData.map(s => ({
 
   {/* ── Trust Metrics ── */}
   <TrustMetrics metrics={[
-    { value: '111', label: 'Five-Star Reviews' },
+    { value: '27', label: 'Five-Star Reviews' },
     { value: '10', label: 'Years Experience' },
     { value: 'Insured', label: 'Fully Insured' },
     { value: '5.2K', label: 'FB Followers' },

@@ -7,12 +7,13 @@ import ImageCTA from '../components/ImageCTA.astro';
 import TrustMetrics from '../components/TrustMetrics.astro';
 import ThreeBestRated from '../components/ThreeBestRated.astro';
 import FbVideoFacade from '../components/FbVideoFacade.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
 import { servicesData } from '../data/services';
 import { googleReviews } from '../data/reviews';
 ---
 
 <Base title="Jet Washing Bath"
-  description="Professional jet washing in Bath. Driveway cleaning, patio cleaning, gutter clearing, roof cleaning, render cleaning and block paving. 111 five-star reviews. Call 07474 939 398."
+  description="Professional jet washing in Bath. Driveway cleaning, patio cleaning, gutter clearing, roof cleaning, render cleaning and block paving. 27 five-star reviews. Call 07474 939 398."
   preloadImage="/images/hero-home.webp">
 
   {/*
@@ -25,7 +26,7 @@ import { googleReviews } from '../data/reviews';
     overlay="blue"
     eyebrow="Bath · Bristol · Somerset"
     heading="Professional Jet Washing &amp; Pressure Washing in Bath"
-    body="Professional jet washing and specialist cleaning services for driveways, patios, roofs, gutters, render and block paving. 111 five-star reviews. Fully insured. Free quotes."
+    body="Professional jet washing and specialist cleaning services for driveways, patios, roofs, gutters, render and block paving. 27 five-star reviews. Fully insured. Free quotes."
     cta={{ label: 'Get a Free Quote', href: '/contact' }}
     ctaSecondary={{ label: 'View Services', href: '/services' }}
   />
@@ -36,7 +37,7 @@ import { googleReviews } from '../data/reviews';
     ═══════════════════════════════════════
   */}
   <TrustMetrics metrics={[
-    { value: '111', label: 'Five-Star Reviews' },
+    { value: '27', label: 'Five-Star Reviews' },
     { value: '10', label: 'Years Experience' },
     { value: 'Insured', label: 'Fully Insured' },
     { value: '5.2K', label: 'FB Followers' },
@@ -73,14 +74,31 @@ import { googleReviews } from '../data/reviews';
     <div class="container">
       <SectionHeader
         eyebrow="Real Results"
-        heading="Our Work in Bath and Bristol"
-        body="Every photo is our own work — no stock images."
+        heading="Before &amp; After"
+        body="Drag the handle to see the transformation. Every photo is our own work — no stock images."
         align="center"
       />
-      <div class="gallery-grid">
-        <div class="gallery-item gallery-item--wide">
-          <img src="/images/before-after/roof-after-1.webp" alt="Roof after professional cleaning" loading="lazy" />
+      <div class="ba-grid">
+        <div class="ba-grid__item">
+          <BeforeAfter
+            beforeSrc="/images/before-after/roof-before-1.webp"
+            afterSrc="/images/before-after/roof-after-2.webp"
+            beforeAlt="Roof covered in moss before cleaning"
+            afterAlt="Clean roof after professional moss removal"
+            caption="Roof cleaning — moss removal and biocide treatment"
+          />
         </div>
+        <div class="ba-grid__item">
+          <BeforeAfter
+            beforeSrc="/images/before-after/driveway-before-1.webp"
+            afterSrc="/images/before-after/driveway-after-1.webp"
+            beforeAlt="Driveway before jet washing"
+            afterAlt="Driveway after professional jet washing"
+            caption="Driveway jet washing — block paving restored"
+          />
+        </div>
+      </div>
+      <div class="gallery-grid" style="margin-top:var(--space-l)">
         <div class="gallery-item">
           <img src="/images/before-after/job-portrait-1.webp" alt="Roof cleaning from ground level" loading="lazy" />
         </div>
@@ -91,7 +109,7 @@ import { googleReviews } from '../data/reviews';
           <img src="/images/before-after/job-landscape-1.webp" alt="Roof cleaning transformation" loading="lazy" />
         </div>
         <div class="gallery-item">
-          <img src="/images/before-after/driveway-after-1.webp" alt="Driveway after jet washing" loading="lazy" />
+          <img src="/images/before-after/roof-after-1.webp" alt="Roof after professional cleaning" loading="lazy" />
         </div>
         <div class="gallery-item">
           <img src="/images/before-after/job-square-2.webp" alt="Jet washing completed job" loading="lazy" />
@@ -192,7 +210,7 @@ import { googleReviews } from '../data/reviews';
             <span class="why-item__number" aria-hidden="true">05</span>
           </div>
           <div class="why-item__right">
-            <h3 class="why-item__title">111 Five-Star Reviews</h3>
+            <h3 class="why-item__title">27 Five-Star Reviews</h3>
             <p class="why-item__body">Our business is built on repeat work and personal recommendations. That only happens when you deliver — and we do, every time.</p>
           </div>
         </div>
@@ -210,7 +228,7 @@ import { googleReviews } from '../data/reviews';
     <div class="container">
       <SectionHeader
         eyebrow="Verified Google Reviews"
-        heading="111 Five-Star Reviews"
+        heading="27 Five-Star Reviews"
       />
 
       <div class="testimonials-grid">
@@ -230,7 +248,7 @@ import { googleReviews } from '../data/reviews';
   {/* ── CTA Banner ── */}
   <ImageCTA
     heading="Ready for a Free Quote?"
-    body="Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured. Eco-friendly products."
+    body="Get a free, no-obligation quote from Bath's highest-rated jet washing service. 27 five-star reviews. Fully insured. Eco-friendly products."
     cta={{ label: 'Get a Free Quote', href: '/contact' }}
     image="/images/before-after/roof-after-2.webp"
   />
@@ -248,10 +266,10 @@ import { googleReviews } from '../data/reviews';
     })),
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
+      "ratingValue": "4.6",
       "bestRating": "5",
       "worstRating": "1",
-      "reviewCount": "111"
+      "reviewCount": "27"
     }
   })} />
 </Base>
@@ -265,6 +283,15 @@ import { googleReviews } from '../data/reviews';
 
   /* ── Gallery ── */
   .gallery-section { padding: var(--section-pad) 0; background: var(--stone); }
+  .ba-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-m);
+    margin-bottom: var(--space-l);
+  }
+  @media (max-width: 768px) {
+    .ba-grid { grid-template-columns: 1fr; }
+  }
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
