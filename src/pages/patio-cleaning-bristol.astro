@@ -169,6 +169,19 @@ const serviceSchema = {
     </div>
   </section>
 
+
+  <section class="before-after-section">
+    <div class="container">
+      <SectionHeader eyebrow="See the Difference" heading="Before and After" body="See the difference professional patio cleaning can achieve." align="center" />
+      <div class="before-after-wrap">
+        <img src="/images/before-after/patio-before-1.webp" alt="Patio slabs covered in algae before professional cleaning" class="before-after-composite" loading="lazy" />
+      </div>
+      <div class="before-after-wrap" style="margin-top:var(--space-xl)">
+        <img src="/images/before-after/patio-after-1.webp" alt="Clean sandstone patio after professional jet washing" class="before-after-composite" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
   <section class="faq-section">
     <div class="container">
       <SectionHeader eyebrow="Common Questions" heading="Patio Cleaning Bristol FAQ" />
@@ -257,4 +270,7 @@ const serviceSchema = {
   .faq-item__a { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--concrete); padding: 0 0 var(--space-m); max-width: 60ch; }
   @media (max-width: 960px) { .service-body__grid { grid-template-columns: 1fr; gap: var(--space-2xl); } .service-body__sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); } }
   @media (max-width: 640px) { .service-body__sidebar { grid-template-columns: 1fr; } }
+  .before-after-section { padding: var(--section-pad) 0; background: var(--stone); }
+  .before-after-wrap { max-width: 900px; margin: 0 auto; }
+  .before-after-composite { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,.1); }
 </style>
