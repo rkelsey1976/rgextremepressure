@@ -5,19 +5,33 @@
 const currentYear = new Date().getFullYear();
 
 const serviceLinks = [
-  { label: 'Driveway Cleaning Bath', href: '/driveway-cleaning-bath' },
-  { label: 'Patio Cleaning Bath', href: '/patio-cleaning-bath' },
-  { label: 'Gutter Cleaning Bath', href: '/gutter-cleaning-bath' },
-  { label: 'Roof Cleaning Bath', href: '/roof-cleaning-bath' },
-  { label: 'Render Cleaning Bath', href: '/render-cleaning-bath' },
+  { label: 'Driveway Cleaning', href: '/driveway-cleaning-bath' },
+  { label: 'Patio Cleaning', href: '/patio-cleaning-bath' },
+  { label: 'Gutter Cleaning', href: '/gutter-cleaning-bath' },
+  { label: 'Roof Cleaning', href: '/roof-cleaning-bath' },
+  { label: 'Render Cleaning', href: '/render-cleaning-bath' },
+  { label: 'Block Paving Cleaning', href: '/block-paving-cleaning-bath' },
+  { label: 'Soffit & Fascia Cleaning', href: '/soffit-fascia-cleaning-bath' },
+  { label: 'Conservatory Cleaning', href: '/conservatory-cleaning-bath' },
+  { label: 'Commercial Jet Washing', href: '/commercial-jet-washing-bath' },
 ];
 
 const bristolLinks = [
-  { label: 'Driveway Cleaning Bristol', href: '/driveway-cleaning-bristol' },
-  { label: 'Patio Cleaning Bristol', href: '/patio-cleaning-bristol' },
-  { label: 'Roof Cleaning Bristol', href: '/roof-cleaning-bristol' },
-  { label: 'Gutter Cleaning Bristol', href: '/gutter-cleaning-bristol' },
-  { label: 'Render Cleaning Bristol', href: '/render-cleaning-bristol' },
+  { label: 'Driveway Cleaning', href: '/driveway-cleaning-bristol' },
+  { label: 'Patio Cleaning', href: '/patio-cleaning-bristol' },
+  { label: 'Roof Cleaning', href: '/roof-cleaning-bristol' },
+  { label: 'Gutter Cleaning', href: '/gutter-cleaning-bristol' },
+  { label: 'Render Cleaning', href: '/render-cleaning-bristol' },
+];
+
+const areaLinks = [
+  { label: 'Bath', href: '/areas-covered/bath' },
+  { label: 'Bristol', href: '/bristol' },
+  { label: 'Keynsham', href: '/areas-covered/keynsham' },
+  { label: 'Radstock', href: '/areas-covered/radstock' },
+  { label: 'Midsomer Norton', href: '/areas-covered/midsomer-norton' },
+  { label: 'Frome', href: '/areas-covered/frome' },
+  { label: 'View All Areas →', href: '/areas-covered' },
 ];
 
 const companyLinks = [
@@ -83,7 +97,22 @@ const companyLinks = [
         </div>
       </div>
 
-      <!-- Column 4: Company — accordion on mobile -->
+      <!-- Column 4: Areas — accordion on mobile -->
+      <div class="footer-col">
+        <button class="footer-accordion" aria-expanded="false">
+          <h3 class="footer-heading">Areas Covered</h3>
+          <svg class="footer-accordion__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="footer-accordion__panel">
+          <ul class="footer-links">
+            {areaLinks.map(link => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Column 5: Company — accordion on mobile -->
       <div class="footer-col">
         <button class="footer-accordion" aria-expanded="false">
           <h3 class="footer-heading">Company</h3>
@@ -145,19 +174,8 @@ const companyLinks = [
           <a href="/blog">Blog</a>
           <a href="/privacy">Privacy</a>
           <a href="/privacy-policy">Privacy Policy</a>
-          <a href="https://seo-kings.co.uk" target="_blank" rel="noopener noreferrer" class="footer-credit" aria-label="Website design and SEO by SEO Kings">
-            <svg width="14" height="14" viewBox="39 59 290 291" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g fill="currentColor" fill-rule="evenodd">
-                <path d="M 86 269 L 91 279 L 110 299 L 149 327 L 182 346 L 186 346 L 198 338 L 207 334 L 241 312 L 241 310 L 237 306 L 231 304 L 217 314 L 186 332 L 183 332 L 156 316 L 156 224 L 154 224 L 144 235 L 144 306 L 141 307 L 129 298 L 128 248 L 116 249 L 115 284 L 113 284 L 102 273 L 95 262 L 93 262 Z"/>
-                <path d="M 91 190 L 91 213 L 94 213 L 95 212 L 95 211 L 96 210 L 96 192 L 95 191 L 94 191 L 93 190 Z"/>
-                <path d="M 204 145 L 195 148 L 192 148 L 186 151 L 183 151 L 165 157 L 164 160 L 173 167 L 173 170 L 134 211 L 131 211 L 124 204 L 121 202 L 119 202 L 75 248 L 76 253 L 79 259 L 81 259 L 119 219 L 122 219 L 132 229 L 134 229 L 183 177 L 186 177 L 195 186 L 197 186 L 198 177 L 199 176 L 199 172 L 201 166 L 201 161 L 202 160 L 202 155 L 204 149 Z"/>
-                <path d="M 325 114 L 246 179 L 187 241 L 184 240 L 184 194 L 172 204 L 174 315 L 184 319 L 184 264 L 195 252 L 249 304 L 258 299 L 205 240 L 267 177 L 301 148 L 304 149 L 294 196 L 280 198 L 292 201 L 289 218 L 274 218 L 272 192 L 269 195 L 269 218 L 256 219 L 253 211 L 250 218 L 243 222 L 250 225 L 250 237 L 227 238 L 224 241 L 250 244 L 250 272 L 255 276 L 255 225 L 286 224 L 278 254 L 259 280 L 266 289 L 276 280 L 286 265 L 296 240 Z"/>
-                <path d="M 259 97 L 256 100 L 256 101 L 252 105 L 252 106 L 247 111 L 247 112 L 242 117 L 242 118 L 238 122 L 238 123 L 234 127 L 234 132 L 235 133 L 235 134 L 236 135 L 236 136 L 238 138 L 238 139 L 240 139 L 241 138 L 241 137 L 245 133 L 245 132 L 250 127 L 250 126 L 252 124 L 254 124 L 255 125 L 255 127 L 256 128 L 256 132 L 257 133 L 257 137 L 258 138 L 258 142 L 259 143 L 259 147 L 260 148 L 260 151 L 262 151 L 267 146 L 268 146 L 270 144 L 270 138 L 269 137 L 269 133 L 268 132 L 268 128 L 267 127 L 267 123 L 266 122 L 266 117 L 265 116 L 265 112 L 264 111 L 264 107 L 263 106 L 263 102 L 262 101 L 262 97 Z"/>
-                <path d="M 108 96 L 106 96 L 106 98 L 105 99 L 105 104 L 104 105 L 104 108 L 103 109 L 103 113 L 102 114 L 102 119 L 101 120 L 101 123 L 100 124 L 100 129 L 99 130 L 99 133 L 98 134 L 98 138 L 97 139 L 97 144 L 98 144 L 102 148 L 103 148 L 105 150 L 107 150 L 108 149 L 108 145 L 109 144 L 109 140 L 110 139 L 110 135 L 111 134 L 111 130 L 112 129 L 112 125 L 113 124 L 115 124 L 121 130 L 121 131 L 124 134 L 124 135 L 127 138 L 130 138 L 131 137 L 131 136 L 132 135 L 132 134 L 133 133 L 133 132 L 134 131 L 134 128 L 133 127 L 133 126 L 128 121 L 128 120 L 124 116 L 124 115 L 120 111 L 120 110 L 114 104 L 114 103 L 109 98 L 109 97 Z"/>
-                <path d="M 185 63 L 182 64 L 121 176 L 118 176 L 43 114 L 71 235 L 80 227 L 80 221 L 63 149 L 66 148 L 108 184 L 130 185 L 183 88 L 186 89 L 232 175 L 235 176 L 241 171 L 241 166 Z"/>
-              </g>
-            </svg>
-            Website design &amp; SEO by seo-kings.co.uk
+          <a href="https://vortexdesignstudio.co.uk" target="_blank" rel="noopener noreferrer" class="footer-credit" aria-label="Website design by Vortex Design Studio">
+            Website by Vortex Design Studio
           </a>
         </div>
       </div>
@@ -219,7 +237,7 @@ const companyLinks = [
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 2fr 1fr 1.2fr;
+    grid-template-columns: 1.5fr 2fr 1fr 1fr 1.2fr;
     gap: var(--space-xl);
     padding-bottom: var(--space-xl);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
