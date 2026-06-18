@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
 import ImageCTA from '../components/ImageCTA.astro';
 import TrustMetrics from '../components/TrustMetrics.astro';
 
@@ -88,43 +89,194 @@ const serviceSchema = {
 
           <div class="service-features">
             <h3 class="service-features__title">What Our Bristol Patio Cleaning Includes</h3>
-            <ul class="service-features__list">
-              <li>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong>Indian sandstone patio cleaning</strong> — gentle but effective pressure wash that lifts ingrained dirt without flaking the surface</span>
+            <ul class="features-grid">
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Indian Sandstone Patio Cleaning</strong>
+                  <p class="feature-card__body">Gentle pressure matched to the stone — lifts ingrained dirt without flaking or etching the surface.</p>
+                </div>
               </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong>Porcelain and slate tile washing</strong> — low-pressure clean that removes algae and staining from delicate surfaces</span>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Porcelain & Slate Tile Washing</strong>
+                  <p class="feature-card__body">Low-pressure clean removes algae and staining from delicate surfaces without surface damage.</p>
+                </div>
               </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong>Concrete slab and flagstone clean</strong> — heavier pressure to strip weather staining and organic growth</span>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Concrete Slab & Flagstone Clean</strong>
+                  <p class="feature-card__body">Heavier pressure to strip weather staining and organic growth from robust surfaces.</p>
+                </div>
               </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong>Algae and moss treatment</strong> — biocide application kills spores and slows regrowth significantly</span>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Algae & Moss Treatment</strong>
+                  <p class="feature-card__body">Biocide application kills spores and slows regrowth significantly — safer surface underfoot for longer.</p>
+                </div>
               </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong>Black spot lichen removal</strong> — specialist treatment for stubborn lichen staining on sandstone</span>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Black Spot Lichen Removal</strong>
+                  <p class="feature-card__body">Specialist treatment for stubborn lichen staining on sandstone — often mistaken for permanent marks.</p>
+                </div>
               </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong>Pointing and joint clean</strong> — we flush out debris from between paving joints and slabs</span>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Pointing & Joint Clean</strong>
+                  <p class="feature-card__body">Debris flushed from between paving joints and slabs, leaving a clean finish throughout.</p>
+                </div>
               </li>
             </ul>
+          </div>
+
+          <div class="inline-cta">
+            <div class="inline-cta__inner">
+              <p class="inline-cta__text">Ready to book? Free quotes across all Bristol postcodes.</p>
+              <div class="inline-cta__actions">
+                <a href="/contact" class="btn btn--primary">Get a Free Quote →</a>
+                <a href="tel:07474939398" class="inline-cta__call">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  07474 939 398
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="method-comparison">
+            <SectionHeader eyebrow="The Right Equipment" heading="Why We Use a Flat Surface Cleaner" />
+            <div class="method-grid">
+
+              <div class="method-card method-card--bad">
+                <div class="method-card__header">
+                  <div class="method-card__badge method-card__badge--bad">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </div>
+                  <h4 class="method-card__title">Standard Pressure Wand</h4>
+                </div>
+                <ul class="method-card__list">
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Leaves visible stripes and streaks across the surface
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Uneven cleaning — concentrated jet misses between passes
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Operator-dependent — results vary with speed and angle
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    High splash — overspray onto furniture, walls and planting
+                  </li>
+                </ul>
+              </div>
+
+              <div class="method-card method-card--good">
+                <div class="method-card__header">
+                  <div class="method-card__badge method-card__badge--good">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                  </div>
+                  <h4 class="method-card__title">Flat Surface Cleaner</h4>
+                </div>
+                <ul class="method-card__list">
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Two or three nozzles on a spinning bar inside a circular housing — uniform coverage every pass
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    No stripes or streaks — the enclosed head distributes pressure evenly across the surface
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Enclosed housing contains splash — protects your furniture, walls and borders
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Covers large areas quickly and consistently — the professional standard
+                  </li>
+                </ul>
+                <div class="method-card__result">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  A consistently clean finish — no stripes, no missed patches, no mess on your property
+                </div>
+              </div>
+
+            </div>
           </div>
 
           <div class="service-process">
             <SectionHeader eyebrow="Our Process" heading="How It Works" />
             <ol class="process-steps">
-              <li><strong>Free assessment</strong> — we identify your patio type and any problem areas</li>
-              <li><strong>Pre-treatment</strong> — biocide or specialist cleaner applied to stubborn growth and stains</li>
-              <li><strong>Jet washing</strong> — pressure matched to your surface type for a thorough, safe clean</li>
-              <li><strong>Rinse and tidy</strong> — all debris washed away, area left clean and ready to use</li>
-              <li><strong>Optional biocide spray</strong> — anti-growth treatment applied to slow regrowth</li>
+              <li class="process-step">
+                <div class="process-step__badge">1</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Free Assessment</h4>
+                  <p class="process-step__body">We identify your patio type, surface condition and any problem areas before starting.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <div class="process-step__badge">2</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Pre-Treatment</h4>
+                  <p class="process-step__body">Biocide or specialist cleaner applied to stubborn growth, stains and lichen and left to dwell.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <div class="process-step__badge">3</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Jet Washing</h4>
+                  <p class="process-step__body">Pressure matched to your surface type — higher for concrete and flagstone, lower for sandstone and porcelain.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <div class="process-step__badge">4</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Rinse & Tidy</h4>
+                  <p class="process-step__body">All debris washed away, area left clean and ready to use.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <div class="process-step__badge">5</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Optional Biocide Spray</h4>
+                  <p class="process-step__body">Anti-growth treatment applied across the surface to significantly slow algae and moss regrowth.</p>
+                </div>
+              </li>
             </ol>
+          </div>
+
+          <div class="inline-cta inline-cta--after-process">
+            <div class="inline-cta__inner">
+              <p class="inline-cta__text">Bristol patio slippery or green? We can usually quote within 24 hours.</p>
+              <div class="inline-cta__actions">
+                <a href="/contact" class="btn btn--primary">Get a Free Quote →</a>
+                <a href="tel:07474939398" class="inline-cta__call">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  07474 939 398
+                </a>
+              </div>
+            </div>
           </div>
 
           <div class="areas-covered">
@@ -141,7 +293,6 @@ const serviceSchema = {
             <p class="sidebar-card__body">Call us or request a free, no-obligation quote. We cover all Bristol postcodes and surrounding areas.</p>
             <a href="/contact" class="btn btn--primary">Get a Free Quote <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             <a href="tel:07474939398" class="sidebar-card__phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> 07474 939 398</a>
-          </div>
           </div>
           <div class="sidebar-card">
             <span class="rule--accent"></span>
@@ -165,10 +316,13 @@ const serviceSchema = {
     <div class="container">
       <SectionHeader eyebrow="See the Difference" heading="Before and After" body="See the difference professional patio cleaning can achieve." align="center" />
       <div class="before-after-wrap">
-        <img src="/images/before-after/patio-before-1.webp" alt="Patio slabs covered in algae before professional cleaning" class="before-after-composite" loading="lazy" />
+        <BeforeAfter beforeSrc="/images/before-after/patio-before-1.webp" afterSrc="/images/before-after/patio-after-1.webp" beforeAlt="Sandstone patio covered in algae before cleaning" afterAlt="Sandstone patio restored after professional jet washing" caption="Sandstone patio in Bristol — algae and black spot removed" />
       </div>
       <div class="before-after-wrap" style="margin-top:var(--space-xl)">
-        <img src="/images/before-after/patio-after-1.webp" alt="Clean sandstone patio after professional jet washing" class="before-after-composite" loading="lazy" />
+        <BeforeAfter beforeSrc="/images/before-after/job-patio-before-2.webp" afterSrc="/images/before-after/job-patio-after-2.webp" beforeAlt="Block paving patio slabs covered in algae" afterAlt="Block paving patio cleaned and restored" caption="Block paving patio — full moss and algae removal" />
+      </div>
+      <div class="before-after-wrap" style="margin-top:var(--space-xl)">
+        <img src="/images/before-after/job-patio-steps-1.webp" alt="Patio steps cleaned — algae and moss removed from stone steps" loading="lazy" class="before-after-composite" />
       </div>
     </div>
   </section>
@@ -221,21 +375,50 @@ const serviceSchema = {
   .service-body { padding: var(--section-pad) 0; }
   .service-body__grid { display: grid; grid-template-columns: 7fr 4fr; gap: var(--space-3xl, 5rem); align-items: start; }
   .service-features { margin-top: var(--space-2xl); }
-  .service-features__title { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.1; text-transform: uppercase; color: var(--chalk); margin: 0 0 var(--space-m); }
-  .service-features__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-m); }
-  .service-features__list li { display: flex; align-items: flex-start; gap: var(--space-s); font-size: 0.95rem; line-height: 1.7; color: var(--concrete); }
-  .service-features__list li svg { flex-shrink: 0; margin-top: 0.35em; }
-  .service-features__list li strong { color: var(--chalk); }
+  .service-features__title { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.1; text-transform: none; color: var(--chalk); margin: 0 0 var(--space-l); }
+  .features-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-m); }
+  .feature-card { display: flex; gap: var(--space-m); align-items: flex-start; background: var(--stone); border-radius: 8px; padding: var(--space-l); border-top: 3px solid var(--accent); }
+  .feature-card__icon { flex-shrink: 0; width: 2.5rem; height: 2.5rem; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; }
+  .feature-card__title { display: block; font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--chalk); margin-bottom: 0.4rem; }
+  .feature-card__body { font-size: 0.88rem; line-height: 1.65; color: var(--concrete); margin: 0; }
+  @media (max-width: 640px) { .features-grid { grid-template-columns: 1fr; } }
+  .inline-cta { margin-top: var(--space-2xl); border-radius: 10px; background: linear-gradient(135deg, var(--navy) 0%, var(--accent-dim) 100%); padding: var(--space-xl) var(--space-2xl); }
+  .inline-cta--after-process { margin-top: var(--space-2xl); }
+  .inline-cta__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-l); flex-wrap: wrap; }
+  .inline-cta__text { font-family: var(--font-display); font-size: clamp(1.1rem, 1.8vw, 1.4rem); font-weight: 700; color: #fff; margin: 0; line-height: 1.3; }
+  .inline-cta__actions { display: flex; align-items: center; gap: var(--space-m); flex-wrap: wrap; flex-shrink: 0; }
+  .inline-cta__call { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.85); font-weight: 600; font-size: 1rem; text-decoration: none; white-space: nowrap; transition: color 0.2s; }
+  .inline-cta__call:hover { color: #fff; }
+  @media (max-width: 640px) { .inline-cta { padding: var(--space-l); } .inline-cta__inner { flex-direction: column; align-items: flex-start; } }
   .service-process { margin-top: var(--space-3xl); }
+  .method-comparison { margin-top: var(--space-3xl); }
+  .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-l); margin-top: var(--space-l); }
+  .method-card { padding: var(--space-xl); border-radius: 10px; border: 1px solid rgba(200,50,50,0.15); background: #fdf5f5; }
+  .method-card--good { background: var(--stone); border-color: rgba(0,85,165,0.15); }
+  .method-card__header { display: flex; align-items: center; gap: var(--space-m); margin-bottom: var(--space-l); }
+  .method-card__badge { width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .method-card__badge--bad { background: rgba(200,50,50,0.12); color: #c83232; }
+  .method-card__badge--good { background: rgba(0,85,165,0.12); color: var(--accent); }
+  .method-card__title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: none; color: var(--chalk); margin: 0; line-height: 1.2; }
+  .method-card__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+  .method-card__list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem; line-height: 1.6; color: var(--concrete); }
+  .method-card--bad .method-card__list li svg { color: #c83232; flex-shrink: 0; margin-top: 0.2rem; }
+  .method-card--good .method-card__list li svg { color: var(--accent); flex-shrink: 0; margin-top: 0.2rem; }
+  .method-card__result { display: flex; align-items: flex-start; gap: 0.6rem; margin-top: var(--space-l); padding-top: var(--space-m); border-top: 1px solid rgba(0,85,165,0.12); font-size: 0.85rem; font-weight: 600; color: var(--accent); line-height: 1.5; }
+  .method-card__result svg { flex-shrink: 0; margin-top: 0.15rem; }
+  @media (max-width: 768px) { .method-grid { grid-template-columns: 1fr; } }
   .areas-covered { margin-top: var(--space-3xl); }
   .areas-text { font-size: 0.95rem; line-height: 1.8; color: var(--concrete); }
-  .process-steps { list-style: none; padding: 0; margin: 0; counter-reset: step; display: flex; flex-direction: column; gap: var(--space-m); }
-  .process-steps li { counter-increment: step; display: flex; align-items: flex-start; gap: var(--space-s); font-size: 0.95rem; line-height: 1.7; color: var(--concrete); }
-  .process-steps li::before { content: counter(step); font-family: var(--font-display); font-size: 1.8rem; line-height: 1; color: var(--accent); flex-shrink: 0; min-width: 2rem; }
-  .process-steps li strong { color: var(--chalk); }
-  .service-body__sidebar { display: flex; flex-direction: column; gap: var(--space-xl); position: sticky; top: 6rem; }
+  .process-steps { list-style: none; padding: 0; margin: var(--space-l) 0 0; display: flex; flex-direction: column; gap: 0; }
+  .process-step { display: flex; gap: var(--space-l); align-items: flex-start; position: relative; padding-bottom: var(--space-l); }
+  .process-step:not(:last-child)::after { content: ''; position: absolute; left: 1.5rem; top: 3rem; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), rgba(0,85,165,0.1)); }
+  .process-step__badge { flex-shrink: 0; width: 3rem; height: 3rem; border-radius: 50%; background: var(--accent); color: #fff; font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+  .process-step__content { background: var(--stone); border-radius: 8px; padding: var(--space-m) var(--space-l); flex: 1; border-left: 3px solid var(--accent); }
+  .process-step__title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--chalk); margin: 0 0 0.4rem; }
+  .process-step__body { font-size: 0.92rem; line-height: 1.7; color: var(--concrete); margin: 0; }
+  .service-body__sidebar { display: flex; flex-direction: column; gap: var(--space-xl); align-self: start; position: sticky; top: 6rem; }
   .sidebar-card { background: var(--stone); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-s); }
-  .sidebar-card__heading { font-family: var(--font-display); font-size: clamp(1.1rem, 1.5vw, 1.4rem); line-height: 1.1; text-transform: uppercase; color: var(--chalk); margin: 0; }
+  .sidebar-card__heading { font-family: var(--font-display); font-size: clamp(1.1rem, 1.5vw, 1.4rem); line-height: 1.1; text-transform: none; color: var(--chalk); margin: 0; }
   .sidebar-card__body { font-size: 0.92rem; line-height: 1.7; color: var(--concrete); margin: 0; }
   .sidebar-card .btn { margin-top: var(--space-xs); align-self: flex-start; }
   .sidebar-card__phone { display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.04em; color: var(--accent); text-decoration: none; margin-top: var(--space-xs); }

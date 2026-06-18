@@ -25,6 +25,10 @@ const faqs = [
     q: 'Will cleaning improve the light inside my conservatory?',
     a: 'Yes, noticeably. Heavy algae and dirt coverage on polycarbonate roofing can reduce light transmission by 30–50%. After cleaning, most customers immediately notice how much brighter the space is.'
   },
+  {
+    q: 'How long will the clean last?',
+    a: 'With our biocide anti-algae treatment, most conservatory roofs stay clean for 2–3 years. North-facing roofs or those under trees will see regrowth faster. We recommend an annual check and retreatment every 2–3 years.'
+  },
 ];
 
 const faqSchema = {
@@ -53,16 +57,19 @@ const serviceSchema = {
 };
 ---
 
-<Base {title} {description} serviceSchema={serviceSchema} faqSchema={faqSchema} breadcrumbs={[{ name: 'Services', item: 'https://rgextremepressure.co.uk/services' }, { name: 'Conservatory Cleaning Bath', item: 'https://rgextremepressure.co.uk/conservatory-cleaning-bath' }]}>
+<Base {title} {description} serviceSchema={serviceSchema} faqSchema={faqSchema} breadcrumbs={[
+  { name: 'Services', item: 'https://rgextremepressure.co.uk/services' },
+  { name: 'Conservatory Cleaning Bath', item: 'https://rgextremepressure.co.uk/conservatory-cleaning-bath' }
+]}>
   <Hero
-    image="/images/before-after/conservatory-hero-1.jpg"
+    image="/images/before-after/conservatory-action-1.jpg"
     overlay="blue"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Conservatory Cleaning' }]}
     eyebrow="Professional Conservatory Cleaning"
     heading="Conservatory Cleaning Bath"
     body="A green, dirty conservatory roof blocks light and looks neglected. Our specialist soft wash cleans polycarbonate and glass panels, uPVC frames and gutters safely — no high pressure that could crack panels or damage seals."
     cta={{ label: 'Get a Free Quote', href: '/contact' }}
-  minHeight="compact"
+    minHeight="compact"
   />
 
   <TrustMetrics metrics={[
@@ -82,45 +89,200 @@ const serviceSchema = {
             body="Conservatory cleaning requires a different approach to general jet washing. Polycarbonate panels, sealed glass units and uPVC frames need low-pressure, detergent-led cleaning that removes algae and grime without risking structural damage. We have the right equipment and the right chemicals for the job."
           />
 
+          <div class="service-intro-image">
+            <img src="/images/before-after/conservatory-midclean-1.jpg" alt="Conservatory roof mid-clean — left side green with algae, right side restored to clear panels" loading="lazy" />
+          </div>
+
           <div class="service-features">
             <h3 class="service-features__title">What Our Conservatory Cleaning Includes</h3>
-            <ul class="service-features__list">
-              <li>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong>Polycarbonate roof soft wash</strong> — biodegradable detergent applied and rinsed at safe low pressure, removing algae and discolouration</span>
+            <ul class="features-grid">
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Polycarbonate Roof Soft Wash</strong>
+                  <p class="feature-card__body">Biodegradable detergent applied and rinsed at safe low pressure — removes algae and discolouration without cracking panels.</p>
+                </div>
               </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong>Glass roof cleaning</strong> — spot-free rinse system for sealed glass conservatory panels</span>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Glass Roof Cleaning</strong>
+                  <p class="feature-card__body">Spot-free rinse system for sealed glass conservatory and lantern roof panels — streak-free finish.</p>
+                </div>
               </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong>uPVC frame cleaning</strong> — soft wash removes green streaks, mould and grime from all frame sections</span>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">uPVC Frame Cleaning</strong>
+                  <p class="feature-card__body">Soft wash removes green streaks, mould and grime from all frame sections — restored to original white.</p>
+                </div>
               </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong>Algae and biocide treatment</strong> — kills spores at the source and slows algae regrowth significantly</span>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Algae & Biocide Treatment</strong>
+                  <p class="feature-card__body">Kills spores at the source and slows algae regrowth significantly — clean for 2–3 years.</p>
+                </div>
               </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong>Conservatory gutter clear</strong> — downpipe flush and gutter clear included to prevent overflow staining</span>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Conservatory Gutter Clear</strong>
+                  <p class="feature-card__body">Downpipe flush and gutter clear included — prevents overflow staining and water pooling on the roof.</p>
+                </div>
               </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span><strong>Ridge and hip detail clean</strong> — attention to areas where algae accumulates around fixings and trim</span>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Ridge & Hip Detail Clean</strong>
+                  <p class="feature-card__body">Attention to areas where algae accumulates around fixings, trims and roof-to-wall junctions.</p>
+                </div>
               </li>
             </ul>
+          </div>
+
+          <div class="inline-cta">
+            <div class="inline-cta__inner">
+              <p class="inline-cta__text">Ready to let the light back in? Get a free quote today.</p>
+              <div class="inline-cta__actions">
+                <a href="/contact" class="btn btn--primary">Get a Free Quote →</a>
+                <a href="tel:07474939398" class="inline-cta__call">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  07474 939 398
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="method-comparison">
+            <SectionHeader eyebrow="The Right Method" heading="Why We Don't Jet Wash Conservatory Roofs" />
+            <div class="method-grid">
+
+              <div class="method-card method-card--bad">
+                <div class="method-card__header">
+                  <div class="method-card__badge method-card__badge--bad">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </div>
+                  <h4 class="method-card__title">High-Pressure Jet Wash</h4>
+                </div>
+                <ul class="method-card__list">
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Can crack and shatter polycarbonate panels
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Forces water into seals causing leaks inside
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Damages flashings and trims around the roof
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Algae regrows fast — no biocide treatment
+                  </li>
+                </ul>
+              </div>
+
+              <div class="method-card method-card--good">
+                <div class="method-card__header">
+                  <div class="method-card__badge method-card__badge--good">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                  </div>
+                  <h4 class="method-card__title">Our Soft Wash Method</h4>
+                </div>
+                <ul class="method-card__list">
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Low pressure — no risk of cracking panels or seals
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Specialist detergent dissolves algae safely
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Safe for polycarbonate, glass, uPVC and seals
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Biocide treatment keeps it clean for 2–3 years
+                  </li>
+                </ul>
+                <div class="method-card__result">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  Conservatory restored safely — brighter inside, no damage, no leaks
+                </div>
+              </div>
+
+            </div>
           </div>
 
           <div class="service-process">
             <SectionHeader eyebrow="Our Process" heading="How It Works" />
             <ol class="process-steps">
-              <li><strong>Free assessment</strong> — we inspect roof type, frame condition and access requirements</li>
-              <li><strong>Detergent application</strong> — specialist soft wash solution applied to roof and frames</li>
-              <li><strong>Dwell time</strong> — solution left to penetrate and break down algae colonies</li>
-              <li><strong>Low-pressure rinse</strong> — thorough rinse at safe pressure removes all residue</li>
-              <li><strong>Biocide treatment</strong> — anti-algae spray applied to roof to slow regrowth</li>
+              <li class="process-step">
+                <div class="process-step__badge">1</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Free Assessment</h4>
+                  <p class="process-step__body">We inspect roof type, panel condition, frame material and access requirements before pricing.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <div class="process-step__badge">2</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Detergent Application</h4>
+                  <p class="process-step__body">Specialist soft wash solution applied to roof panels and frames at low pressure.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <div class="process-step__badge">3</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Dwell Time</h4>
+                  <p class="process-step__body">Solution left to penetrate and break down algae colonies for the recommended period.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <div class="process-step__badge">4</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Low-Pressure Rinse</h4>
+                  <p class="process-step__body">Thorough rinse at safe pressure removes all residue — panels clear, frames white.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <div class="process-step__badge">5</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Biocide Treatment</h4>
+                  <p class="process-step__body">Anti-algae spray applied to roof panels to significantly slow regrowth.</p>
+                </div>
+              </li>
             </ol>
+          </div>
+
+          <div class="inline-cta inline-cta--after-process">
+            <div class="inline-cta__inner">
+              <p class="inline-cta__text">Green conservatory roof blocking the light? We can quote within 24 hours.</p>
+              <div class="inline-cta__actions">
+                <a href="/contact" class="btn btn--primary">Get a Free Quote →</a>
+                <a href="tel:07474939398" class="inline-cta__call">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  07474 939 398
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -133,18 +295,16 @@ const serviceSchema = {
             <a href="/contact" class="btn btn--primary">Get a Free Quote <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             <a href="tel:07474939398" class="sidebar-card__phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> 07474 939 398</a>
           </div>
-          </div>
           <div class="sidebar-card">
             <span class="rule--accent"></span>
             <span class="t-label" style="color:var(--accent)">Other Services</span>
             <h3 class="sidebar-card__heading">Explore Our Services</h3>
             <ul class="sidebar-links">
-              <li><a href="/driveway-cleaning-bath">Driveway Cleaning Bath</a></li>
-              <li><a href="/patio-cleaning-bath">Patio Cleaning Bath</a></li>
               <li><a href="/gutter-cleaning-bath">Gutter Cleaning Bath</a></li>
-              <li><a href="/roof-cleaning-bath">Roof Cleaning Bath</a></li>
-              <li><a href="/render-cleaning-bath">Render Cleaning Bath</a></li>
               <li><a href="/soffit-fascia-cleaning-bath">Soffit & Fascia Cleaning Bath</a></li>
+              <li><a href="/render-cleaning-bath">Render Cleaning Bath</a></li>
+              <li><a href="/roof-cleaning-bath">Roof Cleaning Bath</a></li>
+              <li><a href="/driveway-cleaning-bath">Driveway Cleaning Bath</a></li>
               <li><a href="/bristol/">Jet Washing Bristol</a></li>
             </ul>
           </div>
@@ -157,10 +317,32 @@ const serviceSchema = {
     <div class="container">
       <SectionHeader eyebrow="Our Work" heading="Conservatory Cleaning Results" body="A green, dirty conservatory roof blocks light and looks neglected. Our soft wash system restores glass and polycarbonate roofs safely." align="center" />
       <div class="before-after-wrap">
-        <img src="/images/before-after/conservatory-hero-1.jpg" alt="Large Bath property with iron conservatory frame before cleaning" class="before-after-composite" loading="lazy" />
+        <img src="/images/before-after/conservatory-midclean-1.jpg" alt="Conservatory roof mid-clean — left side green with algae, right side restored to clear panels" class="before-after-composite" />
+        <p class="before-after-caption">Same conservatory roof, same visit — half cleaned to show exactly what our soft wash system does.</p>
       </div>
-      <div class="before-after-wrap" style="margin-top:var(--space-xl)">
-        <img src="/images/before-after/job-gallery-08.webp" alt="Large rendered property with conservatory fully cleaned" class="before-after-composite" loading="lazy" />
+      <div class="photo-library">
+        <div class="photo-library__header">
+          <p class="photo-library__sub">More photos from recent conservatory jobs</p>
+          <span class="photo-library__count">4 photos</span>
+        </div>
+        <div class="photo-library__grid">
+          <a href="/images/before-after/conservatory-midclean-1.jpg" class="photo-library__item" target="_blank" rel="noopener" aria-label="View photo: conservatory mid-clean">
+            <img src="/images/before-after/conservatory-midclean-1.jpg" alt="Conservatory roof mid-clean showing before and after contrast" loading="lazy" />
+            <span class="photo-library__overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
+          </a>
+          <a href="/images/before-after/conservatory-action-1.jpg" class="photo-library__item" target="_blank" rel="noopener" aria-label="View photo: conservatory cleaning in action">
+            <img src="/images/before-after/conservatory-action-1.jpg" alt="Robert cleaning a modern lantern roof extension in Bath" loading="lazy" />
+            <span class="photo-library__overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
+          </a>
+          <a href="/images/before-after/conservatory-hero-1.jpg" class="photo-library__item" target="_blank" rel="noopener" aria-label="View photo: large Bath conservatory">
+            <img src="/images/before-after/conservatory-hero-1.jpg" alt="Large Bath property conservatory before cleaning" loading="lazy" />
+            <span class="photo-library__overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
+          </a>
+          <a href="/images/before-after/job-gallery-08.webp" class="photo-library__item" target="_blank" rel="noopener" aria-label="View photo: large property with conservatory">
+            <img src="/images/before-after/job-gallery-08.webp" alt="Large rendered property with conservatory fully cleaned" loading="lazy" />
+            <span class="photo-library__overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -179,6 +361,21 @@ const serviceSchema = {
     </div>
   </section>
 
+  <section class="district-links-section">
+    <div class="container">
+      <h2 class="district-links__heading">Conservatory Cleaning Across Bath</h2>
+      <p class="district-links__intro">We cover every Bath district. Click your area for a dedicated local page.</p>
+      <ul class="district-links__grid">
+        <li><a href="/conservatory-cleaning/oldfield-park-bath">Conservatory Cleaning Oldfield Park</a></li>
+        <li><a href="/conservatory-cleaning/combe-down-bath">Conservatory Cleaning Combe Down</a></li>
+        <li><a href="/conservatory-cleaning/bear-flat-bath">Conservatory Cleaning Bear Flat</a></li>
+        <li><a href="/conservatory-cleaning/newbridge-bath">Conservatory Cleaning Newbridge</a></li>
+        <li><a href="/conservatory-cleaning/twerton-bath">Conservatory Cleaning Twerton</a></li>
+        <li><a href="/conservatory-cleaning/weston-bath">Conservatory Cleaning Weston</a></li>
+      </ul>
+    </div>
+  </section>
+
   <ImageCTA heading="A Clean Conservatory Makes the Room" body="Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured. Eco-friendly products." cta={{ label: 'Get a Free Quote', href: '/contact' }} image="/images/before-after/conservatory-hero-1.jpg" />
 
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -188,19 +385,55 @@ const serviceSchema = {
   .service-body { padding: var(--section-pad) 0; }
   .service-body__grid { display: grid; grid-template-columns: 7fr 4fr; gap: var(--space-3xl, 5rem); align-items: start; }
   .service-features { margin-top: var(--space-2xl); }
-  .service-features__title { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.1; text-transform: uppercase; color: var(--chalk); margin: 0 0 var(--space-m); }
-  .service-features__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-m); }
-  .service-features__list li { display: flex; align-items: flex-start; gap: var(--space-s); font-size: 0.95rem; line-height: 1.7; color: var(--concrete); }
-  .service-features__list li svg { flex-shrink: 0; margin-top: 0.35em; }
-  .service-features__list li strong { color: var(--chalk); }
+  .service-features__title { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.1; text-transform: none; color: var(--chalk); margin: 0 0 var(--space-l); }
+  .features-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-m); }
+  .feature-card { display: flex; gap: var(--space-m); align-items: flex-start; background: var(--stone); border-radius: 8px; padding: var(--space-l); border-top: 3px solid var(--accent); }
+  .feature-card__icon { flex-shrink: 0; width: 2.5rem; height: 2.5rem; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; }
+  .feature-card__title { display: block; font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--chalk); margin-bottom: 0.4rem; }
+  .feature-card__body { font-size: 0.88rem; line-height: 1.65; color: var(--concrete); margin: 0; }
+  @media (max-width: 640px) { .features-grid { grid-template-columns: 1fr; } }
+
+  .service-intro-image { border-radius: 10px; overflow: hidden; aspect-ratio: 16/7; margin-bottom: var(--space-2xl); }
+  .service-intro-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+
+  .inline-cta { margin-top: var(--space-2xl); border-radius: 10px; background: linear-gradient(135deg, var(--navy) 0%, var(--accent-dim) 100%); padding: var(--space-xl) var(--space-2xl); }
+  .inline-cta--after-process { margin-top: var(--space-2xl); }
+  .inline-cta__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-l); flex-wrap: wrap; }
+  .inline-cta__text { font-family: var(--font-display); font-size: clamp(1.1rem, 1.8vw, 1.4rem); font-weight: 700; color: #fff; margin: 0; line-height: 1.3; }
+  .inline-cta__actions { display: flex; align-items: center; gap: var(--space-m); flex-wrap: wrap; flex-shrink: 0; }
+  .inline-cta__call { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.85); font-weight: 600; font-size: 1rem; text-decoration: none; white-space: nowrap; transition: color 0.2s; }
+  .inline-cta__call:hover { color: #fff; }
+  @media (max-width: 640px) { .inline-cta { padding: var(--space-l); } .inline-cta__inner { flex-direction: column; align-items: flex-start; } }
+
+  .method-comparison { margin-top: var(--space-3xl); }
+  .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-l); margin-top: var(--space-l); }
+  .method-card { padding: var(--space-xl); border-radius: 10px; border: 1px solid rgba(200,50,50,0.15); background: #fdf5f5; }
+  .method-card--good { background: var(--stone); border-color: rgba(0,85,165,0.15); }
+  .method-card__header { display: flex; align-items: center; gap: var(--space-m); margin-bottom: var(--space-l); }
+  .method-card__badge { width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .method-card__badge--bad { background: rgba(200,50,50,0.12); color: #c83232; }
+  .method-card__badge--good { background: rgba(0,85,165,0.12); color: var(--accent); }
+  .method-card__title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: none; color: var(--chalk); margin: 0; line-height: 1.2; }
+  .method-card__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+  .method-card__list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem; line-height: 1.6; color: var(--concrete); }
+  .method-card--bad .method-card__list li svg { color: #c83232; flex-shrink: 0; margin-top: 0.2rem; }
+  .method-card--good .method-card__list li svg { color: var(--accent); flex-shrink: 0; margin-top: 0.2rem; }
+  .method-card__result { display: flex; align-items: flex-start; gap: 0.6rem; margin-top: var(--space-l); padding-top: var(--space-m); border-top: 1px solid rgba(0,85,165,0.12); font-size: 0.85rem; font-weight: 600; color: var(--accent); line-height: 1.5; }
+  .method-card__result svg { flex-shrink: 0; margin-top: 0.15rem; }
+  @media (max-width: 768px) { .method-grid { grid-template-columns: 1fr; } }
+
   .service-process { margin-top: var(--space-3xl); }
-  .process-steps { list-style: none; padding: 0; margin: 0; counter-reset: step; display: flex; flex-direction: column; gap: var(--space-m); }
-  .process-steps li { counter-increment: step; display: flex; align-items: flex-start; gap: var(--space-s); font-size: 0.95rem; line-height: 1.7; color: var(--concrete); }
-  .process-steps li::before { content: counter(step); font-family: var(--font-display); font-size: 1.8rem; line-height: 1; color: var(--accent); flex-shrink: 0; min-width: 2rem; }
-  .process-steps li strong { color: var(--chalk); }
-  .service-body__sidebar { display: flex; flex-direction: column; gap: var(--space-xl); position: sticky; top: 6rem; }
+  .process-steps { list-style: none; padding: 0; margin: var(--space-l) 0 0; display: flex; flex-direction: column; gap: 0; }
+  .process-step { display: flex; gap: var(--space-l); align-items: flex-start; position: relative; padding-bottom: var(--space-l); }
+  .process-step:not(:last-child)::after { content: ''; position: absolute; left: 1.5rem; top: 3rem; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), rgba(0,85,165,0.1)); }
+  .process-step__badge { flex-shrink: 0; width: 3rem; height: 3rem; border-radius: 50%; background: var(--accent); color: #fff; font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+  .process-step__content { background: var(--stone); border-radius: 8px; padding: var(--space-m) var(--space-l); flex: 1; border-left: 3px solid var(--accent); }
+  .process-step__title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--chalk); margin: 0 0 0.4rem; }
+  .process-step__body { font-size: 0.92rem; line-height: 1.7; color: var(--concrete); margin: 0; }
+
+  .service-body__sidebar { display: flex; flex-direction: column; gap: var(--space-xl); align-self: start; position: sticky; top: 6rem; }
   .sidebar-card { background: var(--stone); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-s); }
-  .sidebar-card__heading { font-family: var(--font-display); font-size: clamp(1.1rem, 1.5vw, 1.4rem); line-height: 1.1; text-transform: uppercase; color: var(--chalk); margin: 0; }
+  .sidebar-card__heading { font-family: var(--font-display); font-size: clamp(1.1rem, 1.5vw, 1.4rem); line-height: 1.1; text-transform: none; color: var(--chalk); margin: 0; }
   .sidebar-card__body { font-size: 0.92rem; line-height: 1.7; color: var(--concrete); margin: 0; }
   .sidebar-card .btn { margin-top: var(--space-xs); align-self: flex-start; }
   .sidebar-card__phone { display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.04em; color: var(--accent); text-decoration: none; margin-top: var(--space-xs); }
@@ -209,6 +442,26 @@ const serviceSchema = {
   .sidebar-links a { font-size: 0.9rem; color: var(--concrete); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 0.3rem; }
   .sidebar-links a::before { content: '\2192'; color: var(--accent); font-size: 0.8rem; }
   .sidebar-links a:hover { color: var(--accent); }
+
+  .before-after-section { padding: var(--section-pad) 0; background: var(--stone); }
+  .before-after-wrap { max-width: 560px; margin: 0 auto; }
+  .before-after-composite { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,.1); }
+  .before-after-caption { font-size: 0.85rem; color: var(--concrete); text-align: center; margin-top: var(--space-s); font-style: italic; }
+
+  .photo-library { margin-top: var(--space-xl); }
+  .photo-library__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-s); gap: var(--space-m); }
+  .photo-library__sub { font-size: 0.9rem; color: var(--concrete); margin: 0; }
+  .photo-library__count { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--concrete); white-space: nowrap; }
+  .photo-library__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xs); }
+  .photo-library__item { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 6px; display: block; }
+  .photo-library__item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s var(--ease-out-expo); }
+  .photo-library__item:hover img { transform: scale(1.06); }
+  .photo-library__overlay { position: absolute; inset: 0; background: rgba(15,27,45,0); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s; }
+  .photo-library__overlay svg { opacity: 0; transition: opacity 0.3s; }
+  .photo-library__item:hover .photo-library__overlay { background: rgba(15,27,45,0.45); }
+  .photo-library__item:hover .photo-library__overlay svg { opacity: 1; }
+  @media (max-width: 480px) { .photo-library__grid { grid-template-columns: repeat(2, 1fr); } }
+
   .faq-section { padding: var(--section-pad) 0; }
   .faq-list { max-width: 72ch; display: flex; flex-direction: column; gap: 0; }
   .faq-item { border-bottom: 1px solid var(--stone); }
@@ -217,10 +470,16 @@ const serviceSchema = {
   .faq-item__q::after { content: '+'; font-family: var(--font-display); font-size: 1.5rem; color: var(--accent); flex-shrink: 0; margin-left: var(--space-s); }
   .faq-item[open] .faq-item__q::after { content: '\2212'; }
   .faq-item__a { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--concrete); padding: 0 0 var(--space-m); max-width: 60ch; }
+
+  .district-links-section { padding: var(--section-pad) 0; background: var(--stone); }
+  .district-links__heading { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; color: var(--chalk); margin: 0 0 var(--space-s); text-transform: none; }
+  .district-links__intro { font-size: 0.95rem; color: var(--concrete); margin: 0 0 var(--space-l); }
+  .district-links__grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-s); }
+  .district-links__grid a { font-size: 0.9rem; color: var(--concrete); text-decoration: none; display: flex; align-items: center; gap: 0.3rem; transition: color 0.2s; }
+  .district-links__grid a::before { content: '\2192'; color: var(--accent); font-size: 0.8rem; }
+  .district-links__grid a:hover { color: var(--accent); }
+  @media (max-width: 640px) { .district-links__grid { grid-template-columns: 1fr 1fr; } }
+
   @media (max-width: 960px) { .service-body__grid { grid-template-columns: 1fr; gap: var(--space-2xl); } .service-body__sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); } }
   @media (max-width: 640px) { .service-body__sidebar { grid-template-columns: 1fr; } }
-
-  .before-after-section { padding: var(--section-pad) 0; background: var(--stone); }
-  .before-after-wrap { max-width: 900px; margin: 0 auto; }
-  .before-after-composite { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,.1); }
 </style>
