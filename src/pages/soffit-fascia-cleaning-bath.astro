@@ -55,7 +55,7 @@ const serviceSchema = {
 
 <Base {title} {description} serviceSchema={serviceSchema} faqSchema={faqSchema} breadcrumbs={[{ name: 'Services', item: 'https://rgextremepressure.co.uk/services' }, { name: 'Soffit & Fascia Cleaning Bath', item: 'https://rgextremepressure.co.uk/soffit-fascia-cleaning-bath' }]}>
   <Hero
-    image="/images/before-after/roof-after-2.webp"
+    image="/images/before-after/job-gallery-11.webp"
     overlay="blue"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Soffit & Fascia Cleaning' }]}
     eyebrow="Professional Soffit & Fascia Cleaning"
@@ -162,6 +162,18 @@ const serviceSchema = {
     </div>
   </section>
 
+  <section class="before-after-section">
+    <div class="container">
+      <SectionHeader eyebrow="See the Difference" heading="Our Work" body="Dirty soffits and fascias cause streaking on render and brickwork. Clean rooflines restore your property's appearance and protect against damp." align="center" />
+      <div class="before-after-wrap">
+        <img src="/images/before-after/job-gallery-11.webp" alt="Rust and algae streaking down render from dirty soffits — before cleaning" class="before-after-composite" loading="lazy" />
+      </div>
+      <div class="before-after-wrap" style="margin-top:var(--space-xl)">
+        <img src="/images/before-after/job-gallery-04.webp" alt="Roofline gutters and soffits being cleaned with SkyVac" class="before-after-composite" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
   <section class="faq-section">
     <div class="container">
       <SectionHeader eyebrow="Common Questions" heading="Soffit & Fascia Cleaning FAQ" />
@@ -176,7 +188,7 @@ const serviceSchema = {
     </div>
   </section>
 
-  <ImageCTA heading="Clean Soffits & Fascias Make a Difference" body="Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured. Eco-friendly products." cta={{ label: 'Get a Free Quote', href: '/contact' }} image="/images/before-after/roof-after-2.webp" />
+  <ImageCTA heading="Clean Soffits & Fascias Make a Difference" body="Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured. Eco-friendly products." cta={{ label: 'Get a Free Quote', href: '/contact' }} image="/images/before-after/job-gallery-11.webp" />
 
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </Base>
@@ -223,4 +235,8 @@ const serviceSchema = {
   .faq-item__a { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--concrete); padding: 0 0 var(--space-m); max-width: 60ch; }
   @media (max-width: 960px) { .service-body__grid { grid-template-columns: 1fr; gap: var(--space-2xl); } .service-body__sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); } }
   @media (max-width: 640px) { .service-body__sidebar { grid-template-columns: 1fr; } }
+
+  .before-after-section { padding: var(--section-pad) 0; background: var(--stone); }
+  .before-after-wrap { max-width: 900px; margin: 0 auto; }
+  .before-after-composite { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,.1); }
 </style>

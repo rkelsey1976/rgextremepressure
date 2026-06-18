@@ -56,7 +56,7 @@ const serviceSchema = {
 
 <Base {title} {description} serviceSchema={serviceSchema} faqSchema={faqSchema} breadcrumbs={[{ name: 'Services', item: 'https://rgextremepressure.co.uk/services' }, { name: 'Patio Cleaning Bath', item: 'https://rgextremepressure.co.uk/patio-cleaning-bath' }]}>
   <Hero
-    image="/images/before-after/roof-after-2.webp"
+    image="/images/before-after/patio-after-1.webp"
     overlay="blue"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Patio Cleaning' }]}
     eyebrow="Professional Patio Cleaning"
@@ -166,7 +166,13 @@ const serviceSchema = {
     <div class="container">
       <SectionHeader eyebrow="See the Difference" heading="Before and After" body="See the difference professional patio cleaning can achieve." align="center" />
       <div class="before-after-wrap">
-        <img src="/images/before-after/wix-patio.webp" alt="Patio before and after professional jet washing" class="before-after-composite" />
+        <BeforeAfter beforeSrc="/images/before-after/patio-before-1.webp" afterSrc="/images/before-after/patio-after-1.webp" beforeAlt="Indian sandstone patio before professional cleaning" afterAlt="Indian sandstone patio restored after jet washing" caption="Indian sandstone patio in Bath — algae and staining removed" />
+      </div>
+      <div class="before-after-wrap" style="margin-top:var(--space-xl)">
+        <BeforeAfter beforeSrc="/images/before-after/job-gallery-17.webp" afterSrc="/images/before-after/job-gallery-16.webp" beforeAlt="Patio slabs covered in algae before cleaning" afterAlt="Clean patio slabs after professional jet washing" caption="Sandstone patio — full restoration and algae removal" />
+      </div>
+      <div class="before-after-wrap" style="margin-top:var(--space-xl)">
+        <img src="/images/before-after/job-gallery-02.webp" alt="Clean sandstone patio after professional jet washing in Bath" loading="lazy" class="before-after-composite" />
       </div>
     </div>
   </section>
@@ -201,7 +207,7 @@ const serviceSchema = {
     </div>
   </section>
 
-  <ImageCTA heading="Ready for a Clean Patio?" body="Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured. Eco-friendly products." cta={{ label: 'Get a Free Quote', href: '/contact' }} image="/images/before-after/roof-after-2.webp" />
+  <ImageCTA heading="Ready for a Clean Patio?" body="Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured. Eco-friendly products." cta={{ label: 'Get a Free Quote', href: '/contact' }} image="/images/before-after/patio-after-1.webp" />
 
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </Base>
