@@ -77,23 +77,20 @@ const {
     width: 100%;
   }
 
-  /* Before is clipped via inline width on the wrapper */
+  /* Before is revealed via clip-path — image always fills full frame */
   .ba__before {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 50%; /* default, overridden by JS */
-    overflow: hidden;
+    inset: 0;
+    clip-path: inset(0 50% 0 0);
     z-index: 2;
   }
 
   .ba__img--before {
-    width: 100%; /* will be overridden by JS to match frame width */
-    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
   }
 
   /* Handle */
@@ -196,7 +193,6 @@ const {
     const handle = container.querySelector('[data-ba-handle]') as HTMLElement;
     const before = container.querySelector('[data-ba-before]') as HTMLElement;
     const frame = container.querySelector('.ba__frame') as HTMLElement;
-    const beforeImg = container.querySelector('.ba__img--before') as HTMLImageElement;
 
     if (!handle || !before || !frame) return;
 
@@ -206,11 +202,11 @@ const {
       const rect = frame.getBoundingClientRect();
       let pct = ((x - rect.left) / rect.width) * 100;
       pct = Math.max(2, Math.min(98, pct));
-      before.style.width = `${pct}%`;
+      before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
       handle.style.left = `${pct}%`;
     }
 
-    handle.addEventListener('mousedown', () => { isDragging = true; });
+    handle.addEventListener('mousedown', (e) => { isDragging = true; e.preventDefault(); });
     handle.addEventListener('touchstart', () => { isDragging = true; }, { passive: true });
 
     document.addEventListener('mousemove', (e) => {
@@ -225,13 +221,6 @@ const {
 
     document.addEventListener('mouseup', () => { isDragging = false; });
     document.addEventListener('touchend', () => { isDragging = false; });
-
-    // Set before image width to match frame
-    function syncBeforeImgWidth() {
-      beforeImg.style.width = `${frame.offsetWidth}px`;
-    }
-    syncBeforeImgWidth();
-    window.addEventListener('resize', syncBeforeImgWidth);
   }
 
   document.querySelectorAll('[data-ba]').forEach(initBeforeAfter);
