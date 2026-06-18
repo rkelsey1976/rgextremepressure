@@ -23,7 +23,7 @@ export const servicesData: ServicePillar[] = [
       'Oil Stain & Tyre Mark Removal',
       'Resin Drive Gentle Clean',
     ],
-    image: '/images/hero-driveway-cleaning.webp',
+    image: '/images/before-after/job-gallery-13.webp',
     href: '/driveway-cleaning-bath',
   },
   {
@@ -37,7 +37,7 @@ export const servicesData: ServicePillar[] = [
       'Concrete Slab & Flagstone Clean',
       'Algae & Moss Treatment',
     ],
-    image: '/images/hero-patio-cleaning.webp',
+    image: '/images/before-after/job-gallery-02.webp',
     href: '/patio-cleaning-bath',
   },
   {
@@ -51,7 +51,7 @@ export const servicesData: ServicePillar[] = [
       'Minor Gutter Repair & Reseal',
       'Soffit & Fascia Clean',
     ],
-    image: '/images/hero-gutter-cleaning.webp',
+    image: '/images/before-after/job-gallery-18.webp',
     href: '/gutter-cleaning-bath',
   },
   {
@@ -65,7 +65,7 @@ export const servicesData: ServicePillar[] = [
       'Biocide Anti-Growth Treatment',
       'Gutter & Valley Clear After Clean',
     ],
-    image: '/images/hero-roof-cleaning.webp',
+    image: '/images/before-after/job-gallery-25.webp',
     href: '/roof-cleaning-bath',
   },
   {
@@ -79,7 +79,7 @@ export const servicesData: ServicePillar[] = [
       'Algae & Pollution Stain Removal',
       'Pebbledash & Roughcast Clean',
     ],
-    image: '/images/hero-render-cleaning.webp',
+    image: '/images/before-after/job-gallery-08.webp',
     href: '/render-cleaning-bath',
   },
   {
@@ -93,7 +93,7 @@ export const servicesData: ServicePillar[] = [
       'Edge Restraint Check & Repair',
       'Sealant Application Available',
     ],
-    image: '/images/hero-block-paving-cleaning.webp',
+    image: '/images/before-after/job-gallery-26.webp',
     href: '/driveway-cleaning-bath',
   },
   {
@@ -107,7 +107,7 @@ export const servicesData: ServicePillar[] = [
       'Algae & Mould Biocide Treatment',
       'Barge Board & Verge Cleaning',
     ],
-    image: '/images/hero-roof-cleaning.webp',
+    image: '/images/before-after/job-gallery-11.webp',
     href: '/soffit-fascia-cleaning-bath',
   },
   {
@@ -121,7 +121,7 @@ export const servicesData: ServicePillar[] = [
       'uPVC Frame Cleaning',
       'Algae & Biocide Treatment',
     ],
-    image: '/images/hero-roof-cleaning.webp',
+    image: '/images/before-after/job-gallery-07.webp',
     href: '/conservatory-cleaning-bath',
   },
   {
@@ -135,7 +135,7 @@ export const servicesData: ServicePillar[] = [
       'Industrial Unit & Warehouse Yards',
       'Scheduled Maintenance Contracts',
     ],
-    image: '/images/hero-driveway-cleaning.webp',
+    image: '/images/before-after/job-gallery-19.webp',
     href: '/commercial-jet-washing-bath',
   },
 ];

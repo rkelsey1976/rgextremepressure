@@ -1,0 +1,242 @@
+{
+  "name": "RG Extreme Pressure \u2014 Weekly GBP Post (Full Site)",
+  "flow": [
+    {
+      "id": 1,
+      "module": "builtin:BasicTrigger",
+      "version": 1,
+      "parameters": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        },
+        "restore": {}
+      }
+    },
+    {
+      "id": 2,
+      "module": "util:SetVariables",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "variables": [
+          {
+            "name": "contentIndex",
+            "value": "{{mod(floor(divide(timestamp; 604800)); 90)}}"
+          },
+          {
+            "name": "contentMap",
+            "value": "[{\"url\": \"https://rgextremepressure.co.uk/blog/how-often-should-you-jet-wash-a-driveway\", \"type\": \"blog\", \"topic\": \"How often to jet wash a driveway\"}, {\"url\": \"https://rgextremepressure.co.uk/blog/does-pressure-washing-damage-block-paving\", \"type\": \"blog\", \"topic\": \"Pressure washing and block paving\"}, {\"url\": \"https://rgextremepressure.co.uk/blog/is-soft-wash-safe-for-render\", \"type\": \"blog\", \"topic\": \"Soft washing render\"}, {\"url\": \"https://rgextremepressure.co.uk/blog/can-you-pressure-wash-in-cold-weather\", \"type\": \"blog\", \"topic\": \"Pressure washing in cold weather\"}, {\"url\": \"https://rgextremepressure.co.uk/blog/should-you-jet-wash-before-or-after-leaves-fall\", \"type\": \"blog\", \"topic\": \"When to jet wash \\u2014 seasonal timing\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning-bath\", \"type\": \"service\", \"topic\": \"driveway cleaning Bath\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning-bath\", \"type\": \"service\", \"topic\": \"patio cleaning Bath\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning-bath\", \"type\": \"service\", \"topic\": \"roof cleaning Bath\"}, {\"url\": \"https://rgextremepressure.co.uk/gutter-cleaning-bath\", \"type\": \"service\", \"topic\": \"gutter cleaning Bath\"}, {\"url\": \"https://rgextremepressure.co.uk/render-cleaning-bath\", \"type\": \"service\", \"topic\": \"render cleaning Bath\"}, {\"url\": \"https://rgextremepressure.co.uk/soffit-fascia-cleaning-bath\", \"type\": \"service\", \"topic\": \"soffit and fascia cleaning Bath\"}, {\"url\": \"https://rgextremepressure.co.uk/conservatory-cleaning-bath\", \"type\": \"service\", \"topic\": \"conservatory cleaning Bath\"}, {\"url\": \"https://rgextremepressure.co.uk/commercial-jet-washing-bath\", \"type\": \"service\", \"topic\": \"commercial jet washing Bath\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning-bristol\", \"type\": \"service\", \"topic\": \"driveway cleaning Bristol\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning-bristol\", \"type\": \"service\", \"topic\": \"patio cleaning Bristol\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning-bristol\", \"type\": \"service\", \"topic\": \"roof cleaning Bristol\"}, {\"url\": \"https://rgextremepressure.co.uk/gutter-cleaning-bristol\", \"type\": \"service\", \"topic\": \"gutter cleaning Bristol\"}, {\"url\": \"https://rgextremepressure.co.uk/render-cleaning-bristol\", \"type\": \"service\", \"topic\": \"render cleaning Bristol\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/keynsham\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Keynsham\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/radstock\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Radstock\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/midsomer-norton\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Midsomer Norton\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/frome\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Frome\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/chippenham\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Chippenham\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/oldfield-park-bath\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Oldfield Park\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/combe-down-bath\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Combe Down\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/bear-flat-bath\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Bear Flat\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/newbridge-bath\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Newbridge\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/twerton-bath\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Twerton\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/weston-bath\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Weston\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/clifton-bristol\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Clifton\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/redland-bristol\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Redland\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/bishopston-bristol\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Bishopston\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/henleaze-bristol\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Henleaze\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/kingswood-bristol\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Kingswood\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/fishponds-bristol\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Fishponds\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/brislington-bristol\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Brislington\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/bedminster-bristol\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Bedminster\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/downend-bristol\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Downend\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/westbury-on-trym-bristol\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Westbury-on-Trym\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/bradford-on-avon\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Bradford on Avon\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/corsham\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Corsham\"}, {\"url\": \"https://rgextremepressure.co.uk/areas-covered/melksham\", \"type\": \"area\", \"topic\": \"jet washing and pressure washing in Melksham\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/oldfield-park-bath\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Oldfield Park\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/oldfield-park-bath\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Oldfield Park\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/oldfield-park-bath\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Oldfield Park\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/combe-down-bath\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Combe Down\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/combe-down-bath\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Combe Down\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/combe-down-bath\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Combe Down\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/bear-flat-bath\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Bear Flat\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/bear-flat-bath\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Bear Flat\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/bear-flat-bath\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Bear Flat\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/newbridge-bath\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Newbridge\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/newbridge-bath\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Newbridge\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/newbridge-bath\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Newbridge\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/twerton-bath\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Twerton\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/twerton-bath\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Twerton\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/twerton-bath\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Twerton\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/weston-bath\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Weston\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/weston-bath\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Weston\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/weston-bath\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Weston\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/clifton-bristol\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Clifton\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/clifton-bristol\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Clifton\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/clifton-bristol\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Clifton\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/redland-bristol\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Redland\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/redland-bristol\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Redland\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/redland-bristol\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Redland\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/bishopston-bristol\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Bishopston\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/bishopston-bristol\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Bishopston\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/bishopston-bristol\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Bishopston\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/henleaze-bristol\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Henleaze\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/henleaze-bristol\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Henleaze\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/henleaze-bristol\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Henleaze\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/kingswood-bristol\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Kingswood\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/kingswood-bristol\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Kingswood\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/kingswood-bristol\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Kingswood\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/fishponds-bristol\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Fishponds\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/fishponds-bristol\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Fishponds\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/fishponds-bristol\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Fishponds\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/brislington-bristol\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Brislington\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/brislington-bristol\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Brislington\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/brislington-bristol\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Brislington\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/bedminster-bristol\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Bedminster\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/bedminster-bristol\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Bedminster\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/bedminster-bristol\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Bedminster\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/downend-bristol\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Downend\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/downend-bristol\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Downend\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/downend-bristol\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Downend\"}, {\"url\": \"https://rgextremepressure.co.uk/driveway-cleaning/westbury-on-trym-bristol\", \"type\": \"service-area\", \"topic\": \"driveway cleaning in Westbury-on-Trym\"}, {\"url\": \"https://rgextremepressure.co.uk/patio-cleaning/westbury-on-trym-bristol\", \"type\": \"service-area\", \"topic\": \"patio cleaning in Westbury-on-Trym\"}, {\"url\": \"https://rgextremepressure.co.uk/roof-cleaning/westbury-on-trym-bristol\", \"type\": \"service-area\", \"topic\": \"roof cleaning in Westbury-on-Trym\"}]"
+          },
+          {
+            "name": "currentItem",
+            "value": "{{get(parseJSON(variables.contentMap); variables.contentIndex)}}"
+          },
+          {
+            "name": "currentUrl",
+            "value": "{{get(variables.currentItem; \"url\")}}"
+          },
+          {
+            "name": "currentType",
+            "value": "{{get(variables.currentItem; \"type\")}}"
+          },
+          {
+            "name": "currentTopic",
+            "value": "{{get(variables.currentItem; \"topic\")}}"
+          }
+        ]
+      },
+      "metadata": {
+        "designer": {
+          "x": 200,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "http:ActionSendData",
+      "version": 3,
+      "parameters": {
+        "handleErrors": false,
+        "useNewZLibDeCompress": true
+      },
+      "mapper": {
+        "url": "{{variables.currentUrl}}",
+        "serializeUrl": false,
+        "method": "GET",
+        "headers": [
+          {
+            "name": "User-Agent",
+            "value": "Mozilla/5.0 (compatible; MakeBot/1.0)"
+          }
+        ],
+        "bodyType": "raw",
+        "parseResponse": false
+      },
+      "metadata": {
+        "designer": {
+          "x": 400,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 4,
+      "module": "util:SetVariables",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "variables": [
+          {
+            "name": "strippedContent",
+            "value": "{{replace(replace(replace(replace(replace(replace(3.data; \"/<[^>]+>/g\"; \"\"); \"/&nbsp;/g\"; \" \"); \"/&amp;/g\"; \"&\"); \"/&lt;/g\"; \"<\"); \"/&gt;/g\"; \">\"); \"/\\s{2,}/g\"; \" \")}}"
+          },
+          {
+            "name": "promptInstruction",
+            "value": "{{if(variables.currentType = \"blog\"; \"Summarise the key advice from this article into a Google Business Profile post. End with: Read the full guide at \" + variables.currentUrl; if(variables.currentType = \"area\"; \"Write a post promoting RG Extreme Pressure services in this specific local area. Mention 1-2 local property types or streets if they appear in the content. End with: Free quotes \u2014 call 07474 939398 or visit rgextremepressure.co.uk\"; \"Write a post promoting this specific service. Pull 1-2 real benefits or process details from the page content. End with: Free quotes \u2014 call 07474 939398 or visit \" + variables.currentUrl))}}"
+          }
+        ]
+      },
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 5,
+      "module": "http:ActionSendData",
+      "version": 3,
+      "parameters": {
+        "handleErrors": false,
+        "useNewZLibDeCompress": true
+      },
+      "mapper": {
+        "url": "https://api.anthropic.com/v1/messages",
+        "serializeUrl": false,
+        "method": "POST",
+        "headers": [
+          {
+            "name": "x-api-key",
+            "value": "YOUR_ANTHROPIC_API_KEY"
+          },
+          {
+            "name": "anthropic-version",
+            "value": "2023-06-01"
+          },
+          {
+            "name": "content-type",
+            "value": "application/json"
+          }
+        ],
+        "bodyType": "raw",
+        "parseResponse": true,
+        "contentType": "application/json",
+        "data": "{{toJSON(object(\"model\"; \"claude-haiku-4-5-20251001\"; \"max_tokens\"; 400; \"messages\"; array(object(\"role\"; \"user\"; \"content\"; \"You are writing a Google Business Profile post for RG Extreme Pressure, a professional jet washing and pressure washing company based in Bath, Somerset. Owner: Robert Galazka. 111 five-star Google reviews.\\n\\nSource page: \" + variables.currentUrl + \"\\nTopic: \" + variables.currentTopic + \"\\n\\nSource content (first 2500 chars):\\n\" + substring(variables.strippedContent; 0; 2500) + \"\\n\\nInstruction: \" + variables.promptInstruction + \"\\n\\nGeneral rules for ALL posts:\\n- 150-200 words\\n- Do NOT open with a question\\n- Open with a confident, specific statement\\n- Mention the 111 five-star reviews once, naturally, not at the start\\n- British English throughout\\n- No hashtags\\n- No em dashes\\n- Do not use the word transform\\n- Professional, direct, friendly tone\\n\\nReturn ONLY the post text. No intro, no explanation.\")))))}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 800,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 6,
+      "module": "util:SetVariables",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "variables": [
+          {
+            "name": "postText",
+            "value": "{{get(get(get(5.data; \"content\"); 0); \"text\")}}"
+          }
+        ]
+      },
+      "metadata": {
+        "designer": {
+          "x": 1000,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 7,
+      "module": "http:ActionSendData",
+      "version": 3,
+      "parameters": {
+        "handleErrors": false,
+        "useNewZLibDeCompress": true
+      },
+      "mapper": {
+        "url": "https://mybusiness.googleapis.com/v4/accounts/YOUR_ACCOUNT_ID/locations/YOUR_LOCATION_ID/localPosts",
+        "serializeUrl": false,
+        "method": "POST",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{CONNECTION_TOKEN}}"
+          },
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "bodyType": "raw",
+        "parseResponse": true,
+        "contentType": "application/json",
+        "data": "{{toJSON(object(\"languageCode\"; \"en-GB\"; \"summary\"; variables.postText; \"callToAction\"; object(\"actionType\"; \"LEARN_MORE\"; \"url\"; variables.currentUrl); \"topicType\"; \"STANDARD\"))}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 1200,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 8,
+      "module": "util:SetVariables",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "variables": [
+          {
+            "name": "logEntry",
+            "value": "{{now}} | Index: {{variables.contentIndex}}/90 | Type: {{variables.currentType}} | URL: {{variables.currentUrl}} | GBP post: {{7.data.name}}"
+          }
+        ]
+      },
+      "metadata": {
+        "designer": {
+          "x": 1400,
+          "y": 0
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "eu1.make.com"
+  }
+}
