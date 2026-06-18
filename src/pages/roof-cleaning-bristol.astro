@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import ImageCTA from '../components/ImageCTA.astro';
 import TrustMetrics from '../components/TrustMetrics.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
 
 const title = 'Roof Cleaning Bristol';
 const description = 'Professional roof cleaning and moss removal in Bristol. Spinning brush system cleans tiles safely from ground level — no walking on your roof. 111 five-star reviews. Call 07474 939 398.';
@@ -254,10 +255,13 @@ const serviceSchema = {
     <div class="container">
       <SectionHeader eyebrow="See the Difference" heading="Roof Cleaning Results" body="Real results from our roof cleaning work across Bristol and Somerset." align="center" />
       <div class="before-after-wrap">
-        <img src="/images/before-after/roof-aerial-split-1.webp" alt="Aerial view showing roof cleaning in progress — half cleaned half mossy" class="before-after-composite" loading="lazy" />
-      </div>
-      <div class="before-after-wrap" style="margin-top:var(--space-xl)">
-        <img src="/images/before-after/job-gallery-25.webp" alt="Dramatic half-cleaned roof showing moss removal transformation" class="before-after-composite" loading="lazy" />
+        <BeforeAfter
+          beforeSrc="/images/before-after/roof-before.jpg"
+          afterSrc="/images/before-after/roof-after.jpg"
+          beforeAlt="Roof tiles covered in moss and algae before cleaning"
+          afterAlt="Roof tiles fully restored after professional moss removal"
+          caption="Roof moss removal in Bristol — tiles fully restored using our spinning brush system"
+        />
       </div>
     </div>
   </section>

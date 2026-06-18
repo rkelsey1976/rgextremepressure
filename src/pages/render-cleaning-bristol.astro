@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import ImageCTA from '../components/ImageCTA.astro';
 import TrustMetrics from '../components/TrustMetrics.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
 
 const title = 'Render Cleaning Bristol';
 const description = 'Professional render cleaning in Bristol. Soft wash system safely removes algae, staining and pollution from K-Rend, silicone and painted render — no high pressure. 111 five-star reviews. Call 07474 939 398.';
@@ -318,8 +319,22 @@ const serviceSchema = {
     <div class="container">
       <SectionHeader eyebrow="See the Difference" heading="Render Cleaning Results" body="Algae streaks and pollution stains removed from rendered properties across Bristol." align="center" />
       <div class="before-after-wrap">
-        <img src="/images/before-after/render-before-1.webp" alt="Render covered in green algae streaks before soft wash treatment" class="before-after-composite" loading="lazy" />
-        <p class="before-after-caption">Typical Bristol render — north-facing elevation green with algae within a few years of application.</p>
+        <BeforeAfter
+          beforeSrc="/images/before-after/exterior-before.jpg"
+          afterSrc="/images/before-after/exterior-after.jpg"
+          beforeAlt="Rendered exterior covered in algae streaks and pollution staining before soft wash"
+          afterAlt="Rendered exterior fully restored after professional soft wash cleaning"
+          caption="Rendered property — algae streaks and pollution removed with soft wash"
+        />
+      </div>
+      <div class="before-after-wrap" style="margin-top:var(--space-xl)">
+        <BeforeAfter
+          beforeSrc="/images/before-after/render-before-1.webp"
+          afterSrc="/images/before-after/render-after-1.webp"
+          beforeAlt="K-Rend covered in algae before soft wash"
+          afterAlt="K-Rend restored after soft wash treatment"
+          caption="K-Rend Bristol — algae streaks removed with soft wash treatment"
+        />
       </div>
       <div class="photo-library">
         <div class="photo-library__header">

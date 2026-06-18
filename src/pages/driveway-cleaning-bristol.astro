@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import ImageCTA from '../components/ImageCTA.astro';
 import TrustMetrics from '../components/TrustMetrics.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
 
 const title = 'Driveway Cleaning Bristol';
 const description = 'Professional driveway cleaning across Bristol (BS1–BS16). Block paving, tarmac and concrete jet washed, re-sanded and sealed. 111 five-star reviews. Call 07474 939 398.';
@@ -314,15 +315,14 @@ const serviceSchema = {
   <section class="before-after-section">
     <div class="container">
       <SectionHeader eyebrow="See the Difference" heading="Before and After" body="See the difference professional driveway cleaning can achieve." align="center" />
-      <div class="before-after-grid">
-        <div class="before-after-item">
-          <img src="/images/before-after/driveway-before-1.webp" alt="Block paving driveway before cleaning — heavy algae, moss and staining" loading="lazy" />
-          <p class="before-after-label">Before</p>
-        </div>
-        <div class="before-after-item">
-          <img src="/images/before-after/driveway-after-1.webp" alt="Block paving driveway after jet washing — clean stone surface fully restored" loading="lazy" />
-          <p class="before-after-label">After</p>
-        </div>
+      <div class="before-after-wrap">
+        <BeforeAfter
+          beforeSrc="/images/before-after/drive-before.jpg"
+          afterSrc="/images/before-after/drive-after.jpg"
+          beforeAlt="Block paving driveway before cleaning — heavy algae, moss and staining"
+          afterAlt="Block paving driveway after jet washing — clean stone surface fully restored"
+          caption="Block paving driveway — years of algae and staining removed in one visit"
+        />
       </div>
       <div class="photo-library" style="margin-top:var(--space-xl)">
         <div class="photo-library__header">
