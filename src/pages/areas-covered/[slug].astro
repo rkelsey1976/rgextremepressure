@@ -138,14 +138,6 @@ const serviceSchema = servicesData.map(s => ({
             </ul>
             <a href={serviceHref(service)} class="service-detail__link">Learn more about {service.title.toLowerCase()} &rarr;</a>
           </div>
-          <div class="service-detail__aside">
-            <div class="service-detail__card">
-              <span class="service-detail__card-eyebrow">From</span>
-              <span class="service-detail__card-price">{service.id === 'gutter-cleaning' ? '£39' : service.id === 'roof-cleaning' ? '£299' : service.id === 'render-cleaning' ? '£89' : service.id === 'patio-cleaning' ? '£79' : '£59'}</span>
-              <span class="service-detail__card-label">Free quotes available</span>
-              <a href="/contact" class="service-detail__card-cta">Get a Quote</a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -333,7 +325,7 @@ const serviceSchema = servicesData.map(s => ({
 
   .service-detail__grid {
     display: grid;
-    grid-template-columns: 1fr 260px;
+    grid-template-columns: 1fr;
     gap: var(--space-3xl);
     align-items: start;
   }
@@ -392,62 +384,6 @@ const serviceSchema = servicesData.map(s => ({
     color: var(--accent-dim);
   }
 
-  /* ── Price card ── */
-  .service-detail__card {
-    background: var(--cta);
-    color: #fff;
-    border-radius: var(--radius);
-    padding: var(--space-xl);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-    text-align: center;
-    position: sticky;
-    top: 6rem;
-  }
-
-  .service-detail__card-eyebrow {
-    font-family: var(--font-body);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    opacity: 0.8;
-  }
-
-  .service-detail__card-price {
-    font-family: var(--font-display);
-    font-size: 2.2rem;
-    font-weight: 800;
-    line-height: 1;
-  }
-
-  .service-detail__card-label {
-    font-size: 0.8rem;
-    font-weight: 400;
-    opacity: 0.8;
-    margin-bottom: var(--space-m);
-  }
-
-  .service-detail__card-cta {
-    display: inline-block;
-    background: #fff;
-    color: var(--cta);
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: 700;
-    padding: 0.6rem 1.5rem;
-    border-radius: var(--radius);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: background 0.2s;
-  }
-
-  .service-detail__card-cta:hover {
-    background: var(--cta-light);
-  }
 
   /* ── Video ── */
   .video-section {
@@ -531,19 +467,6 @@ const serviceSchema = servicesData.map(s => ({
     .service-detail__grid {
       grid-template-columns: 1fr;
       gap: var(--space-xl);
-    }
-
-    .service-detail__card {
-      position: static;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: var(--space-s);
-      padding: var(--space-l);
-    }
-
-    .service-detail__card-price {
-      font-size: 1.6rem;
     }
 
     .nuance-block {
