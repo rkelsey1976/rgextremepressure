@@ -2,11 +2,11 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import TrustMetrics from '../components/TrustMetrics.astro';
 import ImageCTA from '../components/ImageCTA.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import { servicesData } from '../data/services';
 import FbVideoFacade from '../components/FbVideoFacade.astro';
+import TrustMetrics from '../components/TrustMetrics.astro';
 
 // Override hrefs for services with Bristol-specific pages
 const bristolServices = servicesData.map(s => ({
@@ -47,14 +47,13 @@ const serviceSchema = {
     heading="Jet Washing Bristol"
     body="Professional pressure washing for driveways, patios, roofs, gutters and render across all Bristol postcodes. 111 five-star reviews. Free quotes."
     cta={{ label: 'Get a Free Quote', href: '/contact' }}
-    minHeight="compact"
+  minHeight="compact"
   />
 
   <TrustMetrics metrics={[
     { value: '111', label: 'Five-Star Reviews' },
     { value: '10', label: 'Years Experience' },
     { value: 'Insured', label: 'Fully Insured' },
-    { value: '5.2K', label: 'FB Followers' },
     { value: 'Free', label: 'Free Quotes' },
   ]} />
 

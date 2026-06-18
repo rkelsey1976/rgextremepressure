@@ -2,9 +2,9 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import TrustMetrics from '../components/TrustMetrics.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
 import ImageCTA from '../components/ImageCTA.astro';
+import TrustMetrics from '../components/TrustMetrics.astro';
 
 const title = 'Driveway Cleaning Bath';
 const description = 'Professional driveway cleaning in Bath. Jet washing for block paving, tarmac, concrete and resin drives. Oil stain removal, re-sanding and sealing. Call 07474 939 398.';
@@ -90,17 +90,17 @@ const serviceSchema = {
     heading="Driveway Cleaning Bath"
     body="Restore your driveway to look brand new. Professional jet washing removes years of dirt, oil stains, tyre marks and weed growth from any surface — block paving, tarmac, concrete or resin."
     cta={{ label: 'Get a Free Quote', href: '/contact' }}
-    minHeight="compact"
+  minHeight="compact"
   />
 
-  {/* ── Trust bar ── */}
   <TrustMetrics metrics={[
     { value: '111', label: 'Five-Star Reviews' },
     { value: '10', label: 'Years Experience' },
     { value: 'Insured', label: 'Fully Insured' },
-    { value: '5.2K', label: 'FB Followers' },
     { value: 'Free', label: 'Free Quotes' },
   ]} />
+
+  {/* ── Trust bar ── */}
 
   {/* ── What's included ── */}
   <section class="service-body">
@@ -177,24 +177,6 @@ const serviceSchema = {
               07474 939 398
             </a>
           </div>
-
-          <div class="sidebar-card sidebar-card--trust">
-            <span class="rule--accent"></span>
-            <span class="t-label" style="color:var(--accent)">Trusted Local Service</span>
-            <div class="sidebar-trust">
-              <div class="sidebar-trust__item">
-                <span class="sidebar-trust__value">111</span>
-                <span class="sidebar-trust__label">Five-Star Google Reviews</span>
-              </div>
-              <div class="sidebar-trust__item">
-                <span class="sidebar-trust__value">10</span>
-                <span class="sidebar-trust__label">Years Experience</span>
-              </div>
-              <div class="sidebar-trust__item">
-                <span class="sidebar-trust__value">&#10003;</span>
-                <span class="sidebar-trust__label">Fully Insured</span>
-              </div>
-            </div>
           </div>
 
           <div class="sidebar-card">
@@ -385,7 +367,6 @@ const serviceSchema = {
     gap: var(--space-s);
   }
 
-  .sidebar-card--trust {
     background: var(--navy);
   }
 
@@ -398,7 +379,6 @@ const serviceSchema = {
     margin: 0;
   }
 
-  .sidebar-card--trust .sidebar-card__heading {
     color: #fff;
   }
 
@@ -409,7 +389,6 @@ const serviceSchema = {
     margin: 0;
   }
 
-  .sidebar-card--trust .sidebar-card__body {
     color: rgba(255, 255, 255, 0.65);
   }
 
@@ -435,27 +414,23 @@ const serviceSchema = {
   }
 
   /* ── Sidebar trust ── */
-  .sidebar-trust {
     display: flex;
     flex-direction: column;
     gap: var(--space-m);
     margin-top: var(--space-s);
   }
 
-  .sidebar-trust__item {
     display: flex;
     align-items: center;
     gap: var(--space-s);
   }
 
-  .sidebar-trust__value {
     font-family: var(--font-display);
     font-size: 2rem;
     line-height: 1;
     color: var(--accent);
   }
 
-  .sidebar-trust__label {
     font-size: 0.78rem;
     font-weight: 500;
     letter-spacing: 0.12em;

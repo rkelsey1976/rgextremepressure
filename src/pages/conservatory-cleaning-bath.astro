@@ -2,8 +2,8 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import TrustMetrics from '../components/TrustMetrics.astro';
 import ImageCTA from '../components/ImageCTA.astro';
+import TrustMetrics from '../components/TrustMetrics.astro';
 
 const title = 'Conservatory Cleaning Bath';
 const description = 'Professional conservatory cleaning in Bath. Roof, frame and glass cleaned safely using specialist soft wash. Green algae and black streaks removed. Call 07474 939 398 for a free quote.';
@@ -55,21 +55,20 @@ const serviceSchema = {
 
 <Base {title} {description} serviceSchema={serviceSchema} faqSchema={faqSchema} breadcrumbs={[{ name: 'Services', item: 'https://rgextremepressure.co.uk/services' }, { name: 'Conservatory Cleaning Bath', item: 'https://rgextremepressure.co.uk/conservatory-cleaning-bath' }]}>
   <Hero
-    image="/images/before-after/job-gallery-07.webp"
+    image="/images/before-after/conservatory-hero-1.jpg"
     overlay="blue"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Conservatory Cleaning' }]}
     eyebrow="Professional Conservatory Cleaning"
     heading="Conservatory Cleaning Bath"
     body="A green, dirty conservatory roof blocks light and looks neglected. Our specialist soft wash cleans polycarbonate and glass panels, uPVC frames and gutters safely — no high pressure that could crack panels or damage seals."
     cta={{ label: 'Get a Free Quote', href: '/contact' }}
-    minHeight="compact"
+  minHeight="compact"
   />
 
   <TrustMetrics metrics={[
     { value: '111', label: 'Five-Star Reviews' },
     { value: '10', label: 'Years Experience' },
     { value: 'Insured', label: 'Fully Insured' },
-    { value: '5.2K', label: 'FB Followers' },
     { value: 'Free', label: 'Free Quotes' },
   ]} />
 
@@ -134,14 +133,6 @@ const serviceSchema = {
             <a href="/contact" class="btn btn--primary">Get a Free Quote <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             <a href="tel:07474939398" class="sidebar-card__phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> 07474 939 398</a>
           </div>
-          <div class="sidebar-card sidebar-card--trust">
-            <span class="rule--accent"></span>
-            <span class="t-label" style="color:var(--accent)">Trusted Local Service</span>
-            <div class="sidebar-trust">
-              <div class="sidebar-trust__item"><span class="sidebar-trust__value">111</span><span class="sidebar-trust__label">Five-Star Google Reviews</span></div>
-              <div class="sidebar-trust__item"><span class="sidebar-trust__value">10</span><span class="sidebar-trust__label">Years Experience</span></div>
-              <div class="sidebar-trust__item"><span class="sidebar-trust__value">&#10003;</span><span class="sidebar-trust__label">Fully Insured</span></div>
-            </div>
           </div>
           <div class="sidebar-card">
             <span class="rule--accent"></span>
@@ -166,7 +157,7 @@ const serviceSchema = {
     <div class="container">
       <SectionHeader eyebrow="Our Work" heading="Conservatory Cleaning Results" body="A green, dirty conservatory roof blocks light and looks neglected. Our soft wash system restores glass and polycarbonate roofs safely." align="center" />
       <div class="before-after-wrap">
-        <img src="/images/before-after/job-gallery-07.webp" alt="Large Bath property with iron conservatory frame before cleaning" class="before-after-composite" loading="lazy" />
+        <img src="/images/before-after/conservatory-hero-1.jpg" alt="Large Bath property with iron conservatory frame before cleaning" class="before-after-composite" loading="lazy" />
       </div>
       <div class="before-after-wrap" style="margin-top:var(--space-xl)">
         <img src="/images/before-after/job-gallery-08.webp" alt="Large rendered property with conservatory fully cleaned" class="before-after-composite" loading="lazy" />
@@ -188,7 +179,7 @@ const serviceSchema = {
     </div>
   </section>
 
-  <ImageCTA heading="A Clean Conservatory Makes the Room" body="Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured. Eco-friendly products." cta={{ label: 'Get a Free Quote', href: '/contact' }} image="/images/before-after/job-gallery-07.webp" />
+  <ImageCTA heading="A Clean Conservatory Makes the Room" body="Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured. Eco-friendly products." cta={{ label: 'Get a Free Quote', href: '/contact' }} image="/images/before-after/conservatory-hero-1.jpg" />
 
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </Base>
@@ -209,18 +200,11 @@ const serviceSchema = {
   .process-steps li strong { color: var(--chalk); }
   .service-body__sidebar { display: flex; flex-direction: column; gap: var(--space-xl); position: sticky; top: 6rem; }
   .sidebar-card { background: var(--stone); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-s); }
-  .sidebar-card--trust { background: var(--navy); }
   .sidebar-card__heading { font-family: var(--font-display); font-size: clamp(1.1rem, 1.5vw, 1.4rem); line-height: 1.1; text-transform: uppercase; color: var(--chalk); margin: 0; }
-  .sidebar-card--trust .sidebar-card__heading { color: #fff; }
   .sidebar-card__body { font-size: 0.92rem; line-height: 1.7; color: var(--concrete); margin: 0; }
-  .sidebar-card--trust .sidebar-card__body { color: rgba(255,255,255,0.65); }
   .sidebar-card .btn { margin-top: var(--space-xs); align-self: flex-start; }
   .sidebar-card__phone { display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.04em; color: var(--accent); text-decoration: none; margin-top: var(--space-xs); }
   .sidebar-card__phone svg { flex-shrink: 0; }
-  .sidebar-trust { display: flex; flex-direction: column; gap: var(--space-m); margin-top: var(--space-s); }
-  .sidebar-trust__item { display: flex; align-items: center; gap: var(--space-s); }
-  .sidebar-trust__value { font-family: var(--font-display); font-size: 2rem; line-height: 1; color: var(--accent); }
-  .sidebar-trust__label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
   .sidebar-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
   .sidebar-links a { font-size: 0.9rem; color: var(--concrete); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 0.3rem; }
   .sidebar-links a::before { content: '\2192'; color: var(--accent); font-size: 0.8rem; }

@@ -2,7 +2,6 @@
 // roof-clean-landing.astro — Ad landing page for roof cleaning
 // NO nav, NO footer links — bare minimum, single CTA
 import BeforeAfter from '../components/BeforeAfter.astro';
-import TrustMetrics from '../components/TrustMetrics.astro';
 import '../styles/global.css';
 
 const title = 'Roof Cleaning Bath — Free Quote';
@@ -69,12 +68,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </section>
 
   {/* ── Trust strip ── */}
-  <TrustMetrics metrics={[
-    { value: '111', label: 'Five-Star Reviews' },
-    { value: '10', label: 'Years Experience' },
-    { value: 'Insured', label: 'Fully Insured' },
-    { value: '5.2K', label: 'FB Followers' },
-  ]} />
 
   {/* ── Before / After ── */}
   <section class="lp-section">

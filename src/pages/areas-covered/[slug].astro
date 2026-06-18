@@ -3,11 +3,11 @@ import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import ImageCTA from '../../components/ImageCTA.astro';
-import TrustMetrics from '../../components/TrustMetrics.astro';
 import FbVideoFacade from '../../components/FbVideoFacade.astro';
 import { locationsDatabase } from '../../data/locations';
 import ServiceCard from '../../components/ServiceCard.astro';
 import { servicesData } from '../../data/services';
+import TrustMetrics from '../../components/TrustMetrics.astro';
 
 export async function getStaticPaths() {
   return locationsDatabase.map((location) => ({
@@ -77,17 +77,17 @@ const serviceSchema = servicesData.map(s => ({
     heading={location.heroHeading}
     body={location.heroBody}
     cta={{ label: 'Get a Free Quote', href: '/contact' }}
-    minHeight="compact"
+  minHeight="compact"
   />
 
-  {/* ── Trust Metrics ── */}
   <TrustMetrics metrics={[
     { value: '111', label: 'Five-Star Reviews' },
     { value: '10', label: 'Years Experience' },
     { value: 'Insured', label: 'Fully Insured' },
-    { value: '5.2K', label: 'FB Followers' },
     { value: 'Free', label: 'Free Quotes' },
   ]} />
+
+  {/* ── Trust Metrics ── */}
 
   {/* ── Editorial Overview ── */}
   <section class="editorial-section">

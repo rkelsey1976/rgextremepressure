@@ -121,7 +121,7 @@ export const servicesData: ServicePillar[] = [
       'uPVC Frame Cleaning',
       'Algae & Biocide Treatment',
     ],
-    image: '/images/before-after/job-gallery-07.webp',
+    image: '/images/before-after/conservatory-hero-1.jpg',
     href: '/conservatory-cleaning-bath',
   },
   {
