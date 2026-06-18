@@ -30,7 +30,7 @@
   --space-3xl: 8rem;
   --space-4xl: 12rem;
   --space-5xl: 18rem;
-  --section-pad: clamp(3.5rem, 8vw, 6rem);
+  --section-pad: clamp(4rem, 8vw, 7rem);
   --gutter: clamp(1.5rem, 5vw, 5rem);
   --max-w: 1440px;
   --text-max: 72ch;
@@ -323,7 +323,7 @@ body:has(.hero--has-image) .site-nav:not(.is-scrolled) .nav-hamburger span { bac
   font-size: clamp(1.3rem, 2vw, 1.8rem);
   font-weight: 800;
   line-height: 1.1;
-  text-transform: uppercase;
+  text-transform: none;
   color: var(--chalk);
   margin: 0 0 var(--space-s);
 }
