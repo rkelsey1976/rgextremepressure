@@ -122,28 +122,73 @@ const ogImageURL   = new URL(ogImage, Astro.site);
       "latitude": "51.3811",
       "longitude": "-2.3590"
     },
+    "slogan": "Bath & Bristol's highest-rated jet washing service",
+    "numberOfEmployees": { "@type": "QuantitativeValue", "value": 1 },
     "areaServed": [
       { "@type": "City", "name": "Bath" },
+      { "@type": "City", "name": "Bristol" },
       { "@type": "City", "name": "Keynsham" },
       { "@type": "City", "name": "Bradford on Avon" },
       { "@type": "City", "name": "Chippenham" },
       { "@type": "City", "name": "Corsham" },
-      { "@type": "City", "name": "Frome" }
+      { "@type": "City", "name": "Frome" },
+      { "@type": "City", "name": "Radstock" },
+      { "@type": "City", "name": "Midsomer Norton" }
     ],
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
         "opens": "08:00",
-        "closes": "18:00"
+        "closes": "17:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "07:00",
+        "closes": "17:00"
       },
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Saturday",
         "opens": "08:00",
-        "closes": "14:00"
+        "closes": "13:00"
       }
     ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Jet Washing & Exterior Cleaning Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Driveway Cleaning", "description": "Professional jet washing for block paving, tarmac, concrete and resin driveways in Bath and Bristol." }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Patio Cleaning", "description": "Pressure washing for sandstone, porcelain, slate and concrete patios. Algae, moss and black spot removal." }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Roof Cleaning", "description": "Spinning brush moss removal system — safe for all tile types, no walking on roof, biocide treated." }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Gutter Cleaning", "description": "SkyVac gutter vacuuming and hand-clearing service. Gutters inspected and cleared of debris and blockages." }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Render Cleaning", "description": "Soft wash render cleaning removes algae, moss and staining from painted and unpainted render without damage." }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Soffit & Fascia Cleaning", "description": "Roofline cleaning for soffits, fascias and gutters — restores white and uPVC to near-new condition." }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Driveway & Patio Sealing", "description": "PureSeal Approved Applicator offering professional sealant application for block paving and patios." }
+        }
+      ]
+    },
     "knowsAbout": [
       "Jet Washing",
       "Pressure Washing",
@@ -159,7 +204,7 @@ const ogImageURL   = new URL(ogImage, Astro.site);
     ],
     "currenciesAccepted": "GBP",
     "paymentAccepted": "Cash, Bank Transfer",
-    "priceRange": "£-££",
+    "priceRange": "££",
     "sameAs": [
       "https://www.facebook.com/profile.php?id=100091066506303",
       "https://www.google.com/maps?q=RG+Extreme+Pressure+Bath"
