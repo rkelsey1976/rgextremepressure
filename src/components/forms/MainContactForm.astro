@@ -19,8 +19,13 @@ const targetLocations = [
 const servicePillars = [
   "Driveway Cleaning",
   "Patio Cleaning",
-  "Roof & Gutter Cleaning",
-  "Exterior Property Washing",
+  "Roof Cleaning",
+  "Gutter Cleaning",
+  "Render Cleaning",
+  "Soffit & Fascia Cleaning",
+  "Conservatory Cleaning",
+  "Commercial Jet Washing",
+  "Multiple Services",
 ];
 ---
 
@@ -84,13 +89,13 @@ const servicePillars = [
         </select>
       </div>
       <div class="mcf__field">
-        <label class="mcf__label" for="cf-budget">Estimated Investment Tier *</label>
+        <label class="mcf__label" for="cf-budget">Scope of Work *</label>
         <select id="cf-budget" name="budget" required class="mcf__input mcf__select">
-          <option value="" disabled selected>Select budget scale&hellip;</option>
-          <option value="maintenance">Under &pound;1,000 — Small Area / One Surface</option>
-          <option value="mid">&pound;1,000 – &pound;3,000</option>
-          <option value="scale">&pound;3,000 – &pound;10,000</option>
-          <option value="premium">&pound;10,000+ — Commercial / Large Property</option>
+          <option value="" disabled selected>Select scope&hellip;</option>
+          <option value="single">Single surface (e.g. driveway, patio or roof)</option>
+          <option value="multi">Two or more surfaces</option>
+          <option value="full">Full exterior property clean</option>
+          <option value="commercial">Commercial premises</option>
         </select>
       </div>
     </div>

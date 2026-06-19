@@ -1,15 +1,22 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
 ---
 
 <Base title="Enquiry Received" noindex>
+  <Hero
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Contact', href: '/contact' }, { label: 'Enquiry Received' }]}
+    eyebrow="Enquiry Received"
+    heading="Thank You.<br>We'll Be in Touch."
+    body="Your project details have been received. A member of our team will review your enquiry and respond within 24 operational hours — usually sooner."
+    image="/images/before-after/roof-after.jpg"
+    overlay="blue"
+    minHeight="compact"
+  />
+
   <section class="success-page">
     <div class="container">
       <div class="success-inner">
-        <span class="rule--accent"></span>
-        <span class="t-label" style="color:var(--accent)">Enquiry Received</span>
-        <h1 class="success-heading">Thank You.<br>We'll Be in Touch.</h1>
-        <p class="success-body">Your project details have been received. A member of our team will review your enquiry and respond within 24 operational hours — usually sooner.</p>
         <div class="success-actions">
           <a href="/" class="btn btn--primary">
             Return to Homepage
@@ -27,36 +34,12 @@ import Base from '../../layouts/Base.astro';
 
 <style>
   .success-page {
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
     padding: var(--section-pad) 0;
     background: #fff;
   }
 
   .success-inner {
     max-width: 560px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-m);
-  }
-
-  .success-heading {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    line-height: 0.95;
-    text-transform: uppercase;
-    color: var(--chalk);
-    margin: 0;
-  }
-
-  .success-body {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.75;
-    color: var(--concrete);
-    margin: 0;
-    max-width: 48ch;
   }
 
   .success-actions {
@@ -64,7 +47,6 @@ import Base from '../../layouts/Base.astro';
     align-items: center;
     gap: var(--space-l);
     flex-wrap: wrap;
-    margin-top: var(--space-s);
   }
 
   .success-link {
