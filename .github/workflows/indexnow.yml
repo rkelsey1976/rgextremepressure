@@ -1,0 +1,24 @@
+name: Submit URLs to IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Submit all sitemap URLs to IndexNow
+        run: node scripts/indexnow.mjs
+        env:
+          CI: 'true'
