@@ -19,11 +19,54 @@ const bristolServices = servicesData.map(s => ({
       : s.href,
 }));
 
+// Retargeted 2026-09-01 onto "pressure washing bristol" (2,507 impressions,
+// pos 18.2 — and currently answered by the HOMEPAGE, not this page). The
+// "jet washing bristol" phrasing this page previously led with does not
+// appear in the GSC top queries at all. Jet washing is kept as the secondary
+// term throughout. No new page was built for this: /bristol/ already covered
+// the intent, and a second page would have cannibalised it.
+const faqs = [
+  {
+    q: 'How much does pressure washing cost in Bristol?',
+    a: 'Most Bristol jobs are priced per square metre — driveways and patios generally start around £3/m², so a standard double driveway lands between £120 and £200. Roofs and render are quoted per property because access and pitch vary so much. Every quote is free and given on site.',
+  },
+  {
+    q: 'Which Bristol postcodes do you cover?',
+    a: 'All of them — BS1 through BS16. That covers Clifton, Redland, Bishopston, Henleaze, Westbury-on-Trym, Kingswood, Fishponds, Brislington, Bedminster, Downend and everywhere between. There is no extra travel charge anywhere in the Bristol or Bath corridor.',
+  },
+  {
+    q: 'What is the difference between pressure washing and soft washing?',
+    a: 'Pressure washing uses water force and suits hard surfaces — block paving, tarmac, concrete. Soft washing applies a biocide at roughly garden-hose pressure and is what render, roof tiles and uPVC need. Using pressure on render is the most common way it gets permanently damaged.',
+  },
+  {
+    q: 'Do you do commercial pressure washing in Bristol?',
+    a: 'Yes — car parks, forecourts, pub and restaurant terraces, and industrial yards. Commercial work is usually scheduled outside trading hours. Ask for a site visit and we will quote around your operating times.',
+  },
+  {
+    q: 'How long does a typical Bristol job take?',
+    a: 'A standard double driveway takes two to four hours. A patio is similar. A full roof clean with biocide is usually most of a day. You will get a time estimate at the free quote so you can plan around it.',
+  },
+  {
+    q: 'Are you insured?',
+    a: 'Yes, fully insured for both residential and commercial work, and happy to send the certificate before we start. Ten years working across Bristol and Bath properties, with 111 five-star reviews.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+  })),
+};
+
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Jet Washing Bristol",
-  "description": "Professional jet washing and pressure washing services in Bristol. Driveway cleaning, patio cleaning, gutter clearing, roof cleaning and render cleaning.",
+  "name": "Pressure Washing Bristol",
+  "description": "Professional pressure washing and jet washing services across Bristol BS1–BS16. Driveway cleaning, patio cleaning, gutter clearing, roof cleaning and render soft washing.",
   "provider": {
     "@id": "https://rgextremepressure.co.uk/#organization"
   },
@@ -31,21 +74,23 @@ const serviceSchema = {
     "@type": "City",
     "name": "Bristol"
   },
-  "serviceType": "Jet Washing Services"
+  "serviceType": "Pressure Washing Services"
 };
 ---
 
-<Base title="Jet Washing Bristol | Pressure Washing Services"
-  description="Professional jet washing and pressure washing in Bristol. Driveway cleaning, gutter clearing, roof cleaning and render washing. 111 five-star reviews. Call 07474 939 398."
-  serviceSchema={serviceSchema}>
+<Base title="Pressure Washing Bristol | Jet Washing Services BS1–BS16"
+  description="Professional pressure washing in Bristol. Driveway cleaning, patio washing, gutter clearing, roof moss removal and render soft washing across BS1–BS16. 111 five-star reviews. Call 07474 939 398."
+  serviceSchema={serviceSchema}
+  faqSchema={faqSchema}
+  breadcrumbs={[{ name: 'Pressure Washing Bristol', item: 'https://rgextremepressure.co.uk/bristol' }]}>
 
   <Hero
     image="/images/before-after/roof-after-2.webp"
     overlay="blue"
     breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Bristol' }]}
     eyebrow="Bristol & Surrounding Areas"
-    heading="Jet Washing Bristol"
-    body="Professional pressure washing for driveways, patios, roofs, gutters and render across all Bristol postcodes. 111 five-star reviews. Free quotes."
+    heading="Pressure Washing Bristol"
+    body="Professional pressure washing and jet washing for driveways, patios, roofs, gutters and render across every Bristol postcode from BS1 to BS16. 111 five-star reviews. Free quotes."
     cta={{ label: 'Get a Free Quote', href: '/contact' }}
   minHeight="compact"
   />
@@ -143,15 +188,90 @@ const serviceSchema = {
     </div>
   </section>
 
+  {/* ── FAQ ── */}
+  <section class="faq-section">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Common Questions"
+        heading="Pressure Washing Bristol FAQ"
+      />
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-item__q">{faq.q}</summary>
+            <p class="faq-item__a">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <ImageCTA
-    heading="Ready to Book Jet Washing in Bristol?"
-    body="Call 07474 939 398 for a free quote, or fill in our contact form. We cover all Bristol postcodes."
+    heading="Ready to Book Pressure Washing in Bristol?"
+    body="Call 07474 939 398 for a free quote, or fill in our contact form. We cover every Bristol postcode from BS1 to BS16."
     cta={{ label: 'Get a Free Quote', href: '/contact' }}
     image="/images/before-after/roof-after-2.webp"
   />
 </Base>
 
 <style>
+  /* ── FAQ ── */
+  .faq-section {
+    padding: var(--section-pad) 0;
+    background: var(--surface);
+  }
+
+  .faq-list {
+    max-width: 72ch;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--stone);
+  }
+
+  .faq-item__q {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--chalk);
+    padding: var(--space-m) 0;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .faq-item__q::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item__q::after {
+    content: '+';
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-left: var(--space-s);
+  }
+
+  .faq-item[open] .faq-item__q::after {
+    content: '\2212';
+  }
+
+  .faq-item__a {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    padding: 0 0 var(--space-m);
+    max-width: 60ch;
+  }
+
   /* ── Service Cards ── */
   .service-cards-section {
     background: #fff;
