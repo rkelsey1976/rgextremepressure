@@ -8,7 +8,7 @@ on:
 jobs:
   indexnow:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -17,6 +17,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      # Build first so the script knows which URLs this commit SHOULD produce.
+      # Without it the script fetched the live sitemap, which on push is still
+      # the previous deploy — new pages were never submitted.
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (produces dist/sitemap-0.xml for the deploy check)
+        run: npm run build
 
       - name: Submit all sitemap URLs to IndexNow
         run: node scripts/indexnow.mjs
