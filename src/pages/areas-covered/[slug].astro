@@ -26,6 +26,28 @@ const comboHrefs: Record<string, string> = isDistrict ? {
   'roof-cleaning':     `/roof-cleaning/${location.slug}`,
 } : {};
 function serviceHref(s: typeof servicesData[0]) { return comboHrefs[s.id] || s.href; }
+// City-level href for the inline cross-link appended to each card description.
+// Bristol-district hubs point to Bristol city pages; bath-district + others point to Bath.
+// Returns null if no matching city page exists, so we don't render a misleading link.
+function cityHrefFor(s: typeof servicesData[0]): string | null {
+  if (!isDistrict) return null; // town/market hubs: suburb-level doesn't apply
+  const isBristol = location.group === 'bristol-district';
+  if (isBristol) {
+    const bristolPages: Record<string, string> = {
+      'driveway-cleaning': '/driveway-cleaning-bristol',
+      'patio-cleaning':    '/patio-cleaning-bristol',
+      'roof-cleaning':     '/roof-cleaning-bristol',
+      'gutter-cleaning':   '/gutter-cleaning-bristol',
+      'render-cleaning':   '/render-cleaning-bristol',
+    };
+    return bristolPages[s.id] || null; // null if no Bristol page exists for this service
+  }
+  return s.href; // Bath — use the default href from servicesData (always a Bath page)
+}
+// Human-readable city name for the inline link label
+function cityName(): string {
+  return location.group === 'bristol-district' ? 'Bristol' : 'Bath';
+}
 
 // Build FAQ schema
 const faqSchema = location.faq.length > 0 ? {
@@ -118,9 +140,22 @@ const serviceSchema = servicesData.map(s => ({
         body={`Professional external cleaning services across ${location.townName} and surrounding areas. Click through for full details.`}
       />
       <div class="service-cards-grid">
-        {servicesData.map(s => (
-          <ServiceCard href={serviceHref(s)} image={s.image} title={s.title} subtitle={s.subtitle} description={location.serviceContext[s.id] || s.description} />
-        ))}
+        {servicesData.map(s => {
+          const cHref = cityHrefFor(s);
+          // Render a discreet secondary link below each card so suburb hubs
+          // feed equity to the city money pages. Wraps outside the ServiceCard
+          // <a> so we don't create nested links (invalid HTML).
+          return (
+            <div class="service-card-stack">
+              <ServiceCard href={serviceHref(s)} image={s.image} title={s.title} subtitle={s.subtitle} description={location.serviceContext[s.id] || s.description} />
+              {cHref && (
+                <span class="service-card-also">
+                  Also serving all of <a href={cHref}>{cityName()}</a>
+                </span>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -449,5 +484,34 @@ const serviceSchema = servicesData.map(s => ({
     .nuance-block {
       padding: var(--space-m);
     }
+  }
+
+  /* ── Quiet secondary city-link below each ServiceCard ──
+     Renders as a small footnote-style line beneath the card, not as a
+     competing CTA. Reads as service-area editorial copy rather than
+     navigation, so users don't perceive it as a second action button.
+     Wrapped outside the ServiceCard's <a> to keep HTML valid. */
+  .service-card-stack {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card-also {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--concrete);
+    line-height: 1.4;
+  }
+
+  .service-card-also a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    transition: color 0.2s;
+  }
+
+  .service-card-also a:hover {
+    color: var(--chalk);
   }
 </style>

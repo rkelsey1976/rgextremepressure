@@ -2,6 +2,17 @@
   command = "npm run build"
   publish = "dist"
 
+# Page redirects — old URLs go to new canonical URLs
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacy"
+  status = 301
+
+[[redirects]]
+  from = "/privacy-policy/"
+  to = "/privacy/"
+  status = 301
+
 [[redirects]]
   from = "/*"
   to = "/404"
