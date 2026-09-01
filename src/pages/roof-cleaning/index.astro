@@ -1,0 +1,10 @@
+---
+// /roof-cleaning/ — service hub index.
+// Content lives in src/data/serviceHubs.ts; layout in ServiceHubPage.astro.
+import ServiceHubPage from '../../components/ServiceHubPage.astro';
+import { getServiceHub } from '../../data/serviceHubs';
+
+const hub = getServiceHub('roof-cleaning')!;
+---
+
+<ServiceHubPage {hub} />

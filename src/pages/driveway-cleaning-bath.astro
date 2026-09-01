@@ -75,12 +75,13 @@ const serviceSchema = {
 };
 ---
 
-<Base {title} {description} serviceSchema={serviceSchema} faqSchema={faqSchema} breadcrumbs={[{ name: 'Services', item: 'https://rgextremepressure.co.uk/services' }, { name: 'Driveway Cleaning Bath', item: 'https://rgextremepressure.co.uk/driveway-cleaning-bath' }]}>
+<Base {title} {description} serviceSchema={serviceSchema} faqSchema={faqSchema} breadcrumbs={[{ name: 'Driveway Cleaning', item: 'https://rgextremepressure.co.uk/driveway-cleaning' },
+  { name: 'Driveway Cleaning Bath', item: 'https://rgextremepressure.co.uk/driveway-cleaning-bath' }]}>
   {/* ── Hero ── */}
   <Hero
     image="/images/before-after/driveway-after-1.webp"
     overlay="blue"
-    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Driveway Cleaning' }]}
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Driveway Cleaning', href: '/driveway-cleaning' }, { label: 'Driveway Cleaning Bath' }]}
     eyebrow="Professional Driveway Cleaning"
     heading="Driveway Cleaning Bath"
     body="Restore your driveway to look brand new. Professional jet washing removes years of dirt, oil stains, tyre marks and weed growth from any surface — block paving, tarmac, concrete or resin."

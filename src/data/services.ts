@@ -1,5 +1,8 @@
 // src/data/services.ts
-// Master service pillar database — drives the services showcase page
+// Master service pillar database — drives the services showcase page.
+// 2026-09-01: the five services with hub pages now point at /{service}/ rather
+// than /{service}-bath/, so /services feeds the hub and the hub feeds both city
+// pages. Services without a hub (soffit, conservatory, commercial) are unchanged.
 
 export interface ServicePillar {
   id: string;
@@ -24,7 +27,7 @@ export const servicesData: ServicePillar[] = [
       'Resin Drive Gentle Clean',
     ],
     image: '/images/before-after/job-gallery-13.webp',
-    href: '/driveway-cleaning-bath',
+    href: '/driveway-cleaning',
   },
   {
     id: 'patio-cleaning',
@@ -38,7 +41,7 @@ export const servicesData: ServicePillar[] = [
       'Algae & Moss Treatment',
     ],
     image: '/images/before-after/job-gallery-02.webp',
-    href: '/patio-cleaning-bath',
+    href: '/patio-cleaning',
   },
   {
     id: 'gutter-cleaning',
@@ -52,7 +55,7 @@ export const servicesData: ServicePillar[] = [
       'Soffit & Fascia Clean',
     ],
     image: '/images/before-after/job-gallery-18.webp',
-    href: '/gutter-cleaning-bath',
+    href: '/gutter-cleaning',
   },
   {
     id: 'roof-cleaning',
@@ -66,7 +69,7 @@ export const servicesData: ServicePillar[] = [
       'Gutter & Valley Clear After Clean',
     ],
     image: '/images/before-after/job-gallery-25.webp',
-    href: '/roof-cleaning-bath',
+    href: '/roof-cleaning',
   },
   {
     id: 'render-cleaning',
@@ -80,7 +83,7 @@ export const servicesData: ServicePillar[] = [
       'Pebbledash & Roughcast Clean',
     ],
     image: '/images/before-after/job-gallery-08.webp',
-    href: '/render-cleaning-bath',
+    href: '/render-cleaning',
   },
   {
     id: 'block-paving-cleaning',
@@ -94,7 +97,7 @@ export const servicesData: ServicePillar[] = [
       'Sealant Application Available',
     ],
     image: '/images/before-after/job-gallery-26.webp',
-    href: '/driveway-cleaning-bath',
+    href: '/driveway-cleaning',
   },
   {
     id: 'soffit-fascia-cleaning',

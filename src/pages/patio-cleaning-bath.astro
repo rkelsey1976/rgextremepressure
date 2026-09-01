@@ -53,11 +53,12 @@ const serviceSchema = {
 };
 ---
 
-<Base {title} {description} serviceSchema={serviceSchema} faqSchema={faqSchema} breadcrumbs={[{ name: 'Services', item: 'https://rgextremepressure.co.uk/services' }, { name: 'Patio Cleaning Bath', item: 'https://rgextremepressure.co.uk/patio-cleaning-bath' }]}>
+<Base {title} {description} serviceSchema={serviceSchema} faqSchema={faqSchema} breadcrumbs={[{ name: 'Patio Cleaning', item: 'https://rgextremepressure.co.uk/patio-cleaning' },
+  { name: 'Patio Cleaning Bath', item: 'https://rgextremepressure.co.uk/patio-cleaning-bath' }]}>
   <Hero
     image="/images/before-after/patio-after.jpg"
     overlay="blue"
-    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Patio Cleaning' }]}
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Patio Cleaning', href: '/patio-cleaning' }, { label: 'Patio Cleaning Bath' }]}
     eyebrow="Professional Patio Cleaning"
     heading="Patio Cleaning Bath"
     body="Bring your patio back to life with professional jet washing. Algae, moss and stains removed from all patio types — sandstone, porcelain, slate and concrete slabs. Careful pressure adjustment protects delicate surfaces."

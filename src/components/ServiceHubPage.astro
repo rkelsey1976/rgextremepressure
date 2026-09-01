@@ -1,0 +1,434 @@
+---
+// ServiceHubPage.astro — shared renderer for the /{service}/ hub index pages.
+// Driven entirely by src/data/serviceHubs.ts so all five hubs stay consistent.
+//
+// The hub's job is internal equity consolidation: 16 suburb pages link up to it,
+// it links down to the two city money-pages. It does NOT replace the city pages —
+// those keep their URLs and their rankings. See serviceHubs.ts header note.
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ImageCTA from '../components/ImageCTA.astro';
+import TrustMetrics from '../components/TrustMetrics.astro';
+import { locationsDatabase } from '../data/locations';
+import type { ServiceHub } from '../data/serviceHubs';
+
+interface Props {
+  hub: ServiceHub;
+}
+
+const { hub } = Astro.props;
+
+const SITE = 'https://rgextremepressure.co.uk';
+
+// Districts that have their own /{service}/{slug}/ page
+const bathDistricts    = locationsDatabase.filter(l => l.group === 'bath-district');
+const bristolDistricts = locationsDatabase.filter(l => l.group === 'bristol-district');
+// Wider towns only ever have an /areas-covered/{slug}/ page
+const widerTowns       = locationsDatabase.filter(l => l.group === 'town' || l.group === 'market');
+
+// When the service has per-area pages, link to them; otherwise send equity to the
+// area hub page, which in turn links back to the service city pages.
+const areaHref = (slug: string) =>
+  hub.hasAreaPages ? `${hub.href}/${slug}` : `/areas-covered/${slug}`;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": hub.faq.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+  })),
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": hub.heroHeading,
+  "description": hub.metaDescription,
+  "serviceType": hub.label,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "RG Extreme Pressure",
+    "telephone": "+447474939398",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bath",
+      "addressRegion": "Somerset",
+    },
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Bath" },
+    { "@type": "City", "name": "Bristol" },
+    ...widerTowns.map(t => ({ "@type": "City", "name": t.townName })),
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": `${hub.label} — Areas Covered`,
+    "itemListElement": hub.cityPages.map(c => ({
+      "@type": "Offer",
+      "itemOffered": { "@type": "Service", "name": c.label, "url": `${SITE}${c.href}` },
+    })),
+  },
+};
+---
+
+<Base
+  title={hub.metaTitle}
+  description={hub.metaDescription}
+  serviceSchema={serviceSchema}
+  faqSchema={faqSchema}
+  breadcrumbs={[{ name: hub.label, item: `${SITE}${hub.href}` }]}
+>
+  <Hero
+    image={hub.heroImage}
+    overlay="blue"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: hub.label }]}
+    eyebrow={hub.heroEyebrow}
+    heading={hub.heroHeading}
+    body={hub.heroBody}
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  <TrustMetrics metrics={[
+    { value: '111', label: 'Five-Star Reviews' },
+    { value: '10', label: 'Years Experience' },
+    { value: 'Insured', label: 'Fully Insured' },
+    { value: '5.2K', label: 'FB Followers' },
+    { value: 'Free', label: 'Free Quotes' },
+  ]} />
+
+  {/* ── Intro + what's included ── */}
+  <section class="hub-intro">
+    <div class="container hub-intro__grid">
+      <div>
+        <SectionHeader
+          eyebrow="What We Do"
+          heading={hub.introHeading}
+          align="left"
+        />
+        <p class="hub-intro__body">{hub.introBody}</p>
+      </div>
+      <ul class="hub-features">
+        {hub.features.map(f => <li class="hub-features__item">{f}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  {/* ── City pages — the money pages, most prominent block on the hub ── */}
+  <section class="hub-cities">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Choose Your City"
+        heading={`${hub.label} Near You`}
+        body="Pick your city for local pricing, recent work and the detail that actually applies to your property."
+        align="left"
+      />
+      <div class="hub-city-cards">
+        {hub.cityPages.map(city => (
+          <a href={city.href} class="hub-city-card">
+            <h3 class="hub-city-card__name">{city.label}</h3>
+            <p class="hub-city-card__blurb">{city.blurb}</p>
+            <span class="hub-city-card__link">View {city.label} →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── Areas ── */}
+  <section class="hub-areas">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Areas Covered"
+        heading={`${hub.label} Across Bath, Bristol & Somerset`}
+        body={hub.hasAreaPages
+          ? 'Every area below has its own page with local detail — property types, common problems and what the job usually involves there.'
+          : 'We cover all of the areas below. Each has its own page covering every service we run there.'}
+        align="left"
+      />
+
+      <div class="hub-area-group">
+        <h3 class="hub-area-group__title">Bath &amp; Districts</h3>
+        <ul class="hub-area-list">
+          <li><a href={hub.cityPages[0].href}>{hub.cityPages[0].label}</a></li>
+          {bathDistricts.map(loc => (
+            <li><a href={areaHref(loc.slug)}>{hub.label} {loc.townName}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="hub-area-group">
+        <h3 class="hub-area-group__title">Bristol &amp; Districts</h3>
+        <ul class="hub-area-list">
+          <li><a href={hub.cityPages[1].href}>{hub.cityPages[1].label}</a></li>
+          {bristolDistricts.map(loc => (
+            <li><a href={areaHref(loc.slug)}>{hub.label} {loc.townName}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="hub-area-group">
+        <h3 class="hub-area-group__title">Somerset &amp; Wiltshire Towns</h3>
+        <ul class="hub-area-list">
+          {widerTowns.map(loc => (
+            <li><a href={`/areas-covered/${loc.slug}`}>{loc.townName}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {/* ── FAQ ── */}
+  <section class="faq-section">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Common Questions"
+        heading={`${hub.label} FAQ`}
+      />
+      <div class="faq-list">
+        {hub.faq.map((faq, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-item__q">{faq.q}</summary>
+            <p class="faq-item__a">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ImageCTA
+    heading={hub.ctaHeading}
+    body={hub.ctaBody}
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    image={hub.ctaImage}
+  />
+</Base>
+
+<style>
+  /* ── Intro ── */
+  .hub-intro {
+    padding: var(--section-pad) 0;
+    background: #fff;
+  }
+
+  .hub-intro__grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .hub-intro__body {
+    font-size: 0.98rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--concrete);
+    max-width: 62ch;
+    margin: var(--space-m) 0 0;
+  }
+
+  .hub-features {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-l);
+    background: var(--accent-light);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+
+  .hub-features__item {
+    position: relative;
+    padding-left: 1.75rem;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--chalk);
+  }
+
+  .hub-features__item::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ── City cards ── */
+  .hub-cities {
+    padding: var(--section-pad) 0;
+    background: var(--accent-light);
+  }
+
+  .hub-city-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-l);
+    margin-top: var(--space-xl);
+  }
+
+  .hub-city-card {
+    background: #fff;
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
+    padding: var(--space-l);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .hub-city-card:hover {
+    box-shadow: 0 6px 20px rgba(0,85,165,0.14);
+    transform: translateY(-2px);
+  }
+
+  .hub-city-card__name {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .hub-city-card__blurb {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--concrete);
+    margin: 0;
+    flex: 1;
+  }
+
+  .hub-city-card__link {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  /* ── Areas ── */
+  .hub-areas {
+    padding: var(--section-pad) 0;
+    background: #fff;
+  }
+
+  .hub-area-group {
+    margin-top: var(--space-xl);
+  }
+
+  .hub-area-group__title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--chalk);
+    margin: 0 0 var(--space-m);
+    padding-bottom: var(--space-s);
+    border-bottom: 1px solid var(--stone);
+  }
+
+  .hub-area-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.6rem var(--space-l);
+  }
+
+  .hub-area-list a {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--concrete);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .hub-area-list a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── FAQ (matches service page styling) ── */
+  .faq-section {
+    padding: var(--section-pad) 0;
+    background: var(--surface);
+  }
+
+  .faq-list {
+    max-width: 72ch;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--stone);
+  }
+
+  .faq-item__q {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--chalk);
+    padding: var(--space-m) 0;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .faq-item__q::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item__q::after {
+    content: '+';
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-left: var(--space-s);
+  }
+
+  .faq-item[open] .faq-item__q::after {
+    content: '\2212';
+  }
+
+  .faq-item__a {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--concrete);
+    padding: 0 0 var(--space-m);
+    max-width: 60ch;
+  }
+
+  @media (max-width: 900px) {
+    .hub-intro__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hub-city-cards,
+    .hub-area-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

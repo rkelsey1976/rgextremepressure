@@ -4,6 +4,16 @@
 
 const currentYear = new Date().getFullYear();
 
+// Service hubs — added 2026-09-01. Every page links to all five hubs so the
+// hub pages accumulate site-wide internal equity. City pages keep their links too.
+const hubLinks = [
+  { label: 'Driveway Cleaning', href: '/driveway-cleaning' },
+  { label: 'Patio Cleaning', href: '/patio-cleaning' },
+  { label: 'Roof Cleaning', href: '/roof-cleaning' },
+  { label: 'Gutter Cleaning', href: '/gutter-cleaning' },
+  { label: 'Render Cleaning', href: '/render-cleaning' },
+];
+
 const serviceLinks = [
   { label: 'Driveway Cleaning', href: '/driveway-cleaning-bath' },
   { label: 'Patio Cleaning', href: '/patio-cleaning-bath' },
@@ -72,24 +82,21 @@ const companyLinks = [
           <svg class="footer-accordion__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="footer-accordion__panel">
-          <div class="footer-services-grid">
-            <div>
-              <p class="footer-services__city">Bath</p>
-              <ul class="footer-links">
-                {serviceLinks.map(link => (
-                  <li><a href={link.href}>{link.label.replace(' Bath', '')}</a></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p class="footer-services__city">Bristol</p>
-              <ul class="footer-links">
-                {bristolLinks.map(link => (
-                  <li><a href={link.href}>{link.label.replace(' Bristol', '')}</a></li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          {/* One row per service: hub link first, then its two city pages.
+              Replaces the old Bath/Bristol two-column split — a third column
+              squeezed each link to 71px and wrapped every label onto two lines. */}
+          <ul class="footer-service-rows">
+            {hubLinks.map((hub, i) => (
+              <li class="footer-service-row">
+                <a href={hub.href} class="footer-service-row__hub">{hub.label}</a>
+                <span class="footer-service-row__cities">
+                  <a href={serviceLinks[i].href}>Bath</a>
+                  <span class="footer-service-row__sep" aria-hidden="true">·</span>
+                  <a href={bristolLinks[i].href}>Bristol</a>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
@@ -320,10 +327,35 @@ const companyLinks = [
     flex-shrink: 0;
   }
 
-  .footer-services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-l);
+  .footer-service-rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .footer-service-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .footer-service-row__hub {
+    font-weight: 600;
+  }
+
+  .footer-service-row__cities {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    opacity: 0.72;
+  }
+
+  .footer-service-row__sep {
+    opacity: 0.5;
   }
 
   .footer-services__city {
