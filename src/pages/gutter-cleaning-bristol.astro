@@ -362,6 +362,26 @@ const serviceSchema = {
     </div>
   </section>
 
+  {/* ── Bristol District Links ── */}
+  <section class="district-links-section">
+    <div class="container">
+      <h2 class="district-links__heading">Gutter Cleaning Across Bristol</h2>
+      <p class="district-links__intro">We cover every Bristol district. Click your area for a dedicated local page with specific information and pricing.</p>
+      <ul class="district-links__grid">
+        <li><a href="/gutter-cleaning/clifton-bristol">Gutter Cleaning Clifton</a></li>
+        <li><a href="/gutter-cleaning/redland-bristol">Gutter Cleaning Redland</a></li>
+        <li><a href="/gutter-cleaning/bishopston-bristol">Gutter Cleaning Bishopston</a></li>
+        <li><a href="/gutter-cleaning/henleaze-bristol">Gutter Cleaning Henleaze</a></li>
+        <li><a href="/gutter-cleaning/kingswood-bristol">Gutter Cleaning Kingswood</a></li>
+        <li><a href="/gutter-cleaning/fishponds-bristol">Gutter Cleaning Fishponds</a></li>
+        <li><a href="/gutter-cleaning/brislington-bristol">Gutter Cleaning Brislington</a></li>
+        <li><a href="/gutter-cleaning/bedminster-bristol">Gutter Cleaning Bedminster</a></li>
+        <li><a href="/gutter-cleaning/downend-bristol">Gutter Cleaning Downend</a></li>
+        <li><a href="/gutter-cleaning/westbury-on-trym-bristol">Gutter Cleaning Westbury-on-Trym</a></li>
+      </ul>
+    </div>
+  </section>
+
   <ImageCTA
     heading="Bristol's Gutter Cleaning Specialists"
     body="Free, no-obligation quotes from a fully insured, five-star-rated jet washing service. Covering all Bristol postcodes. Call 07474 939 398."
@@ -372,6 +392,15 @@ const serviceSchema = {
 </Base>
 
 <style>
+  .district-links-section { padding: var(--section-pad) 0; background: var(--stone); }
+  .district-links__heading { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; color: var(--chalk); margin: 0 0 var(--space-s); text-transform: none; }
+  .district-links__intro { font-size: 0.95rem; color: var(--concrete); margin: 0 0 var(--space-l); }
+  .district-links__grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-s); }
+  .district-links__grid a { font-size: 0.9rem; color: var(--concrete); text-decoration: none; display: flex; align-items: center; gap: 0.3rem; transition: color 0.2s; }
+  .district-links__grid a::before { content: '\2192'; color: var(--accent); font-size: 0.8rem; }
+  .district-links__grid a:hover { color: var(--accent); }
+  @media (max-width: 640px) { .district-links__grid { grid-template-columns: 1fr 1fr; } }
+
   .service-body { padding: var(--section-pad) 0; }
   .service-body__grid { display: grid; grid-template-columns: 7fr 4fr; gap: var(--space-3xl, 5rem); align-items: start; }
   .service-features { margin-top: var(--space-2xl); }

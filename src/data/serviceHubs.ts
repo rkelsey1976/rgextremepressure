@@ -188,7 +188,7 @@ export const serviceHubs: ServiceHub[] = [
       { label: 'Gutter Cleaning Bath', href: '/gutter-cleaning-bath', blurb: 'Bath and surrounding districts — including tall Georgian terraces and awkward rear access.' },
       { label: 'Gutter Cleaning Bristol', href: '/gutter-cleaning-bristol', blurb: 'All Bristol postcodes — Victorian terraces, semis and modern estate housing.' },
     ],
-    hasAreaPages: false,
+    hasAreaPages: true,
     faq: [
       { q: 'How do you clear gutters without ladders?', a: 'A vacuum system with carbon-fibre poles reaches up to roughly 40 feet from the ground. A camera on the pole head shows what is in the gutter as we work, so nothing is guessed at. Ladders only come out where a vacuum genuinely cannot reach.' },
       { q: 'How often should gutters be cleaned?', a: 'Annually for most properties, ideally in late autumn once the leaves are down. Properties with mature trees overhead often want twice a year — one clear in autumn and a second in spring.' },
