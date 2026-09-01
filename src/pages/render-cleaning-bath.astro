@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
 import ImageCTA from '../components/ImageCTA.astro';
+import ReviewStrip from '../components/ReviewStrip.astro';
 import TrustMetrics from '../components/TrustMetrics.astro';
 
 // Sept 2026 GSC: 5,882 impressions, position 53.6, 3 clicks — the largest
@@ -91,10 +92,20 @@ const serviceSchema = {
       <div class="service-body__grid">
         <div class="service-body__main">
           <SectionHeader
-            eyebrow="What We Do"
-            heading="Professional Render Soft Washing"
-            body="Render is one of the most common exterior finishes in Bath — and one of the most vulnerable to algae, pollution and weather staining. Pressure washing can crack and delaminate render. Our soft wash system removes staining safely, restoring your property's appearance without risk."
+            eyebrow="Render Cleaning · Bath"
+            heading="Render Cleaning in Bath, Done by Soft Wash"
+            body="Green streaking on a rendered wall is algae, not dirt, and it is rooted into the surface rather than sitting on it. That single fact decides the whole method — and it is why render cleaning in Bath is a soft wash job, never a pressure wash one."
           />
+
+          <div class="service-editorial">
+            <p>Bath has two quite different render problems. On the newer developments out towards Odd Down, Southdown and the Western Riverside it is K-Rend and silicone render going green on the north and east elevations within three or four years of being built. In the older parts of the city it is painted and pebbledashed render on Victorian and inter-war housing, where decades of traffic film off the London Road and the Upper Bristol Road sit on top of the algae growth.</p>
+
+            <p>Both respond to the same treatment, and neither responds well to a pressure washer. K-Rend is through-coloured — the colour is in the top coat rather than painted onto it. Put a lance near it and you take that coat off in patches, and because the colour runs all the way through there is no touching it up afterwards. The remedy at that point is re-rendering the elevation. We are called out to the results of somebody trying it most years, and it always costs more than the clean would have.</p>
+
+            <p>Soft washing applies a biocide at roughly garden-hose pressure. It kills the algae, lichen and moss spores in the surface, and the growth then loses its grip and weathers off over the following weeks. That lag is worth knowing before you book: you will see a change within days, but the finished result usually takes two to six weeks depending on rainfall. It is slower than a jet wash, and it is the reason the render is still there afterwards.</p>
+
+            <p>Bath's position in the valley does not help. Damp air sits low, north-facing walls barely dry out between October and March, and anything shaded by a mature tree or a neighbouring terrace greens up faster than the same wall two streets away in full sun. Most rendered properties in the city want treating every three to four years. North-facing elevations sometimes want it sooner — and if yours does not need doing yet, we will say so.</p>
+          </div>
 
           <div class="service-intro-image">
             <img src="/images/before-after/job-render-action-2.webp" alt="Robert applying soft wash treatment to rendered property in Bath" loading="lazy" />
@@ -405,6 +416,8 @@ const serviceSchema = {
     </div>
   </section>
 
+  <ReviewStrip keywords={['render']} city="Bath" heading="What Our Render Cleaning Customers Say" />
+
   <ImageCTA heading="Restore Your Property's Appearance" body="Soft wash render cleaning is safe, effective and long-lasting. Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured. Eco-friendly products." cta={{ label: 'Get a Free Quote', href: '/contact' }} image="/images/before-after/render-after-1.webp" />
 
 </Base>
@@ -452,6 +465,9 @@ const serviceSchema = {
     margin: 0;
   }
   @media (max-width: 640px) { .features-grid { grid-template-columns: 1fr; } }
+
+  .service-editorial { margin-bottom: var(--space-2xl); display: flex; flex-direction: column; gap: var(--space-m); }
+  .service-editorial p { font-size: 0.98rem; font-weight: 300; line-height: 1.8; color: var(--concrete); margin: 0; max-width: 68ch; }
 
   .service-intro-image {
     border-radius: 10px;

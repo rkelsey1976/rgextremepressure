@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
 import ImageCTA from '../components/ImageCTA.astro';
+import ReviewStrip from '../components/ReviewStrip.astro';
 import TrustMetrics from '../components/TrustMetrics.astro';
 
 const title = 'Patio Cleaning Bristol';
@@ -360,6 +361,8 @@ const serviceSchema = {
       </ul>
     </div>
   </section>
+
+  <ReviewStrip keywords={['patio']} city="Bristol" heading="What Our Patio Cleaning Customers Say" />
 
   <ImageCTA
     heading="Bristol's Patio Cleaning Specialists"

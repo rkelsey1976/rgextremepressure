@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import ImageCTA from '../components/ImageCTA.astro';
+import ReviewStrip from '../components/ReviewStrip.astro';
 import TrustMetrics from '../components/TrustMetrics.astro';
 
 const title = 'Gutter Cleaning Bristol';
@@ -362,6 +363,38 @@ const serviceSchema = {
     </div>
   </section>
 
+  {/* ── Case study ──
+       Real job: Emersons Green BS16, 1 Aug 2026. Details from the job record in
+       ~/Desktop/gbp-campaign-rg-extreme-pressure/drafts/post-01-emersons-green-gutter-fascia.md
+       and images/image-map.md. Five vision-audited photos of this job exist in the
+       record but the files are NOT on disk — add them here when Richard supplies
+       them (before gutter close-up, ladder-view interior, SkyVac in use, after
+       fascia tight, after conservatory hero). Text-only until then rather than
+       illustrating a named job with a photo from somewhere else. */}
+  <section class="case-study-section">
+    <div class="container">
+      <div class="case-study">
+        <span class="case-study__label">Recent job · Emersons Green, BS16</span>
+        <h2 class="case-study__heading">Gutter, Fascia and Conservatory Clean in Emersons Green</h2>
+
+        <p class="case-study__body">A full exterior package on an east-Bristol semi in August. The guttering had the usual years of green algae and limescale built up along the top edge, and the ladder view told the real story — the inside of the run was packed with black sediment, grit and fine debris. The white uPVC conservatory frames and glass alongside it had dulled off at the same rate.</p>
+
+        <p class="case-study__body">The gutters were cleared with the SkyVac vacuum system from ground level, so no ladders leaned on the roofline and nothing came down onto the drive. The fascias and soffits were soft-washed rather than blasted, and the conservatory roofline was reached with a water-fed pole so every pane could be done from the eaves without anyone standing on the glazing bars.</p>
+
+        <p class="case-study__body">Booked and completed in the same week they called, finished inside a day, full public liability cover carried on the visit as standard.</p>
+
+        <ul class="case-study__facts">
+          <li><strong>Area</strong> Emersons Green, Bristol BS16</li>
+          <li><strong>Work</strong> Gutter clearance, fascia &amp; soffit clean, conservatory exterior wash</li>
+          <li><strong>Method</strong> SkyVac ground-level vacuum, soft wash, water-fed pole</li>
+          <li><strong>Duration</strong> One day</li>
+        </ul>
+
+        <p class="case-study__footer">We cover Emersons Green, Downend, Stapleton, Mangotsfield, Staple Hill, Fishponds, Kingswood and the rest of the Bristol east side. <a href="/contact">Get a free quote</a>.</p>
+      </div>
+    </div>
+  </section>
+
   {/* ── Bristol District Links ── */}
   <section class="district-links-section">
     <div class="container">
@@ -382,6 +415,8 @@ const serviceSchema = {
     </div>
   </section>
 
+  <ReviewStrip keywords={['gutter']} city="Bristol" heading="What Our Gutter Cleaning Customers Say" />
+
   <ImageCTA
     heading="Bristol's Gutter Cleaning Specialists"
     body="Free, no-obligation quotes from a fully insured, five-star-rated jet washing service. Covering all Bristol postcodes. Call 07474 939 398."
@@ -392,6 +427,17 @@ const serviceSchema = {
 </Base>
 
 <style>
+  .case-study-section { padding: var(--section-pad) 0; background: var(--surface); }
+  .case-study { max-width: 74ch; }
+  .case-study__label { display: inline-block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); background: rgba(0,85,165,0.06); padding: 0.3rem 0.7rem; border-radius: 100px; margin-bottom: var(--space-m); }
+  .case-study__heading { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; line-height: 1.15; color: var(--chalk); margin: 0 0 var(--space-m); }
+  .case-study__body { font-size: 0.98rem; font-weight: 300; line-height: 1.8; color: var(--concrete); margin: 0 0 var(--space-m); }
+  .case-study__facts { list-style: none; padding: var(--space-l); margin: var(--space-l) 0; background: #fff; border-left: 3px solid var(--accent); border-radius: 6px; display: flex; flex-direction: column; gap: 0.6rem; }
+  .case-study__facts li { font-size: 0.9rem; color: var(--concrete); line-height: 1.5; }
+  .case-study__facts strong { display: block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--chalk); margin-bottom: 0.15rem; }
+  .case-study__footer { font-size: 0.92rem; line-height: 1.75; color: var(--concrete); margin: 0; }
+  .case-study__footer a { color: var(--accent); }
+
   .district-links-section { padding: var(--section-pad) 0; background: var(--stone); }
   .district-links__heading { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; color: var(--chalk); margin: 0 0 var(--space-s); text-transform: none; }
   .district-links__intro { font-size: 0.95rem; color: var(--concrete); margin: 0 0 var(--space-l); }

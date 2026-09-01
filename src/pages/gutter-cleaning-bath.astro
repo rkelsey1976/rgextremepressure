@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import ImageCTA from '../components/ImageCTA.astro';
+import ReviewStrip from '../components/ReviewStrip.astro';
 import TrustMetrics from '../components/TrustMetrics.astro';
 
 const title = 'Gutter Cleaning Bath';
@@ -374,6 +375,8 @@ const serviceSchema = {
       </ul>
     </div>
   </section>
+
+  <ReviewStrip keywords={['gutter']} city="Bath" heading="What Our Gutter Cleaning Customers Say" />
 
   <ImageCTA heading="Protect Your Property From Water Damage" body="Blocked gutters cause damp, rot and expensive structural damage. Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured." cta={{ label: 'Get a Free Quote', href: '/contact' }} image="/images/before-after/job-gallery-18.webp" />
 

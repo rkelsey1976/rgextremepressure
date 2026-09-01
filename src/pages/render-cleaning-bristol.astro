@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import ImageCTA from '../components/ImageCTA.astro';
+import ReviewStrip from '../components/ReviewStrip.astro';
 import TrustMetrics from '../components/TrustMetrics.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
 
@@ -384,6 +385,8 @@ const serviceSchema = {
       </div>
     </div>
   </section>
+
+  <ReviewStrip keywords={['render']} city="Bristol" heading="What Our Render Cleaning Customers Say" />
 
   <ImageCTA
     heading="Bristol's Render Cleaning Specialists"

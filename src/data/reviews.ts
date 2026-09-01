@@ -95,3 +95,33 @@ export const googleReviews: Review[] = [
     stars: 5,
   },
 ];
+
+// ── Selection helpers (added 2026-09-01) ──
+// These 12 reviews were only ever rendered on the homepage. The Sept 2026 report
+// makes the point that reviews compound a converting page ("bath gutter cleaning"
+// runs at 8.82% CTR), so the service pages should carry them too.
+//
+// Matching is by keyword against the real `service` string. Each review always
+// renders with its true location, so a Bath page showing a Keynsham gutter review
+// is labelled as such — we never restate a review as belonging somewhere it didn't.
+
+/** Reviews whose service text matches any of the given keywords. */
+export function reviewsForService(keywords: string[]): Review[] {
+  const k = keywords.map(x => x.toLowerCase());
+  return googleReviews.filter(r =>
+    k.some(word => r.service.toLowerCase().includes(word))
+  );
+}
+
+/**
+ * Up to `limit` reviews for a service page: exact service matches first,
+ * preferring ones from the given city, then topped up with other genuine
+ * reviews so the block is never empty.
+ */
+export function reviewsForPage(keywords: string[], city?: string, limit = 3): Review[] {
+  const matches = reviewsForService(keywords);
+  const local   = city ? matches.filter(r => r.location === city) : [];
+  const rest    = matches.filter(r => !local.includes(r));
+  const others  = googleReviews.filter(r => !matches.includes(r));
+  return [...local, ...rest, ...others].slice(0, limit);
+}
