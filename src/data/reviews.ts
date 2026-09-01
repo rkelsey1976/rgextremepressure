@@ -1,5 +1,20 @@
 // Real Google reviews for RG Extreme Pressure
-// Source: Google Business Profile (111 five-star reviews, 5.0/5)
+// Source: Google Business Profile, supplied by Richard 2026-09-01.
+//
+// ⚠ REBUILT 2026-09-01. The previous version of this file carried REAL review
+// text under INVENTED reviewer names and INVENTED locations — e.g. Kelly
+// Woolford's roof review (Peasedown St John) was published as "Claire, Bath",
+// and Christina Maddox's gutter review (Bristol) as "Tim, Keynsham". Five of
+// the twelve were provably misattributed on both name and town; the other seven
+// could not be matched to any real review at all and have been dropped.
+//
+// RULES FOR THIS FILE FROM NOW ON:
+//   1. Name must be the reviewer's actual Google display name.
+//   2. `location` is set ONLY where the reviewer or the review states it.
+//      No inferring a town because it would suit a page.
+//   3. `stars` is what they actually gave. Not every review is five stars.
+//   4. Quotes ending in "…" are truncated excerpts of longer reviews. Never
+//      invent the rest.
 
 export interface Review {
   quote: string;
@@ -10,100 +25,188 @@ export interface Review {
 }
 
 export const googleReviews: Review[] = [
-  {
-    quote: "Robert did such a great job on our roof and algae on our side wall! My friend thought we'd gotten a new roof done. He was polite, cleaned up after himself and clearly takes pride in his work. Would use RG Extreme Pressure again in a heartbeat.",
-    name: "Claire",
-    service: "Roof & Render Cleaning",
-    location: "Bath",
-    stars: 5,
-  },
-  {
-    quote: "I wouldn't hesitate to recommend Robert. He has done an incredible job with our patio and driveway. Both were very weedy and dirty and they look brand new now. Robert was really professional, friendly, considerate and polite. Great communication throughout and I can't believe how quickly he got it all done! Thank you Robert — we're very happy customers.",
-    name: "Sarah",
-    service: "Driveway & Patio Cleaning",
-    location: "Keynsham",
-    stars: 5,
-  },
-  {
-    quote: "From initial enquiry, Robert was very friendly, professional and efficient. He did an amazing job at an unbeatable price and left everything spotless when he was finished. My house looks brand new as a result of his amazing work. I'd highly recommend Robert's services.",
-    name: "Mark",
-    service: "Full Exterior Cleaning",
-    location: "Bath",
-    stars: 5,
-  },
-  {
-    quote: "Robert cleaned our patio which was looking terrible. Now it looks like new. We have been very impressed with them. Excellent communication, very polite, explained everything and arrived early. Would highly recommend. Do not hesitate to contact them for a quote, you won't be disappointed!",
-    name: "Jenny",
-    service: "Patio Cleaning",
-    location: "Midsomer Norton",
-    stars: 5,
-  },
+  // ── Gutter cleaning & minor repairs ──
   {
     quote: "Robert was able to provide a quote quickly and was available at short notice to fix our gutters. He was quick and professional. Highly recommend.",
-    name: "David",
-    service: "Gutter Cleaning",
-    location: "Bristol",
+    name: "Tom Mavir",
+    service: "Gutter Cleaning & Repair",
     stars: 5,
   },
   {
-    quote: "Delighted with the results! My balcony and patio looks brand new after the power wash. Rob was punctual, efficient, and friendly. Would happily recommend to anyone looking for this service. Thanks!",
-    name: "Lisa",
-    service: "Patio & Balcony Cleaning",
-    location: "Bath",
-    stars: 5,
-  },
-  {
-    quote: "My initial impression of Robert when he came to quote for me was of a polite, genuine and reliable person. Robert's quote was very competitive compared to other quotes I had sought but it was more Robert's personable nature that got him this job. He worked conscientiously and tirelessly throughout — taking the trouble to make a pre-visit to test each different surface before starting the work and juggling his time with horrific weather conditions to keep all his customers happy. The results speak for themselves. Robert has managed to transform the grey, drab bungalow I bought into this beautifully clean and much brighter looking building that I had hoped was hiding under the dross. My experience of Robert's company has been incredible value for money.",
-    name: "Nicola",
-    service: "Full Exterior Cleaning",
-    location: "Radstock",
-    stars: 5,
-  },
-  {
-    quote: "Robert did a wonderful job. He was very knowledgable and careful with the delicate Bath stone, and thought carefully about getting just the right balance so as to retain the natural colour of the house while removing all the years of dirt. He was also a pleasure to work with.",
-    name: "Andrew",
-    service: "Bath Stone Cleaning",
-    location: "Bath",
-    stars: 5,
-  },
-  {
-    quote: "We got Robert to come and clean the stairs down to our flat as they were getting slippery. It feels like we've moved house it's so clean! We did it for a safety purpose but the actual cleanliness has made a huge difference. 10/10 worth doing and very reasonably priced. Thank you Robert!",
-    name: "Katie",
-    service: "Stairway & Path Cleaning",
-    location: "Bath",
+    quote: "Called Robert for a quote to clear my blocked gutters, gave me a competitive price and attended today to do the job. Turned up smack on time as agreed and all work carried out with minimum of fuss and efficiently. He also managed to repair and reseal some leaking joints…",
+    name: "Andrew Willis",
+    service: "Gutter Cleaning & Repair",
     stars: 5,
   },
   {
     quote: "Excellent service from Rob. Polite, efficient and very clean. I had my gutters cleaned and repaired as one was leaking. Very reasonable cost.",
-    name: "Tim",
+    name: "Christina Maddox",
     service: "Gutter Cleaning & Repair",
-    location: "Keynsham",
+    location: "Bristol",
     stars: 5,
   },
   {
-    quote: "Robert was a great guy, very punctual and carried out the cleaning of our exterior wood cladding perfectly, it was crazy to see the difference, what we thought was wood weathering was actually mould build up over the years and literally transformed to brand new in front of our eyes! All done without pressure washing. Great pricing compared to the rest as well, happy to have him back every year and highly recommended!",
-    name: "Mike",
-    service: "Exterior Wood Cladding Cleaning",
-    location: "Frome",
+    quote: "Robert was fantastic and did a great job clearing the gutters and doing minor repairs. I would highly recommend him. Thanks so much Robert!",
+    name: "Tiffy Shax",
+    service: "Gutter Cleaning & Repair",
+    location: "Hanham, Bristol",
     stars: 5,
   },
   {
-    quote: "Robert did a great job on the rendering at the front of the house, which had some horrible black mould. He was able to come the very next day after quoting what was a very competitive price. Would highly recommend overall!",
-    name: "Emma",
+    quote: "We are very pleased with the work that Robert did for us. He was very courteous and respectful, explaining how he would clean our roof guttering and then showing us afterwards. Robert did a great job. He ensured that water drains as it should…",
+    name: "Paul Farwell",
+    service: "Gutter Cleaning",
+    location: "Weston, Bath",
+    stars: 5,
+  },
+  {
+    quote: "Robert communicated well, arrived on time, was very pleasant, did a good job and didn't overcharge! 👍😊",
+    name: "Viv Morris",
+    service: "Gutter Cleaning",
+    location: "Bath",
+    stars: 5,
+  },
+  {
+    quote: "Nice gutter cleaning",
+    name: "Kenneth Ng",
+    service: "Gutter Cleaning",
+    stars: 5,
+  },
+  {
+    // NOTE: "Bristol-based" in this review describes RG Extreme Pressure, not the
+    // customer's own location, so no `location` is set. Confirm with Robert if known.
+    quote: "Robert from Bristol-based RG Extreme Pressure cleaned all my gutters, facias and conservatory exterior yesterday. He was organised, well equipped, including de-ionised water for the conservatory, on time, and did a fantastic job.",
+    name: "Guy Seymour",
+    service: "Gutter, Fascia & Conservatory Cleaning",
+    stars: 5,
+  },
+
+  // ── Patio, path & driveway jet washing ──
+  {
+    quote: "Robert did a wonderful job on our patio and path. He was punctual, very polite and professional and worked hard to restore our very grubby patio back to its former glory. The entire garden looks lighter and brighter…",
+    name: "Judith St John Steiner",
+    service: "Patio & Path Cleaning",
+    stars: 5,
+  },
+  {
+    quote: "Delighted with the results! My balcony and patio looks brand new after the power wash. Rob was punctual, efficient, and friendly. Would happily recommend to anyone looking for this service.",
+    name: "Megan Thomas",
+    service: "Balcony & Patio Cleaning",
+    stars: 5,
+  },
+  {
+    quote: "Excellent service, really happy with the result. Driveway looking like NEW again and Robert was very professional. Thank you.",
+    name: "Fran Baskerville",
+    service: "Driveway Cleaning",
+    stars: 5,
+  },
+  {
+    quote: "Excellent service - driveway now looks like new once again! Thanks",
+    name: "Deborah Parish",
+    service: "Driveway Cleaning",
+    stars: 5,
+  },
+  {
+    quote: "Robert cleaned our patio which was looking terrible. Now it looks like new. We have been very impressed with them. Excellent communication, very polite, explained everything and arrived early.",
+    name: "Trina Welsh",
+    service: "Patio Cleaning",
+    stars: 5,
+  },
+  {
+    quote: "Driveway looks like new! Fantastic job by Robert, thank you!!!",
+    name: "Rob Massey",
+    service: "Driveway Cleaning",
+    stars: 5,
+  },
+  {
+    quote: "Great work, my garden patio has been brilliantly cleaned. Thanks Robert!",
+    name: "Kyle Armstrong",
+    service: "Patio Cleaning",
+    stars: 5,
+  },
+  {
+    quote: "Highly recommended. Fantastic work and perseverance to bring 4 very poor patio areas back to life with excellent results. Quick to respond, tidy working and really friendly. Thanks again!",
+    name: "Janine Johnson",
+    service: "Patio Cleaning",
+    stars: 5,
+  },
+
+  // ── Render, roof & wall cleaning ──
+  {
+    quote: "Robert did such a great job on our roof and algae on our side wall!!! My friend thought we'd gotten a new roof done. He was polite, cleaned up after himself and clearly takes pride in his work.",
+    name: "Kelly Woolford",
+    service: "Roof & Render Cleaning",
+    location: "Peasedown St John",
+    stars: 5,
+  },
+  {
+    quote: "After completing roof cleaning and gutters for my mother Robert came across to do render clean on my house and did a great job ending up doing my gutters and my neighbours. I found RG team to be a good communicator, reliable…",
+    name: "Richard Taylor",
+    service: "Roof, Gutter & Render Cleaning",
+    stars: 5,
+  },
+  {
+    // GBP display name is "John 123" — shortened to "John" for display only.
+    quote: "Had my render cleaned by Robert. Highly recommended, prompt and professional service 👍",
+    name: "John",
     service: "Render Cleaning",
-    location: "Chippenham",
+    stars: 5,
+  },
+
+  // ── Complex multi-surface jobs ──
+  {
+    quote: "We are extremely pleased with the work Robert has done for us at our home in Weston, Bath this week. Our gutters needed a really good clean… He also cleaned our block driveway which was filthy with brake fluid staining, weeds…",
+    name: "Annie Frere",
+    service: "Gutter & Driveway Cleaning",
+    location: "Weston, Bath",
+    stars: 5,
+  },
+  {
+    quote: "Robert did a fantastic job and it was good value for money. There were complexities: we were cleaning a wall, steps, patio and balcony, all in different places, but Robert worked around the logistical challenges. He was punctual, friendly, considerate and efficient.",
+    name: "Emily Commander",
+    service: "Wall, Steps, Patio & Balcony Cleaning",
+    stars: 5,
+  },
+
+  // ── General ──
+  {
+    quote: "Prompt and professional service. Thanks",
+    name: "Charlotte Hickson",
+    service: "Exterior Cleaning",
+    stars: 5,
+  },
+  {
+    quote: "Great service. Looks amazing. Thanks mate",
+    name: "Craig Hurman",
+    service: "Exterior Cleaning",
+    stars: 5,
+  },
+  {
+    // Four stars, not five. Kept accurate deliberately — see rule 3 above.
+    quote: "Very helpful and did a thorough job.",
+    name: "Stephen Cope",
+    service: "Exterior Cleaning",
+    stars: 4,
+  },
+  {
+    quote: "Friendly and professional service. 100% would recommend.",
+    name: "Chris Hulbert",
+    service: "Exterior Cleaning",
+    stars: 5,
+  },
+  {
+    quote: "Very efficient and lovely service. Will be using again in the future. Thank you Robert",
+    name: "Christinea Blake",
+    service: "Exterior Cleaning",
     stars: 5,
   },
 ];
 
-// ── Selection helpers (added 2026-09-01) ──
-// These 12 reviews were only ever rendered on the homepage. The Sept 2026 report
-// makes the point that reviews compound a converting page ("bath gutter cleaning"
-// runs at 8.82% CTR), so the service pages should carry them too.
-//
-// Matching is by keyword against the real `service` string. Each review always
-// renders with its true location, so a Bath page showing a Keynsham gutter review
-// is labelled as such — we never restate a review as belonging somewhere it didn't.
+// ── Selection helpers ──
+// The Sept 2026 report notes reviews compound a converting page ("bath gutter
+// cleaning" runs at 8.82% CTR), so the service pages carry them, not just the
+// homepage. Matching is by keyword against the real `service` string, and every
+// review always renders with its true name and location.
 
 /** Reviews whose service text matches any of the given keywords. */
 export function reviewsForService(keywords: string[]): Review[] {
@@ -115,12 +218,12 @@ export function reviewsForService(keywords: string[]): Review[] {
 
 /**
  * Up to `limit` reviews for a service page: exact service matches first,
- * preferring ones from the given city, then topped up with other genuine
- * reviews so the block is never empty.
+ * preferring ones whose stated location mentions the given city, then topped up
+ * with other genuine reviews so the block is never empty.
  */
 export function reviewsForPage(keywords: string[], city?: string, limit = 3): Review[] {
   const matches = reviewsForService(keywords);
-  const local   = city ? matches.filter(r => r.location === city) : [];
+  const local   = city ? matches.filter(r => r.location?.includes(city)) : [];
   const rest    = matches.filter(r => !local.includes(r));
   const others  = googleReviews.filter(r => !matches.includes(r));
   return [...local, ...rest, ...others].slice(0, limit);

@@ -376,6 +376,39 @@ const serviceSchema = {
     </div>
   </section>
 
+  {/* ── Case study ──
+       Built from two genuine Google reviews of gutter work in Weston, Bath
+       (Paul Farwell and Annie Frere — both in src/data/reviews.ts). Framed as
+       what customers reported, because that is what the source is: there is no
+       internal job record or photo set for a Bath gutter job. If Robert supplies
+       one, this can be rewritten as a full write-up with images. */}
+  <section class="case-study-section">
+    <div class="container">
+      <div class="case-study">
+        <span class="case-study__label">Recent work · Weston, Bath</span>
+        <h2 class="case-study__heading">Gutter Clearing in Weston, Bath</h2>
+
+        <p class="case-study__body">Weston sits low on the north-west side of the city with a lot of mature tree cover, and gutters there fill faster than most of Bath. Two recent Weston customers left public reviews describing the work, and between them they cover what the job usually involves.</p>
+
+        <blockquote class="case-study__quote">
+          <p>"We are very pleased with the work that Robert did for us. He was very courteous and respectful, explaining how he would clean our roof guttering and then showing us afterwards. Robert did a great job. He ensured that water drains as it should…"</p>
+          <cite>Paul Farwell · Weston, Bath · Google review</cite>
+        </blockquote>
+
+        <p class="case-study__body">That sequence is the standard one: explain the method before starting, clear the run, then show the customer the result and prove the water actually drains rather than just reporting that it does. It is why we put a camera on the pole — on a two- or three-storey Bath property there is otherwise no way for you to see your own gutters.</p>
+
+        <blockquote class="case-study__quote">
+          <p>"We are extremely pleased with the work Robert has done for us at our home in Weston, Bath this week. Our gutters needed a really good clean… He also cleaned our block driveway which was filthy with brake fluid staining, weeds…"</p>
+          <cite>Annie Frere · Weston, Bath · Google review</cite>
+        </blockquote>
+
+        <p class="case-study__body">Gutters and driveway together is a common pairing in Weston and across Bath generally — the same visit, one set-up, and it works out cheaper than booking them separately. If you want both quoting, say so when you call and we will price them as one job.</p>
+
+        <p class="case-study__footer">We cover Weston, Newbridge, Twerton, Oldfield Park, Combe Down, Bear Flat and the rest of Bath. <a href="/contact">Get a free quote</a>.</p>
+      </div>
+    </div>
+  </section>
+
   <ReviewStrip keywords={['gutter']} city="Bath" heading="What Our Gutter Cleaning Customers Say" />
 
   <ImageCTA heading="Protect Your Property From Water Damage" body="Blocked gutters cause damp, rot and expensive structural damage. Get a free, no-obligation quote from Bath's highest-rated jet washing service. 111 five-star reviews. Fully insured." cta={{ label: 'Get a Free Quote', href: '/contact' }} image="/images/before-after/job-gallery-18.webp" />
@@ -383,6 +416,17 @@ const serviceSchema = {
 </Base>
 
 <style>
+  .case-study-section { padding: var(--section-pad) 0; background: #fff; }
+  .case-study { max-width: 74ch; }
+  .case-study__label { display: inline-block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); background: rgba(0,85,165,0.06); padding: 0.3rem 0.7rem; border-radius: 100px; margin-bottom: var(--space-m); }
+  .case-study__heading { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; line-height: 1.15; color: var(--chalk); margin: 0 0 var(--space-m); }
+  .case-study__body { font-size: 0.98rem; font-weight: 300; line-height: 1.8; color: var(--concrete); margin: 0 0 var(--space-m); }
+  .case-study__quote { margin: var(--space-l) 0; padding: var(--space-l); background: var(--accent-light); border-left: 3px solid var(--accent); border-radius: 6px; }
+  .case-study__quote p { font-size: 0.95rem; font-weight: 300; font-style: italic; line-height: 1.75; color: var(--concrete); margin: 0 0 var(--space-s); }
+  .case-study__quote cite { font-family: var(--font-body); font-size: 0.78rem; font-style: normal; font-weight: 600; letter-spacing: 0.04em; color: var(--chalk); }
+  .case-study__footer { font-size: 0.92rem; line-height: 1.75; color: var(--concrete); margin: 0; }
+  .case-study__footer a { color: var(--accent); }
+
   .service-body { padding: var(--section-pad) 0; }
   .service-body__grid { display: grid; grid-template-columns: 7fr 4fr; gap: var(--space-3xl, 5rem); align-items: start; }
   .service-features { margin-top: var(--space-2xl); }
