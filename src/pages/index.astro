@@ -12,8 +12,8 @@ import { servicesData } from '../data/services';
 import { googleReviews } from '../data/reviews';
 ---
 
-<Base title="Jet Washing Bath"
-  description="Professional jet washing in Bath. Driveway cleaning, patio cleaning, gutter clearing, roof cleaning, render cleaning and block paving. Rated 5.0 from 113 Google reviews. Call 07474 939 398."
+<Base title="Jet Washing Bath | Pressure Washing Somerset"
+  description="Professional jet washing and pressure washing across Bath, Bristol and Somerset. Driveway cleaning, patio cleaning, gutter clearing, roof cleaning, render cleaning and block paving. Rated 5.0 from 113 Google reviews. Call 07474 939 398."
   preloadImage="/images/hero-home.webp">
 
   {/*
@@ -117,6 +117,25 @@ import { googleReviews } from '../data/reviews';
           <ServiceCard href={s.href} image={s.image} title={s.title} subtitle={s.subtitle} description={s.description} />
         ))}
       </div>
+    </div>
+  </section>
+
+  {/*
+    ═══════════════════════════════════════
+    C2. AREA COVERAGE — Somerset + Bristol corridor sentence
+        (backs the county-level title; 'pressure washing somerset' sits
+        at pos 9.1 with 159 impressions and zero body mention of the
+        county towns — Oct 2026 GSC report lever)
+    ═══════════════════════════════════════
+  */}
+  <section class="coverage-sentence">
+    <div class="container">
+      <p class="coverage-sentence__text">
+        Based in Peasedown St John and covering the whole region: pressure washing and exterior
+        cleaning across <strong>Bath</strong>, <strong>Bristol</strong> and <strong>Somerset</strong> —
+        Keynsham, Radstock, Midsomer Norton, Frome, Chippenham, Bradford-on-Avon, Corsham, Melksham,
+        Trowbridge and everywhere between. One firm, fully insured, five-star reviewed on Google.
+      </p>
     </div>
   </section>
 
@@ -522,4 +541,8 @@ import { googleReviews } from '../data/reviews';
       grid-template-columns: 1fr;
     }
   }
+
+  .coverage-sentence { background: var(--stone); padding: var(--space-l) 0; }
+  .coverage-sentence__text { max-width: 820px; margin: 0 auto; text-align: center; font-size: 0.95rem; line-height: 1.8; color: var(--concrete); }
+  .coverage-sentence__text strong { color: var(--chalk); font-weight: 700; }
 </style>
