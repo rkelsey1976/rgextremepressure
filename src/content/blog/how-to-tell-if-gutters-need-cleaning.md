@@ -76,7 +76,7 @@ A professional clear isn't just removing the obvious debris. A thorough gutter c
 - Reporting any cracked, sagging or displaced sections
 - Clearing any debris from around the downpipe outlet
 
-At RG Extreme Pressure, we use a SkyVac industrial vacuum system — the same equipment used by commercial maintenance contractors. It clears gutters without ladders where possible, which means no risk of ladder damage to render, PVC or painted surfaces, and faster access on difficult two or three-storey properties.
+At RG Extreme Pressure, we use a SkyVac industrial vacuum system — the same equipment used by commercial maintenance contractors. It clears gutters without ladders where possible, which means no risk of ladder damage to render, PVC or painted surfaces, and faster access on difficult two or three-storey properties. Our [gutter cleaning Bristol](/gutter-cleaning-bristol) page lists every district we cover — Kingswood, Downend and Fishponds included — with district pages for [Kingswood](/gutter-cleaning/kingswood-bristol), [Downend](/gutter-cleaning/downend-bristol) and [Fishponds](/gutter-cleaning/fishponds-bristol). Most Bristol gutters want clearing once a year, twice under heavy tree cover.
 
 ---
 

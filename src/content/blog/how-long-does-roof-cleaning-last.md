@@ -90,4 +90,4 @@ The cost of a roof clean and biocide treatment is a small fraction of a roof re-
 
 ---
 
-We've cleaned and treated roofs across Bath, Bristol and Somerset. If you're seeing significant moss growth or haven't had the roof treated in the last four years, [get in touch for a free assessment](/contact). We'll give you a straight opinion on whether the roof needs a full clean or just a biocide top-up.
+We've cleaned and treated roofs across Bath, Bristol and Somerset — see our [roof cleaning Bristol](/roof-cleaning-bristol) hub for the full area list, including district pages for [Downend](/roof-cleaning/downend-bristol) and [Kingswood](/roof-cleaning/kingswood-bristol). If you're seeing significant moss growth or haven't had the roof treated in the last four years, [get in touch for a free assessment](/contact). We'll give you a straight opinion on whether the roof needs a full clean or just a biocide top-up.
