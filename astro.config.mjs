@@ -160,6 +160,7 @@ export default defineConfig({
         !page.includes('/offline') &&
         !page.includes('/404') &&
         !page.includes('/brand-tools') &&
+        !page.includes('/roof-clean-landing') &&
         !page.includes('/social-generator') &&
         !page.includes('/tools/fb-ad') &&
         !page.includes('/tools/fb-banner') &&

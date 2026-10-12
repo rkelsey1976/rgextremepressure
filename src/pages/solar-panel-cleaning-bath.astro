@@ -321,6 +321,10 @@ const serviceSchema = {
     </div>
   </section>
 
+  <div class="further-reading">
+    <p class="further-reading__text">Not sure your panels need it at all? Read <a href="/blog/do-solar-panels-need-cleaning-uk-research">the research: do solar panels need cleaning in the UK?</a> — what soiling costs, what rain can and cannot shift, and how often a clean genuinely earns its keep.</p>
+  </div>
+
   <section class="faq-section">
     <div class="container">
       <SectionHeader eyebrow="Common Questions" heading="Solar Panel Cleaning FAQ" />
@@ -435,4 +439,9 @@ const serviceSchema = {
   @media (max-width: 640px) { .district-links__grid { grid-template-columns: 1fr 1fr; } }
 
   @media (max-width: 960px) { .service-body__grid { grid-template-columns: 1fr; gap: var(--space-2xl); } .service-body__sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); } }
+  .further-reading { margin-top: var(--space-2xl); padding: var(--space-l) var(--space-xl); background: var(--stone); border-radius: 10px; border-left: 3px solid var(--accent); }
+  .further-reading__text { margin: 0; font-size: 0.95rem; line-height: 1.7; color: var(--concrete); }
+  .further-reading a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .further-reading a:hover { text-decoration: underline; }
+
 </style>
