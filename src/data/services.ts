@@ -86,6 +86,20 @@ export const servicesData: ServicePillar[] = [
     href: '/render-cleaning',
   },
   {
+    id: 'solar-panel-cleaning',
+    title: 'Solar Panel Cleaning',
+    subtitle: 'Rooftop PV Arrays — Safe Pole Cleaning',
+    description: 'Bird droppings, pollen film and leaf litter block the light your solar panels need and quietly cost you generation. We clean rooftop arrays with long-reach poles and soft-bristle heads — no pressure on the glass and nobody walking on the roof.',
+    features: [
+      'Soft-Bristle, Glass-Safe Cleaning',
+      'Long-Reach Poles From Ground Level',
+      'Bird Dropping & Lichen Removal',
+      'Frame & Rail Wipe-Down',
+    ],
+    image: '/images/solar/solar-rows-3.webp',
+    href: '/solar-panel-cleaning',
+  },
+  {
     id: 'block-paving-cleaning',
     title: 'Block Paving Cleaning',
     subtitle: 'Driveways, Patios & Pathways',

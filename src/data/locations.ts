@@ -50,6 +50,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Keynsham',
     serviceContext: {
+      'solar-panel-cleaning': 'Keynsham arrays face road dust and pollen through summer, with bird droppings baking on between cleanings. Arrays are cleaned with long-reach poles and soft heads from ground level, and panels are never walked on.',
       'driveway-cleaning': 'Keynsham\'s post-war estates around Wellsway and Pixash have large block-paved driveways that collect moss and tyre staining. Our jet washing restores the original colour and re-sands joints to prevent weed regrowth.',
       'patio-cleaning': 'Many Keynsham homes have Indian sandstone or concrete patios that green up quickly in the damp Somer Valley climate. We adjust pressure for each stone type to avoid etching.',
       'gutter-cleaning': 'Keynsham\'s mature tree-lined streets mean gutters fill with leaf debris fast — especially around Keynsham Memorial Park. We clear gutters and flush downpipes to prevent water damage.',
@@ -90,6 +91,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Radstock',
     serviceContext: {
+      'solar-panel-cleaning': 'Radstock rooflines sit in a former-coalfield landscape where dust settles quickly, and panels here film over fast in still weather. Cleaning with soft-bristle poles keeps the glass passing light, and lichen on older arrays is taken down gently.',
       'driveway-cleaning': 'Radstock has a mix of tarmac and block paving driveways across its housing estates. Our jet washing handles both — removing oil stains, moss and tyre marks from tarmac, and deep cleaning plus re-sanding for block paving.',
       'patio-cleaning': 'Radstock\'s period properties often have stone-flagged patios that need careful cleaning. We use lower pressure settings on older stone to avoid damage while still removing years of algae and dirt.',
       'gutter-cleaning': 'Many Radstock properties have original cast-iron gutters that need careful clearing. We remove moss, leaves and debris without damaging ageing gutter systems.',
@@ -130,6 +132,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Midsomer Norton',
     serviceContext: {
+      'solar-panel-cleaning': 'Homes in Midsomer Norton with rooftop arrays catch pollen film through early summer and leaf litter once the autumn winds arrive. Pole cleaning from the ground clears the glass safely, with no walking on panels and no pressure washing.',
       'driveway-cleaning': 'Midsomer Norton\'s estates around Silver Street and the High Street have a mix of block paving and tarmac drives that accumulate moss and tyre staining. Our jet washing brings them back to life.',
       'patio-cleaning': 'Many Midsomer Norton homes have concrete and Indian sandstone patios that need regular cleaning in the damp Somer Valley climate. We clean all patio types with pressure adjusted to the surface.',
       'gutter-cleaning': 'Midsomer Norton\'s Victorian terraces and newer builds both suffer from blocked gutters. We clear debris, flush downpipes and check for minor leaks — particularly important for older properties.',
@@ -170,6 +173,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Frome',
     serviceContext: {
+      'solar-panel-cleaning': 'Frome has plenty of period rooflines where solar work needs a light touch — narrow lanes and limited access matter as much as the glass itself. Long-reach poles and soft brushes clear droppings and pollen film without anything heavy near the roof.',
       'driveway-cleaning': 'Frome has a mix of historic town centre properties with small courtyards and modern estates with larger block paving driveways. We handle both — from delicate stone cleaning to heavy-duty jet washing.',
       'patio-cleaning': 'Frome\'s period properties often have stone-flagged and cobblestone patios that need careful pressure adjustment. Our operators are trained to clean delicate surfaces without causing damage.',
       'gutter-cleaning': 'Frome\'s hillside location and mature trees mean gutters fill quickly with leaves and moss. We clear gutters and flush downpipes to protect against damp and water damage — especially important for older properties.',
@@ -210,6 +214,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Chippenham',
     serviceContext: {
+      'solar-panel-cleaning': 'Chippenham arrays sit under big open skies, which means every pollen and dust episode lands on the glass. Regular pole cleaning keeps generation from slipping away quietly, and the frame lines get wiped while we are there.',
       'driveway-cleaning': 'Chippenham\'s new-build estates around Pewsham and Cepen Park have large block paving driveways that accumulate moss and staining. Our jet washing restores them and re-sands joints for stability.',
       'patio-cleaning': 'Chippenham properties often have Indian sandstone and porcelain patios that need careful cleaning. We adjust pressure and technique for each surface type to avoid etching or damage.',
       'gutter-cleaning': 'Chippenham\'s mix of new and older properties means gutter types vary widely. We clear all gutter styles — from modern half-round to older Ogee profiles — and flush downpipes fully.',
@@ -251,6 +256,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Oldfield Park',
     serviceContext: {
+      'solar-panel-cleaning': 'Oldfield Park terraces put solar panels over tight shared driveways and low rear rooflines, so narrow pole setups do the work here. Pollen film and spring dust clear quickly with soft-bristle heads — nobody walks the glass.',
       'driveway-cleaning': 'Oldfield Park driveways are often compact block paving or concrete — we jet wash, re-sand joints and remove oil stains and tyre marks.',
       'patio-cleaning': 'Many Oldfield Park gardens have small concrete or paving slab patios that green up quickly in the shade. We clean all surface types safely.',
       'gutter-cleaning': 'Victorian terrace gutters in Oldfield Park can be original cast-iron and need careful clearing. We flush downpipes and check for blockages.',
@@ -288,6 +294,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Combe Down',
     serviceContext: {
+      'solar-panel-cleaning': 'Combe Down properties sit high and exposed, so wind-blown dust and pollen arrive on rooftop arrays from every direction. Soft-bristle pole cleaning suits the stone-built rooflines here, with lichen on older panels taken down gently rather than scraped off.',
       'driveway-cleaning': 'Combe Down driveways tend to be larger than average — many are tarmac or gravel with block paving sections. We jet wash, remove oil and tyre stains and re-sand block paving joints.',
       'patio-cleaning': 'Large stone patio areas and garden terracing are common in Combe Down. We clean sandstone, slate and concrete at the appropriate pressure for each surface.',
       'gutter-cleaning': 'Larger detached properties in Combe Down have longer gutter runs with more downpipes. We clear all sections and flush downpipes to prevent overflow staining on stone walls.',
@@ -325,6 +332,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Bear Flat',
     serviceContext: {
+      'solar-panel-cleaning': 'Bear Flat arrays sit in the shade of mature street trees, so leaf litter and bird droppings land long after autumn is done. Pole-based cleaning clears the glass without touching the roof tiles, and a quick look spots where pigeons have moved in under the panels.',
       'driveway-cleaning': 'Bear Flat driveways are often small block paving or tarmac forecourts. We clean, re-sand and remove staining efficiently with minimal disruption.',
       'patio-cleaning': 'Enclosed rear patios in Bear Flat collect moss and algae fast. We clean all paving types — concrete, sandstone and porcelain — at the right pressure for each.',
       'gutter-cleaning': 'Victorian gutters on Bear Flat terraces need careful clearing to avoid water damage to the period brickwork and render below.',
@@ -362,6 +370,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Newbridge',
     serviceContext: {
+      'solar-panel-cleaning': 'Newbridge solar rooftops sit near the A4 corridor, so road film and pollen land on the glass through spring and summer. Pole cleaning from the ground restores the surface, with the frames and rails wiped down as part of the job.',
       'driveway-cleaning': 'Newbridge\'s post-war housing stock commonly has block paving driveways that need regular deep cleaning and re-sanding. We also handle tarmac and concrete drives.',
       'patio-cleaning': 'Rear patios on Newbridge\'s 1930s semis are often concrete or sandstone — we clean at the appropriate pressure for each surface type.',
       'gutter-cleaning': 'Low-lying Newbridge properties accumulate leaf debris and algae in gutters quickly. We clear and flush downpipes to keep water flowing away from the property.',
@@ -399,6 +408,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Twerton',
     serviceContext: {
+      'solar-panel-cleaning': 'Twerton solar panels sit on classic Bath rooftops where tight forecourts and narrow access shape the job. Long-reach poles handle the glass from the ground, and droppings that baked on over summer come off with soft brushes rather than pressure.',
       'driveway-cleaning': 'Twerton driveways are often small block paving or concrete forecourts. We clean, re-sand and remove weeds and staining.',
       'patio-cleaning': 'Compact rear patios and garden areas in Twerton need regular cleaning. We handle concrete, paving slabs and sandstone.',
       'gutter-cleaning': 'Terrace gutters in Twerton collect leaf debris and block quickly. We clear and flush to prevent overflow and damp issues.',
@@ -436,6 +446,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Weston',
     serviceContext: {
+      'solar-panel-cleaning': 'Weston homes have larger rooflines that suit bigger arrays, and the open aspect catches every dust and pollen episode. Pole-based cleaning reaches across the glass without anyone walking the panels, and lichen on older arrays is treated carefully.',
       'driveway-cleaning': 'Weston\'s larger properties often have extensive block paving and tarmac driveways. We handle large areas efficiently with commercial pressure washing equipment.',
       'patio-cleaning': 'Many Weston homes have substantial garden terracing and patios in sandstone or porcelain. We clean at the appropriate pressure for each surface.',
       'gutter-cleaning': 'Larger Weston homes have longer gutter runs. We clear all sections, flush downpipes and check for overflow damage or minor repairs needed.',
@@ -475,6 +486,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Clifton',
     serviceContext: {
+      'solar-panel-cleaning': 'Clifton rooflines run grand and tall, so solar cleaning here is about reach and control — long-reach poles and careful angles rather than scaffold and pressure. Pollen film, dust and bird droppings come off the glass so light passes through cleanly again.',
       'driveway-cleaning': 'Clifton driveways range from period block paving forecourts to modern resin drives. We adjust pressure and technique for each surface — always re-sanding block paving joints after cleaning.',
       'patio-cleaning': 'Many Clifton properties have walled rear gardens with sandstone or porcelain paving that benefits from our low-pressure soft wash approach to protect delicate surfaces.',
       'gutter-cleaning': 'Original Victorian cast-iron gutters in Clifton need careful clearing. We remove debris and flush downpipes without stressing ageing gutter fixings and brackets.',
@@ -512,6 +524,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Redland',
     serviceContext: {
+      'solar-panel-cleaning': 'Redland villas and converted apartments often carry arrays behind chimney lines and parapets, where leaf litter and droppings gather unnoticed. Soft-bristle pole work clears the glass from below, with the array never walked on.',
       'driveway-cleaning': 'Redland driveways include block paving, tarmac and resin-bound surfaces. We jet wash, re-sand and remove oil stains — adjusting pressure for each surface type.',
       'patio-cleaning': 'Large rear gardens in Redland often have sandstone or porcelain patios. Bristol\'s damp climate means algae builds up fast — our biocide post-treatment significantly slows regrowth.',
       'gutter-cleaning': 'Mature trees throughout Redland fill gutters with leaf debris rapidly. We clear all sections and flush downpipes, typically recommending annual clearing for properties near large trees.',
@@ -549,6 +562,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Bishopston',
     serviceContext: {
+      'solar-panel-cleaning': 'Bishopston rooflines are compact and Edwardian, so panel access here is pole work through tight gaps. Pollen film and city dust lift off with gentle brushing, and tree cover around the garden squares means autumn litter deserves an extra visit.',
       'driveway-cleaning': 'Bishopston driveways are often compact block paving or tarmac forecourts. We clean, re-sand and remove algae and tyre staining with minimal disruption.',
       'patio-cleaning': 'Small rear patios in Bishopston need regular cleaning — enclosed gardens with limited airflow grow algae fast. We clean concrete, paving slabs and sandstone.',
       'gutter-cleaning': 'Edwardian terrace gutters in Bishopston fill with moss and leaf debris quickly. We clear all sections and flush downpipes to prevent overflow staining on brickwork.',
@@ -586,6 +600,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Henleaze',
     serviceContext: {
+      'solar-panel-cleaning': 'Henleaze bungalows and interwar semis put arrays right where pigeons like to perch, so droppings pile up between seasons. Pole-based soft cleaning restores the glass, and gaps under the panels where birds nest are worth flagging while we are there.',
       'driveway-cleaning': 'Henleaze driveways are often generous block paving or tarmac areas. We deep clean, re-sand and remove oil stains — commercial equipment handles larger areas efficiently.',
       'patio-cleaning': 'Rear patios and garden terracing in Henleaze range from concrete slabs to quality sandstone. We clean all types at the appropriate pressure.',
       'gutter-cleaning': 'Larger homes in Henleaze have longer gutter runs. We clear all sections, flush downpipes and check for overflow damage or minor repairs.',
@@ -623,6 +638,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Kingswood',
     serviceContext: {
+      'solar-panel-cleaning': 'Kingswood is one of the most solar-covered corners of Bristol we visit, and the glass films over with road dust from the surrounding main roads. Soft-bristle pole cleaning clears it without pressure or footfall on the panels, keeping the output where it should be.',
       'driveway-cleaning': 'Block paving driveways are extremely common across Kingswood\'s post-war estates. We deep clean, re-sand and remove oil and tyre staining — one of our busiest service areas.',
       'patio-cleaning': 'Rear patio slabs and concrete areas throughout Kingswood collect heavy algae and moss. We clean all surface types and apply biocide to slow regrowth.',
       'gutter-cleaning': 'Post-war and 1970s properties in Kingswood have standard plastic guttering that fills with leaf debris and moss. We clear and flush all sections.',
@@ -660,6 +676,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Fishponds',
     serviceContext: {
+      'solar-panel-cleaning': 'Fishponds is one of the most tree-covered areas we cover, so solar glass here collects leaf litter, droppings and shade-line film in equal measure. Pole cleaning between autumn and spring keeps the array passing light all year.',
       'driveway-cleaning': 'Fishponds has a mix of block paving, tarmac and concrete driveways across its varied housing stock. We handle all surface types — deep clean, re-sand and stain removal.',
       'patio-cleaning': 'Rear patios across Fishponds\' Victorian and post-war housing grow algae quickly in the area\'s damp microclimate. We clean and apply biocide to slow regrowth.',
       'gutter-cleaning': 'Mature trees throughout Fishponds cause frequent gutter blockages. We clear all sections and flush downpipes, typically recommending annual clearing.',
@@ -697,6 +714,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Brislington',
     serviceContext: {
+      'solar-panel-cleaning': 'Brislington arrays sit between the Bath Road corridor and the river haze, so dust and pollen land on the glass steadily through summer. Long-reach poles and soft heads clear it from the ground — no walking on tiles, no pressure on the array.',
       'driveway-cleaning': 'Brislington\'s 1930s and post-war housing has large block paving and tarmac driveways that benefit from regular deep cleaning and re-sanding.',
       'patio-cleaning': 'Rear patios across Brislington range from concrete slabs to modern porcelain. We clean all types and apply biocide post-treatment.',
       'gutter-cleaning': 'Standard plastic guttering on Brislington\'s post-war homes fills with moss and debris quickly. We clear all sections and flush downpipes.',
@@ -734,6 +752,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Bedminster',
     serviceContext: {
+      'solar-panel-cleaning': 'Bedminster terraces mean solar panels over compact rear additions and low front rooflines, reached with narrow pole work. Droppings and pollen film come off with gentle brushing, and the tight lanes of Southville are handled at ground level.',
       'driveway-cleaning': 'Where driveways exist in Bedminster they tend to be small block paving or concrete forecourts. We clean, re-sand and remove staining efficiently in tight spaces.',
       'patio-cleaning': 'Small rear yards and patios are common in Bedminster\'s terraced housing. We clean concrete, stone and paving slabs — all surface types.',
       'gutter-cleaning': 'Victorian terrace gutters in Bedminster and Southville need regular clearing to prevent overflow staining on period brickwork and render.',
@@ -771,6 +790,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Downend',
     serviceContext: {
+      'solar-panel-cleaning': 'Downend larger detached homes suit good-sized arrays, and the glass still films with pollen through early summer and leaf litter under the mature streets. Pole-based cleaning clears it safely, with a look underneath for anything nesting.',
       'driveway-cleaning': 'Downend\'s 1960s and 1970s housing has large block paving and tarmac driveways. We deep clean, re-sand and remove oil and tyre staining efficiently.',
       'patio-cleaning': 'Rear patios on Downend\'s detached and semi-detached homes range from sandstone to porcelain to concrete slabs. We clean all types at the appropriate pressure.',
       'gutter-cleaning': 'Larger homes in Downend have longer gutter runs. We clear all sections, flush downpipes and check for overflow issues.',
@@ -808,6 +828,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Westbury-on-Trym',
     serviceContext: {
+      'solar-panel-cleaning': 'Westbury-on-Trym period rooflines put arrays well above generous gardens, where wind-blown dust and bird traffic both land on the glass. Soft-bristle pole work from the ground keeps the clean-up safe for the panels and the tiles below.',
       'driveway-cleaning': 'Westbury-on-Trym properties typically have generous block paving or tarmac driveways. We handle large areas efficiently with commercial pressure washing equipment.',
       'patio-cleaning': 'Large patio areas and garden terracing in Westbury-on-Trym are often high-quality sandstone or porcelain. We clean at the appropriate pressure for each surface.',
       'gutter-cleaning': 'Period properties in Westbury-on-Trym have longer gutter runs and often original cast-iron sections. We clear carefully without damaging ageing fixings.',
@@ -847,6 +868,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Bradford on Avon',
     serviceContext: {
+      'solar-panel-cleaning': 'Bradford-on-Avon rooftops carry solar panels above a valley town where narrow lanes set the access limits. Long-reach poles clear pollen film and droppings from the glass at ground level, and nothing heavy ever touches the roof.',
       'driveway-cleaning': 'Bradford on Avon driveways range from natural stone setts and cobbles to modern block paving. We adjust pressure carefully for each surface — particularly gentle on historic stone.',
       'patio-cleaning': 'Stone-flagged and limestone patio areas in Bradford on Avon need low-pressure soft wash cleaning to remove algae without etching the surface.',
       'gutter-cleaning': 'Many Bradford on Avon properties have original cast-iron or lead guttering. We clear carefully without stressing ageing fixings — and can advise on minor repairs.',
@@ -884,6 +906,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Corsham',
     serviceContext: {
+      'solar-panel-cleaning': 'Corsham arrays sit under wide open Wiltshire skies, so dust and pollen land on the glass in every dry spell. Soft-bristle pole cleaning restores the surface, and the panels are never walked on or pressure-washed.',
       'driveway-cleaning': 'Corsham\'s newer housing estates have block paving and tarmac driveways that benefit from regular jet washing and re-sanding. Period properties may have stone or gravel approaches requiring a lighter touch.',
       'patio-cleaning': 'Rear patios in Corsham range from modern porcelain and concrete to natural stone in the older properties. We clean all types at the appropriate pressure.',
       'gutter-cleaning': 'Corsham properties accumulate leaf debris and moss in gutters through the year. We clear all sections and flush downpipes — annual clearing recommended for most properties.',
@@ -921,6 +944,7 @@ export const locationsDatabase: LocationData[] = [
     ],
     ctaHeading: 'Get a Free Quote in Melksham',
     serviceContext: {
+      'solar-panel-cleaning': 'Melksham homes with rooftop arrays sit between the A350 and open farmland, where dust and pollen season together each summer. Pole-based soft cleaning clears the glass, and lichen on older arrays comes off gently.',
       'driveway-cleaning': 'Melksham driveways include block paving, tarmac and concrete across the town\'s varied housing stock. We jet wash, re-sand and remove oil stains and moss growth.',
       'patio-cleaning': 'Rear patio areas in Melksham range from concrete slabs to modern porcelain. Bristol\'s damp valley climate means algae builds up fast — biocide post-treatment slows regrowth.',
       'gutter-cleaning': 'Melksham properties accumulate moss and leaf debris in gutters quickly in the damp valley conditions. We clear all sections and flush downpipes.',

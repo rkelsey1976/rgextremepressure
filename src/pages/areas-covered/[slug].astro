@@ -24,6 +24,8 @@ const comboHrefs: Record<string, string> = isDistrict ? {
   'driveway-cleaning': `/driveway-cleaning/${location.slug}`,
   'patio-cleaning':    `/patio-cleaning/${location.slug}`,
   'roof-cleaning':     `/roof-cleaning/${location.slug}`,
+  'gutter-cleaning':       `/gutter-cleaning/${location.slug}`,
+  'solar-panel-cleaning':  `/solar-panel-cleaning/${location.slug}`,
 } : {};
 function serviceHref(s: typeof servicesData[0]) { return comboHrefs[s.id] || s.href; }
 // City-level href for the inline cross-link appended to each card description.
@@ -40,6 +42,7 @@ function cityHrefFor(s: typeof servicesData[0]): string | null {
       'gutter-cleaning':   '/gutter-cleaning-bristol',
       'render-cleaning':   '/render-cleaning-bristol',
       'soffit-fascia-cleaning': '/soffit-fascia-cleaning-bristol',
+      'solar-panel-cleaning': '/solar-panel-cleaning-bristol',
     };
     return bristolPages[s.id] || null; // null if no Bristol page exists for this service
   }

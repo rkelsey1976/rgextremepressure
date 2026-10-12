@@ -1,0 +1,438 @@
+---
+// /solar-panel-cleaning-bath/ — city money page for solar panel cleaning.
+//
+// Added 2026-10-11. Built to the soffit/fascia twin's section order, with two
+// deliberate differences:
+//   1. No before/after or photo-library sections — no solar job photography
+//      exists, and dressing stock imagery up as RG job photos would misstate
+//      the work (same reasoning as the gutter [slug] comment of 2026-09-01).
+//   2. Schema carries the real phone number — per the KB rule, new pages use
+//      the real number in JSON-LD; the masked placeholder on older pages is a
+//      pre-existing issue to sweep separately.
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ImageCTA from '../components/ImageCTA.astro';
+import TrustMetrics from '../components/TrustMetrics.astro';
+
+const title = 'Solar Panel Cleaning Bath';
+const description = 'Professional solar panel cleaning in Bath. Soft-bristle pole cleaning for rooftop arrays — bird droppings, pollen film and lichen removed, glass never walked on. Rated 5.0 from 113 Google reviews. Call 07474 939 398 for a free quote.';
+
+const faqs = [
+  {
+    q: 'Do solar panels in Bath actually need cleaning?',
+    a: 'The honest answer is: light dust yes, the real problems no. UK research puts typical soiling losses for residential arrays at around 2-4% of annual generation, and a well-pitched roof sheds most loose dirt in the rain. What rain cannot shift — bird droppings, lichen at the panel edges, the films that dry on between showers — is what cleaning is for.'
+  },
+  {
+    q: 'Will cleaning improve the output of my panels?',
+    a: 'If the glass is visibly soiled, yes — that is literally what the dirt is doing, blocking light. A bird dropping can shade a disproportionate share of an individual panel because of how the cell strings work. We will not promise a percentage gain before we have looked at the array — but visible droppings and lichen are recoverable generation.'
+  },
+  {
+    q: 'Is it safe to have someone walk on my solar panels?',
+    a: 'We would never walk on the glass, and you should be wary of anyone who does. Point-loading a tempered panel while the frame flexes is how micro-cracks start, and it falls outside what most panel warranties expect. Everything is done with long-reach poles from the ground or roof edge.'
+  },
+  {
+    q: 'Can you combine solar panel cleaning with gutter clearing?',
+    a: 'Yes — and it is often the sensible pairing, since one visit takes in the whole roofline. A clear gutter run behind a clean array means the rain that keeps the glass free of light dust is also being taken away properly. Booked together it is cheaper than two separate call-outs.'
+  },
+  {
+    q: 'When is the best time of year to have panels cleaned in Bath?',
+    a: 'On a mild, overcast morning — cool glass, no frost. Spring is the popular slot because it clears the pollen film ahead of the strongest generation months, and an autumn once-over takes the leaf litter and bird traffic off before winter. We avoid hard frost and the hottest glass.'
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+  }))
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Solar Panel Cleaning Bath",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "RG Extreme Pressure",
+    "telephone": "07474 939 398",
+    "address": { "@type": "PostalAddress", "addressLocality": "Bath", "addressRegion": "Somerset" }
+  },
+  "areaServed": [{ "@type": "City", "name": "Bath" }, { "@type": "City", "name": "Bristol" }],
+};
+---
+
+<Base {title} {description} serviceSchema={serviceSchema} faqSchema={faqSchema} breadcrumbs={[
+  { name: 'Solar Panel Cleaning Bath', item: 'https://rgextremepressure.co.uk/solar-panel-cleaning-bath' }
+]}>
+  <Hero
+    image="/images/solar/solar-rows-3.webp"
+    overlay="blue"
+    breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Solar Panel Cleaning Bath' }]}
+    eyebrow="Professional Solar Panel Cleaning"
+    heading="Solar Panel Cleaning Bath"
+    body="Rooftop solar arrays quietly lose output to what lands on them — bird droppings, pollen film, leaf litter, lichen. We clean the glass the safe way: soft-bristle heads on long-reach poles, from the ground, with nobody walking on your panels and nothing jetted into the frames."
+    cta={{ label: 'Get a Free Quote', href: '/contact' }}
+    minHeight="compact"
+  />
+
+  <TrustMetrics metrics={[
+    { value: '113', label: 'Google Reviews' },
+    { value: '10', label: 'Years Experience' },
+    { value: 'Insured', label: 'Fully Insured' },
+    { value: 'Free', label: 'Free Quotes' },
+  ]} />
+
+  <section class="service-body">
+    <div class="container">
+      <div class="service-body__grid">
+        <div class="service-body__main">
+          <SectionHeader
+            eyebrow="What We Do"
+            heading="Specialist Solar Panel Cleaning in Bath"
+            body="Solar glass is tougher than it looks in some ways and less forgiving in others: it shrugs off rain for years, then one dried-on bird dropping shades a whole cell string. Cleaning panels is a method job — soft bristles, pole reach and patience do the work that pressure and footfall would wreck."
+          />
+
+          <div class="service-intro-image">
+            <img src="/images/solar/solar-hero-1.webp" alt="Clean solar panel glass under a blue sky — the finish we work to on Bath rooftops" loading="lazy" />
+          </div>
+
+          <div class="service-features">
+            <h3 class="service-features__title">What Our Solar Panel Cleaning Includes</h3>
+            <ul class="features-grid">
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M6 7v10a2 2 0 002 2h8a2 2 0 002-2V7"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Soft-Bristle Pole Cleaning</strong>
+                  <p class="feature-card__body">Glass scrubbed gently at pole length and rinsed at low pressure — no lance stripes, no scratching.</p>
+                </div>
+              </li>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Nobody Walks The Roof</strong>
+                  <p class="feature-card__body">The array and the tiles below stay untouched — point-loading glass is how micro-cracks start.</p>
+                </div>
+              </li>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Bird Dropping Removal</strong>
+                  <p class="feature-card__body">The worst soiling on any array — dried-on droppings dissolved and lifted off, not blasted.</p>
+                </div>
+              </li>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Pollen & Dust Film Rinse</strong>
+                  <p class="feature-card__body">Spring film and road dust cleared so light passes through the glass cleanly again.</p>
+                </div>
+              </li>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Lichen Taken Down Gently</strong>
+                  <p class="feature-card__body">Bonded growth at the panel edges on older arrays cleaned with care, never scraped.</p>
+                </div>
+              </li>
+              <li class="feature-card">
+                <div class="feature-card__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <div>
+                  <strong class="feature-card__title">Frames & Rails Wiped</strong>
+                  <p class="feature-card__body">Frame lines and rails cleaned down, with the array checked over while we are at it.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="inline-cta">
+            <div class="inline-cta__inner">
+              <p class="inline-cta__text">Ready to get the glass clear again? Get a free quote today.</p>
+              <div class="inline-cta__actions">
+                <a href="/contact" class="btn btn--primary">Get a Free Quote →</a>
+                <a href="tel:07474939398" class="inline-cta__call">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  07474 939 398
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="method-comparison">
+            <SectionHeader eyebrow="The Right Method" heading="Why We Don't Jet Wash Solar Panels" />
+            <div class="method-grid">
+
+              <div class="method-card method-card--bad">
+                <div class="method-card__header">
+                  <div class="method-card__badge method-card__badge--bad">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </div>
+                  <h4 class="method-card__title">Pressure Washing & DIY Scrubbing</h4>
+                </div>
+                <ul class="method-card__list">
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Drives water past the frame seals and into the panel edge
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Abrasive pads and scouring scratches the glass coating
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Cold water on sun-hot glass risks thermal shock
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Hard-water rinse leaves spotting behind in a Bath tap — often worse than the dirt
+                  </li>
+                </ul>
+              </div>
+
+              <div class="method-card method-card--good">
+                <div class="method-card__header">
+                  <div class="method-card__badge method-card__badge--good">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                  </div>
+                  <h4 class="method-card__title">Our Soft-Bristle Pole Method</h4>
+                </div>
+                <ul class="method-card__list">
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Gentle brushing on cool glass — no thermal shock, no pressure
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Long-reach poles from ground level — the roof is never walked
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Droppings and lichen lifted off, not blasted
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Frames and rails wiped down as part of the finish
+                  </li>
+                </ul>
+                <div class="method-card__result">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  Clear glass, untouched array — and a warranty-friendly job
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="service-process">
+            <SectionHeader eyebrow="Our Process" heading="How It Works" />
+            <ol class="process-steps">
+              <li class="process-step">
+                <div class="process-step__badge">1</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Quote From The Photos</h4>
+                  <p class="process-step__body">The array is looked at from the ground first — panel count and access noted, fixed price agreed before we start.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <div class="process-step__badge">2</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Poles & Water Set Up</h4>
+                  <p class="process-step__body">Long-reach poles and the water feed are set out at ground level on the day. Nothing goes on the roof.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <div class="process-step__badge">3</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Soft-Bristle Wash</h4>
+                  <p class="process-step__body">The glass is brushed gently and rinsed — droppings lifted off rather than jetted at, working panel by panel.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <div class="process-step__badge">4</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Frames & Rails Wiped</h4>
+                  <p class="process-step__body">Frame lines, rails and visible panel edges cleaned down as part of the finish.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <div class="process-step__badge">5</div>
+                <div class="process-step__content">
+                  <h4 class="process-step__title">Check & Report</h4>
+                  <p class="process-step__body">Cracked glass, heavy shading or birds nesting under the array flagged before we leave — and what to do about it.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="inline-cta inline-cta--after-process">
+            <div class="inline-cta__inner">
+              <p class="inline-cta__text">Soiled panels are lost generation — get a free quote within 24 hours.</p>
+              <div class="inline-cta__actions">
+                <a href="/contact" class="btn btn--primary">Get a Free Quote →</a>
+                <a href="tel:07474939398" class="inline-cta__call">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  07474 939 398
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="service-body__sidebar">
+          <div class="sidebar-card">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">Free Quote</span>
+            <h3 class="sidebar-card__heading">Get Your Panels Cleaned</h3>
+            <p class="sidebar-card__body">Get a free, no-obligation quote for solar panel cleaning in Bath and surrounding areas.</p>
+            <a href="/contact" class="btn btn--primary">Get a Free Quote <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="tel:07474939398" class="sidebar-card__phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> 07474 939 398</a>
+          </div>
+          <div class="sidebar-card">
+            <span class="rule--accent"></span>
+            <span class="t-label" style="color:var(--accent)">Other Services</span>
+            <h3 class="sidebar-card__heading">Explore Our Services</h3>
+            <ul class="sidebar-links">
+              <li><a href="/roof-cleaning-bath">Roof Cleaning Bath</a></li>
+              <li><a href="/gutter-cleaning-bath">Gutter Cleaning Bath</a></li>
+              <li><a href="/render-cleaning-bath">Render Cleaning Bath</a></li>
+              <li><a href="/driveway-cleaning-bath">Driveway Cleaning Bath</a></li>
+              <li><a href="/soffit-fascia-cleaning-bath">Soffit & Fascia Cleaning Bath</a></li>
+              <li><a href="/bristol/">Jet Washing Bristol</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <SectionHeader eyebrow="Common Questions" heading="Solar Panel Cleaning FAQ" />
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-item__q">{faq.q}</summary>
+            <p class="faq-item__a">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="district-links-section">
+    <div class="container">
+      <h2 class="district-links__heading">Solar Panel Cleaning Across Bath</h2>
+      <p class="district-links__intro">We cover every Bath district. Click your area for a dedicated local page.</p>
+      <ul class="district-links__grid">
+        <li><a href="/solar-panel-cleaning/oldfield-park-bath">Solar Panel Cleaning Oldfield Park</a></li>
+        <li><a href="/solar-panel-cleaning/combe-down-bath">Solar Panel Cleaning Combe Down</a></li>
+        <li><a href="/solar-panel-cleaning/bear-flat-bath">Solar Panel Cleaning Bear Flat</a></li>
+        <li><a href="/solar-panel-cleaning/newbridge-bath">Solar Panel Cleaning Newbridge</a></li>
+        <li><a href="/solar-panel-cleaning/twerton-bath">Solar Panel Cleaning Twerton</a></li>
+        <li><a href="/solar-panel-cleaning/weston-bath">Solar Panel Cleaning Weston</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <ImageCTA heading="Clean Glass Is Free Generation" body="Get a free, no-obligation quote from Bath's highest-rated exterior cleaning service. Rated 5.0 from 113 Google reviews. Fully insured. Soft-bristle, pole-based cleaning — no pressure and no walking on the array." cta={{ label: 'Get a Free Quote', href: '/contact' }} image="/images/solar/solar-rows-3.webp" />
+
+</Base>
+
+<style>
+  .service-body { padding: var(--section-pad) 0; }
+  .service-body__grid { display: grid; grid-template-columns: 7fr 4fr; gap: var(--space-3xl, 5rem); align-items: start; }
+  .service-features { margin-top: var(--space-2xl); }
+  .service-features__title { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.1; text-transform: none; color: var(--chalk); margin: 0 0 var(--space-l); }
+  .features-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-m); }
+  .feature-card { display: flex; gap: var(--space-m); align-items: flex-start; background: var(--stone); border-radius: 8px; padding: var(--space-l); border-top: 3px solid var(--accent); }
+  .feature-card__icon { flex-shrink: 0; width: 2.5rem; height: 2.5rem; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; }
+  .feature-card__title { display: block; font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--chalk); margin-bottom: 0.4rem; }
+  .feature-card__body { font-size: 0.88rem; line-height: 1.65; color: var(--concrete); margin: 0; }
+  @media (max-width: 640px) { .features-grid { grid-template-columns: 1fr; } }
+
+  .service-intro-image { border-radius: 10px; overflow: hidden; aspect-ratio: 16/7; margin-bottom: var(--space-2xl); }
+  .service-intro-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+
+  .inline-cta { margin-top: var(--space-2xl); border-radius: 10px; background: linear-gradient(135deg, var(--navy) 0%, var(--accent-dim) 100%); padding: var(--space-xl) var(--space-2xl); }
+  .inline-cta--after-process { margin-top: var(--space-2xl); }
+  .inline-cta__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-l); flex-wrap: wrap; }
+  .inline-cta__text { font-family: var(--font-display); font-size: clamp(1.1rem, 1.8vw, 1.4rem); font-weight: 700; color: #fff; margin: 0; line-height: 1.3; }
+  .inline-cta__actions { display: flex; align-items: center; gap: var(--space-m); flex-wrap: wrap; flex-shrink: 0; }
+  .inline-cta__call { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.85); font-weight: 600; font-size: 1rem; text-decoration: none; white-space: nowrap; transition: color 0.2s; }
+  .inline-cta__call:hover { color: #fff; }
+  @media (max-width: 640px) { .inline-cta { padding: var(--space-l); } .inline-cta__inner { flex-direction: column; align-items: flex-start; } }
+
+  .method-comparison { margin-top: var(--space-3xl); }
+  .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-l); margin-top: var(--space-l); }
+  .method-card { padding: var(--space-xl); border-radius: 10px; border: 1px solid rgba(200,50,50,0.15); background: #fdf5f5; }
+  .method-card--good { background: var(--stone); border-color: rgba(0,85,165,0.15); }
+  .method-card__header { display: flex; align-items: center; gap: var(--space-m); margin-bottom: var(--space-l); }
+  .method-card__badge { width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .method-card__badge--bad { background: rgba(200,50,50,0.12); color: #c83232; }
+  .method-card__badge--good { background: rgba(0,85,165,0.12); color: var(--accent); }
+  .method-card__title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: none; color: var(--chalk); margin: 0; line-height: 1.2; }
+  .method-card__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+  .method-card__list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem; line-height: 1.6; color: var(--concrete); }
+  .method-card--bad .method-card__list li svg { color: #c83232; flex-shrink: 0; margin-top: 0.2rem; }
+  .method-card--good .method-card__list li svg { color: var(--accent); flex-shrink: 0; margin-top: 0.2rem; }
+  .method-card__result { display: flex; align-items: flex-start; gap: 0.6rem; margin-top: var(--space-l); padding-top: var(--space-m); border-top: 1px solid rgba(0,85,165,0.12); font-size: 0.85rem; font-weight: 600; color: var(--accent); line-height: 1.5; }
+  .method-card__result svg { flex-shrink: 0; margin-top: 0.15rem; }
+  @media (max-width: 768px) { .method-grid { grid-template-columns: 1fr; } }
+
+  .service-process { margin-top: var(--space-3xl); }
+  .process-steps { list-style: none; padding: 0; margin: var(--space-l) 0 0; display: flex; flex-direction: column; gap: 0; }
+  .process-step { display: flex; gap: var(--space-l); align-items: flex-start; position: relative; padding-bottom: var(--space-l); }
+  .process-step:not(:last-child)::after { content: ''; position: absolute; left: 1.5rem; top: 3rem; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), rgba(0,85,165,0.1)); }
+  .process-step__badge { flex-shrink: 0; width: 3rem; height: 3rem; border-radius: 50%; background: var(--accent); color: #fff; font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+  .process-step__content { background: var(--stone); border-radius: 8px; padding: var(--space-m) var(--space-l); flex: 1; border-left: 3px solid var(--accent); }
+  .process-step__title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--chalk); margin: 0 0 0.4rem; }
+  .process-step__body { font-size: 0.92rem; line-height: 1.7; color: var(--concrete); margin: 0; }
+
+  .service-body__sidebar { display: flex; flex-direction: column; gap: var(--space-xl); align-self: start; position: sticky; top: 6rem; }
+  .sidebar-card { background: var(--stone); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-s); }
+  .sidebar-card__heading { font-family: var(--font-display); font-size: clamp(1.1rem, 1.5vw, 1.4rem); line-height: 1.1; text-transform: none; color: var(--chalk); margin: 0; }
+  .sidebar-card__body { font-size: 0.92rem; line-height: 1.7; color: var(--concrete); margin: 0; }
+  .sidebar-card .btn { margin-top: var(--space-xs); align-self: flex-start; }
+  .sidebar-card__phone { display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.04em; color: var(--accent); text-decoration: none; margin-top: var(--space-xs); }
+  .sidebar-card__phone svg { flex-shrink: 0; }
+  .sidebar-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .sidebar-links a { font-size: 0.9rem; color: var(--concrete); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 0.3rem; }
+  .sidebar-links a::before { content: '\2192'; color: var(--accent); font-size: 0.8rem; }
+  .sidebar-links a:hover { color: var(--accent); }
+
+  .faq-section { padding: var(--section-pad) 0; }
+  .faq-list { max-width: 72ch; display: flex; flex-direction: column; gap: 0; }
+  .faq-item { border-bottom: 1px solid var(--stone); }
+  .faq-item__q { font-family: var(--font-body); font-size: 1rem; font-weight: 500; line-height: 1.5; color: var(--chalk); padding: var(--space-m) 0; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .faq-item__q::-webkit-details-marker { display: none; }
+  .faq-item__q::after { content: '+'; font-family: var(--font-display); font-size: 1.5rem; color: var(--accent); flex-shrink: 0; margin-left: var(--space-s); }
+  .faq-item[open] .faq-item__q::after { content: '\2212'; }
+  .faq-item__a { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--concrete); padding: 0 0 var(--space-m); max-width: 60ch; }
+
+  .district-links-section { padding: var(--section-pad) 0; background: var(--stone); }
+  .district-links__heading { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; color: var(--chalk); margin: 0 0 var(--space-s); text-transform: none; }
+  .district-links__intro { font-size: 0.95rem; color: var(--concrete); margin: 0 0 var(--space-l); }
+  .district-links__grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-s); }
+  .district-links__grid a { font-size: 0.9rem; color: var(--concrete); text-decoration: none; display: flex; align-items: center; gap: 0.3rem; transition: color 0.2s; }
+  .district-links__grid a::before { content: '\2192'; color: var(--accent); font-size: 0.8rem; }
+  .district-links__grid a:hover { color: var(--accent); }
+  @media (max-width: 640px) { .district-links__grid { grid-template-columns: 1fr 1fr; } }
+
+  @media (max-width: 960px) { .service-body__grid { grid-template-columns: 1fr; gap: var(--space-2xl); } .service-body__sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-l); } }
+</style>

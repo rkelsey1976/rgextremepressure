@@ -238,6 +238,42 @@ export const serviceHubs: ServiceHub[] = [
     ctaBody: 'Call 07474 939 398 for a free, no-obligation quote. We cover Bath, Bristol and the surrounding Somerset and Wiltshire areas.',
     ctaImage: '/images/before-after/render-after-1.webp',
   },
+
+  // ── Solar Panel Cleaning ──
+  {
+    id: 'solar-panel-cleaning',
+    href: '/solar-panel-cleaning',
+    label: 'Solar Panel Cleaning',
+    metaTitle: 'Solar Panel Cleaning Bath & Bristol | All Areas Covered',
+    metaDescription: 'Solar panel cleaning across Bath, Bristol and Somerset. Soft-bristle pole cleaning for rooftop PV arrays — no walking on the glass. Rated 5.0 from 113 Google reviews. Call 07474 939 398.',
+    heroEyebrow: 'Bath · Bristol · Somerset',
+    heroHeading: 'Solar Panel Cleaning in Bath & Bristol',
+    heroBody: 'Soiled solar panels quietly lose generation — bird droppings, pollen film, leaf litter and lichen sit on the glass and block the light. We clean rooftop arrays the safe way: long-reach poles with soft-bristle heads, never walking on the panels.',
+    heroImage: '/images/solar/solar-rows-drone-2.webp',
+    introHeading: 'One Service, Every Area We Cover',
+    introBody: 'A rooftop array collects everything the wind delivers — dust, pollen, leaf litter, bird droppings — and a dirty panel passes measurably less light than a clean one. We clean the glass with soft-bristle poles rather than pressure washers, because high pressure and footfall are the two fastest ways to shorten the life of a panel. Pick your area below for local detail, or go straight to the Bath or Bristol page.',
+    features: [
+      'Long-Reach Pole Cleaning From Ground Level',
+      'Soft-Bristle Heads, Glass-Safe',
+      'Bird Dropping & Pollen Film Removal',
+      'Lichen Taken Down Gently',
+      'Frame & Rail Wipe-Down',
+      'Visual Array Condition Check',
+    ],
+    cityPages: [
+      { label: 'Solar Panel Cleaning Bath', href: '/solar-panel-cleaning-bath', blurb: 'Bath and every surrounding district — from Oldfield Park terraces to the exposed stone rooflines of Combe Down.' },
+      { label: 'Solar Panel Cleaning Bristol', href: '/solar-panel-cleaning-bristol', blurb: 'All Bristol postcodes BS1–BS16, from Clifton rooflines to the tree-covered glass of Fishponds.' },
+    ],
+    hasAreaPages: true,
+    faq: [
+      { q: 'How much does solar panel cleaning cost?', a: 'It depends on the array — panel count, roof height and access all move the price. Every quote is free and given before we start, so you know the exact cost on the day.' },
+      { q: 'Is it safe to have solar panels cleaned?', a: 'Yes — the risk is in the method, not the job. We never walk on the glass, never jet water at panel edges and use soft-bristle heads that clean without scratching. The panels were built for weather; our job is the quiet dirt they accumulate.' },
+      { q: 'How often should solar panels be cleaned?', a: 'Once a year is the honest baseline for most homes, with a spring clean recovering the pollen film and an autumn check useful where there are trees overhead. Arrays beside busy roads build film faster.' },
+    ],
+    ctaHeading: 'Get a Free Solar Panel Quote',
+    ctaBody: 'Call 07474 939 398 for a free, no-obligation quote. We cover Bath, Bristol and the surrounding areas, and every job is quoted before we start.',
+    ctaImage: '/images/solar/solar-row-4.webp',
+  },
 ];
 
 export function getServiceHub(id: string): ServiceHub | undefined {
