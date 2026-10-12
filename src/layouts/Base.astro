@@ -462,6 +462,63 @@ const ogImageURL   = new URL(ogImage, Astro.site);
   })();
 </script>
 
+<!-- CTA & phone tracking — consent-gated GA4 events.
+     Delegated listeners on document cover every tel:, mailto:, WhatsApp and
+     /contact link sitewide (heroes, sticky bar, nav pill, sidebars, footer)
+     without touching individual components. generate_lead fires on the
+     /contact/success view — the reliable end of the quote funnel, since the
+     form POSTs to that page. Events only send once cookies are accepted
+     (rg_cookie_consent === 'accepted'); before that they are dropped, not
+     queued, so nothing is collected pre-consent. gtag() is defined by the
+     ga4-init head script before any click can happen. -->
+<script is:inline>
+  (function() {
+    function consented() {
+      try { return localStorage.getItem('rg_cookie_consent') === 'accepted'; } catch (e) { return false; }
+    }
+    function send(name, params) {
+      if (!consented()) return;
+      if (typeof gtag === 'function') {
+        gtag('event', name, params);
+      } else {
+        // Library still loading (accept + click within the same second) —
+        // queue it; gtag.js drains the raw dataLayer once it initialises.
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Object.assign({ 'event': name }, params));
+      }
+    }
+    if (location.pathname === '/contact/success') {
+      send('generate_lead', { page_path: location.pathname });
+    }
+    document.addEventListener('click', function(e) {
+      var a = e.target && e.target.closest ? e.target.closest('a') : null;
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (href.indexOf('tel:') === 0) {
+        send('phone_click', {
+          phone_number: href.replace('tel:', '').replace('+44', '0').replace(/\D/g, ''),
+          cta_text: (a.textContent || '').trim().slice(0, 60),
+          page_path: location.pathname
+        });
+      } else if (href.indexOf('https://wa.me/') === 0) {
+        send('whatsapp_click', { page_path: location.pathname });
+      } else if (href.indexOf('mailto:') === 0) {
+        send('email_click', { page_path: location.pathname });
+      } else if (href === '/contact') {
+        send('quote_click', {
+          cta_text: (a.textContent || '').trim().slice(0, 60),
+          page_path: location.pathname
+        });
+      }
+    }, true);
+    document.addEventListener('submit', function(e) {
+      if (e.target && e.target.action && e.target.action.indexOf('/contact/success') !== -1) {
+        send('quote_submit', { page_path: location.pathname });
+      }
+    }, true);
+  })();
+</script>
+
 <script>
   // Scroll detection — adds .is-scrolled to nav
   const nav = document.getElementById('site-nav');

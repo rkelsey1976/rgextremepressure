@@ -35,6 +35,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght,0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=optional" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght,0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=optional" /></noscript>
 
+  <!-- GA4 — identical init to Base.astro; the library only loads once the
+       consent banner below is accepted. -->
+  <script id="ga4-init" is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q9WC01TWGT');
+  </script>
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Service",
@@ -173,6 +181,90 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </script>
 
   {/* ── Before/After init (already auto-inits from component script) ── */}
+
+<!-- Cookie consent banner — same markup/keys as Base.astro so consent set
+     anywhere on the site carries over to this landing and vice versa. -->
+<div id="cookie-banner" class="cookie-banner" style="display:none;">
+  <div class="cookie-banner__inner">
+    <p class="cookie-banner__text">We use cookies to analyse site traffic and improve your experience. <a href="/privacy">Privacy policy</a></p>
+    <div class="cookie-banner__actions">
+      <button id="cookie-reject" class="cookie-banner__btn cookie-banner__btn--reject">Reject</button>
+      <button id="cookie-accept" class="cookie-banner__btn cookie-banner__btn--accept">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script id="cookie-consent" is:inline>
+  (function() {
+    var CONSENT_KEY = 'rg_cookie_consent';
+    var banner = document.getElementById('cookie-banner');
+    var acceptBtn = document.getElementById('cookie-accept');
+    var rejectBtn = document.getElementById('cookie-reject');
+    var consent = localStorage.getItem(CONSENT_KEY);
+
+    function loadGA4() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-Q9WC01TWGT';
+      s.onload = function() { gtag('config', 'G-Q9WC01TWGT'); };
+      document.head.appendChild(s);
+    }
+
+    function dismiss() { banner.style.display = 'none'; }
+
+    if (consent === 'accepted') { loadGA4(); }
+    else if (consent === 'rejected') { /* no GA4 */ }
+    else { banner.style.display = 'block'; }
+
+    acceptBtn.addEventListener('click', function() {
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      loadGA4();
+      dismiss();
+    });
+
+    rejectBtn.addEventListener('click', function() {
+      localStorage.setItem(CONSENT_KEY, 'rejected');
+      dismiss();
+    });
+  })();
+</script>
+
+<!-- CTA tracking — same consent-gated events as Base.astro. The landing_page
+     param distinguishes PPC arrivals on this page in GA4 reports. -->
+<script is:inline>
+  (function() {
+    function consented() {
+      try { return localStorage.getItem('rg_cookie_consent') === 'accepted'; } catch (e) { return false; }
+    }
+    function send(name, params) {
+      if (!consented()) return;
+      if (typeof gtag === 'function') {
+        gtag('event', name, params);
+      } else {
+        // gtag.js still loading — queue; gtag.js drains raw dataLayer entries on init.
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Object.assign({ 'event': name }, params));
+      }
+    }
+    if (location.pathname === '/contact/success') {
+      send('generate_lead', { page_path: location.pathname });
+    }
+    document.addEventListener('click', function(e) {
+      var a = e.target && e.target.closest ? e.target.closest('a') : null;
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (href.indexOf('tel:') === 0) {
+        send('phone_click', {
+          phone_number: href.replace('tel:', '').replace(/\D/g, ''),
+          cta_text: (a.textContent || '').trim().slice(0, 60),
+          landing_page: 'roof-clean-landing'
+        });
+      } else if (href === '/contact') {
+        send('quote_click', { cta_text: (a.textContent || '').trim().slice(0, 60), landing_page: 'roof-clean-landing' });
+      }
+    }, true);
+  })();
+</script>
 </body>
 </html>
 
