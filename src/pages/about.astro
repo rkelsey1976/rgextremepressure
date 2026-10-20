@@ -55,6 +55,9 @@ import ImageCTA from '../components/ImageCTA.astro';
             <li><strong>Scheduled clean</strong> — We arrive on time, protect your garden and surrounding areas, and get to work.</li>
             <li><strong>Professional result</strong> — Your driveway, patio, roof or render looks brand new. We clean up, show you the results, and you only pay when you're happy.</li>
           </ol>
+
+          <h3>About This Website</h3>
+          <p>This site was designed and built by <a href="https://seo-kings.co.uk/">SEO Kings</a>, a family-run web design and local SEO business in Keynsham, who also look after how RG Extreme Pressure shows up on Google across Bath and Bristol.</p>
         </div>
 
         <aside class="about-sidebar">
@@ -122,6 +125,10 @@ import ImageCTA from '../components/ImageCTA.astro';
     line-height: 1.75;
     margin-bottom: var(--space-s);
   }
+
+  /* Same treatment as in-text links on blog posts */
+  .about-main p a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .about-main p a:hover { color: var(--accent-dim); }
 
   .process-list {
     list-style: none;
