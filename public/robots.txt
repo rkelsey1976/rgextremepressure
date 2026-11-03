@@ -1,30 +1,38 @@
-User-agent: *
+# RG Extreme Pressure: robots.txt
+#
+# Search and AI crawlers are welcome: named groups for the main search engines,
+# the OpenAI / Anthropic crawlers (training, search and user-fetch bots),
+# PerplexityBot, Google-Extended (Gemini / AI Overviews grounding), Meta and
+# Common Crawl. Everyone else falls under the blanket group.
+# A named group replaces `*` for that bot, so each repeats the private paths.
+
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
+User-agent: CCBot
 Allow: /
 Disallow: /style-guide
 Disallow: /contact/success
 Disallow: /social-generator
 Disallow: /brand-tools
 
-# AI crawlers — explicitly allowed
-User-agent: GPTBot
+User-agent: *
 Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Meta-ExternalAgent
-Allow: /
-
-User-agent: CCBot
-Allow: /
+Disallow: /style-guide
+Disallow: /contact/success
+Disallow: /social-generator
+Disallow: /brand-tools
 
 Sitemap: https://rgextremepressure.co.uk/sitemap-index.xml
