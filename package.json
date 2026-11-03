@@ -11,6 +11,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/dm-sans": "^5.2.8",
     "@fontsource/bebas-neue": "^5.2.7",
+    "@netlify/blobs": "^8.2.0",
     "astro": "^5.18.0"
   }
 }

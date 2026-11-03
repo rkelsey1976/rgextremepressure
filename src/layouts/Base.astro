@@ -476,7 +476,19 @@ const ogImageURL   = new URL(ogImage, Astro.site);
     function consented() {
       try { return localStorage.getItem('rg_cookie_consent') === 'accepted'; } catch (e) { return false; }
     }
+    // Cookieless counter (netlify/functions/tap.mjs): counts every CTA tap,
+    // consent or not, because it sets nothing on the device and sends only
+    // the event, page and button label.
+    function tap(name, params) {
+      try {
+        var body = JSON.stringify({ e: name, p: location.pathname, l: (params && params.cta_text) || '' });
+        if (!navigator.sendBeacon || !navigator.sendBeacon('/api/tap', new Blob([body], { type: 'application/json' }))) {
+          fetch('/api/tap', { method: 'POST', body: body, headers: { 'Content-Type': 'application/json' }, keepalive: true });
+        }
+      } catch (e) {}
+    }
     function send(name, params) {
+      tap(name, params);
       if (!consented()) return;
       if (typeof gtag === 'function') {
         gtag('event', name, params);
@@ -487,7 +499,7 @@ const ogImageURL   = new URL(ogImage, Astro.site);
         window.dataLayer.push(Object.assign({ 'event': name }, params));
       }
     }
-    if (location.pathname === '/contact/success') {
+    if (location.pathname.replace(/\/$/, '') === '/contact/success') {
       send('generate_lead', { page_path: location.pathname });
     }
     document.addEventListener('click', function(e) {
@@ -504,7 +516,7 @@ const ogImageURL   = new URL(ogImage, Astro.site);
         send('whatsapp_click', { page_path: location.pathname });
       } else if (href.indexOf('mailto:') === 0) {
         send('email_click', { page_path: location.pathname });
-      } else if (href === '/contact') {
+      } else if (href.replace(/\/$/, '') === '/contact') {
         send('quote_click', {
           cta_text: (a.textContent || '').trim().slice(0, 60),
           page_path: location.pathname
