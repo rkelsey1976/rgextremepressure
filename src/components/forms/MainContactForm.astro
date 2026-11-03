@@ -55,32 +55,49 @@ const servicePillars = [
     <div class="mcf__grid">
       <div class="mcf__field">
         <label class="mcf__label" for="cf-name">Full Name *</label>
-        <input type="text" id="cf-name" name="name" required placeholder="e.g. Alexander Wright" class="mcf__input" />
+        <input type="text" id="cf-name" name="name" required autocomplete="name" placeholder="e.g. Alexander Wright" class="mcf__input" />
       </div>
       <div class="mcf__field">
         <label class="mcf__label" for="cf-phone">Phone Number *</label>
-        <input type="tel" id="cf-phone" name="phone" required placeholder="e.g. 07700 900077" class="mcf__input" />
+        <input type="tel" id="cf-phone" name="phone" required autocomplete="tel" placeholder="e.g. 07700 900077" class="mcf__input" />
       </div>
     </div>
 
-    {/* ── Row 2: Email & Location ── */}
+    {/* ── Row 2: Email ── */}
+    <div class="mcf__field">
+      <label class="mcf__label" for="cf-email">Email Address *</label>
+      <input type="email" id="cf-email" name="email" required autocomplete="email" placeholder="alex@example.com" class="mcf__input" />
+    </div>
+
+    {/* ── Row 3: Property address ── */}
+    <fieldset class="mcf__fieldset">
+      <legend class="mcf__label mcf__legend">Property Address</legend>
+      <div class="mcf__field">
+        <label class="mcf__label" for="cf-address">Address Line 1 *</label>
+        <input type="text" id="cf-address" name="address" required autocomplete="address-line1" placeholder="House number and street" class="mcf__input" />
+      </div>
+      <div class="mcf__grid">
+        <div class="mcf__field">
+          <label class="mcf__label" for="cf-town">Town or Village *</label>
+          <input type="text" id="cf-town" name="town" required autocomplete="address-level2" placeholder="e.g. Batheaston" class="mcf__input" />
+        </div>
+        <div class="mcf__field">
+          <label class="mcf__label" for="cf-postcode">Postcode *</label>
+          <input type="text" id="cf-postcode" name="postcode" required autocomplete="postal-code" autocapitalize="characters" placeholder="e.g. BA1 7AB" class="mcf__input" />
+        </div>
+      </div>
+    </fieldset>
+
+    {/* ── Row 4: Area & Service ── */}
     <div class="mcf__grid">
       <div class="mcf__field">
-        <label class="mcf__label" for="cf-email">Email Address *</label>
-        <input type="email" id="cf-email" name="email" required placeholder="alex@example.com" class="mcf__input" />
-      </div>
-      <div class="mcf__field">
-        <label class="mcf__label" for="cf-location">Project Location *</label>
+        <label class="mcf__label" for="cf-location">Area *</label>
         <select id="cf-location" name="location" required class="mcf__input mcf__select">
           <option value="" disabled selected>Select your area&hellip;</option>
           {targetLocations.map((loc) => <option value={loc}>{loc}</option>)}
           <option value="other">Other (West Wiltshire / Somerset)</option>
         </select>
       </div>
-    </div>
-
-    {/* ── Row 3: Service & Budget ── */}
-    <div class="mcf__grid">
       <div class="mcf__field">
         <label class="mcf__label" for="cf-service">Primary Service Required *</label>
         <select id="cf-service" name="service" required class="mcf__input mcf__select">
@@ -88,19 +105,21 @@ const servicePillars = [
           {servicePillars.map((s) => <option value={s}>{s}</option>)}
         </select>
       </div>
-      <div class="mcf__field">
-        <label class="mcf__label" for="cf-budget">Scope of Work *</label>
-        <select id="cf-budget" name="budget" required class="mcf__input mcf__select">
-          <option value="" disabled selected>Select scope&hellip;</option>
-          <option value="single">Single surface (e.g. driveway, patio or roof)</option>
-          <option value="multi">Two or more surfaces</option>
-          <option value="full">Full exterior property clean</option>
-          <option value="commercial">Commercial premises</option>
-        </select>
-      </div>
     </div>
 
-    {/* ── Row 4: Planning Status (radio pills) ── */}
+    {/* ── Row 5: Scope ── */}
+    <div class="mcf__field">
+      <label class="mcf__label" for="cf-budget">Scope of Work *</label>
+      <select id="cf-budget" name="budget" required class="mcf__input mcf__select">
+        <option value="" disabled selected>Select scope&hellip;</option>
+        <option value="single">Single surface (e.g. driveway, patio or roof)</option>
+        <option value="multi">Two or more surfaces</option>
+        <option value="full">Full exterior property clean</option>
+        <option value="commercial">Commercial premises</option>
+      </select>
+    </div>
+
+    {/* ── Row 6: Property type (radio pills) ── */}
     <div class="mcf__field">
       <label class="mcf__label">Property Type</label>
       <div class="mcf__radios">
@@ -119,7 +138,7 @@ const servicePillars = [
       </div>
     </div>
 
-    {/* ── Row 5: Project Brief ── */}
+    {/* ── Row 7: Project Brief ── */}
     <div class="mcf__field">
       <label class="mcf__label" for="cf-brief">Project Brief &amp; Details *</label>
       <textarea id="cf-brief" name="brief" required rows="5" placeholder="Describe the areas to be cleaned, surface types, and any access considerations&hellip;" class="mcf__input mcf__textarea"></textarea>
@@ -134,7 +153,7 @@ const servicePillars = [
         Request Free Quotation
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <p class="mcf__disclaimer">Your submission is fully secure. We respond to all qualified enquiries within 24 operational hours.</p>
+      <p class="mcf__disclaimer">We only use your address to price and plan the job. See our <a href="/privacy/">privacy policy</a>.</p>
     </div>
   </form>
 </div>
@@ -189,6 +208,25 @@ const servicePillars = [
     display: flex;
     flex-direction: column;
     gap: var(--space-2xs);
+  }
+
+  /* ── Property address group ── */
+  .mcf__fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+
+  .mcf__label.mcf__legend {
+    width: 100%;
+    padding: 0 0 var(--space-xs);
+    margin-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--stone);
+    color: var(--accent);
   }
 
   .mcf__label {
@@ -320,16 +358,17 @@ const servicePillars = [
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #fff;
-    background: var(--cta);
-    border: 1px solid var(--cta);
+    /* Darker than --cta: white on #F26522 is 3:1, under AA for this text size */
+    background: #C2410C;
+    border: 1px solid #C2410C;
     padding: 1rem 2.5rem;
     cursor: pointer;
     transition: all 0.35s var(--ease-out-expo);
   }
 
   .mcf__submit:hover {
-    background: var(--cta-hover);
-    border-color: var(--cta-hover);
+    background: #9A3412;
+    border-color: #9A3412;
   }
 
   .mcf__submit svg {
@@ -346,6 +385,11 @@ const servicePillars = [
     color: var(--concrete);
     opacity: 0.7;
     text-align: center;
+  }
+
+  .mcf__disclaimer a {
+    color: inherit;
+    text-decoration: underline;
   }
 
   .mcf__honeypot {
