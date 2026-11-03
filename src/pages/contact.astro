@@ -22,17 +22,6 @@ import MainContactForm from '../components/forms/MainContactForm.astro';
 
   <TrustMetrics />
 
-  {/* ── Testimonial strip ── */}
-  <section style="background:var(--chalk);padding:var(--space-2xl) 0">
-    <div class="container" style="max-width:48rem">
-      <TestimonialBlock
-        quote="Robert did a fantastic job on our driveway and patio. Years of grime gone in a few hours — they look brand new. Professional, on time, and great value. We've already booked him for the roof next."
-        name="Sarah"
-        role="Driveway & Patio Cleaning · Bath"
-      />
-    </div>
-  </section>
-
   {/* ── Contact Section: Sidebar + Form ── */}
   <section class="contact-section">
     <div class="container">
@@ -49,6 +38,17 @@ import MainContactForm from '../components/forms/MainContactForm.astro';
         </div>
 
       </div>
+    </div>
+  </section>
+
+  {/* ── Testimonial strip ── */}
+  <section style="background:var(--chalk);padding:var(--space-2xl) 0">
+    <div class="container" style="max-width:48rem">
+      <TestimonialBlock
+        quote="Robert did a fantastic job on our driveway and patio. Years of grime gone in a few hours — they look brand new. Professional, on time, and great value. We've already booked him for the roof next."
+        name="Sarah"
+        role="Driveway & Patio Cleaning · Bath"
+      />
     </div>
   </section>
 </Base>
