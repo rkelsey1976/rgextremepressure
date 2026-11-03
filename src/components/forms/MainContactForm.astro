@@ -3,19 +3,6 @@
 // No Tailwind — vanilla CSS using design tokens
 // Serves as both lead vetting and digital consultation
 
-const targetLocations = [
-  "Central Bath & Districts",
-  "Batheaston",
-  "Bathford",
-  "Bathampton",
-  "Box",
-  "Bradford on Avon",
-  "Corsham",
-  "Saltford & Keynsham",
-  "Chippenham",
-  "Frome, Radstock & Midsomer Norton",
-];
-
 const servicePillars = [
   "Driveway Cleaning",
   "Patio Cleaning",
@@ -88,38 +75,16 @@ const servicePillars = [
       </div>
     </fieldset>
 
-    {/* ── Row 4: Area & Service ── */}
-    <div class="mcf__grid">
-      <div class="mcf__field">
-        <label class="mcf__label" for="cf-location">Area *</label>
-        <select id="cf-location" name="location" required class="mcf__input mcf__select">
-          <option value="" disabled selected>Select your area&hellip;</option>
-          {targetLocations.map((loc) => <option value={loc}>{loc}</option>)}
-          <option value="other">Other (West Wiltshire / Somerset)</option>
-        </select>
-      </div>
-      <div class="mcf__field">
-        <label class="mcf__label" for="cf-service">Primary Service Required *</label>
-        <select id="cf-service" name="service" required class="mcf__input mcf__select">
-          <option value="" disabled selected>Select service&hellip;</option>
-          {servicePillars.map((s) => <option value={s}>{s}</option>)}
-        </select>
-      </div>
-    </div>
-
-    {/* ── Row 5: Scope ── */}
+    {/* ── Row 4: Service ── */}
     <div class="mcf__field">
-      <label class="mcf__label" for="cf-budget">Scope of Work *</label>
-      <select id="cf-budget" name="budget" required class="mcf__input mcf__select">
-        <option value="" disabled selected>Select scope&hellip;</option>
-        <option value="single">Single surface (e.g. driveway, patio or roof)</option>
-        <option value="multi">Two or more surfaces</option>
-        <option value="full">Full exterior property clean</option>
-        <option value="commercial">Commercial premises</option>
+      <label class="mcf__label" for="cf-service">Primary Service Required *</label>
+      <select id="cf-service" name="service" required class="mcf__input mcf__select">
+        <option value="" disabled selected>Select service&hellip;</option>
+        {servicePillars.map((s) => <option value={s}>{s}</option>)}
       </select>
     </div>
 
-    {/* ── Row 6: Property type (radio pills) ── */}
+    {/* ── Row 5: Property type (radio pills) ── */}
     <div class="mcf__field">
       <label class="mcf__label">Property Type</label>
       <div class="mcf__radios">
@@ -138,7 +103,7 @@ const servicePillars = [
       </div>
     </div>
 
-    {/* ── Row 7: Project Brief ── */}
+    {/* ── Row 6: Project Brief ── */}
     <div class="mcf__field">
       <label class="mcf__label" for="cf-brief">Project Brief &amp; Details *</label>
       <textarea id="cf-brief" name="brief" required rows="5" placeholder="Describe the areas to be cleaned, surface types, and any access considerations&hellip;" class="mcf__input mcf__textarea"></textarea>
