@@ -2,6 +2,9 @@
 // Base layout — shared <head>, nav, footer for all RG Extreme Pressure pages
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
+import QuoteModal from '../components/QuoteModal.astro';
+// Step-by-step quote pop-up. On when PUBLIC_QUOTE_POPUP=true (set in netlify.toml and .env.development.local).
+const quotePopup = import.meta.env.PUBLIC_QUOTE_POPUP === 'true';
 
 interface Props {
   title: string;
@@ -340,6 +343,8 @@ const ogImageURL   = new URL(ogImage, Astro.site);
   </div>
 
   <Footer />
+
+  {quotePopup && <QuoteModal />}
 
   <!-- Sticky contact bar -->
   <div class="sticky-bar" id="sticky-bar" aria-hidden="true">

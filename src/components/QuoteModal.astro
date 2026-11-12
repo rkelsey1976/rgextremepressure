@@ -1,0 +1,610 @@
+---
+// QuoteModal.astro: step-by-step free-quote pop-up.
+// Rendered only when PUBLIC_QUOTE_POPUP=true (see Base.astro and netlify.toml).
+// It posts to its own Netlify
+// form, "quote-popup", so the main "contact" form's field list is untouched.
+// No prices: see src/data/quotePicker.ts.
+import { JOBS, AREAS, HOUSES, SITES, REPLIES } from '../data/quotePicker';
+
+const jobData = JOBS.map(({ id, formLabel, kind, pagePrefix, label }) => ({ id, formLabel, kind, pagePrefix, label }));
+---
+
+<dialog id="rgq" class="rgq" aria-labelledby="rgq-title">
+  <form
+    id="rgq-form"
+    class="rgq__form"
+    name="quote-popup"
+    method="post"
+    enctype="multipart/form-data"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    novalidate
+  >
+    <input type="hidden" name="form-name" value="quote-popup" />
+    <input type="hidden" name="page_source" value="" />
+    <input type="hidden" name="service" value="" />
+    <input type="hidden" name="photo_count" value="0" />
+    <p class="rgq__hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+    {/* Registered so Netlify keeps the files; the script fills them with resized copies. */}
+    <div hidden>
+      <input type="file" name="photo1" tabindex="-1" />
+      <input type="file" name="photo2" tabindex="-1" />
+      <input type="file" name="photo3" tabindex="-1" />
+      <input type="file" name="photo4" tabindex="-1" />
+    </div>
+
+    <header class="rgq__head">
+      <h2 id="rgq-title" class="rgq__title">Get a free quote</h2>
+      <button type="button" class="rgq__close" data-rgq-close aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </header>
+
+    <div class="rgq__flow" data-rgq-flow>
+      <div class="rgq__progress">
+        <span class="rgq__step-label" data-rgq-label>Step 1 of 5</span>
+        <div class="rgq__bar" aria-hidden="true"><span data-rgq-bar></span></div>
+      </div>
+
+      <div class="rgq__body" data-rgq-body>
+        {/* 1. Jobs */}
+        <section class="rgq__step" data-step="1">
+          <fieldset class="rgq__fs">
+            <legend class="rgq__q" tabindex="-1">What needs cleaning?</legend>
+            <p class="rgq__hint">Tick everything you'd like done.</p>
+            <div class="rgq__jobs">
+              {JOBS.map((j) => (
+                <label class:list={['rgq__tile rgq__job', { 'rgq__job--wide': j.id === 'comm' }]}>
+                  <input type="checkbox" name="jobs" value={j.id} class="rgq__sr" />
+                  <span class="rgq__job-top">
+                    <span class="rgq__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={j.icon} /></svg></span>
+                    <span class="rgq__box" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+                  </span>
+                  <span class="rgq__job-label">{j.label}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        </section>
+
+        {/* 2. Property */}
+        <section class="rgq__step" data-step="2" hidden>
+          <h3 class="rgq__q" tabindex="-1">Tell us about the property</h3>
+          <p class="rgq__hint">Every job is priced individually.</p>
+          <fieldset class="rgq__fs rgq__group" data-ask="area" hidden>
+            <legend class="rgq__sub" data-rgq-area-q>How big is the area?</legend>
+            <div class="rgq__grid">
+              {AREAS.map((a) => (
+                <label class="rgq__tile rgq__opt">
+                  <input type="radio" name="size" value={a.label} class="rgq__sr" />
+                  <span class="rgq__opt-label">{a.label}</span>
+                  <span class="rgq__opt-sub">{a.sub}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+          <fieldset class="rgq__fs rgq__group" data-ask="house" hidden>
+            <legend class="rgq__sub">What type of property is it?</legend>
+            <div class="rgq__grid rgq__grid--3">
+              {HOUSES.map((h) => (
+                <label class="rgq__tile rgq__opt">
+                  <input type="radio" name="property" value={h} class="rgq__sr" />
+                  <span class="rgq__opt-label">{h}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+          <fieldset class="rgq__fs rgq__group" data-ask="site" hidden>
+            <legend class="rgq__sub">What kind of site?</legend>
+            <div class="rgq__grid">
+              {SITES.map((s) => (
+                <label class="rgq__tile rgq__opt">
+                  <input type="radio" name="site" value={s} class="rgq__sr" />
+                  <span class="rgq__opt-label">{s}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        </section>
+
+        {/* 3. Photos */}
+        <section class="rgq__step" data-step="3" hidden>
+          <h3 class="rgq__q" tabindex="-1">Send Robert a photo</h3>
+          <p class="rgq__hint">A photo of the surface as it is now helps Robert understand the job. Optional, up to 4.</p>
+          <label class="rgq__drop">
+            <input type="file" accept="image/*" multiple class="rgq__sr" data-rgq-file />
+            <span class="rgq__drop-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg></span>
+            <span class="rgq__drop-title">Add photos</span>
+            <span class="rgq__drop-sub">Take one now or choose from your phone</span>
+          </label>
+          <ul class="rgq__thumbs" data-rgq-thumbs aria-label="Photos added"></ul>
+          <p class="rgq__status" data-rgq-photo-status aria-live="polite"></p>
+          <button type="button" class="rgq__link" data-rgq-skip>No photo to hand, skip this</button>
+        </section>
+
+        {/* 4. Address */}
+        <section class="rgq__step" data-step="4" hidden>
+          <h3 class="rgq__q" tabindex="-1">Where's the property?</h3>
+          <p class="rgq__hint">We cover Bath, Bristol and the towns around them.</p>
+          <div class="rgq__field">
+            <label for="rgq-address">Address line 1</label>
+            <input id="rgq-address" name="address" type="text" autocomplete="address-line1" placeholder="House number and street" required />
+          </div>
+          <div class="rgq__row">
+            <div class="rgq__field">
+              <label for="rgq-town">Town or village</label>
+              <input id="rgq-town" name="town" type="text" autocomplete="address-level2" placeholder="e.g. Batheaston" required />
+            </div>
+            <div class="rgq__field rgq__field--pc">
+              <label for="rgq-postcode">Postcode</label>
+              <input id="rgq-postcode" name="postcode" type="text" autocomplete="postal-code" autocapitalize="characters" placeholder="e.g. BA1 7AB" required />
+            </div>
+          </div>
+          <p class="rgq__cover" data-rgq-cover aria-live="polite"></p>
+        </section>
+
+        {/* 5. Details */}
+        <section class="rgq__step" data-step="5" hidden>
+          <h3 class="rgq__q" tabindex="-1">How should Robert reach you?</h3>
+          <p class="rgq__hint">Only used to get back to you about this quote.</p>
+          <div class="rgq__field">
+            <label for="rgq-name">Full name</label>
+            <input id="rgq-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="rgq__row">
+            <div class="rgq__field">
+              <label for="rgq-phone">Phone</label>
+              <input id="rgq-phone" name="phone" type="tel" autocomplete="tel" placeholder="e.g. 07700 900077" required />
+            </div>
+            <div class="rgq__field">
+              <label for="rgq-email">Email</label>
+              <input id="rgq-email" name="email" type="email" autocomplete="email" required />
+            </div>
+          </div>
+          <fieldset class="rgq__fs">
+            <legend class="rgq__sub rgq__sub--sm">Best way to get back to you</legend>
+            <div class="rgq__grid rgq__grid--3">
+              {REPLIES.map((r, i) => (
+                <label class="rgq__tile rgq__opt rgq__opt--short">
+                  <input type="radio" name="reply_by" value={r} class="rgq__sr" checked={i === 0} />
+                  <span class="rgq__opt-label">{r}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+          <div class="rgq__field">
+            <label for="rgq-notes">Anything else? <span class="rgq__opt-tag">(optional)</span></label>
+            <textarea id="rgq-notes" name="notes" rows="3" placeholder="Access, parking, a date that suits…"></textarea>
+          </div>
+          <p class="rgq__small">We only use your details to price and plan the job. See our <a href="/privacy/">privacy policy</a>.</p>
+        </section>
+
+        <p class="rgq__err" data-rgq-err role="alert"></p>
+      </div>
+
+      <footer class="rgq__foot">
+        <p class="rgq__trust">
+          <span>5.0 from 115 Google reviews</span><span aria-hidden="true">·</span><span>Fully insured</span><span aria-hidden="true">·</span><span>10 years' experience</span>
+        </p>
+        <div class="rgq__nav">
+          <button type="button" class="rgq__back" data-rgq-back aria-label="Back" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <button type="submit" class="rgq__next" data-rgq-next>
+            <span data-rgq-next-label>Continue</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </footer>
+    </div>
+
+    <div class="rgq__done" data-rgq-done hidden>
+      <span class="rgq__tick" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+      <h3 class="rgq__q" tabindex="-1" data-rgq-done-title>Thanks, that's with Robert</h3>
+      <p class="rgq__hint">He'll be in touch the way you asked to arrange your free quote.</p>
+      <dl class="rgq__summary" data-rgq-summary></dl>
+      <p class="rgq__hint">Need us sooner? <a href="tel:07474939398" class="rgq__strong">07474 939 398</a><br />Mon–Fri 8am–5pm, Sat 9am–3pm</p>
+      <button type="button" class="rgq__done-close" data-rgq-close>Close</button>
+    </div>
+  </form>
+</dialog>
+
+<script is:inline define:vars={{ jobData }}>
+(function () {
+  var dlg = document.getElementById('rgq');
+  var form = document.getElementById('rgq-form');
+  if (!dlg || !form || typeof dlg.showModal !== 'function') return;
+
+  var DEV = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+  var TOTAL = 5, MAX_PHOTOS = 4;
+  var step = 1, photos = [], sent = false;
+  var $ = function (s, root) { return (root || dlg).querySelector(s); };
+  var $$ = function (s, root) { return Array.prototype.slice.call((root || dlg).querySelectorAll(s)); };
+  var byId = {}; jobData.forEach(function (j) { byId[j.id] = j; });
+
+  // Same counters as Base.astro's CTA tracking: cookieless tap always,
+  // GA4 only after consent.
+  function track(name) {
+    try {
+      var body = JSON.stringify({ e: name, p: location.pathname, l: 'quote pop-up' });
+      if (!navigator.sendBeacon || !navigator.sendBeacon('/api/tap', new Blob([body], { type: 'application/json' }))) {
+        fetch('/api/tap', { method: 'POST', body: body, headers: { 'Content-Type': 'application/json' }, keepalive: true });
+      }
+      if (localStorage.getItem('rg_cookie_consent') === 'accepted' && typeof gtag === 'function') {
+        gtag('event', name, { page_path: location.pathname, form: 'quote-popup' });
+      }
+    } catch (e) {}
+  }
+
+  function picked() { return $$('input[name="jobs"]:checked').map(function (i) { return byId[i.value]; }); }
+  function has(kind) { return picked().some(function (j) { return j.kind === kind; }); }
+  function radio(name) { var r = $('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
+
+  function postcode() { return ($('#rgq-postcode').value || '').trim().toUpperCase().replace(/\s+/g, ' '); }
+  function pcValid(pc) { return /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/.test(pc); }
+  function outward(pc) { return pc.replace(/\s/g, '').slice(0, -3); }
+  function covered(pc) { var o = outward(pc); return /^(BA|BS)\d/.test(o) || /^SN1[2-5]$/.test(o); }
+
+  function err(msg) { $('[data-rgq-err]').textContent = msg || ''; }
+
+  function show(n) {
+    step = n;
+    $$('.rgq__step').forEach(function (s) { s.hidden = Number(s.dataset.step) !== n; });
+    $('[data-rgq-label]').textContent = 'Step ' + n + ' of ' + TOTAL;
+    $('[data-rgq-bar]').style.width = Math.round((n / TOTAL) * 100) + '%';
+    $('[data-rgq-back]').hidden = n === 1;
+    if (n === 2) {
+      ['area', 'house', 'site'].forEach(function (k) { $('[data-ask="' + k + '"]').hidden = !has(k); });
+      var areaJobs = picked().filter(function (j) { return j.kind === 'area'; }).map(function (j) { return j.label.toLowerCase(); });
+      $('[data-rgq-area-q]').textContent = 'How big is the ' + (areaJobs.join(' and ') || 'area') + '?';
+    }
+    err('');
+    updateNext();
+    $('[data-rgq-body]').scrollTop = 0;
+    var q = $('.rgq__step[data-step="' + n + '"] .rgq__q');
+    if (q) q.focus({ preventScroll: true });
+  }
+
+  function updateNext() {
+    var label = 'Continue';
+    if (step === 1 && picked().length) label = 'Continue with ' + picked().length;
+    if (step === 3) label = photos.length ? 'Continue' : 'Continue without a photo';
+    if (step === TOTAL) label = 'Send to Robert';
+    $('[data-rgq-next-label]').textContent = label;
+  }
+
+  function validate() {
+    if (step === 1 && !picked().length) return 'Tick at least one job.';
+    if (step === 2) {
+      if (has('area') && !radio('size')) return 'Choose a rough size, or Not sure.';
+      if (has('house') && !radio('property')) return 'Choose the type of property.';
+      if (has('site') && !radio('site')) return 'Choose the kind of site.';
+    }
+    if (step === 4) {
+      if ($('#rgq-address').value.trim().length < 3) return 'Enter the first line of the address.';
+      if ($('#rgq-town').value.trim().length < 2) return 'Enter the town or village.';
+      if (!pcValid(postcode())) return 'Enter a full postcode, like BA1 7AB.';
+    }
+    if (step === 5) {
+      if ($('#rgq-name').value.trim().length < 2) return 'Enter your name.';
+      if ($('#rgq-phone').value.replace(/\D/g, '').length < 10) return 'Enter a phone number we can call.';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('#rgq-email').value.trim())) return 'Enter a valid email address.';
+    }
+    return '';
+  }
+
+  function firstBad() {
+    var map = { 4: ['#rgq-address', '#rgq-town', '#rgq-postcode'], 5: ['#rgq-name', '#rgq-phone', '#rgq-email'] }[step];
+    if (!map) return null;
+    var checks = {
+      '#rgq-address': function (v) { return v.trim().length >= 3; },
+      '#rgq-town': function (v) { return v.trim().length >= 2; },
+      '#rgq-postcode': function () { return pcValid(postcode()); },
+      '#rgq-name': function (v) { return v.trim().length >= 2; },
+      '#rgq-phone': function (v) { return v.replace(/\D/g, '').length >= 10; },
+      '#rgq-email': function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+    };
+    for (var i = 0; i < map.length; i++) { var el = $(map[i]); if (!checks[map[i]](el.value)) return el; }
+    return null;
+  }
+
+  // ── Open / close ─────────────────────────────────────────────
+  function preselect() {
+    if (picked().length) return;
+    var seg = location.pathname.split('/')[1] || '';
+    jobData.forEach(function (j) {
+      if (seg.indexOf(j.pagePrefix) === 0) { var cb = $('input[name="jobs"][value="' + j.id + '"]'); if (cb) cb.checked = true; }
+    });
+  }
+  function open() {
+    if (sent) reset();
+    preselect();
+    document.documentElement.classList.add('rgq-open');
+    dlg.showModal();
+    show(step);
+    track('quote_popup_open');
+  }
+  function close() { dlg.close(); }
+  dlg.addEventListener('close', function () { document.documentElement.classList.remove('rgq-open'); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });
+  $$('[data-rgq-close]').forEach(function (b) { b.addEventListener('click', close); });
+
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var t = e.target && e.target.closest ? e.target.closest('a[href="/contact"], a[href="/contact/"], [data-open-quote]') : null;
+    if (!t || dlg.contains(t)) return;
+    if (/^\/contact\/?$/.test(location.pathname)) return; // the full form is already on screen
+    e.preventDefault();
+    open();
+  });
+
+  // ── Step controls ────────────────────────────────────────────
+  form.addEventListener('change', function (e) {
+    if (e.target.name === 'jobs') updateNext();
+    if (validate() === '') err('');
+  });
+  $('[data-rgq-back]').addEventListener('click', function () { if (step > 1) show(step - 1); });
+  $('[data-rgq-skip]').addEventListener('click', function () { show(4); });
+
+  $('#rgq-postcode').addEventListener('input', function () {
+    var pc = postcode(), out = $('[data-rgq-cover]');
+    out.className = 'rgq__cover';
+    if (!pcValid(pc)) { out.textContent = ''; return; }
+    if (covered(pc)) { out.classList.add('is-in'); out.textContent = 'Good news, we cover ' + outward(pc) + '.'; }
+    else { out.innerHTML = 'That’s outside our usual area. Carry on, or call <a href="tel:07474939398">07474 939 398</a> and Robert will tell you straight.'; }
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var m = validate();
+    if (m) {
+      err(m);
+      var bad = firstBad();
+      if (bad) { bad.setAttribute('aria-invalid', 'true'); bad.focus(); }
+      return;
+    }
+    $$('[aria-invalid]').forEach(function (el) { el.removeAttribute('aria-invalid'); });
+    if (step < TOTAL) { show(step + 1); return; }
+    send();
+  });
+
+  // ── Photos: resized in the browser so 4 phone photos fit Netlify's limits ──
+  function resize(file) {
+    return new Promise(function (resolve) {
+      var url = URL.createObjectURL(file), img = new Image();
+      img.onload = function () {
+        var max = 1600, w = img.naturalWidth, h = img.naturalHeight, s = Math.min(1, max / Math.max(w, h));
+        var c = document.createElement('canvas'); c.width = Math.round(w * s); c.height = Math.round(h * s);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        c.toBlob(function (b) { resolve(b ? { blob: b, url: URL.createObjectURL(b) } : null); }, 'image/jpeg', 0.82);
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); resolve(null); };
+      img.src = url;
+    });
+  }
+  function renderThumbs() {
+    var ul = $('[data-rgq-thumbs]'); ul.innerHTML = '';
+    photos.forEach(function (p, i) {
+      var li = document.createElement('li'); li.className = 'rgq__thumb';
+      var im = document.createElement('img'); im.src = p.url; im.alt = 'Photo ' + (i + 1);
+      var rm = document.createElement('button'); rm.type = 'button'; rm.className = 'rgq__thumb-rm';
+      rm.setAttribute('aria-label', 'Remove photo ' + (i + 1)); rm.textContent = '×';
+      rm.addEventListener('click', function () { URL.revokeObjectURL(p.url); photos.splice(i, 1); renderThumbs(); });
+      li.appendChild(im); li.appendChild(rm); ul.appendChild(li);
+    });
+    $('[data-rgq-photo-status]').textContent = photos.length ? photos.length + ' of ' + MAX_PHOTOS + ' photos added.' : '';
+    updateNext();
+  }
+  $('[data-rgq-file]').addEventListener('change', function (e) {
+    var files = Array.prototype.slice.call(e.target.files || []), room = MAX_PHOTOS - photos.length;
+    var status = $('[data-rgq-photo-status]');
+    if (!files.length) return;
+    if (room <= 0) { status.textContent = 'That’s 4 photos already. Remove one to add another.'; return; }
+    status.textContent = 'Adding photos…';
+    Promise.all(files.slice(0, room).map(resize)).then(function (out) {
+      var failed = out.filter(function (o) { return !o; }).length;
+      out.forEach(function (o) { if (o) photos.push(o); });
+      renderThumbs();
+      if (failed) status.textContent += ' ' + failed + ' couldn’t be read. Try a JPG or PNG.';
+      if (files.length > room) status.textContent += ' Only the first ' + MAX_PHOTOS + ' are kept.';
+    });
+    e.target.value = '';
+  });
+
+  // ── Send ─────────────────────────────────────────────────────
+  function summaryRows() {
+    var bits = [radio('size'), radio('property'), radio('site')].filter(Boolean);
+    return [
+      ['Cleaning', picked().map(function (j) { return j.label; }).join(', ')],
+      ['Property', bits.join(', ')],
+      ['Photos', photos.length ? String(photos.length) : 'None'],
+      ['Address', [$('#rgq-address').value.trim(), $('#rgq-town').value.trim(), postcode()].filter(Boolean).join(', ')],
+      ['Reply by', radio('reply_by')]
+    ].filter(function (r) { return r[1]; });
+  }
+
+  function send() {
+    var btn = $('[data-rgq-next]');
+    form.elements['page_source'].value = location.pathname;
+    form.elements['service'].value = picked().map(function (j) { return j.formLabel; }).join(', ');
+    form.elements['photo_count'].value = String(photos.length);
+    form.elements['postcode'].value = postcode();
+
+    var fd = new FormData(form);
+    ['photo1', 'photo2', 'photo3', 'photo4'].forEach(function (n) { fd.delete(n); });
+    fd.delete('jobs');
+    photos.forEach(function (p, i) { fd.append('photo' + (i + 1), p.blob, 'photo-' + (i + 1) + '.jpg'); });
+
+    btn.disabled = true; $('[data-rgq-next-label]').textContent = 'Sending…'; err('');
+
+    var done = function () {
+      sent = true; track('quote_submit'); track('generate_lead');
+      var dl = $('[data-rgq-summary]'); dl.innerHTML = '';
+      summaryRows().forEach(function (r) {
+        var dt = document.createElement('dt'); dt.textContent = r[0];
+        var dd = document.createElement('dd'); dd.textContent = r[1];
+        dl.appendChild(dt); dl.appendChild(dd);
+      });
+      $('[data-rgq-flow]').hidden = true; $('[data-rgq-done]').hidden = false;
+      $('[data-rgq-done-title]').focus();
+      btn.disabled = false;
+    };
+
+    if (DEV) {
+      var log = {}; fd.forEach(function (v, k) { log[k] = v instanceof Blob ? '[photo ' + Math.round(v.size / 1024) + ' KB]' : v; });
+      console.info('[quote pop-up] would submit', log);
+      setTimeout(done, 400);
+      return;
+    }
+    fetch('/', { method: 'POST', body: fd })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); done(); })
+      .catch(function () {
+        btn.disabled = false; updateNext();
+        err('That didn’t send. Please try again, or call 07474 939 398.');
+      });
+  }
+
+  function reset() {
+    form.reset(); photos.forEach(function (p) { URL.revokeObjectURL(p.url); }); photos = []; renderThumbs();
+    $('[data-rgq-cover]').textContent = '';
+    $('[data-rgq-flow]').hidden = false; $('[data-rgq-done]').hidden = true;
+    sent = false; step = 1;
+  }
+
+  window.rgQuote = { open: open };
+})();
+</script>
+
+<style is:global>
+  html.rgq-open { overflow: hidden; }
+  .rgq {
+    --rgq-line: #E1E6EC;
+    --rgq-input: #7C8A99;
+    width: min(720px, calc(100vw - 2rem));
+    max-height: min(880px, calc(100dvh - 2rem));
+    margin: auto; /* global reset zeroes the dialog's own centring */
+    padding: 0; border: 0; border-radius: 12px;
+    background: #fff; color: var(--chalk);
+    box-shadow: 0 30px 80px rgba(15, 27, 45, 0.35);
+    overflow: hidden;
+  }
+  .rgq[open] { display: flex; }
+  .rgq::backdrop { background: rgba(15, 27, 45, 0.72); }
+  .rgq__form { display: flex; flex-direction: column; width: 100%; min-height: 0; max-height: inherit; }
+  .rgq__hp, .rgq__sr { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .rgq a { color: var(--accent); text-decoration: underline; }
+  .rgq :focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--accent); }
+  .rgq [tabindex="-1"]:focus { box-shadow: none; outline: none; }
+
+  .rgq__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1rem 1rem 1.5rem; background: var(--navy); color: #fff; }
+  .rgq__title { margin: 0; font-family: var(--font-display); font-size: 1.4rem; line-height: 1.2; font-weight: 800; letter-spacing: -0.01em; }
+  .rgq__close { width: 44px; height: 44px; flex: none; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.35); color: #fff; display: flex; align-items: center; justify-content: center; }
+  .rgq__close:hover { background: rgba(255,255,255,0.1); }
+
+  .rgq__flow { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+  .rgq__flow[hidden], .rgq__done[hidden], .rgq__step[hidden], .rgq__group[hidden] { display: none; }
+  .rgq__progress { display: flex; align-items: center; gap: 0.75rem; padding: 1.1rem 1.5rem 0; }
+  .rgq__step-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
+  .rgq__bar { flex: 1; height: 6px; border-radius: 999px; background: var(--stone); overflow: hidden; }
+  .rgq__bar span { display: block; height: 100%; width: 20%; border-radius: inherit; background: var(--cta); transition: width 0.3s ease; }
+
+  .rgq__body { flex: 1; min-height: 0; overflow-y: auto; padding: 1rem 1.5rem 1.25rem; }
+  .rgq__step { display: flex; flex-direction: column; gap: 0.9rem; }
+  .rgq__fs { margin: 0; padding: 0; border: 0; min-width: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .rgq__q { margin: 0; padding: 0; font-family: var(--font-display); font-size: 1.6rem; line-height: 1.2; font-weight: 800; letter-spacing: -0.02em; color: var(--chalk); }
+  .rgq__hint { margin: -0.3rem 0 0.2rem; font-size: 0.95rem; line-height: 1.5; color: var(--concrete); }
+  .rgq__sub { padding: 0; margin-bottom: 0.1rem; font-size: 1rem; font-weight: 700; }
+  .rgq__sub--sm { font-size: 0.9rem; font-weight: 600; }
+
+  .rgq__tile { position: relative; cursor: pointer; border-radius: 8px; background: #fff; border: 1.5px solid var(--rgq-line); transition: border-color 0.15s, background 0.15s, box-shadow 0.15s; }
+  @media (hover: hover) { .rgq__tile:hover { border-color: var(--accent); } }
+  .rgq__tile:has(input:checked) { background: var(--accent-light); border: 2px solid var(--accent); box-shadow: 0 0 0 3px rgba(0, 85, 165, 0.15); }
+  .rgq__tile:has(input:focus-visible) { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--accent); }
+
+  .rgq__jobs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; }
+  .rgq__job { display: flex; flex-direction: column; gap: 0.6rem; padding: 0.8rem; min-height: 96px; }
+  .rgq__job-top { display: flex; align-items: center; justify-content: space-between; }
+  .rgq__icon { width: 36px; height: 36px; border-radius: 8px; background: var(--stone); display: flex; align-items: center; justify-content: center; }
+  .rgq__job:has(input:checked) .rgq__icon { background: var(--accent); color: #fff; }
+  .rgq__box { width: 22px; height: 22px; border-radius: 5px; border: 1.5px solid var(--rgq-input); color: transparent; display: flex; align-items: center; justify-content: center; }
+  .rgq__job:has(input:checked) .rgq__box { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .rgq__job-label { font-size: 0.95rem; font-weight: 700; line-height: 1.3; }
+
+  .rgq__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; }
+  .rgq__grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .rgq__opt { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center; padding: 0.6rem; min-height: 56px; }
+  .rgq__opt--short { min-height: 48px; }
+  .rgq__opt-label { font-size: 0.95rem; font-weight: 600; }
+  .rgq__opt-sub { font-size: 0.8rem; line-height: 1.3; color: var(--concrete); }
+
+  .rgq__drop { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 1.6rem 1rem; border: 2px dashed var(--rgq-input); border-radius: 12px; background: var(--surface); cursor: pointer; text-align: center; }
+  @media (hover: hover) { .rgq__drop:hover { border-color: var(--accent); } }
+  .rgq__drop:has(input:focus-visible) { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--accent); }
+  .rgq__drop-icon { width: 56px; height: 56px; border-radius: 12px; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; }
+  .rgq__drop-title { font-size: 1.05rem; font-weight: 700; }
+  .rgq__drop-sub { font-size: 0.9rem; color: var(--concrete); }
+  .rgq__thumbs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; }
+  .rgq__thumbs:empty { display: none; }
+  .rgq__thumb { position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden; background: var(--stone); }
+  .rgq__thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .rgq__thumb-rm { position: absolute; top: 4px; right: 4px; width: 32px; height: 32px; border-radius: 999px; background: rgba(15,27,45,0.85); color: #fff; font-size: 1.2rem; line-height: 1; }
+  .rgq__status { margin: 0; font-size: 0.9rem; color: var(--concrete); }
+  .rgq__status:empty { display: none; }
+  .rgq__link { align-self: flex-start; min-height: 44px; font-size: 0.95rem; font-weight: 600; color: var(--accent); text-decoration: underline; }
+
+  .rgq__field { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; flex: 1; }
+  .rgq__field label { font-size: 0.9rem; font-weight: 600; }
+  .rgq__field input, .rgq__field textarea { width: 100%; padding: 0 0.9rem; height: 48px; font: inherit; font-size: 1rem; color: var(--chalk); background: var(--surface); border: 1.5px solid var(--rgq-input); border-radius: 6px; }
+  .rgq__field textarea { height: auto; padding: 0.7rem 0.9rem; resize: vertical; }
+  .rgq__field input::placeholder, .rgq__field textarea::placeholder { color: var(--concrete); }
+  .rgq__field input:focus, .rgq__field textarea:focus { border-color: var(--accent); background: #fff; }
+  .rgq__field input[aria-invalid="true"] { border-color: #B91C1C; }
+  .rgq__field--pc { flex: 0 0 170px; }
+  .rgq__field--pc input { text-transform: uppercase; }
+  .rgq__row { display: flex; gap: 0.75rem; }
+  .rgq__opt-tag { font-weight: 400; color: var(--concrete); }
+  .rgq__cover { margin: 0; font-size: 0.95rem; line-height: 1.5; color: var(--concrete); }
+  .rgq__cover:empty { display: none; }
+  .rgq__cover.is-in { color: #166534; font-weight: 600; }
+  .rgq__small { margin: 0; font-size: 0.8rem; color: var(--concrete); }
+  .rgq__err { margin: 0.9rem 0 0; font-size: 0.95rem; font-weight: 600; color: #B91C1C; }
+  .rgq__err:empty { display: none; }
+
+  .rgq__foot { padding: 0.9rem 1.5rem 1.1rem; border-top: 1px solid var(--rgq-line); background: var(--surface); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .rgq__trust { margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; font-size: 0.8rem; font-weight: 500; color: var(--concrete); }
+  .rgq__nav { display: flex; gap: 0.6rem; flex: none; }
+  .rgq__back { width: 52px; height: 52px; border-radius: 6px; border: 1.5px solid var(--rgq-input); background: #fff; color: var(--chalk); display: flex; align-items: center; justify-content: center; }
+  .rgq__back[hidden] { display: none; }
+  .rgq__next { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; height: 52px; padding: 0 1.4rem; border-radius: 6px; background: #C2410C; color: #fff; font-size: 1rem; font-weight: 700; }
+  @media (hover: hover) { .rgq__next:hover { background: #9A3412; } .rgq__back:hover { border-color: var(--accent); } }
+  .rgq__next:disabled { opacity: 0.6; cursor: progress; }
+
+  .rgq__done { padding: 2.2rem 1.5rem 1.6rem; display: flex; flex-direction: column; gap: 1rem; overflow-y: auto; }
+  .rgq__tick { width: 60px; height: 60px; border-radius: 999px; background: var(--cta); display: flex; align-items: center; justify-content: center; }
+  .rgq__done .rgq__hint { margin: 0; }
+  .rgq__strong { font-weight: 700; }
+  .rgq__summary { margin: 0; display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 0.5rem 0.9rem; padding: 1rem 1.1rem; border-radius: 8px; background: var(--surface); border: 1px solid var(--rgq-line); font-size: 0.95rem; }
+  .rgq__summary dt { color: var(--concrete); }
+  .rgq__summary dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+  .rgq__done-close { align-self: flex-start; height: 48px; padding: 0 1.4rem; border-radius: 6px; border: 1.5px solid var(--rgq-input); font-weight: 600; }
+
+  @media (max-width: 640px) {
+    .rgq { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; border-radius: 0; }
+    .rgq__head { padding: 0.8rem 0.75rem 0.8rem 1rem; }
+    .rgq__progress { padding: 1rem 1rem 0; }
+    .rgq__body { padding: 0.9rem 1rem 1.1rem; }
+    .rgq__q { font-size: 1.45rem; }
+    .rgq__jobs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rgq__job--wide { grid-column: 1 / -1; }
+    .rgq__grid, .rgq__grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rgq__grid--3:has(.rgq__opt--short) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .rgq__row { flex-direction: column; }
+    .rgq__field--pc { flex: none; width: 170px; }
+    .rgq__foot { padding: 0.75rem 1rem 1rem; flex-direction: column; align-items: stretch; gap: 0.6rem; }
+    .rgq__trust { justify-content: center; font-size: 0.75rem; }
+    .rgq__next { flex: 1; }
+    .rgq__done { padding: 2rem 1rem 1.2rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .rgq__bar span, .rgq__tile { transition: none; } }
+</style>

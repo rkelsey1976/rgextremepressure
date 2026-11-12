@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
+# Step-by-step quote pop-up (src/components/QuoteModal.astro). Set to "false" to turn it off.
+[build.environment]
+  PUBLIC_QUOTE_POPUP = "true"
+
 # Page redirects — old URLs go to new canonical URLs
 [[redirects]]
   from = "/privacy-policy"
